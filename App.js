@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import { Provider } from 'react-redux'
-import {store, persistor} from './src/redux/store';
+import {store, persistor} from './src/store';
 import { PersistGate } from 'redux-persist/integration/react'
 
 const App = () => {
