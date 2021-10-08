@@ -4,10 +4,12 @@ import {
   View,
 } from 'react-native';
 
-export const StartPage = () => {
+export const LogIn = () => {
   return (
     <View>
-      <Text>hello world</Text>
+      <Text>
+        LogIn
+      </Text>
     </View>
-  );
-};
+  )
+}

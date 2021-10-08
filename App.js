@@ -10,14 +10,14 @@ import {store, persistor} from './src/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import {StartPage} from './src/screens/StartPage'
+import Navigation from './src/screens/Navigation'
 
 const App = () => {
   return (
     <NavigationContainer>
       <Provider store={store}>
-        <PersistGate loading={<StartPage />} persistor={persistor}>
-          
+        <PersistGate loading={<Navigation />} persistor={persistor}>
+
         </PersistGate>
       </Provider>
     </NavigationContainer>
