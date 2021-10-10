@@ -3,12 +3,7 @@ import {
 } from 'react-native';
 
 export const styles = StyleSheet.create({
-  modalContainer: {
-    width: '30%',
-    height: 200
-  },
   headerContainer: {
-    alignItems: 'flex-start',
     justifyContent: 'flex-start',
     height: 155,
   },
@@ -17,23 +12,24 @@ export const styles = StyleSheet.create({
     height: 190,
   },
   headerBlock: {
+    width: '100%',
     justifyContent: 'space-between',
-    alignContent: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
   },
   headerArticleContainer: {
-    margin: 0,
     marginLeft: 10,
-    padding: 0
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   headerArticle: {
     color: '#594334',
-    fontSize: 55,
+    fontSize: 45,
     fontFamily: 'Bahianita-Regular',
   },
   headerInfo: {
-    alignItems: 'flex-end',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
     marginRight: 10
   },
   headerText: {
@@ -45,6 +41,7 @@ export const styles = StyleSheet.create({
     color: 'black',
     fontSize: 17,
     fontFamily: 'Bahianita-Regular',
+    marginLeft: 10
   },
   inputContainer: {
     flexDirection: 'row',
@@ -98,26 +95,29 @@ export const styles = StyleSheet.create({
   },
   scrollImages: {
     flexDirection: 'row',
-    position: 'absolute',
-    bottom: 5,
+    marginTop: 10,
     alignSelf: 'center',
   },
   circle: {
-    width: 15,
-    height: 15,
-    backgroundColor: '#747474',
+    width: 5,
+    height: 5,
+    backgroundColor: '#C4C4C4',
     borderRadius: 20,
     marginHorizontal: 3
   },
   circleActive: {
-    width: 17,
-    height: 17,
-    backgroundColor: 'white',
+    width: 5,
+    height: 5,
+    backgroundColor: 'black',
     borderRadius: 20,
     marginHorizontal: 3
   },
   socialContainer: {
+    justifyContent: 'space-between',
     alignItems: 'center',
+    flexDirection: 'row',
+    marginVertical: 20,
+    marginHorizontal: 10
   },
   socialArticle: {
     textAlign: 'center',
@@ -130,11 +130,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   socialIcon1: {
-    marginHorizontal: 10,
+    marginHorizontal: 5,
     color: 'blue'
   },
   socialIcon2: {
-    marginHorizontal: 10,
+    marginHorizontal: 5,
     color: 'rgb(255, 131, 255)'
   }
 });
