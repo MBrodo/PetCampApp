@@ -8,6 +8,7 @@ import {
 import {styles} from './styles'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Icon  from 'react-native-vector-icons/dist/FontAwesome5';
+import { TextInput } from 'react-native-paper';
 
 export const DateContainer = () => {
 
