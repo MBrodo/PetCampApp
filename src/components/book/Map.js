@@ -4,6 +4,7 @@ import {
   View,
   TouchableOpacity,
   FlatList,
+  VirtualizedList
 } from 'react-native';
 
 import {styles} from './styles'
@@ -29,10 +30,12 @@ export const Map = () => {
   }
 
   const [city, setCity] = useState([
-    {city: 'Minsk', latitude: 53.88852210035737, longitude: 27.544550058168248},
-    {city: 'Berlin', latitude: 52.520008, longitude: 13.404954},
-    {city: 'New York', latitude: 40.730610, longitude: -73.935242},
+    {city: 'Minsk', latitude: 53.88852210035737, longitude: 27.544550058168248, key: 1},
+    {city: 'Berlin', latitude: 52.520008, longitude: 13.404954, key: 2},
+    {city: 'New York', latitude: 40.730610, longitude: -73.935242, key: 3},
   ])
+
+  const [country, setCountry] = useState(false)
 
   return (
           <View>
@@ -74,11 +77,13 @@ export const Map = () => {
                     <View>
                       <FlatList style={styles.bodyCountryList} data={city} renderItem={({item}) => (
                         <View>
-                          <TouchableOpacity onPress={() => {
-                            setLatitude(item.latitude)
-                            setLongitude(item.longitude)
+                          <TouchableOpacity 
+                            onPress={() => {
+                              setCountry(item.key)
+                              setLatitude(item.latitude)
+                              setLongitude(item.longitude)
                           }}>
-                            <Text>{item.city}</Text>
+                            <Text style={item.key === country ? styles.countryActive : styles.countryInactive}>{item.city}</Text>
                           </TouchableOpacity>
                         </View>
                       )} />

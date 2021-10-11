@@ -70,6 +70,12 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: 140,
   },
+  countryActive: {
+    color: '#297164',
+  },
+  countryInactive: {
+    color: 'gray',
+  },
   mainDateContainer: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',

@@ -4,11 +4,11 @@ import {
   ScrollView,
 } from 'react-native';
 
-import {styles} from './styles'
+import {styles} from '../components/book/styles'
 
-import {DateContainer} from './Date'
-import {Map} from './Map'
-import {Header} from './Header'
+import {DateContainer} from '../components/book/Date'
+import {Map} from '../components/book/Map'
+import {Header} from '../components/book/Header'
 
 export const Book = () => {
   return (
