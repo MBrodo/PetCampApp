@@ -61,75 +61,75 @@ export const DateContainer = () => {
   };
 
   return (
-        <View>
-          <View>
-            <Text style={styles.bookSelectArticle}>
+    <View>
+      <View>
+        <Text style={styles.bookSelectArticle}>
               Select a dates
-            </Text>
-          </View>
+        </Text>
+      </View>
 
-          <View style={styles.mainDateContainer}>
-            <View>
-              <TouchableOpacity 
-                onPress={() => showDatepicker()} 
-                style={styles.dateContainer}
-              >
-                <Text style={styles.dateText}>{dateText}</Text>
-                <Icon 
-                  name="calendar-alt" 
-                  size={24}
-                  style={styles.dateIcon}
-                  />
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.dateLineContainer}>
-              <View style={styles.dateLine}></View>
-            </View>
-
-            <View>
-              <TouchableOpacity 
-                onPress={() => showDatepickerEnd()} 
-                style={styles.dateContainer}
-              >
-                <Text style={styles.dateText}>{dateTextEnd}</Text>
-                <Icon 
-                  name="calendar-alt" 
-                  size={24}
-                  style={styles.dateIcon}
-                  />
-              </TouchableOpacity>
-            </View>
-
-            <View>
-              {show && (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={date}
-                  mode={mode}
-                  is24Hour={true}
-                  display="default"
-                  onChange={onChange}
-                />
-              )}
-
-              {showEnd && (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={dateEnd}
-                  mode={modeEnd}
-                  is24Hour={true}
-                  display="default"
-                  onChange={onChangeEnd}
-                />
-              )}
-            </View>
-
-          </View>
-
-          <TouchableOpacity style={styles.footerButton}>
-            <Text style={styles.footerButtonText}>CHECK</Text>
+      <View style={styles.mainDateContainer}>
+        <View>
+          <TouchableOpacity 
+            onPress={() => showDatepicker()} 
+            style={styles.dateContainer}
+          >
+            <Text style={styles.dateText}>{dateText}</Text>
+            <Icon 
+              name="calendar-alt" 
+              size={24}
+              style={styles.dateIcon}
+            />
           </TouchableOpacity>
         </View>
+
+        <View style={styles.dateLineContainer}>
+          <View style={styles.dateLine}></View>
+        </View>
+
+        <View>
+          <TouchableOpacity 
+            onPress={() => showDatepickerEnd()} 
+            style={styles.dateContainer}
+          >
+            <Text style={styles.dateText}>{dateTextEnd}</Text>
+            <Icon 
+              name="calendar-alt" 
+              size={24}
+              style={styles.dateIcon}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View>
+          {show && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={date}
+              mode={mode}
+              is24Hour={true}
+              display="default"
+              onChange={onChange}
+            />
+          )}
+
+          {showEnd && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={dateEnd}
+              mode={modeEnd}
+              is24Hour={true}
+              display="default"
+              onChange={onChangeEnd}
+            />
+          )}
+        </View>
+
+      </View>
+
+      <TouchableOpacity style={styles.footerButton}>
+        <Text style={styles.footerButtonText}>CHECK</Text>
+      </TouchableOpacity>
+    </View>
   )
 }

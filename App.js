@@ -1,10 +1,4 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
 import { Provider } from 'react-redux'
 import {store, persistor} from './src/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -23,34 +17,30 @@ const App = () => {
     <NavigationContainer>
       <Provider store={store}>
         {/* <PersistGate loading={null} persistor={persistor}> */}
-          <Stack.Navigator 
-            screenOptions={{
-              headerStyle: {
-                borderBottomWidth: 1,
-                borderBottomColor: '#A7CFC8'
-              }
-            }}
-          >
-            <Stack.Screen 
-              name="Navigation" 
-              component={Navigation} 
-              options={{ headerTitle: () => <HeaderNavigation Home={'Home'} /> }}
-            />
+        <Stack.Navigator 
+          screenOptions={{
+            headerStyle: {
+              borderBottomWidth: 1,
+              borderBottomColor: '#A7CFC8'
+            }
+          }}
+        >
+          <Stack.Screen 
+            name="Navigation" 
+            component={Navigation} 
+            options={{ headerTitle: () => <HeaderNavigation Home={'Home'} /> }}
+          />
 
-            <Stack.Screen 
-              name="Home" 
-              component={Home} 
-              options={{ headerTitle: () => <HeaderNavigation /> }}
-            />
-          </Stack.Navigator>
+          <Stack.Screen 
+            name="Home" 
+            component={Home} 
+            options={{ headerTitle: () => <HeaderNavigation /> }}
+          />
+        </Stack.Navigator>
         {/* </PersistGate> */}
       </Provider>
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-
-});
 
 export default App;

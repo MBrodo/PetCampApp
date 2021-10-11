@@ -16,8 +16,8 @@ export function Navigation() {
 
   const tabBarOptions = ({ route }) => ({
     headerShown: false,
-    tabBarActiveTintColor: "rgb(31, 31, 31)",
-    tabBarInactiveTintColor: "white",
+    tabBarActiveTintColor: 'rgb(31, 31, 31)',
+    tabBarInactiveTintColor: 'white',
     tabBarInactiveBackgroundColor: '#4fa09285',
     tabBarActiveBackgroundColor: '#4fa09285',
     tabBarIcon: ({focused, size, color}) => {
@@ -58,15 +58,15 @@ export function Navigation() {
   })
 
   return (
-      <Tab.Navigator
-        initialRouteName="Book"
-          screenOptions={tabBarOptions}
-        >
-        <Tab.Screen name="PriceList" component={PriceList} />
-        <Tab.Screen name="FeedBack" component={FeedBack} />
-        <Tab.Screen name="Book" component={Book} />
-        <Tab.Screen name="Contacts" component={Contacts} />
-        <Tab.Screen name="LogIn" component={LogIn} />
-      </Tab.Navigator>
+    <Tab.Navigator
+      initialRouteName="Book"
+      screenOptions={tabBarOptions}
+    >
+      <Tab.Screen name="PriceList" component={PriceList} />
+      <Tab.Screen name="FeedBack" component={FeedBack} />
+      <Tab.Screen name="Book" component={Book} />
+      <Tab.Screen name="Contacts" component={Contacts} />
+      <Tab.Screen name="LogIn" component={LogIn} />
+    </Tab.Navigator>
   )
 }
