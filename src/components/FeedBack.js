@@ -1,15 +1,15 @@
 import React from 'react';
 import {
-  Text,
-  View,
+	Text,
+	View,
 } from 'react-native';
 
 export const FeedBack = () => {
-  return (
-    <View>
-      <Text>
+	return (
+		<View>
+			<Text>
         FeedBack
-      </Text>
-    </View>
-  )
+			</Text>
+		</View>
+	)
 }

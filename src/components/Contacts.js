@@ -1,15 +1,15 @@
 import React from 'react';
 import {
-  Text,
-  View,
+	Text,
+	View,
 } from 'react-native';
 
 export const Contacts = () => {
-  return (
-    <View>
-      <Text>
+	return (
+		<View>
+			<Text>
         Contacts
-      </Text>
-    </View>
-  )
+			</Text>
+		</View>
+	)
 }
