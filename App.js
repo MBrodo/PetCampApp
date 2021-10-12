@@ -13,34 +13,34 @@ import {HeaderNavigation} from './src/components/headerNavigation/HeaderNavigati
 const Stack = createStackNavigator();
 
 const App = () => {
-  return (
-    <NavigationContainer>
-      <Provider store={store}>
-        {/* <PersistGate loading={null} persistor={persistor}> */}
-        <Stack.Navigator 
-          screenOptions={{
-            headerStyle: {
-              borderBottomWidth: 1,
-              borderBottomColor: '#A7CFC8'
-            }
-          }}
-        >
-          <Stack.Screen 
-            name="Navigation" 
-            component={Navigation} 
-            options={{ headerTitle: () => <HeaderNavigation Home={'Home'} /> }}
-          />
+	return (
+		<NavigationContainer>
+			<Provider store={store}>
+				{/* <PersistGate loading={null} persistor={persistor}> */}
+				<Stack.Navigator 
+					screenOptions={{
+						headerStyle: {
+							borderBottomWidth: 1,
+							borderBottomColor: '#A7CFC8'
+						}
+					}}
+				>
+					<Stack.Screen 
+						name="Navigation" 
+						component={Navigation} 
+						options={{ headerTitle: () => <HeaderNavigation Home={'Home'} /> }}
+					/>
 
-          <Stack.Screen 
-            name="Home" 
-            component={Home} 
-            options={{ headerTitle: () => <HeaderNavigation /> }}
-          />
-        </Stack.Navigator>
-        {/* </PersistGate> */}
-      </Provider>
-    </NavigationContainer>
-  );
+					<Stack.Screen 
+						name="Home" 
+						component={Home} 
+						options={{ headerTitle: () => <HeaderNavigation /> }}
+					/>
+				</Stack.Navigator>
+				{/* </PersistGate> */}
+			</Provider>
+		</NavigationContainer>
+	);
 };
 
 export default App;
