@@ -1,13 +1,11 @@
-import {
-	StyleSheet
-} from 'react-native';
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
 	bookOutsidecontainer: {
 		alignItems: 'center',
 	},
 	bookInsideContainer: {
-		width: '90%'
+		width: '90%',
 	},
 	bookArticle: {
 		color: '#297164',
@@ -17,11 +15,12 @@ export const styles = StyleSheet.create({
 	checkBoxContainer: {
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
-		backgroundColor: '#F2F2F2'
+		backgroundColor: '#F2F2F2',
 	},
 	checkBox: {
 		backgroundColor: '#F2F2F2',
-		borderWidth: 0,
+		marginVertical: 10,
+		padding: 0,
 	},
 	checkBoxTextStyle: {
 		color: 'black',
@@ -30,6 +29,35 @@ export const styles = StyleSheet.create({
 	checkBoxFontFamily: {
 		fontFamily: 'Bahianita-Regular',
 	},
+	headerQuantityContainer: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		marginLeft: 20,
+	},
+	headerQuantityText: {
+		color: 'black',
+		fontSize: 15,
+		fontWeight: 'bold',
+		marginRight: 10,
+	},
+	headerQuantityInputContainer: {
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderWidth: 1,
+		borderColor: '#C2C2C2',
+		height: 20,
+		width: 20,
+		borderRadius: 5,
+		margin: 0,
+		padding: 0,
+	},
+	headerQuantityInput: {
+		textAlign: 'center',
+		width: 20,
+		fontSize: 10,
+		margin: 0,
+		padding: 0,
+	},
 	bookSelectArticle: {
 		color: 'black',
 		fontSize: 30,
@@ -37,7 +65,7 @@ export const styles = StyleSheet.create({
 	},
 	bodyContainer: {
 		flexDirection: 'row',
-		justifyContent: 'center'
+		justifyContent: 'center',
 	},
 	bodyButtonActive: {
 		width: '50%',
@@ -51,16 +79,16 @@ export const styles = StyleSheet.create({
 		borderBottomWidth: 1,
 		borderBottomColor: '#94949485',
 		alignItems: 'center',
-		paddingVertical: 10
+		paddingVertical: 10,
 	},
 	bodyTextActive: {
-		color: '#297164'
+		color: '#297164',
 	},
 	bodyTextInactive: {
 		borderBottomColor: '#94949485',
 	},
 	optionsContainer: {
-		marginVertical: '8%'
+		marginVertical: '8%',
 	},
 	bodyMap: {
 		width: '100%',
@@ -91,18 +119,18 @@ export const styles = StyleSheet.create({
 	},
 	dateText: {
 		fontSize: 15,
-		color: '#76707F'
+		color: '#76707F',
 	},
 	dateIcon: {
-		color: 'black'
+		color: 'black',
 	},
 	dateLineContainer: {
-		justifyContent: 'center'
+		justifyContent: 'center',
 	},
 	dateLine: {
 		width: 15,
 		borderWidth: 1,
-		backgroundColor: 'black'
+		backgroundColor: 'black',
 	},
 	footerButton: {
 		width: '100%',
@@ -117,5 +145,5 @@ export const styles = StyleSheet.create({
 		color: 'white',
 		fontSize: 28,
 		fontFamily: 'Bahianita-Regular',
-	}
-});
+	},
+})

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Text, View, TouchableOpacity, FlatList } from 'react-native'
 
 import { styles } from './styles'
+import { city } from './config'
 import MapView from 'react-native-maps'
 
 export const Map = () => {
@@ -15,17 +16,6 @@ export const Map = () => {
 		setList(list ? false : true)
 		setMap(map ? false : true)
 	}
-
-	const [city] = useState([
-		{
-			city: 'Minsk',
-			latitude: 53.88852210035737,
-			longitude: 27.544550058168248,
-			key: 1,
-		},
-		{ city: 'Berlin', latitude: 52.520008, longitude: 13.404954, key: 2 },
-		{ city: 'New York', latitude: 40.73061, longitude: -73.935242, key: 3 },
-	])
 
 	const [country, setCountry] = useState(false)
 
@@ -42,9 +32,7 @@ export const Map = () => {
 						switchOptions()
 					}}
 				>
-					<Text style={list ? styles.bodyTextActive : styles.bodyTextInactive}>
-						Список
-					</Text>
+					<Text style={list ? styles.bodyTextActive : styles.bodyTextInactive}>Список</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity
@@ -53,9 +41,7 @@ export const Map = () => {
 						switchOptions()
 					}}
 				>
-					<Text style={map ? styles.bodyTextActive : styles.bodyTextInactive}>
-						Карта
-					</Text>
+					<Text style={map ? styles.bodyTextActive : styles.bodyTextInactive}>Карта</Text>
 				</TouchableOpacity>
 			</View>
 
@@ -84,11 +70,7 @@ export const Map = () => {
 									}}
 								>
 									<Text
-										style={
-											item.key === country
-												? styles.countryActive
-												: styles.countryInactive
-										}
+										style={item.key === country ? styles.countryActive : styles.countryInactive}
 									>
 										{item.city}
 									</Text>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, TextInput } from 'react-native'
 
 import { styles } from './styles'
 
@@ -39,7 +39,6 @@ export const Header = () => {
 					containerStyle={styles.checkBox}
 					textStyle={styles.checkBoxTextStyle}
 					fontFamily="Bahianita-Regular"
-					style={styles.checkBoxFontFamily}
 				/>
 				<CheckBox
 					center
@@ -52,21 +51,13 @@ export const Header = () => {
 					checkedColor="#4fa09285"
 					containerStyle={styles.checkBox}
 					textStyle={styles.checkBoxTextStyle}
-					style={styles.checkBoxFontFamily}
 				/>
-				<CheckBox
-					center
-					title="Quantity"
-					iconRight
-					checked={Quantity}
-					onPress={() => {
-						checkQuantityState()
-					}}
-					checkedColor="#4fa09285"
-					containerStyle={styles.checkBox}
-					textStyle={styles.checkBoxTextStyle}
-					style={styles.checkBoxFontFamily}
-				/>
+				<View style={styles.headerQuantityContainer}>
+					<Text style={styles.headerQuantityText}>Quantity</Text>
+					<View style={styles.headerQuantityInputContainer}>
+						<TextInput style={styles.headerQuantityInput} />
+					</View>
+				</View>
 			</View>
 		</View>
 	)

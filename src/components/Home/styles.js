@@ -1,6 +1,4 @@
-import {
-	StyleSheet
-} from 'react-native';
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
 	headerContainer: {
@@ -30,7 +28,7 @@ export const styles = StyleSheet.create({
 	headerInfo: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		marginRight: 10
+		marginRight: 10,
 	},
 	headerText: {
 		color: 'black',
@@ -41,7 +39,7 @@ export const styles = StyleSheet.create({
 		color: 'black',
 		fontSize: 17,
 		fontFamily: 'Bahianita-Regular',
-		marginLeft: 10
+		marginLeft: 10,
 	},
 	inputContainer: {
 		flexDirection: 'row',
@@ -51,11 +49,11 @@ export const styles = StyleSheet.create({
 	bodyInput: {
 		backgroundColor: '#E1E1E1',
 		paddingLeft: 30,
-		width: '90%'
+		width: '90%',
 	},
 	descriptionContainer: {
 		marginHorizontal: 10,
-		marginVertical: 10
+		marginVertical: 10,
 	},
 	descriptionArticle: {
 		color: 'black',
@@ -74,7 +72,7 @@ export const styles = StyleSheet.create({
 		width: '60%',
 		backgroundColor: '#5D5FEF',
 		borderRadius: 5,
-		padding: 5
+		padding: 5,
 	},
 	bookText: {
 		color: 'white',
@@ -83,7 +81,7 @@ export const styles = StyleSheet.create({
 	},
 	galleryArticleContainer: {
 		marginLeft: 10,
-		marginTop: 10
+		marginTop: 10,
 	},
 	galleryArticle: {
 		color: 'black',
@@ -103,21 +101,21 @@ export const styles = StyleSheet.create({
 		height: 5,
 		backgroundColor: '#C4C4C4',
 		borderRadius: 20,
-		marginHorizontal: 3
+		marginHorizontal: 3,
 	},
 	circleActive: {
 		width: 5,
 		height: 5,
 		backgroundColor: 'black',
 		borderRadius: 20,
-		marginHorizontal: 3
+		marginHorizontal: 3,
 	},
 	socialContainer: {
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		flexDirection: 'row',
 		marginVertical: 20,
-		marginHorizontal: 10
+		marginHorizontal: 10,
 	},
 	socialArticle: {
 		textAlign: 'center',
@@ -129,12 +127,12 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 		flexDirection: 'row',
 	},
-	socialIcon1: {
+	socialIconFacebook: {
 		marginHorizontal: 5,
-		color: 'blue'
+		color: 'blue',
 	},
-	socialIcon2: {
+	socialIconInstagram: {
 		marginHorizontal: 5,
-		color: 'rgb(255, 131, 255)'
-	}
-});
+		color: 'rgb(255, 131, 255)',
+	},
+})
