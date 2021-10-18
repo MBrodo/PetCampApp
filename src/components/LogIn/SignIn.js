@@ -29,7 +29,7 @@ export const SignIn = (props) => {
 		loginController(email, password, 'client').then((res) => {
 			if (res.status === 200) {
 				setPassword('0')
-				Alert.alert('Welcome to the Pet Camp!)')
+				Alert.alert('Welcome to the Pet Camp!')
 				storeUserSession(res)
 				props.authenticate(true)
 				console.log(password)

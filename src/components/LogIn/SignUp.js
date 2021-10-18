@@ -6,14 +6,15 @@ import { Text, View, TextInput, Button, Alert } from 'react-native'
 import registrationController from '../../controllers/authorization/registrationController'
 
 export const SignUp = () => {
-	const [email] = useState('')
-	const [password] = useState('')
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
 	const [hidePass, setHidePass] = useState(true)
 
 	const SignUpSubmit = () => {
 		registrationController(email, password, 'client').then((res) => {
 			if (res.status === 200) {
 				Alert.alert(res.data.message)
+				setPassword('0')
 			} else if (res.status === 400) {
 				Alert.alert(res.data.message)
 			}
@@ -26,7 +27,12 @@ export const SignUp = () => {
 				<Text style={styles.logInTitle}>Sign Up</Text>
 				<View>
 					<Text style={styles.logInText}>Phone or e-mail</Text>
-					<TextInput style={styles.input} onChange={email} placeholder="Text" autoCorrect={false} />
+					<TextInput
+						style={styles.input}
+						onChangeText={setEmail}
+						placeholder="Text"
+						autoCorrect={false}
+					/>
 				</View>
 
 				<View>
@@ -34,7 +40,7 @@ export const SignUp = () => {
 					<View style={styles.passwordInput}>
 						<TextInput
 							style={styles.passwordText}
-							onChange={password}
+							onChangeText={setPassword}
 							placeholder="12345678"
 							autoCorrect={false}
 							secureTextEntry={hidePass}
