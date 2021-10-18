@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 
 import { PriceList } from '../components/PriceList'
-import { LogIn } from '../components/LogIn/LogIn'
+import { LogIn } from '../components/LogIn'
 import { FeedBack } from '../components/FeedBack'
 import { Contacts } from '../components/Contacts'
 import { BookAndAboutUs } from '../components/navigation/BookAndAboutUs'
