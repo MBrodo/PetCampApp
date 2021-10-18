@@ -1,13 +1,24 @@
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
-// import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react'
-import { Text, View, TextInput, Button, Alert, ScrollView } from 'react-native'
+import { Text, View, TextInput, Button, Alert } from 'react-native'
+
+import registrationController from '../../controllers/authorization/registrationController'
 
 export const SignUp = () => {
-	const [username] = useState()
-	const [password] = useState()
+	const [email] = useState('')
+	const [password] = useState('')
 	const [hidePass, setHidePass] = useState(true)
+
+	const SignUpSubmit = () => {
+		registrationController(email, password, 'client').then((res) => {
+			if (res.status === 200) {
+				Alert.alert(res.data.message)
+			} else if (res.status === 400) {
+				Alert.alert(res.data.message)
+			}
+		})
+	}
 
 	return (
 		<View style={styles.wrapper}>
@@ -15,12 +26,7 @@ export const SignUp = () => {
 				<Text style={styles.logInTitle}>Sign Up</Text>
 				<View>
 					<Text style={styles.logInText}>Phone or e-mail</Text>
-					<TextInput
-						style={styles.input}
-						onChange={username}
-						placeholder="Text"
-						autoCorrect={false}
-					/>
+					<TextInput style={styles.input} onChange={email} placeholder="Text" autoCorrect={false} />
 				</View>
 
 				<View>
@@ -46,11 +52,7 @@ export const SignUp = () => {
 				</View>
 
 				<View style={{ marginVertical: 30 }}>
-					<Button
-						title="sign up"
-						color="#5D5FEF"
-						onPress={() => Alert.alert('Registration completed successfully!')}
-					/>
+					<Button title="sign up" color="#5D5FEF" onPress={SignUpSubmit} />
 				</View>
 
 				<View style={{ flexDirection: 'row', alignItems: 'center' }}>

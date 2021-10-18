@@ -2,7 +2,7 @@ import React from 'react'
 
 import { createStackNavigator } from '@react-navigation/stack'
 
-import { Home } from '../Home/Home'
+import { Home } from '../../screens/Home'
 import { Book } from '../../screens/Book'
 
 const Stack = createStackNavigator()
@@ -10,6 +10,7 @@ const Stack = createStackNavigator()
 export const BookAndAboutUs = () => {
 	return (
 		<Stack.Navigator
+			initialRouteName={'Home'}
 			screenOptions={{
 				headerShown: false,
 				headerStyle: {
@@ -18,8 +19,8 @@ export const BookAndAboutUs = () => {
 				},
 			}}
 		>
-			<Stack.Screen name="Bookpage" component={Book} />
 			<Stack.Screen name="Home" component={Home} />
+			<Stack.Screen name="Bookpage" component={Book} />
 		</Stack.Navigator>
 	)
 }

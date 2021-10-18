@@ -1,15 +1,28 @@
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import React, { useState } from 'react'
-import { Text, View, TextInput, Button, Alert, Modal, ScrollView } from 'react-native'
+import { Text, View, TextInput, Button, Modal, Alert } from 'react-native'
 import { SignUp } from './SignUp'
 
-export const SignIn = () => {
-	const [username] = useState()
-	const [password] = useState()
+import loginController from '../../controllers/authorization/loginController'
+
+export const SignIn = (props) => {
 	const [hidePass, setHidePass] = useState(true)
 	const [modalWindow, setModalWindow] = useState(false)
 
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+
+	const SignInSubmit = () => {
+		loginController(email, password, 'client').then((res) => {
+			if (res.status === 200) {
+				Alert.alert('yep')
+				props.authenticate(true)
+			} else if (res.status === 400) {
+				Alert.alert('Login or password is incorrect')
+			}
+		})
+	}
 	return (
 		<View style={styles.wrapper}>
 			<Modal visible={modalWindow}>
@@ -19,7 +32,7 @@ export const SignIn = () => {
 					size={30}
 					onPress={() => setModalWindow(false)}
 				/>
-				<SignUp />
+				<SignUp setModalWindow={modalWindow} />
 			</Modal>
 
 			<View style={styles.logInSection}>
@@ -28,7 +41,7 @@ export const SignIn = () => {
 					<Text style={styles.logInText}>Phone or e-mail</Text>
 					<TextInput
 						style={styles.input}
-						onChange={username}
+						onChangeText={setEmail}
 						placeholder="Text"
 						autoCorrect={false}
 					/>
@@ -39,7 +52,7 @@ export const SignIn = () => {
 					<View style={styles.passwordInput}>
 						<TextInput
 							style={styles.passwordText}
-							onChange={password}
+							onChangeText={setPassword}
 							placeholder="12345678"
 							autoCorrect={false}
 							secureTextEntry={hidePass}
@@ -57,11 +70,7 @@ export const SignIn = () => {
 				</View>
 
 				<View style={styles.logInButton}>
-					<Button
-						title="log in"
-						color="#5D5FEF"
-						onPress={() => Alert.alert('Now you are logged in!')}
-					/>
+					<Button title="log in" color="#5D5FEF" onPress={SignInSubmit} />
 				</View>
 
 				<View style={styles.textWithLines}>

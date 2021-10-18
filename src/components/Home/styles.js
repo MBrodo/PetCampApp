@@ -1,9 +1,18 @@
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
+	outsideHeaderContainer: {
+		backgroundColor: 'white',
+	},
+	aboutUsContainer: {
+		marginHorizontal: 15,
+		backgroundColor: 'white',
+		position: 'relative',
+		bottom: 30,
+	},
 	headerContainer: {
 		justifyContent: 'flex-start',
-		height: 155,
+		height: 145,
 	},
 	imageBackGround: {
 		width: '100%',
@@ -110,18 +119,40 @@ export const styles = StyleSheet.create({
 		borderRadius: 20,
 		marginHorizontal: 3,
 	},
-	socialContainer: {
-		justifyContent: 'space-between',
-		alignItems: 'center',
+	feedBackContainer: {
+		marginHorizontal: 15,
+	},
+	feedbackText: {
+		color: 'black',
+		fontSize: 12,
+	},
+	feedBackName: {
+		color: 'black',
+		fontSize: 16,
+	},
+	feedBackArticle: {
+		fontSize: 18,
+		color: 'black',
+	},
+	headerFeedBack: {
 		flexDirection: 'row',
-		marginVertical: 20,
-		marginHorizontal: 10,
+		marginTop: 3,
+		marginBottom: 5,
+		alignItems: 'center',
+		marginVertical: 5,
+	},
+	dateFeedBack: {
+		fontSize: 12,
+		marginLeft: 10,
+	},
+	socialContainer: {
+		alignItems: 'center',
+		marginVertical: 10,
 	},
 	socialArticle: {
-		textAlign: 'center',
 		color: 'black',
-		fontSize: 30,
-		fontFamily: 'Bahianita-Regular',
+		fontSize: 18,
+		marginBottom: 10,
 	},
 	socialIconsContainer: {
 		justifyContent: 'center',
