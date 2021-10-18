@@ -5,8 +5,20 @@ import { Text, View, TextInput, Button, Modal, Alert } from 'react-native'
 import { SignUp } from './SignUp'
 
 import loginController from '../../controllers/authorization/loginController'
+import EncryptedStorage from 'react-native-encrypted-storage'
 
 export const SignIn = (props) => {
+	async function storeUserSession(res) {
+		try {
+			await EncryptedStorage.setItem(
+				'user_session',
+				JSON.stringify({
+					token: res.data,
+				})
+			)
+		} catch (error) {}
+	}
+
 	const [hidePass, setHidePass] = useState(true)
 	const [modalWindow, setModalWindow] = useState(false)
 
@@ -16,8 +28,11 @@ export const SignIn = (props) => {
 	const SignInSubmit = () => {
 		loginController(email, password, 'client').then((res) => {
 			if (res.status === 200) {
-				Alert.alert('yep')
+				setPassword('0')
+				Alert.alert('Welcome to the Pet Camp!)')
+				storeUserSession(res)
 				props.authenticate(true)
+				console.log(password)
 			} else if (res.status === 400) {
 				Alert.alert('Login or password is incorrect')
 			}

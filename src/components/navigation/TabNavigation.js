@@ -17,6 +17,16 @@ import { styles } from '../../screens/styles'
 const Tab = createBottomTabNavigator()
 
 export function TabNavigation({ navigation }) {
+	const tabBarButton = ({ focused }) => (
+		<TouchableWithoutFeedback onPress={() => navigation.navigate('Bookpage')}>
+			<View style={styles.outsideNavigationContainer}>
+				<View style={styles.navigationButton}>
+					<Icon name="search" size={sizeBook(focused)} color={'white'} />
+				</View>
+			</View>
+		</TouchableWithoutFeedback>
+	)
+
 	const sizeBook = (focused) => {
 		return focused ? 33 : 30
 	}
@@ -60,15 +70,7 @@ export function TabNavigation({ navigation }) {
 				component={BookAndAboutUs}
 				options={{
 					tabBar: { visible: false },
-					tabBarIcon: ({ focused }) => (
-						<TouchableWithoutFeedback onPress={() => navigation.navigate('Bookpage')}>
-							<View style={styles.outsideNavigationContainer}>
-								<View style={styles.navigationButton}>
-									<Icon name="search" size={sizeBook(focused)} color={'white'} />
-								</View>
-							</View>
-						</TouchableWithoutFeedback>
-					),
+					tabBarIcon: tabBarButton,
 				}}
 			/>
 			<Tab.Screen name="Contacts" component={Contacts} />

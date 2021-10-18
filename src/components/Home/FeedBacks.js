@@ -12,7 +12,7 @@ export const FeedBacks = ({ navigation }) => {
 			<Text style={styles.feedBackArticle}>FeedBacks</Text>
 
 			{feedbacks.map((props) => (
-				<View>
+				<View key={props.key}>
 					<View style={styles.headerFeedBack}>
 						<Text style={styles.feedBackName}>{props.name}</Text>
 						<Text style={styles.dateFeedBack}>{props.date}</Text>
