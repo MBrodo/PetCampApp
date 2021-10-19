@@ -34,13 +34,7 @@ export const MyBooking = () => {
 						</View>
 					</View>
 				</View>
-				<View
-					style={{
-						borderBottomColor: 'gray',
-						borderBottomWidth: 1,
-						marginVertical: 8,
-					}}
-				/>
+				<View style={styles.borderLine} />
 				<View style={styles.containerElement}>
 					<View style={styles.elementMain}>
 						<View style={styles.elementFloorAlt}>

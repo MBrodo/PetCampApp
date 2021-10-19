@@ -12,7 +12,7 @@ export const LogInUsername = () => {
 				<TextInput
 					style={styles.input}
 					onChange={username}
-					placeholder="Text"
+					placeholder="Enter your phone number of e-mail"
 					autoCorrect={false}
 				/>
 			</View>

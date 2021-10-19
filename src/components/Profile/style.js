@@ -117,4 +117,9 @@ export const styles = StyleSheet.create({
 		bottom: 15,
 		left: 15,
 	},
+	borderLine: {
+		borderBottomColor: 'gray',
+		borderBottomWidth: 1,
+		marginVertical: 8,
+	},
 })

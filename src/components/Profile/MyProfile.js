@@ -6,17 +6,25 @@ import { MyPets } from './MyPets'
 import { MyBooking } from './MyBooking'
 import { MyReports } from './MyReports'
 
+const images = {
+	backGround: require('../../img/ProfileBG.png'),
+	cat: require('../../img/cat1.jpg'),
+	dog: require('../../img/dog1.jpg'),
+	userPicture: require('../../img/ProfileUserPicture.jpg'),
+}
+export default images
+
 export const MyProfile = () => {
 	return (
 		<ScrollView>
 			<View style={styles.wrapper}>
 				<ImageBackground
-					source={require('../../img/ProfileBG.png')}
+					source={images.backGround}
 					resizeMode="cover"
 					style={styles.imageBackGround}
 				>
 					<View style={styles.userInfo}>
-						<Image source={require('../../img/ProfileUserPicture.jpg')} style={styles.userPic} />
+						<Image source={images.userPicture} style={styles.userPic} />
 						<Icon style={styles.uploadUserPic} name="arrow-circle-up" size={30} />
 						<Text style={styles.userName}>Lisa</Text>
 					</View>

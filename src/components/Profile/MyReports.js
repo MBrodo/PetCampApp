@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, View, Image } from 'react-native'
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
+import images from './MyProfile'
 
 export const MyReports = () => {
 	return (
@@ -16,7 +17,7 @@ export const MyReports = () => {
 			<View style={styles.containerMain}>
 				<View style={styles.containerElement}>
 					<View>
-						<Image source={require('../../img/dog1.jpg')} style={styles.petPic} />
+						<Image source={images.dog} style={styles.petPic} />
 						<Icon style={styles.myReportsIcon} name="paw" size={20} />
 						<Icon style={styles.myReportsCamera} name="camera" size={20} />
 					</View>
@@ -43,17 +44,11 @@ export const MyReports = () => {
 						</View>
 					</View>
 				</View>
-				<View
-					style={{
-						borderBottomColor: 'gray',
-						borderBottomWidth: 1,
-						marginVertical: 8,
-					}}
-				/>
+				<View style={styles.borderLine} />
 				<View style={styles.containerElement}>
 					<View style={styles.containerElement}>
 						<View>
-							<Image source={require('../../img/dog1.jpg')} style={styles.petPic} />
+							<Image source={images.dog} style={styles.petPic} />
 							<Icon style={styles.myReportsIcon} name="paw" size={20} />
 							<Icon style={styles.myReportsCamera} name="camera" size={20} />
 						</View>

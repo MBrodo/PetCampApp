@@ -14,7 +14,7 @@ export const LogInPassword = () => {
 				<TextInput
 					style={styles.passwordText}
 					onChange={password}
-					placeholder="12345678"
+					placeholder="Enter your password"
 					autoCorrect={false}
 					secureTextEntry={hidePass}
 				/>
