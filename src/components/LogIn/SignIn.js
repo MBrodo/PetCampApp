@@ -1,7 +1,7 @@
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import React, { useState } from 'react'
-import { Text, View, TextInput, Button, Modal, Alert } from 'react-native'
+import { Text, View, TextInput, TouchableHighlight, Modal, Alert } from 'react-native'
 import { SignUp } from './SignUp'
 
 import loginController from '../../controllers/authorization/loginController'
@@ -84,9 +84,13 @@ export const SignIn = (props) => {
 					<Text>forgot your password?</Text>
 				</View>
 
-				<View style={styles.logInButton}>
-					<Button title="log in" color="#5D5FEF" onPress={SignInSubmit} />
-				</View>
+				<TouchableHighlight
+					style={styles.logInButton}
+					onPress={SignInSubmit}
+					underlayColor="#4A4CBF"
+				>
+					<Text style={styles.logInButtonText}>log in</Text>
+				</TouchableHighlight>
 
 				<View style={styles.textWithLines}>
 					<View style={styles.alternativeLine} />

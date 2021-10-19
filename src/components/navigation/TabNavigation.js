@@ -11,7 +11,6 @@ import { LogIn } from '../LogIn/LogIn'
 import { Search } from '../Search'
 import { Contacts } from '../Contacts'
 import { BookAndAboutUs } from './BookAndAboutUs'
-
 import { styles } from '../../screens/styles'
 
 const Tab = createBottomTabNavigator()

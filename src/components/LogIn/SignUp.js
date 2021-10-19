@@ -1,7 +1,7 @@
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import React, { useState } from 'react'
-import { Text, View, TextInput, Button, Alert } from 'react-native'
+import { Text, View, TextInput, TouchableHighlight, Alert } from 'react-native'
 
 import registrationController from '../../controllers/authorization/registrationController'
 
@@ -34,7 +34,6 @@ export const SignUp = () => {
 						autoCorrect={false}
 					/>
 				</View>
-
 				<View>
 					<Text style={styles.logInText}>password</Text>
 					<View style={styles.passwordInput}>
@@ -56,21 +55,20 @@ export const SignUp = () => {
 
 					<Text>forgot your password?</Text>
 				</View>
-
-				<View style={{ marginVertical: 30 }}>
-					<Button title="sign up" color="#5D5FEF" onPress={SignUpSubmit} />
+				<TouchableHighlight
+					style={styles.logInButton}
+					onPress={SignUpSubmit}
+					underlayColor="#4A4CBF"
+				>
+					<Text style={styles.logInButtonText}>sign up</Text>
+				</TouchableHighlight>
+				<View style={styles.textWithLines}>
+					<View style={styles.alternativeLine} />
+					<Text style={styles.logInAlternativeText}>or</Text>
+					<View style={styles.alternativeLine} />
 				</View>
-
-				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-					<View style={{ flex: 1, height: 1, backgroundColor: 'black' }} />
-					<View>
-						<Text style={styles.logInAlternativeText}>or</Text>
-					</View>
-					<View style={{ flex: 1, height: 1, backgroundColor: 'black', margin: 0 }} />
-				</View>
-
-				<View style={{ alignItems: 'center' }}>
-					<Icon style={{ color: '#4267B2', marginVertical: 10 }} name="facebook" size={50} />
+				<View style={styles.subContainer}>
+					<Icon style={styles.fbicon} name="facebook" size={50} />
 				</View>
 			</View>
 		</View>
