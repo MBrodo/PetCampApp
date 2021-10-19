@@ -1,13 +1,25 @@
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
-// import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react'
-import { Text, View, TextInput, Button, Alert, ScrollView } from 'react-native'
+import { Text, View, TextInput, Button, Alert } from 'react-native'
+
+import registrationController from '../../controllers/authorization/registrationController'
 
 export const SignUp = () => {
-	const [username] = useState()
-	const [password] = useState()
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
 	const [hidePass, setHidePass] = useState(true)
+
+	const SignUpSubmit = () => {
+		registrationController(email, password, 'client').then((res) => {
+			if (res.status === 200) {
+				Alert.alert(res.data.message)
+				setPassword('0')
+			} else if (res.status === 400) {
+				Alert.alert(res.data.message)
+			}
+		})
+	}
 
 	return (
 		<View style={styles.wrapper}>
@@ -17,7 +29,7 @@ export const SignUp = () => {
 					<Text style={styles.logInText}>Phone or e-mail</Text>
 					<TextInput
 						style={styles.input}
-						onChange={username}
+						onChangeText={setEmail}
 						placeholder="Text"
 						autoCorrect={false}
 					/>
@@ -28,7 +40,7 @@ export const SignUp = () => {
 					<View style={styles.passwordInput}>
 						<TextInput
 							style={styles.passwordText}
-							onChange={password}
+							onChangeText={setPassword}
 							placeholder="12345678"
 							autoCorrect={false}
 							secureTextEntry={hidePass}
@@ -46,11 +58,7 @@ export const SignUp = () => {
 				</View>
 
 				<View style={{ marginVertical: 30 }}>
-					<Button
-						title="sign up"
-						color="#5D5FEF"
-						onPress={() => Alert.alert('Registration completed successfully!')}
-					/>
+					<Button title="sign up" color="#5D5FEF" onPress={SignUpSubmit} />
 				</View>
 
 				<View style={{ flexDirection: 'row', alignItems: 'center' }}>

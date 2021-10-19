@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import { TabNavigation } from './TabNavigation'
-import { HeaderNavigation } from '../components/headerNavigation/HeaderNavigation'
+import { HeaderNavigation } from '../headerNavigation/HeaderNavigation'
 
 const Stack = createStackNavigator()
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, Linking } from 'react-native'
 import { styles } from '../Home/styles'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
-import { Home } from '../Home/Home'
+import { Home } from '../../screens/Home'
 
 import { useNavigation } from '@react-navigation/native'
 

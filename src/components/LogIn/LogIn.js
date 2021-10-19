@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View } from 'react-native'
 import { SignIn } from './SignIn'
+import { Profile } from './Profile'
 
 export const LogIn = () => {
+	const [authenticate, setAuthenticate] = useState(false)
+
 	return (
 		<View>
-			<SignIn />
+			{authenticate ? <Profile /> : <SignIn authenticate={(authenticate, setAuthenticate)} />}
 		</View>
 	)
 }
