@@ -57,7 +57,7 @@ export const SignUp = () => {
 				</View>
 				<TouchableHighlight
 					style={styles.logInButton}
-					onPress={() => Alert.alert('Registration completed')}
+					onPress={SignUpSubmit}
 					underlayColor="#4A4CBF"
 				>
 					<Text style={styles.logInButtonText}>sign up</Text>

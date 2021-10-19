@@ -4,7 +4,7 @@ import { SignIn } from './SignIn'
 import { Profile } from '../../screens/Profile'
 
 export const LogIn = () => {
-	const [authenticate, setAuthenticate] = useState(true)
+	const [authenticate, setAuthenticate] = useState(false)
 
 	return (
 		<View>

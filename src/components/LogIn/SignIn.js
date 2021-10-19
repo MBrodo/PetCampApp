@@ -86,7 +86,7 @@ export const SignIn = (props) => {
 
 				<TouchableHighlight
 					style={styles.logInButton}
-					onPress={() => Alert.alert('Now you are logged in!')}
+					onPress={SignInSubmit}
 					underlayColor="#4A4CBF"
 				>
 					<Text style={styles.logInButtonText}>log in</Text>
