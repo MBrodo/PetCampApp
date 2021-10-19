@@ -4,34 +4,47 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 
-import { PriceList } from '../components/PriceList'
-import { LogIn } from '../components/LogIn'
-import { FeedBack } from '../components/FeedBack'
-import { Contacts } from '../components/Contacts'
-import { BookAndAboutUs } from '../components/navigation/BookAndAboutUs'
+import { View, TouchableWithoutFeedback } from 'react-native'
+
+import { PriceList } from '../PriceList'
+import { LogIn } from '../LogIn/LogIn'
+import { Search } from '../Search'
+import { Contacts } from '../Contacts'
+import { BookAndAboutUs } from './BookAndAboutUs'
+import { styles } from '../../screens/styles'
 
 const Tab = createBottomTabNavigator()
 
-export function TabNavigation() {
+export function TabNavigation({ navigation }) {
+	const tabBarButton = ({ focused }) => (
+		<TouchableWithoutFeedback onPress={() => navigation.navigate('Bookpage')}>
+			<View style={styles.outsideNavigationContainer}>
+				<View style={styles.navigationButton}>
+					<Icon name="search" size={sizeBook(focused)} color={'white'} />
+				</View>
+			</View>
+		</TouchableWithoutFeedback>
+	)
+
+	const sizeBook = (focused) => {
+		return focused ? 33 : 30
+	}
+
 	const tabBarOptions = ({ route }) => ({
 		headerShown: false,
 		tabBarActiveTintColor: 'rgb(31, 31, 31)',
 		tabBarInactiveTintColor: 'white',
 		tabBarInactiveBackgroundColor: '#4fa09285',
 		tabBarActiveBackgroundColor: '#4fa09285',
-		tabBarIcon: ({ focused, size, color }) => {
+		tabBarIcon: ({ focused, size, color, tabBarVisible }) => {
 			let iconName
-			if (route.name === 'PriceList') {
+			if (route.name === 'Search') {
+				iconName = 'search'
+				size = focused ? 30 : 23
+				color = focused ? '#297164' : 'white'
+			} else if (route.name === 'PriceList') {
 				iconName = 'money-check-alt'
 				size = focused ? 30 : 23
-				color = focused ? '#297164' : 'white'
-			} else if (route.name === 'FeedBack') {
-				iconName = 'comments'
-				size = focused ? 30 : 23
-				color = focused ? '#297164' : 'white'
-			} else if (route.name === 'Book') {
-				iconName = 'search'
-				size = focused ? 33 : 30
 				color = focused ? '#297164' : 'white'
 			} else if (route.name === 'Contacts') {
 				iconName = 'id-badge'
@@ -49,9 +62,16 @@ export function TabNavigation() {
 
 	return (
 		<Tab.Navigator initialRouteName="Book" screenOptions={tabBarOptions}>
+			<Tab.Screen name="Search" component={Search} />
 			<Tab.Screen name="PriceList" component={PriceList} />
-			<Tab.Screen name="FeedBack" component={FeedBack} />
-			<Tab.Screen name="Book" component={BookAndAboutUs} />
+			<Tab.Screen
+				name="Book"
+				component={BookAndAboutUs}
+				options={{
+					tabBar: { visible: false },
+					tabBarIcon: tabBarButton,
+				}}
+			/>
 			<Tab.Screen name="Contacts" component={Contacts} />
 			<Tab.Screen name="LogIn" component={LogIn} />
 		</Tab.Navigator>

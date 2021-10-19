@@ -16,3 +16,30 @@ export const images = [
 			'https://st.depositphotos.com/1004199/1831/i/600/depositphotos_18317915-stock-photo-cat-and-dog-together-on.jpg',
 	},
 ]
+
+export const feedbacks = [
+	{
+		key: 1,
+		name: 'Alex',
+		date: '10.10.2021',
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl morbi vulputate non non. Augue ipsum accumsan nunc vel.',
+	},
+	{
+		key: 2,
+		name: 'Alex',
+		date: '10.10.2021',
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl morbi vulputate non non. Augue ipsum accumsan nunc vel.',
+	},
+	{
+		key: 3,
+		name: 'Alex',
+		date: '10.10.2021',
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl morbi vulputate non non. Augue ipsum accumsan nunc vel.',
+	},
+	{
+		key: 4,
+		name: 'Alex',
+		date: '10.10.2021',
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl morbi vulputate non non. Augue ipsum accumsan nunc vel.',
+	},
+]

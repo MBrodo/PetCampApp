@@ -4,11 +4,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 
-import { Book } from './Book'
-import { PriceList } from '../components/PriceList'
-import { LogIn } from '../components/LogIn'
-import { FeedBack } from '../components/FeedBack'
-import { Contacts } from '../components/Contacts'
+import { Book } from '../../screens/Book'
+import { PriceList } from '../PriceList'
+import { LogIn } from '../LogIn/LogIn'
+import { Search } from '../Search'
+import { Contacts } from '../Contacts'
 
 const Tab = createBottomTabNavigator()
 
@@ -21,12 +21,12 @@ export function Navigation() {
 		tabBarActiveBackgroundColor: '#4fa09285',
 		tabBarIcon: ({ focused, size, color }) => {
 			let iconName
-			if (route.name === 'PriceList') {
-				iconName = 'money-check-alt'
+			if (route.name === 'Search') {
+				iconName = 'search'
 				size = focused ? 30 : 23
 				color = focused ? '#297164' : 'white'
-			} else if (route.name === 'FeedBack') {
-				iconName = 'comments'
+			} else if (route.name === 'PriceList') {
+				iconName = 'money-check-alt'
 				size = focused ? 30 : 23
 				color = focused ? '#297164' : 'white'
 			} else if (route.name === 'Book') {
@@ -49,8 +49,8 @@ export function Navigation() {
 
 	return (
 		<Tab.Navigator initialRouteName="Book" screenOptions={tabBarOptions}>
+			<Tab.Screen name="Search" component={Search} />
 			<Tab.Screen name="PriceList" component={PriceList} />
-			<Tab.Screen name="FeedBack" component={FeedBack} />
 			<Tab.Screen name="Book" component={Book} />
 			<Tab.Screen name="Contacts" component={Contacts} />
 			<Tab.Screen name="LogIn" component={LogIn} />
