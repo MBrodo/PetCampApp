@@ -1,11 +1,10 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import { MyProfile } from './Profile/MyProfile'
 
-export const PriceList = () => {
+export const Profile = () => {
 	return (
 		<View>
-			{/* <Text>Price List</Text> */}
 			<MyProfile />
 		</View>
 	)

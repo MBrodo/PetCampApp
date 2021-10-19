@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
 	passwordInput: {
 		flexDirection: 'row',
 		borderRadius: 4,
-		height: 40,
+		height: 50,
 		marginTop: 5,
 		borderWidth: 1,
 	},
@@ -38,12 +38,23 @@ export const styles = StyleSheet.create({
 		width: 280,
 	},
 	passwordIcon: {
-		marginVertical: 8,
+		marginVertical: 13,
 		marginLeft: 25,
 	},
 	logInButton: {
-		color: '#5D5FEF',
 		marginVertical: 30,
+		backgroundColor: '#5D5FEF',
+		height: 50,
+		borderWidth: 1,
+		borderRadius: 4,
+		alignItems: 'center',
+	},
+	logInButtonText: {
+		fontFamily: 'bahianita-regular',
+		fontWeight: '400',
+		fontSize: 22,
+		color: 'white',
+		marginVertical: 7,
 	},
 	sectionTitle: {
 		fontSize: 24,
@@ -92,7 +103,7 @@ export const styles = StyleSheet.create({
 	},
 	input: {
 		borderRadius: 4,
-		height: 40,
+		height: 50,
 		marginTop: 5,
 		borderWidth: 1,
 		padding: 10,
