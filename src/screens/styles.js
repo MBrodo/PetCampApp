@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
 		backgroundColor: 'white',
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginBottom: 30,
+		marginBottom: 40,
 	},
 	navigationButton: {
 		width: 50,
@@ -17,5 +17,10 @@ export const styles = StyleSheet.create({
 		backgroundColor: '#297164',
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	navigationButtonText: {
+		color: 'white',
+		fontSize: 18,
+		fontWeight: 'bold',
 	},
 })

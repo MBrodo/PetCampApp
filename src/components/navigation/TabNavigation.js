@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 
-import { View, TouchableWithoutFeedback } from 'react-native'
+import { View, TouchableWithoutFeedback, Text } from 'react-native'
 
 import { PriceList } from '../PriceList'
 import { LogIn } from '../LogIn/LogIn'
@@ -16,11 +16,11 @@ import { styles } from '../../screens/styles'
 const Tab = createBottomTabNavigator()
 
 export function TabNavigation({ navigation }) {
-	const tabBarButton = ({ focused }) => (
+	const tabBarButton = () => (
 		<TouchableWithoutFeedback onPress={() => navigation.navigate('Bookpage')}>
 			<View style={styles.outsideNavigationContainer}>
 				<View style={styles.navigationButton}>
-					<Icon name="search" size={sizeBook(focused)} color={'white'} />
+					<Text style={styles.navigationButtonText}>Book</Text>
 				</View>
 			</View>
 		</TouchableWithoutFeedback>
@@ -70,6 +70,9 @@ export function TabNavigation({ navigation }) {
 				options={{
 					tabBar: { visible: false },
 					tabBarIcon: tabBarButton,
+					tabBarLabelStyle: {
+						fontSize: 0,
+					},
 				}}
 			/>
 			<Tab.Screen name="Contacts" component={Contacts} />
