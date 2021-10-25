@@ -2,17 +2,14 @@ import React, { useState } from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 
 import { styles } from './styles'
-import { MapList } from './MapList'
 
 export const Map = (props) => {
 	const [list, setList] = useState(true)
-	const [map, setMap] = useState(false)
 
 	const switchOptions = () => {
 		setList(list ? false : true)
-		setMap(map ? false : true)
+		props.setMap(props.map ? false : true)
 	}
-
 	return (
 		<View>
 			<View>
@@ -30,16 +27,14 @@ export const Map = (props) => {
 				</TouchableOpacity>
 
 				<TouchableOpacity
-					style={map ? styles.bodyButtonActive : styles.bodyButtonInactive}
+					style={props.map ? styles.bodyButtonActive : styles.bodyButtonInactive}
 					onPress={() => {
 						switchOptions()
 					}}
 				>
-					<Text style={map ? styles.bodyTextActive : styles.bodyTextInactive}>Карта</Text>
+					<Text style={props.map ? styles.bodyTextActive : styles.bodyTextInactive}>Карта</Text>
 				</TouchableOpacity>
 			</View>
-
-			<MapList cats={props.cats} dogs={props.dogs} cat={props.cat} dog={props.dog} map={map} />
 		</View>
 	)
 }

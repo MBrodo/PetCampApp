@@ -4,36 +4,19 @@ import { Text, View, TextInput } from 'react-native'
 import { styles } from './styles'
 
 import { CheckBox } from 'react-native-elements'
-import { Map } from './MapContainer'
-import mapListController from '../../controllers/authorization/mapListController'
 
-export const Header = () => {
-	const [dog, setDog] = useState(true)
-	const [cat, setCat] = useState(false)
+export const Header = (props) => {
 	const [Quantity, setQuantity] = useState(false)
 
 	const checkState = () => {
-		setDog(dog == false ? true : false)
-		setCat(cat == false ? true : false)
+		props.setDog(props.dog == false ? true : false)
+		props.setCat(props.cat == false ? true : false)
 	}
+
 	const checkQuantityState = () => {
 		setQuantity(Quantity == false ? true : false)
 	}
 
-	let cats = []
-	let dogs = []
-	const mapHotelsList = () => {
-		return mapListController().then((res) => {
-			res.data.petCamps.map((e) => {
-				if (e.type === 'CAT') {
-					cats.push(e)
-				} else if (e.type === 'DOG') {
-					dogs.push(e)
-				}
-			})
-		})
-	}
-	mapHotelsList()
 	return (
 		<View>
 			<View>
@@ -44,7 +27,7 @@ export const Header = () => {
 				<CheckBox
 					center
 					title="Dog"
-					checked={dog}
+					checked={props.dog}
 					onPress={() => {
 						checkState()
 					}}
@@ -56,7 +39,7 @@ export const Header = () => {
 				<CheckBox
 					center
 					title="Cat"
-					checked={cat}
+					checked={props.cat}
 					onPress={() => {
 						checkState()
 					}}
@@ -71,7 +54,6 @@ export const Header = () => {
 					<Text style={styles.headerQuantityText}>Quantity</Text>
 				</View>
 			</View>
-			<Map cats={cats} dogs={dogs} cat={cat} dog={dog} />
 		</View>
 	)
 }
