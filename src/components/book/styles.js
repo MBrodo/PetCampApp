@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderColor: '#C2C2C2',
 		height: 20,
-		width: 20,
+		width: 30,
 		borderRadius: 5,
 		margin: 0,
 		padding: 0,
@@ -145,5 +145,14 @@ export const styles = StyleSheet.create({
 		color: 'white',
 		fontSize: 28,
 		fontFamily: 'Bahianita-Regular',
+	},
+})
+
+export const pickerSelectStyles = StyleSheet.create({
+	inputAndroid: {
+		textAlign: 'center',
+		fontSize: 16,
+		paddingVertical: 0,
+		color: 'black',
 	},
 })
