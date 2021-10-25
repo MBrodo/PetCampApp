@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
 		color: 'black',
 		fontSize: 15,
 		fontWeight: 'bold',
-		marginRight: 10,
+		marginLeft: 10,
 	},
 	headerQuantityInputContainer: {
 		justifyContent: 'center',
@@ -140,10 +140,10 @@ export const styles = StyleSheet.create({
 		marginTop: 50,
 		justifyContent: 'center',
 		alignItems: 'center',
+		marginBottom: 35,
 	},
 	footerButtonText: {
 		color: 'white',
 		fontSize: 28,
-		fontFamily: 'Bahianita-Regular',
 	},
 })

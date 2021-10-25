@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
 	outsideNavigationContainer: {
-		width: 60,
-		height: 60,
+		width: 68,
+		height: 68,
 		borderRadius: 32,
 		backgroundColor: 'white',
 		justifyContent: 'center',
@@ -11,9 +11,9 @@ export const styles = StyleSheet.create({
 		marginBottom: 40,
 	},
 	navigationButton: {
-		width: 50,
-		height: 50,
-		borderRadius: 25,
+		width: 60,
+		height: 60,
+		borderRadius: 30,
 		backgroundColor: '#297164',
 		justifyContent: 'center',
 		alignItems: 'center',

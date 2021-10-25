@@ -1,7 +1,7 @@
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import React, { useState } from 'react'
-import { Text, View, TextInput, TouchableHighlight, Modal, Alert } from 'react-native'
+import { Text, View, TextInput, TouchableHighlight, Modal, Alert, ScrollView } from 'react-native'
 import { SignUp } from './SignUp'
 
 import loginController from '../../controllers/authorization/loginController'
@@ -26,7 +26,7 @@ export const SignIn = (props) => {
 	const [password, setPassword] = useState('')
 
 	const SignInSubmit = () => {
-		loginController(email, password, 'client').then((res) => {
+		loginController(email, password, 1).then((res) => {
 			if (res.status === 200) {
 				setPassword('0')
 				Alert.alert('Welcome to the Pet Camp!')
@@ -39,77 +39,79 @@ export const SignIn = (props) => {
 		})
 	}
 	return (
-		<View style={styles.wrapper}>
-			<Modal visible={modalWindow}>
-				<Icon
-					style={styles.closeIcon}
-					name="times"
-					size={30}
-					onPress={() => setModalWindow(false)}
-				/>
-				<SignUp setModalWindow={modalWindow} />
-			</Modal>
-
-			<View style={styles.logInSection}>
-				<Text style={styles.logInTitle}>Log In</Text>
-				<View>
-					<Text style={styles.logInText}>Phone or e-mail</Text>
-					<TextInput
-						style={styles.input}
-						onChangeText={setEmail}
-						placeholder="Text"
-						autoCorrect={false}
+		<ScrollView>
+			<View style={styles.wrapper}>
+				<Modal visible={modalWindow}>
+					<Icon
+						style={styles.closeIcon}
+						name="times"
+						size={30}
+						onPress={() => setModalWindow(false)}
 					/>
-				</View>
+					<SignUp setModalWindow={modalWindow} />
+				</Modal>
 
-				<View>
-					<Text style={styles.logInText}>password</Text>
-					<View style={styles.passwordInput}>
-						<TextInput
-							style={styles.passwordText}
-							onChangeText={setPassword}
-							placeholder="12345678"
-							autoCorrect={false}
-							secureTextEntry={hidePass}
-						/>
-						<Icon
-							style={styles.passwordIcon}
-							name={hidePass ? 'eye-slash' : 'eye'}
-							size={20}
-							color="grey"
-							onPress={() => setHidePass(hidePass ? false : true)}
-						/>
-					</View>
-
-					<Text>forgot your password?</Text>
-				</View>
-
-				<TouchableHighlight
-					style={styles.logInButton}
-					onPress={SignInSubmit}
-					underlayColor="#4A4CBF"
-				>
-					<Text style={styles.logInButtonText}>log in</Text>
-				</TouchableHighlight>
-
-				<View style={styles.textWithLines}>
-					<View style={styles.alternativeLine} />
+				<View style={styles.logInSection}>
+					<Text style={styles.logInTitle}>Log In</Text>
 					<View>
-						<Text style={styles.logInAlternativeText}>or</Text>
+						<Text style={styles.logInText}>Phone or e-mail</Text>
+						<TextInput
+							style={styles.input}
+							onChangeText={setEmail}
+							placeholder="Text"
+							autoCorrect={false}
+						/>
 					</View>
-					<View style={styles.alternativeLine} />
-				</View>
 
-				<View style={styles.subContainer}>
-					<Icon style={styles.fbicon} name="facebook" size={50} />
-					<View style={styles.subContainerText}>
-						<Text style={styles.subContainerTitle}>I'm a new client.</Text>
-						<Text style={styles.subContainerLink} onPress={() => setModalWindow(true)}>
-							Sign Up
-						</Text>
+					<View>
+						<Text style={styles.logInText}>password</Text>
+						<View style={styles.passwordInput}>
+							<TextInput
+								style={styles.passwordText}
+								onChangeText={setPassword}
+								placeholder="12345678"
+								autoCorrect={false}
+								secureTextEntry={hidePass}
+							/>
+							<Icon
+								style={styles.passwordIcon}
+								name={hidePass ? 'eye-slash' : 'eye'}
+								size={20}
+								color="grey"
+								onPress={() => setHidePass(hidePass ? false : true)}
+							/>
+						</View>
+
+						<Text>forgot your password?</Text>
+					</View>
+
+					<TouchableHighlight
+						style={styles.logInButton}
+						onPress={SignInSubmit}
+						underlayColor="#4A4CBF"
+					>
+						<Text style={styles.logInButtonText}>log in</Text>
+					</TouchableHighlight>
+
+					<View style={styles.textWithLines}>
+						<View style={styles.alternativeLine} />
+						<View>
+							<Text style={styles.logInAlternativeText}>or</Text>
+						</View>
+						<View style={styles.alternativeLine} />
+					</View>
+
+					<View style={styles.subContainer}>
+						<Icon style={styles.fbicon} name="facebook" size={50} />
+						<View style={styles.subContainerText}>
+							<Text style={styles.subContainerTitle}>I'm a new client.</Text>
+							<Text style={styles.subContainerLink} onPress={() => setModalWindow(true)}>
+								Sign Up
+							</Text>
+						</View>
 					</View>
 				</View>
 			</View>
-		</View>
+		</ScrollView>
 	)
 }

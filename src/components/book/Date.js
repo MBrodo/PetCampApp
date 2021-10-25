@@ -23,11 +23,7 @@ export const DateContainer = () => {
 
 		let tempDateEnd = new Date(currentDate)
 		let showDateEnd =
-			tempDateEnd.getDate() +
-			'/' +
-			(tempDateEnd.getMonth() + 1) +
-			'/' +
-			tempDateEnd.getFullYear()
+			tempDateEnd.getDate() + '/' + (tempDateEnd.getMonth() + 1) + '/' + tempDateEnd.getFullYear()
 		setDateTextEnd(showDateEnd)
 	}
 
@@ -47,11 +43,7 @@ export const DateContainer = () => {
 
 		let tempDate = new Date(currentDate)
 		let showDate =
-			tempDate.getDate() +
-			'/' +
-			(tempDate.getMonth() + 1) +
-			'/' +
-			tempDate.getFullYear()
+			tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear()
 		setDateText(showDate)
 	}
 
@@ -72,10 +64,7 @@ export const DateContainer = () => {
 
 			<View style={styles.mainDateContainer}>
 				<View>
-					<TouchableOpacity
-						onPress={() => showDatepicker()}
-						style={styles.dateContainer}
-					>
+					<TouchableOpacity onPress={() => showDatepicker()} style={styles.dateContainer}>
 						<Text style={styles.dateText}>{dateText}</Text>
 						<Icon name="calendar-alt" size={24} style={styles.dateIcon} />
 					</TouchableOpacity>
@@ -86,10 +75,7 @@ export const DateContainer = () => {
 				</View>
 
 				<View>
-					<TouchableOpacity
-						onPress={() => showDatepickerEnd()}
-						style={styles.dateContainer}
-					>
+					<TouchableOpacity onPress={() => showDatepickerEnd()} style={styles.dateContainer}>
 						<Text style={styles.dateText}>{dateTextEnd}</Text>
 						<Icon name="calendar-alt" size={24} style={styles.dateIcon} />
 					</TouchableOpacity>
@@ -121,7 +107,7 @@ export const DateContainer = () => {
 			</View>
 
 			<TouchableOpacity style={styles.footerButton}>
-				<Text style={styles.footerButtonText}>CHECK</Text>
+				<Text style={styles.footerButtonText}>Book</Text>
 			</TouchableOpacity>
 		</View>
 	)

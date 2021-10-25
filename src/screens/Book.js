@@ -1,22 +1,18 @@
-import React from 'react';
-import {
-	View,
-	ScrollView,
-	FlatList
-} from 'react-native';
+import React from 'react'
+import { View, ScrollView, FlatList } from 'react-native'
 
-import {styles} from '../components/book/styles'
+import { styles } from '../components/book/styles'
 
-import {DateContainer} from '../components/book/Date'
-import {Map} from '../components/book/Map'
-import {Header} from '../components/book/Header'
+import { DateContainer } from '../components/book/Date'
+import { Map } from '../components/book/Map'
+import { Header } from '../components/book/Header'
 
 const HeaderComponent = () => {
 	return (
 		<View style={styles.bookOutsidecontainer}>
 			<View style={styles.bookInsideContainer}>
 				<Header />
-				<Map />
+				{/* <Map /> */}
 				<DateContainer />
 			</View>
 		</View>
@@ -24,9 +20,5 @@ const HeaderComponent = () => {
 }
 
 export const Book = () => {
-	return (
-		<FlatList
-			ListHeaderComponent={HeaderComponent}
-		/>
-	)
+	return <FlatList ListHeaderComponent={HeaderComponent} />
 }

@@ -11,7 +11,7 @@ export const SignUp = () => {
 	const [hidePass, setHidePass] = useState(true)
 
 	const SignUpSubmit = () => {
-		registrationController(email, password, 'client').then((res) => {
+		registrationController(email, password, 1).then((res) => {
 			if (res.status === 200) {
 				Alert.alert(res.data.message)
 				setPassword('0')

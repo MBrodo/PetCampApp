@@ -69,12 +69,14 @@ export const styles = StyleSheet.create({
 		fontWeight: '700',
 	},
 	closeIcon: {
-		position: 'absolute',
-		top: 40,
-		right: 30,
+		position: 'relative',
+		top: '12.5%',
+		left: '89%',
+		width: 30,
 	},
 	subContainer: {
 		alignItems: 'center',
+		marginBottom: 40,
 	},
 	fbicon: {
 		color: '#4267B2',
