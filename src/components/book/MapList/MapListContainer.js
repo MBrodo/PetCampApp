@@ -6,9 +6,9 @@ import { setCamps } from '../../../redux/slices/petCampsSlise'
 import mapListController from '../../../controllers/authorization/mapListController'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { MapListComponent } from './MapListComponent'
+import { MapListView } from './MapListView'
 
-export const MapList = (props) => {
+export const MapListContainer = (props) => {
 	const [country, setCountry] = useState(false)
 	const showHotels = (item) => {
 		return (
@@ -60,7 +60,7 @@ export const MapList = (props) => {
 	mapHotelsList()
 
 	return (
-		<MapListComponent
+		<MapListView
 			latitude={latitude}
 			setLatitude={setLatitude}
 			longitude={longitude}
