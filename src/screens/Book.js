@@ -3,9 +3,9 @@ import { View, ScrollView, FlatList } from 'react-native'
 
 import { styles } from '../components/book/styles'
 
-import { Dates } from '../components/book/Date/Date'
+import { DateContainer } from '../components/book/Date/DateContainer'
 import { MapListContainer } from '../components/book/MapList/MapListContainer'
-import { MapContainer } from '../components/book/MapContainer'
+import { MapView } from '../components/book/MapView'
 import { Header } from '../components/book/Header'
 
 const HeaderComponent = () => {
@@ -16,9 +16,9 @@ const HeaderComponent = () => {
 		<View style={styles.bookOutsidecontainer}>
 			<View style={styles.bookInsideContainer}>
 				<Header dog={dog} setDog={setDog} cat={cat} setCat={setCat} />
-				<MapContainer map={map} setMap={setMap} />
+				<MapView map={map} setMap={setMap} />
 				<MapListContainer cat={cat} dog={dog} map={map} setMap={setMap} />
-				<Dates />
+				<DateContainer />
 			</View>
 		</View>
 	)

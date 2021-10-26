@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity } from 'react-native'
 
 import { styles } from './styles'
 
-export const MapContainer = (props) => {
+export const MapView = (props) => {
 	const [list, setList] = useState(true)
 
 	const switchOptions = () => {

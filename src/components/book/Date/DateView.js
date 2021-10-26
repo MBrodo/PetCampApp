@@ -5,7 +5,7 @@ import { styles } from '../styles'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 
-export const DateContainer = (props) => {
+export const DateView = (props) => {
 	return (
 		<View>
 			<View>

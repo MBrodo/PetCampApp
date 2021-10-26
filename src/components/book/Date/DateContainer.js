@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import { DateContainer } from './DateComponent'
+import { DateView } from './DateView'
 
-export const Dates = () => {
+export const DateContainer = () => {
 	const [date, setDate] = useState(new Date())
 	const [mode, setMode] = useState('date')
 	const [show, setShow] = useState(false)
@@ -54,7 +54,7 @@ export const Dates = () => {
 	}
 
 	return (
-		<DateContainer
+		<DateView
 			date={date}
 			mode={mode}
 			show={show}
