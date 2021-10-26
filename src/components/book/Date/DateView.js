@@ -43,11 +43,11 @@ export const DateView = (props) => {
 						/>
 					)}
 
-					{props.dateshowEnd && (
+					{props.showEnd && (
 						<DateTimePicker
 							testID="dateTimePicker"
-							value={props.datedateEnd}
-							mode={props.datemodeEnd}
+							value={props.dateEnd}
+							mode={props.modeEnd}
 							is24Hour={true}
 							display="default"
 							onChange={props.onChangeEnd}
