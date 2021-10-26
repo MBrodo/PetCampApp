@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import { Text, View, TextInput } from 'react-native'
 
 import { styles } from './styles'

@@ -3,8 +3,8 @@ import { View, ScrollView, FlatList } from 'react-native'
 
 import { styles } from '../components/book/styles'
 
-import { DateContainer } from '../components/book/Date'
-import { MapList } from '../components/book/MapList'
+import { Dates } from '../components/book/Date/Date'
+import { MapList } from '../components/book/MapList/MapList'
 import { Map } from '../components/book/MapContainer'
 import { Header } from '../components/book/Header'
 
@@ -18,7 +18,7 @@ const HeaderComponent = () => {
 				<Header dog={dog} setDog={setDog} cat={cat} setCat={setCat} />
 				<Map map={map} setMap={setMap} />
 				<MapList cat={cat} dog={dog} map={map} setMap={setMap} />
-				<DateContainer />
+				<Dates />
 			</View>
 		</View>
 	)
