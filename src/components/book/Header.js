@@ -7,7 +7,7 @@ import { CheckBox } from 'react-native-elements'
 
 import RNPickerSelect from 'react-native-picker-select'
 
-export const Header = () => {
+export const Header = (props) => {
 	const [Quantity, setQuantity] = useState(false)
 
 	const checkDogState = () => {
