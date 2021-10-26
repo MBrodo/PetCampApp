@@ -71,6 +71,7 @@ export const MapList = (props) => {
 			dogs={dogs}
 			setCountry={setCountry}
 			showHotels={showHotels}
+			map={props.map}
 		/>
 	)
 }

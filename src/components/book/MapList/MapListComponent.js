@@ -5,6 +5,7 @@ import { styles } from '../styles'
 import MapView, { Marker } from 'react-native-maps'
 
 export const MapListComponent = (props) => {
+	console.log(props.map)
 	return (
 		<View>
 			<View style={styles.optionsContainer}>
