@@ -1,4 +1,5 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
+import campsReducer from '../slices/petCampsSlise'
 
 const test = () => {
 	let testReducer = 'test'
@@ -7,4 +8,5 @@ const test = () => {
 
 export const reducer = combineReducers({
 	menu: test,
-});
+	camps: campsReducer,
+})

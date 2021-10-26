@@ -17,6 +17,7 @@
     "@react-navigation/material-bottom-tabs": "^6.0.7",
     "@react-navigation/native": "^6.0.4",
     "@react-navigation/stack": "^6.0.9",
+    "@reduxjs/toolkit": "^1.6.2",
     "axios": "^0.22.0",
     "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-import": "^2.24.2",

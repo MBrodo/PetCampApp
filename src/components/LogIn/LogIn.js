@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View } from 'react-native'
-import { SignIn } from './SignIn'
+import { SignInContainer } from './SignIn/SignInContainer'
 import { Profile } from '../../screens/Profile'
 
 export const LogIn = () => {
@@ -8,7 +8,11 @@ export const LogIn = () => {
 
 	return (
 		<View>
-			{authenticate ? <Profile /> : <SignIn authenticate={(authenticate, setAuthenticate)} />}
+			{authenticate ? (
+				<Profile />
+			) : (
+				<SignInContainer authenticate={(authenticate, setAuthenticate)} />
+			)}
 		</View>
 	)
 }

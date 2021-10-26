@@ -5,17 +5,14 @@ import { styles } from './styles'
 
 import { CheckBox } from 'react-native-elements'
 
-export const Header = () => {
-	const [dog, setDog] = useState(false)
-	const [cat, setCat] = useState(false)
+export const Header = (props) => {
 	const [Quantity, setQuantity] = useState(false)
 
-	const checkDogState = () => {
-		setDog(dog == false ? true : false)
+	const checkState = () => {
+		props.setDog(props.dog == false ? true : false)
+		props.setCat(props.cat == false ? true : false)
 	}
-	const checkCatState = () => {
-		setCat(cat == false ? true : false)
-	}
+
 	const checkQuantityState = () => {
 		setQuantity(Quantity == false ? true : false)
 	}
@@ -30,10 +27,9 @@ export const Header = () => {
 				<CheckBox
 					center
 					title="Dog"
-					iconRight
-					checked={dog}
+					checked={props.dog}
 					onPress={() => {
-						checkDogState()
+						checkState()
 					}}
 					checkedColor="#4fa09285"
 					containerStyle={styles.checkBox}
@@ -43,20 +39,19 @@ export const Header = () => {
 				<CheckBox
 					center
 					title="Cat"
-					iconRight
-					checked={cat}
+					checked={props.cat}
 					onPress={() => {
-						checkCatState()
+						checkState()
 					}}
 					checkedColor="#4fa09285"
 					containerStyle={styles.checkBox}
 					textStyle={styles.checkBoxTextStyle}
 				/>
 				<View style={styles.headerQuantityContainer}>
-					<Text style={styles.headerQuantityText}>Quantity</Text>
 					<View style={styles.headerQuantityInputContainer}>
 						<TextInput style={styles.headerQuantityInput} />
 					</View>
+					<Text style={styles.headerQuantityText}>Quantity</Text>
 				</View>
 			</View>
 		</View>

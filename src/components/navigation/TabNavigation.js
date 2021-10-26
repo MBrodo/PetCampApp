@@ -31,28 +31,32 @@ export function TabNavigation({ navigation }) {
 	}
 
 	const tabBarOptions = ({ route }) => ({
+		tabBarLabelStyle: {
+			fontSize: 11,
+			marginBottom: 2,
+		},
 		headerShown: false,
 		tabBarActiveTintColor: 'rgb(31, 31, 31)',
 		tabBarInactiveTintColor: 'white',
-		tabBarInactiveBackgroundColor: '#4fa09285',
-		tabBarActiveBackgroundColor: '#4fa09285',
+		tabBarInactiveBackgroundColor: '#3CB09D',
+		tabBarActiveBackgroundColor: '#3CB09D',
 		tabBarIcon: ({ focused, size, color, tabBarVisible }) => {
 			let iconName
 			if (route.name === 'Search') {
 				iconName = 'search'
-				size = focused ? 30 : 23
+				size = focused ? 30 : 25
 				color = focused ? '#297164' : 'white'
 			} else if (route.name === 'PriceList') {
 				iconName = 'money-check-alt'
-				size = focused ? 30 : 23
+				size = focused ? 30 : 25
 				color = focused ? '#297164' : 'white'
 			} else if (route.name === 'Contacts') {
 				iconName = 'id-badge'
-				size = focused ? 30 : 23
+				size = focused ? 30 : 25
 				color = focused ? '#297164' : 'white'
 			} else if (route.name === 'LogIn') {
 				iconName = 'user'
-				size = focused ? 30 : 23
+				size = focused ? 30 : 25
 				color = focused ? '#297164' : 'white'
 			}
 
