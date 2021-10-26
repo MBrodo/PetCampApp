@@ -7,14 +7,14 @@ import { CheckBox } from 'react-native-elements'
 
 import RNPickerSelect from 'react-native-picker-select'
 
-export const Header = (props) => {
+export const Header = () => {
 	const [Quantity, setQuantity] = useState(false)
 
 	const checkDogState = () => {
-		props.setDog(props.dog == false ? true : false)
+		setDog(dog == false ? true : false)
 	}
 	const checkCatState = () => {
-		props.setCat(props.cat == false ? true : false)
+		setCat(cat == false ? true : false)
 	}
 	const checkQuantityState = () => {
 		setQuantity(Quantity == false ? true : false)
@@ -31,7 +31,7 @@ export const Header = (props) => {
 					center
 					title="Dog"
 					iconRight
-					checked={props.dog}
+					checked={dog}
 					onPress={() => {
 						checkDogState()
 					}}
@@ -44,7 +44,7 @@ export const Header = (props) => {
 					center
 					title="Cat"
 					iconRight
-					checked={props.cat}
+					checked={cat}
 					onPress={() => {
 						checkCatState()
 					}}

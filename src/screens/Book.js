@@ -8,8 +8,6 @@ import { Map } from '../components/book/Map'
 import { Header } from '../components/book/Header'
 
 const HeaderComponent = () => {
-	const [dog, setDog] = useState(false)
-	const [cat, setCat] = useState(false)
 	return (
 		<View style={styles.bookOutsidecontainer}>
 			<View style={styles.bookInsideContainer}>
