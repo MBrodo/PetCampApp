@@ -1,26 +1,9 @@
-import { styles } from './style'
+import { styles } from '../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
-import React, { useState } from 'react'
-import { Text, View, TextInput, TouchableHighlight, Alert } from 'react-native'
+import React from 'react'
+import { Text, View, TextInput, TouchableHighlight } from 'react-native'
 
-import registrationController from '../../controllers/authorization/registrationController'
-
-export const SignUp = () => {
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
-	const [hidePass, setHidePass] = useState(true)
-
-	const SignUpSubmit = () => {
-		registrationController(email, password, 1).then((res) => {
-			if (res.status === 200) {
-				Alert.alert(res.data.message)
-				setPassword('0')
-			} else if (res.status === 400) {
-				Alert.alert(res.data.message)
-			}
-		})
-	}
-
+export const SignUpView = (props) => {
 	return (
 		<View style={styles.wrapper}>
 			<View style={styles.logInSection}>
@@ -29,7 +12,7 @@ export const SignUp = () => {
 					<Text style={styles.logInText}>Phone or e-mail</Text>
 					<TextInput
 						style={styles.input}
-						onChangeText={setEmail}
+						onChangeText={props.loginChange}
 						placeholder="Text"
 						autoCorrect={false}
 					/>
@@ -39,17 +22,17 @@ export const SignUp = () => {
 					<View style={styles.passwordInput}>
 						<TextInput
 							style={styles.passwordText}
-							onChangeText={setPassword}
+							onChangeText={props.passwordChange}
 							placeholder="12345678"
 							autoCorrect={false}
-							secureTextEntry={hidePass}
+							secureTextEntry={props.hidePass}
 						/>
 						<Icon
 							style={styles.passwordIcon}
-							name={hidePass ? 'eye-slash' : 'eye'}
+							name={props.hidePass ? 'eye-slash' : 'eye'}
 							size={20}
 							color="grey"
-							onPress={() => setHidePass(hidePass ? false : true)}
+							onPress={() => props.setHidePass(props.hidePass ? false : true)}
 						/>
 					</View>
 
@@ -57,8 +40,9 @@ export const SignUp = () => {
 				</View>
 				<TouchableHighlight
 					style={styles.logInButton}
-					onPress={SignUpSubmit}
+					onPress={props.SignUpSubmit}
 					underlayColor="#4A4CBF"
+					disabled={!(props.isPasswordValid && props.isLoginValid)}
 				>
 					<Text style={styles.logInButtonText}>sign up</Text>
 				</TouchableHighlight>

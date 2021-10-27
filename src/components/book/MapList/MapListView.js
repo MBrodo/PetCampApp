@@ -47,7 +47,7 @@ export const MapListView = (props) => {
 								<Text
 									style={item.id === props.country ? styles.countryActive : styles.countryInactive}
 								>
-									{item.city}
+									{item.city.toUpperCase()}
 								</Text>
 							</TouchableOpacity>
 							{props.checkHotels(item)}

@@ -27,10 +27,7 @@ export const styles = StyleSheet.create({
 		borderWidth: 8,
 	},
 	uploadUserPic: {
-		color: '#5D5FEF',
-		position: 'relative',
-		top: 10,
-		right: 30,
+		color: 'white',
 	},
 	userName: {
 		color: 'black',
@@ -121,5 +118,16 @@ export const styles = StyleSheet.create({
 		borderBottomColor: 'gray',
 		borderBottomWidth: 1,
 		marginVertical: 8,
+	},
+	uploadImageContainer: {
+		position: 'relative',
+		top: 10,
+		right: 30,
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: 33,
+		height: 33,
+		borderRadius: 16,
+		backgroundColor: '#5D5FEF',
 	},
 })

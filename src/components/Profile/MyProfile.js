@@ -25,7 +25,9 @@ export const MyProfile = () => {
 				>
 					<View style={styles.userInfo}>
 						<Image source={images.userPicture} style={styles.userPic} />
-						<Icon style={styles.uploadUserPic} name="arrow-circle-up" size={30} />
+						<View style={styles.uploadImageContainer}>
+							<Icon style={styles.uploadUserPic} name="pen" size={13} />
+						</View>
 						<Text style={styles.userName}>Lisa</Text>
 					</View>
 				</ImageBackground>

@@ -32,7 +32,7 @@ export const SignInContainer = (props) => {
 				storeUserSession(res)
 				props.authenticate(true)
 				console.log(password)
-			} else if (res.status === 400) {
+			} else if (res.status === 401 || res.status === 400) {
 				Alert.alert('Login or password is incorrect')
 			}
 		})

@@ -23,7 +23,7 @@ export const MapView = (props) => {
 						switchOptions()
 					}}
 				>
-					<Text style={list ? styles.bodyTextActive : styles.bodyTextInactive}>Список</Text>
+					<Text style={list ? styles.bodyTextActive : styles.bodyTextInactive}>LIST</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity
@@ -32,7 +32,7 @@ export const MapView = (props) => {
 						switchOptions()
 					}}
 				>
-					<Text style={props.map ? styles.bodyTextActive : styles.bodyTextInactive}>Карта</Text>
+					<Text style={props.map ? styles.bodyTextActive : styles.bodyTextInactive}>MAP</Text>
 				</TouchableOpacity>
 			</View>
 		</View>

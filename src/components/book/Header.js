@@ -57,19 +57,18 @@ export const Header = (props) => {
 							useNativeAndroidPickerStyle={false}
 							onValueChange={(value) => console.log(value)}
 							items={[
-								{ label: 'One', value: 'One', inputLabel: '1' },
-								{ label: 'Two', value: 'Two', inputLabel: '2' },
-								{ label: 'Three', value: 'Three', inputLabel: '3' },
-								{ label: 'Four', value: 'Four', inputLabel: '4' },
-								{ label: 'Five', value: 'Five', inputLabel: '5' },
-								{ label: 'Six', value: 'Six', inputLabel: '6' },
-								{ label: 'Seven', value: 'Seven', inputLabel: '7' },
-								{ label: 'Eight', value: 'Eight', inputLabel: '8' },
-								{ label: 'Nine', value: 'Nine', inputLabel: '9' },
-								{ label: 'Ten', value: 'Ten', inputLabel: '10' },
+								{ label: '1', value: '1', inputLabel: '1' },
+								{ label: '2', value: '2', inputLabel: '2' },
+								{ label: '3', value: '3', inputLabel: '3' },
+								{ label: '4', value: '4', inputLabel: '4' },
+								{ label: '5', value: '5', inputLabel: '5' },
+								{ label: '6', value: '6', inputLabel: '6' },
+								{ label: '7', value: '7', inputLabel: '7' },
+								{ label: '8', value: '8', inputLabel: '8' },
+								{ label: '9', value: '9', inputLabel: '9' },
+								{ label: '10', value: '10', inputLabel: '10' },
 							]}
 						/>
-						{/* <TextInput style={styles.headerQuantityInput} keyboardType={'numeric'} /> */}
 					</View>
 				</View>
 			</View>
