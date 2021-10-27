@@ -70,6 +70,7 @@ export const Header = (props) => {
 							]}
 						/>
 					</View>
+					<Text style={styles.headerQuantityText}>Quantity</Text>
 				</View>
 			</View>
 		</View>

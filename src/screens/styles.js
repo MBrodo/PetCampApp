@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
 	outsideNavigationContainer: {
 		width: 68,
 		height: 68,
-		borderRadius: 32,
+		borderRadius: 34,
 		backgroundColor: 'white',
 		justifyContent: 'center',
 		alignItems: 'center',
