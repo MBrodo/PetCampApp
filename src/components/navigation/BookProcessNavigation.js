@@ -2,11 +2,10 @@ import React from 'react'
 
 import { createStackNavigator } from '@react-navigation/stack'
 
-import { LoggedBookContainer } from '../book/BookProcess/BookOptions/BookOptionsLogged/LoggedBookContainer'
-import { UnLoggedBookContainer } from '../book/BookProcess/BookOptions/BookOptionsUnLogged/UnLoggedBookContainer'
 import { ChoosePetContainer } from '../book/BookProcess/ChoosePet/ChoosePetContainer'
 import { PaymentContainer } from '../book/BookProcess/Payments/PaymentContainer'
 import { CongratsContainer } from '../book/BookProcess/Congrats/CongratsConatiner'
+import { BookOptions } from '../book/BookProcess/BookOptions/BookOptions'
 
 const Stack = createStackNavigator()
 
@@ -17,7 +16,7 @@ export const BookProcessNavigation = () => {
 				headerShown: false,
 			}}
 		>
-			<Stack.Screen name="BookOption" component={UnLoggedBookContainer} />
+			<Stack.Screen name="BookOption" component={BookOptions} />
 			<Stack.Screen name="ChoosePet" component={ChoosePetContainer} />
 			<Stack.Screen name="Payment" component={PaymentContainer} />
 			<Stack.Screen name="Congrats" component={CongratsContainer} />

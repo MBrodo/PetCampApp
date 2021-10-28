@@ -7,7 +7,7 @@ export const UnLoggedBookContainer = () => {
 	const navigation = useNavigation()
 
 	const StartBookProcess = () => {
-		navigation.navigate('ChoosePet')
+		navigation.navigate('LogIn')
 	}
 
 	return <UnLoggedBookView StartBookProcess={StartBookProcess} />
