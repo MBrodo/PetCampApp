@@ -48,7 +48,6 @@ export const UnLoggedBookView = (props) => {
 					</View>
 				</View>
 			</View>
-			{/* <Button onPress={() => props.StartBookProcess()} title="next" /> */}
 		</View>
 	)
 }
