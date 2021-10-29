@@ -1,3 +1,3 @@
 export const IP = {
-	HOST: '/3.65.25.87:5000',
+	HOST: '/ec2-3-70-18-52.eu-central-1.compute.amazonaws.com:5000',
 }

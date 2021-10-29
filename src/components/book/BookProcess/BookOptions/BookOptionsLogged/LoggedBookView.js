@@ -129,7 +129,7 @@ export const LoggedBookView = (props) => {
 							<Text style={styles.petTransferText}>I agree with Client Agreement</Text>
 						</View>
 						<View style={styles.acceptButtonContainer}>
-							<Pressable style={styles.acceptButton}>
+							<Pressable onPress={() => props.secondStep()} style={styles.acceptButton}>
 								<Text style={styles.acceptButtonText}>Next</Text>
 							</Pressable>
 						</View>

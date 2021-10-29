@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import { LoggedBookView } from './LoggedBookView'
+import { useNavigation } from '@react-navigation/native'
 
 export const LoggedBookContainer = () => {
 	const [transfer, setTransfer] = useState(false)
@@ -28,8 +29,13 @@ export const LoggedBookContainer = () => {
 			return agreement ? false : true
 		})
 	}
+	const navigation = useNavigation()
+	const secondStep = () => {
+		navigation.navigate('ChoosePet')
+	}
 	return (
 		<LoggedBookView
+			secondStep={secondStep}
 			transfer={transfer}
 			setTransfer={checkTransfer}
 			grooming={grooming}
