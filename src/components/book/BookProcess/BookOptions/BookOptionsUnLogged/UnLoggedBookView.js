@@ -3,6 +3,7 @@ import { Text, View, Button, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 
 import { styles } from './style'
+import { BookingFooter } from '../../../../../common/footer/bookingFooter'
 
 export const UnLoggedBookView = (props) => {
 	return (
@@ -36,17 +37,7 @@ export const UnLoggedBookView = (props) => {
 						<Text style={styles.getLogInText}>To get proceed with booking Log In please </Text>
 					</Pressable>
 				</View>
-				<View style={styles.footerContainer}>
-					<View style={styles.iconContainer}>
-						<Icon name={'info-circle'} size={10} color={'black'} />
-					</View>
-					<View style={styles.footerContainerInside}>
-						<Text style={styles.footerText}>For more details go to</Text>
-						<Text style={styles.footerFocusText}>Client Agreement</Text>
-						<Text style={styles.footerText}>and</Text>
-						<Text style={styles.footerFocusText}>Pricing&Conditions</Text>
-					</View>
-				</View>
+				<BookingFooter />
 			</View>
 		</View>
 	)

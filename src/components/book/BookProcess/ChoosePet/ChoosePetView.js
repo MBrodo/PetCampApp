@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, View, ScrollView, Pressable } from 'react-native'
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
+import { BookingButton } from '../../../../common/buttons/bookingButoon'
 
 export const ChoosePetView = (props) => {
 	return (
@@ -34,11 +35,7 @@ export const ChoosePetView = (props) => {
 						<Text style={styles.addButtonText}>Add a pet</Text>
 					</View>
 
-					<View style={styles.acceptButtonContainer}>
-						<Pressable onPress={() => props.secondStep()} style={styles.acceptButton}>
-							<Text style={styles.acceptButtonText}>Next</Text>
-						</Pressable>
-					</View>
+					<BookingButton secondStep={props.secondStep} />
 				</View>
 			</View>
 		</ScrollView>

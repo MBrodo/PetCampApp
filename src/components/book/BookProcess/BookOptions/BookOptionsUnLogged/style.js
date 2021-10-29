@@ -76,27 +76,6 @@ export const styles = StyleSheet.create({
 		fontSize: 16,
 		color: '#FF1066',
 		textAlign: 'center',
-	},
-	footerContainer: {
-		flexDirection: 'row',
-		marginTop: 35,
-	},
-	footerContainerInside: {
-		flexDirection: 'row',
-		flexWrap: 'wrap',
-	},
-	iconContainer: {
-		marginTop: 2,
-		marginRight: 3,
-	},
-	footerText: {
-		fontSize: 10,
-		marginLeft: 3,
-	},
-	footerFocusText: {
-		fontSize: 10,
-		color: 'black',
-		fontWeight: 'bold',
-		marginLeft: 3,
+		marginBottom: 35,
 	},
 })

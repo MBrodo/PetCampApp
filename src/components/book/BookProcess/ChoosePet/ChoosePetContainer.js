@@ -49,10 +49,10 @@ export const ChoosePetContainer = () => {
 	}
 
 	const navigation = useNavigation()
-	const secondStep = () => {
+	const thirdStep = () => {
 		navigation.navigate('Payment')
 	}
 
 	const [pickPet, setPickPet] = useState(false)
-	return <ChoosePetView secondStep={secondStep} myPetBlock={myPetBlock} myPets={myPets} />
+	return <ChoosePetView secondStep={thirdStep} myPetBlock={myPetBlock} myPets={myPets} />
 }

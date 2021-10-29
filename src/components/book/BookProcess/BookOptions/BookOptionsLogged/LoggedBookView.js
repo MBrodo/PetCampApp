@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { CheckBox } from 'react-native-elements'
 
 import { styles } from './style'
+import { BookingFooter } from '../../../../../common/footer/bookingFooter'
+import { BookingButton } from '../../../../../common/buttons/bookingButoon'
 
 export const LoggedBookView = (props) => {
 	return (
@@ -128,22 +130,8 @@ export const LoggedBookView = (props) => {
 							/>
 							<Text style={styles.petTransferText}>I agree with Client Agreement</Text>
 						</View>
-						<View style={styles.acceptButtonContainer}>
-							<Pressable onPress={() => props.secondStep()} style={styles.acceptButton}>
-								<Text style={styles.acceptButtonText}>Next</Text>
-							</Pressable>
-						</View>
-						<View style={styles.footerContainer}>
-							<View style={styles.iconContainer}>
-								<Icon name={'info-circle'} size={10} color={'black'} />
-							</View>
-							<View style={styles.footerContainerInside}>
-								<Text style={styles.footerText}>For more details go to</Text>
-								<Text style={styles.footerFocusText}>Client Agreement</Text>
-								<Text style={styles.footerText}>and</Text>
-								<Text style={styles.footerFocusText}>Pricing&Conditions</Text>
-							</View>
-						</View>
+						<BookingButton secondStep={props.secondStep} />
+						<BookingFooter />
 					</View>
 				</View>
 			</View>
