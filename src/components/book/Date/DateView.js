@@ -56,7 +56,7 @@ export const DateView = (props) => {
 				</View>
 			</View>
 
-			<TouchableOpacity style={styles.footerButton}>
+			<TouchableOpacity onPress={() => props.StartBookProcess()} style={styles.footerButton}>
 				<Text style={styles.footerButtonText}>Book</Text>
 			</TouchableOpacity>
 		</View>
