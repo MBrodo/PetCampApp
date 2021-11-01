@@ -32,14 +32,14 @@ export const LoggedBookView = (props) => {
 						<Text style={styles.bookArticle}>Avaliable hotels</Text>
 					</View>
 					<View>
-						<Text style={styles.numberOfHotel}>Cat Hotel №1</Text>
+						<Text style={styles.numberOfHotel}>{props.information.type} Hotel №1</Text>
 					</View>
 					<View style={styles.hotelStreetContainer}>
 						<View style={styles.hotelStreet}>
 							<Icon name={'map-marker-alt'} size={13} color={'black'} />
-							<Text style={styles.cityOfHotel}>Minsk</Text>
+							<Text style={styles.cityOfHotel}>{props.information.city}</Text>
 						</View>
-						<Text style={styles.cityOfHotel}>K. Marksa str. bld 8</Text>
+						<Text style={styles.cityOfHotel}>{props.information.street}</Text>
 					</View>
 					<View>
 						<Text style={styles.hotelRooms}>8 standard rooms are avaliable</Text>
@@ -51,11 +51,11 @@ export const LoggedBookView = (props) => {
 					<View style={styles.checkContainer}>
 						<View style={styles.checkInContainer}>
 							<Text style={styles.checkText}>CHECK-IN</Text>
-							<Text style={styles.checkTime}>2 PM - 8 PM</Text>
+							<Text style={styles.checkTime}>{props.dateText}</Text>
 						</View>
 						<View>
 							<Text style={styles.checkText}>CHECK-OUT</Text>
-							<Text style={styles.checkTime}>10 AM - 1 PM</Text>
+							<Text style={styles.checkTime}>{props.dateTextEnd}</Text>
 						</View>
 					</View>
 					<View>

@@ -56,6 +56,7 @@ export const Header = (props) => {
 							style={pickerSelectStyles}
 							useNativeAndroidPickerStyle={false}
 							onValueChange={(value) => console.log(value)}
+							fixAndroidTouchableBug={true}
 							items={[
 								{ label: '1', value: '1', inputLabel: '1' },
 								{ label: '2', value: '2', inputLabel: '2' },

@@ -4,24 +4,20 @@ import { LoggedBookContainer } from './BookOptionsLogged/LoggedBookContainer'
 import { UnLoggedBookContainer } from './BookOptionsUnLogged/UnLoggedBookContainer'
 import EncryptedStorage from 'react-native-encrypted-storage'
 
-export const BookOptions = () => {
-	const [storageItem, setStorageItem] = useState()
-	async function retrieveUserSession() {
-		try {
-			await EncryptedStorage.removeItem('user_session')
-			const session = await EncryptedStorage.getItem('user_session')
-			setStorageItem(session)
-		} catch (error) {}
-	}
-	retrieveUserSession()
-
-	const checkStore = (item) => {
-		if (item !== null) {
-			return <LoggedBookContainer />
+export const BookOptions = (props) => {
+	const checkStore = () => {
+		if (props.authenticate) {
+			return (
+				<LoggedBookContainer
+					dateText={props.dateText}
+					dateTextEnd={props.dateTextEnd}
+					information={props.information}
+				/>
+			)
 		} else {
-			return <LoggedBookContainer />
+			return <UnLoggedBookContainer information={props.information} />
 		}
 	}
 
-	return checkStore(storageItem)
+	return checkStore()
 }

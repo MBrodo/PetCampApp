@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { LoggedBookView } from './LoggedBookView'
 import { useNavigation } from '@react-navigation/native'
 
-export const LoggedBookContainer = () => {
+export const LoggedBookContainer = (props) => {
 	const [transfer, setTransfer] = useState(false)
 	const [grooming, setGrooming] = useState(false)
 	const [vaccinated, setVaccinated] = useState(false)
@@ -35,6 +35,8 @@ export const LoggedBookContainer = () => {
 	}
 	return (
 		<LoggedBookView
+			dateText={props.dateText}
+			dateTextEnd={props.dateTextEnd}
 			secondStep={secondStep}
 			transfer={transfer}
 			setTransfer={checkTransfer}
@@ -44,6 +46,7 @@ export const LoggedBookContainer = () => {
 			setVaccinated={checkVaccinated}
 			agreement={agreement}
 			setAgreement={checkAgreement}
+			information={props.information}
 		/>
 	)
 }

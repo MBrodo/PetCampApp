@@ -5,16 +5,16 @@ import { useNavigation } from '@react-navigation/native'
 import { LoggedBookContainer } from '../BookProcess/BookOptions/BookOptionsLogged/LoggedBookContainer'
 import { UnLoggedBookContainer } from '../BookProcess/BookOptions/BookOptionsUnLogged/UnLoggedBookContainer'
 
-export const DateContainer = () => {
+export const DateContainer = (props) => {
 	const [date, setDate] = useState(new Date())
 	const [mode, setMode] = useState('date')
 	const [show, setShow] = useState(false)
-	const [dateText, setDateText] = useState('dd/mm/yyyy')
+	// const [dateText, setDateText] = useState('dd/mm/yyyy')
 
 	const [dateEnd, setDateEnd] = useState(new Date())
 	const [modeEnd, setModeEnd] = useState('date')
 	const [showEnd, setShowEnd] = useState(false)
-	const [dateTextEnd, setDateTextEnd] = useState('dd/mm/yyyy')
+	// const [dateTextEnd, setDateTextEnd] = useState('dd/mm/yyyy')
 
 	const onChangeEnd = (event, selectedDate) => {
 		const currentDate = selectedDate || dateEnd
@@ -24,7 +24,7 @@ export const DateContainer = () => {
 		let tempDateEnd = new Date(currentDate)
 		let showDateEnd =
 			tempDateEnd.getDate() + '/' + (tempDateEnd.getMonth() + 1) + '/' + tempDateEnd.getFullYear()
-		setDateTextEnd(showDateEnd)
+		props.setDateTextEnd(showDateEnd)
 	}
 
 	const showModeEnd = (currentMode) => {
@@ -44,7 +44,7 @@ export const DateContainer = () => {
 		let tempDate = new Date(currentDate)
 		let showDate =
 			tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear()
-		setDateText(showDate)
+		props.setDateText(showDate)
 	}
 
 	const showMode = (currentMode) => {
@@ -61,22 +61,22 @@ export const DateContainer = () => {
 	const StartBookProcess = () => {
 		navigation.navigate('BookProcessNavigation')
 	}
-
 	return (
 		<DateView
 			StartBookProcess={StartBookProcess}
 			date={date}
 			mode={mode}
 			show={show}
-			dateText={dateText}
+			dateText={props.dateText}
 			dateEnd={dateEnd}
 			modeEnd={modeEnd}
 			showEnd={showEnd}
-			dateTextEnd={dateTextEnd}
+			dateTextEnd={props.dateTextEnd}
 			onChangeEnd={onChangeEnd}
 			onChange={onChange}
 			showDatepickerEnd={showDatepickerEnd}
 			showDatepicker={showDatepicker}
+			information={props.information}
 		/>
 	)
 }

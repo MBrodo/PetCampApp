@@ -3,14 +3,12 @@ import { View } from 'react-native'
 import { SignInContainer } from './SignIn/SignInContainer'
 import { Profile } from '../../screens/Profile'
 
-export const LogIn = () => {
-	const [authenticate, setAuthenticate] = useState(false)
-
+export const LogIn = (props) => {
 	const checkAuthentication = () => {
-		return authenticate ? (
+		return props.authenticate ? (
 			<Profile />
 		) : (
-			<SignInContainer authenticate={(authenticate, setAuthenticate)} />
+			<SignInContainer setAuthenticate={props.setAuthenticate} />
 		)
 	}
 	return <View>{checkAuthentication()}</View>

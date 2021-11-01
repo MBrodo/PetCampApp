@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, Linking } from 'react-native'
+import { Text, View, Linking, TouchableOpacity } from 'react-native'
 import { styles } from '../Home/styles'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { Home } from '../../screens/Home'
@@ -11,16 +11,14 @@ export const HeaderNavigation = () => {
 
 	return (
 		<View style={styles.headerBlock}>
-			<View style={styles.headerArticleContainer}>
-				<Text
-					style={styles.headerArticle}
-					onPress={() => {
-						navigation.navigate(Home)
-					}}
-				>
-					Pet Camp
-				</Text>
-			</View>
+			<TouchableOpacity
+				onPress={() => {
+					navigation.navigate('Home')
+				}}
+				style={styles.headerArticleContainer}
+			>
+				<Text style={styles.headerArticle}>Pet Camp</Text>
+			</TouchableOpacity>
 
 			<View style={styles.headerInfo}>
 				<Icon name="phone-square-alt" size={20} />
