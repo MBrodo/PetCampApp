@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
@@ -63,14 +63,13 @@ export function TabNavigation({ navigation }) {
 			return <Icon name={iconName} size={size} color={color} />
 		},
 	})
-
+	const [authenticate, setAuthenticate] = useState(false)
 	return (
 		<Tab.Navigator initialRouteName="Book" screenOptions={tabBarOptions}>
 			<Tab.Screen name="Search" component={Search} />
 			<Tab.Screen name="PriceList" component={PriceList} />
 			<Tab.Screen
 				name="Book"
-				component={BookAndAboutUs}
 				options={{
 					tabBar: { visible: false },
 					tabBarIcon: tabBarButton,
@@ -78,9 +77,13 @@ export function TabNavigation({ navigation }) {
 						fontSize: 0,
 					},
 				}}
-			/>
+			>
+				{() => <BookAndAboutUs authenticate={authenticate} />}
+			</Tab.Screen>
 			<Tab.Screen name="Contacts" component={Contacts} />
-			<Tab.Screen name="LogIn" component={LogIn} />
+			<Tab.Screen name="LogIn">
+				{() => <LogIn authenticate={authenticate} setAuthenticate={setAuthenticate} />}
+			</Tab.Screen>
 		</Tab.Navigator>
 	)
 }

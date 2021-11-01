@@ -17,7 +17,6 @@ export const SignInContainer = (props) => {
 			)
 		} catch (error) {}
 	}
-
 	const [hidePass, setHidePass] = useState(true)
 	const [modalWindow, setModalWindow] = useState(false)
 
@@ -30,13 +29,13 @@ export const SignInContainer = (props) => {
 				setPassword('0')
 				Alert.alert('Welcome to the Pet Camp!')
 				storeUserSession(res)
-				props.authenticate(true)
-				console.log(password)
+				props.setAuthenticate(true)
 			} else if (res.status === 401 || res.status === 400) {
 				Alert.alert('Login or password is incorrect')
 			}
 		})
 	}
+
 	return (
 		<SignInView
 			hidePass={hidePass}

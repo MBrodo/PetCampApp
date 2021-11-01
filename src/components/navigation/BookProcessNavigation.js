@@ -16,15 +16,16 @@ export const BookProcessNavigation = (props) => {
 				headerShown: false,
 			}}
 		>
-			<Stack.Screen
-				initialParams={{
-					dateText: props.route.params.dateText,
-					dateTextEnd: props.route.params.dateTextEnd,
-					information: props.route.params.information,
-				}}
-				name="BookOption"
-				component={BookOptions}
-			/>
+			<Stack.Screen name="BookOption">
+				{() => (
+					<BookOptions
+						information={props.information}
+						dateTextEnd={props.dateTextEnd}
+						dateText={props.dateText}
+						authenticate={props.authenticate}
+					/>
+				)}
+			</Stack.Screen>
 			<Stack.Screen name="ChoosePet" component={ChoosePetContainer} />
 			<Stack.Screen name="Payment" component={PaymentContainer} />
 			<Stack.Screen name="Congrats" component={CongratsContainer} />
