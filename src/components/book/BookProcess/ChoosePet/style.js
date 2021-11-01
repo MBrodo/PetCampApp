@@ -125,4 +125,21 @@ export const styles = StyleSheet.create({
 		color: 'white',
 		fontSize: 22,
 	},
+	chooseButtonActive: {
+		paddingVertical: 3,
+		paddingHorizontal: 10,
+		backgroundColor: 'rgb(15, 112, 15)',
+		borderRadius: 10,
+		marginBottom: 30,
+	},
+	chooseButtonInactive: {
+		paddingVertical: 3,
+		paddingHorizontal: 10,
+		backgroundColor: '#7878F1',
+		borderRadius: 10,
+		marginBottom: 30,
+	},
+	chooseButtonText: {
+		color: 'white',
+	},
 })

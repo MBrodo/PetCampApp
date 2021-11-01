@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { ChoosePetView } from './ChoosePetView'
-import { Text, View, Image } from 'react-native'
+import { Text, View, Image, Pressable } from 'react-native'
 import { styles } from './style'
 import { CheckBox } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
@@ -15,7 +15,8 @@ export const ChoosePetContainer = (props) => {
 		{ type: 'Cat', name: 'Felix', age: 10, img: require('../../../../img/myPet.png'), key: 1 },
 		{ type: 'Cat', name: 'Richard', age: 6, img: require('../../../../img/myPet.png'), key: 2 },
 	]
-	console.log(props.route.params.Quantity)
+	const [checkChoice, setCheckChoice] = useState(false)
+	const [pet, setPet] = useState()
 	const myPetBlock = (item) => {
 		return (
 			<View key={item.id} style={styles.myPetContainer}>
@@ -43,22 +44,31 @@ export const ChoosePetContainer = (props) => {
 							<Text style={styles.optionName}>{item.gender}</Text>
 						</View>
 						<View style={styles.checkBoxOptions}>
-							<CheckBox
-								checked={false}
+							<Pressable
+								style={
+									item.id === checkChoice ? styles.chooseButtonActive : styles.chooseButtonInactive
+								}
 								onPress={() => {
-									return true
+									setCheckChoice(item.id)
+									setPet(item)
 								}}
-							/>
+							>
+								<Text style={styles.chooseButtonText}>Choose</Text>
+							</Pressable>
 						</View>
 					</View>
 				</View>
 			</View>
 		)
 	}
-
 	const navigation = useNavigation()
 	const thirdStep = () => {
-		navigation.navigate('Payment')
+		navigation.navigate('Payment', {
+			dateTextEnd: props.route.params.dateTextEnd,
+			dateText: props.route.params.dateText,
+			pet: pet,
+			totalPrice: props.route.params.totalPrice,
+		})
 	}
 
 	const [pickPet, setPickPet] = useState(false)
@@ -78,6 +88,9 @@ export const ChoosePetContainer = (props) => {
 
 	return (
 		<ChoosePetView
+			dateText={props.route.params.dateText}
+			dateTextEnd={props.route.params.dateTextEnd}
+			pet={pet}
 			petList={petList}
 			secondStep={thirdStep}
 			myPetBlock={myPetBlock}

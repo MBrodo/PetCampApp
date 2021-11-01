@@ -13,7 +13,6 @@ export const LoggedBookContainer = (props) => {
 	const checkPoints = () => {
 		return vaccinated && agreement ? false : true
 	}
-	console.log(checkPoints())
 
 	const totalPrice = () => {
 		let totalCount = 12
@@ -50,7 +49,12 @@ export const LoggedBookContainer = (props) => {
 	}
 	const navigation = useNavigation()
 	const secondStep = () => {
-		navigation.navigate('ChoosePet', { Quantity: props.Quantity })
+		navigation.navigate('ChoosePet', {
+			dateTextEnd: props.dateTextEnd,
+			dateText: props.dateText,
+			Quantity: props.Quantity,
+			totalPrice: totalPrice(),
+		})
 	}
 	return (
 		<LoggedBookView

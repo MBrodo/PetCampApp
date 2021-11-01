@@ -34,27 +34,29 @@ export const PaymentView = (props) => {
 								<View style={styles.genderOptionsContainer}>
 									<View style={styles.optionsContainer}>
 										<Text style={styles.optionArticle}>Cat/Dog</Text>
-										<Text style={styles.optionName}>Cat</Text>
+										<Text style={styles.optionName}>{props.pet.type}</Text>
 									</View>
 									<View style={styles.optionsContainer}>
 										<Text style={styles.optionArticle}>Gender</Text>
-										<Text style={styles.optionName}>m</Text>
+										<Text style={styles.optionName}>{props.pet.gender}</Text>
 									</View>
 								</View>
 								<View style={styles.genderOptionsContainer}>
 									<View style={styles.optionsContainer}>
 										<Text style={styles.optionArticle}>Name</Text>
-										<Text style={styles.optionName}>Felix</Text>
+										<Text style={styles.optionName}>{props.pet.name}</Text>
 									</View>
 									<View style={styles.optionsContainer}>
 										<Text style={styles.optionArticle}>Age</Text>
-										<Text style={styles.optionName}>10 years</Text>
+										<Text style={styles.optionName}>{props.pet.age} years</Text>
 									</View>
 								</View>
 							</View>
 							<View style={styles.bookingDates}>
 								<Text style={styles.optionArticle}>Booking dates</Text>
-								<Text style={styles.optionName}>01.10.2021-11.10.2021</Text>
+								<Text style={styles.optionName}>
+									{props.dateStart} - {props.dateEnd}
+								</Text>
 							</View>
 							<View style={styles.bookingPaymentsInfo}>
 								<View style={styles.optionsContainer}>
@@ -63,7 +65,7 @@ export const PaymentView = (props) => {
 								</View>
 								<View style={styles.optionsContainer}>
 									<Text style={styles.optionArticle}>PRICE</Text>
-									<Text style={styles.optionName}>$120</Text>
+									<Text style={styles.optionName}>$ {props.totalPrice}</Text>
 								</View>
 							</View>
 						</View>
