@@ -8,6 +8,20 @@ export const LoggedBookContainer = (props) => {
 	const [grooming, setGrooming] = useState(false)
 	const [vaccinated, setVaccinated] = useState(false)
 	const [agreement, setAgreement] = useState(false)
+	const [checkButton, setCheckButton] = useState(true)
+
+	const totalPrice = () => {
+		let totalCount = 12
+		if (transfer && grooming) {
+			return totalCount + 7
+		} else if (transfer) {
+			return totalCount + 5
+		} else if (grooming) {
+			return totalCount + 2
+		} else {
+			return totalCount
+		}
+	}
 
 	const checkTransfer = () => {
 		setTransfer(() => {
@@ -35,6 +49,9 @@ export const LoggedBookContainer = (props) => {
 	}
 	return (
 		<LoggedBookView
+			setCheckButton={setCheckButton}
+			checkButton={checkButton}
+			totalPrice={totalPrice}
 			dateText={props.dateText}
 			dateTextEnd={props.dateTextEnd}
 			secondStep={secondStep}
