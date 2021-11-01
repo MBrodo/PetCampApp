@@ -9,6 +9,7 @@ export const BookingButton = (props) => {
 				onPress={() => {
 					props.secondStep()
 				}}
+				disabled={props.checkPoints}
 				style={styles.acceptButton}
 			>
 				<Text style={styles.acceptButtonText}>Next</Text>

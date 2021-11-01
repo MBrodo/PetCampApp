@@ -103,7 +103,9 @@ export const LoggedBookView = (props) => {
 							</View>
 						</View>
 						<View style={styles.totalPriceContainer}>
-							<Text style={styles.additionalOptionsText}>Total price: {props.totalPrice()}$</Text>
+							<Text style={styles.additionalOptionsText}>
+								Total price({props.Quantity} pets): {props.totalPrice()}$
+							</Text>
 						</View>
 						<View>
 							<Text style={styles.additionalOptionsText}>I state that:</Text>
@@ -130,7 +132,11 @@ export const LoggedBookView = (props) => {
 							/>
 							<Text style={styles.petTransferText}>I agree with Client Agreement</Text>
 						</View>
-						<BookingButton checkButton={props.checkButton} secondStep={props.secondStep} />
+						<BookingButton
+							checkPoints={props.checkPoints()}
+							checkButton={props.checkButton}
+							secondStep={props.secondStep}
+						/>
 						<BookingFooter />
 					</View>
 				</View>

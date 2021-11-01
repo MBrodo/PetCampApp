@@ -12,11 +12,16 @@ export const Book = (props) => {
 	const [map, setMap] = useState(false)
 	const [dog, setDog] = useState(true)
 	const [cat, setCat] = useState(false)
-	// const [information, setInformation] = useState()
 	return (
 		<View style={styles.bookOutsidecontainer}>
 			<View style={styles.bookInsideContainer}>
-				<Header dog={dog} setDog={setDog} cat={cat} setCat={setCat} />
+				<Header
+					setQuantity={props.setQuantity}
+					dog={dog}
+					setDog={setDog}
+					cat={cat}
+					setCat={setCat}
+				/>
 				<MapView map={map} setMap={setMap} />
 				<MapListContainer
 					setInformation={props.setInformation}

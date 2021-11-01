@@ -27,7 +27,7 @@ export const ChoosePetView = (props) => {
 					<View>
 						<Text style={styles.bookArticle}>My pets</Text>
 					</View>
-					<View>{props.myPets.map((item) => props.myPetBlock(item))}</View>
+					<View>{props.petList.map((item) => props.myPetBlock(item))}</View>
 					<View style={styles.addButtonContainer}>
 						<View style={styles.addButton}>
 							<Icon name={'plus'} size={30} color={'#5D5FEF'} />

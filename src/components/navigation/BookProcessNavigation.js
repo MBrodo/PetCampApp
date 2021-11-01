@@ -19,6 +19,7 @@ export const BookProcessNavigation = (props) => {
 			<Stack.Screen name="BookOption">
 				{() => (
 					<BookOptions
+						Quantity={props.Quantity}
 						information={props.information}
 						dateTextEnd={props.dateTextEnd}
 						dateText={props.dateText}

@@ -13,6 +13,7 @@ export const BookAndAboutUs = (props) => {
 	const [information, setInformation] = useState()
 	const [dateText, setDateText] = useState('dd/mm/yyyy')
 	const [dateTextEnd, setDateTextEnd] = useState('dd/mm/yyyy')
+	const [Quantity, setQuantity] = useState(false)
 	return (
 		<Stack.Navigator
 			initialRouteName={'Home'}
@@ -28,6 +29,7 @@ export const BookAndAboutUs = (props) => {
 			<Stack.Screen name="Bookpage">
 				{() => (
 					<Book
+						setQuantity={setQuantity}
 						dateText={dateText}
 						setDateText={setDateText}
 						dateTextEnd={dateTextEnd}
@@ -40,6 +42,7 @@ export const BookAndAboutUs = (props) => {
 			<Stack.Screen name="BookProcessNavigation">
 				{() => (
 					<BookProcessNavigation
+						Quantity={Quantity}
 						dateText={dateText}
 						dateTextEnd={dateTextEnd}
 						information={information}

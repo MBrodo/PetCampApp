@@ -10,16 +10,21 @@ export const LoggedBookContainer = (props) => {
 	const [agreement, setAgreement] = useState(false)
 	const [checkButton, setCheckButton] = useState(true)
 
+	const checkPoints = () => {
+		return vaccinated && agreement ? false : true
+	}
+	console.log(checkPoints())
+
 	const totalPrice = () => {
 		let totalCount = 12
 		if (transfer && grooming) {
-			return totalCount + 7
+			return (totalCount + 7) * props.Quantity
 		} else if (transfer) {
-			return totalCount + 5
+			return (totalCount + 5) * props.Quantity
 		} else if (grooming) {
-			return totalCount + 2
+			return (totalCount + 2) * props.Quantity
 		} else {
-			return totalCount
+			return totalCount * props.Quantity
 		}
 	}
 
@@ -45,10 +50,12 @@ export const LoggedBookContainer = (props) => {
 	}
 	const navigation = useNavigation()
 	const secondStep = () => {
-		navigation.navigate('ChoosePet')
+		navigation.navigate('ChoosePet', { Quantity: props.Quantity })
 	}
 	return (
 		<LoggedBookView
+			checkPoints={checkPoints}
+			Quantity={props.Quantity}
 			setCheckButton={setCheckButton}
 			checkButton={checkButton}
 			totalPrice={totalPrice}
