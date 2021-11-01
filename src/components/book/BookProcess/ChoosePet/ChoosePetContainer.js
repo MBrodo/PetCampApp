@@ -13,7 +13,6 @@ export const ChoosePetContainer = () => {
 	]
 
 	const myPetBlock = (item) => {
-		console.log(item.img)
 		return (
 			<View key={item.key} style={styles.myPetContainer}>
 				<View>
@@ -40,7 +39,12 @@ export const ChoosePetContainer = () => {
 							<Text style={styles.optionName}>m</Text>
 						</View>
 						<View style={styles.checkBoxOptions}>
-							<CheckBox />
+							<CheckBox
+								checked={false}
+								onPress={() => {
+									return true
+								}}
+							/>
 						</View>
 					</View>
 				</View>
