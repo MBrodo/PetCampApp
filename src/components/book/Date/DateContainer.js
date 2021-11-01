@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { LoggedBookContainer } from '../BookProcess/BookOptions/BookOptionsLogged/LoggedBookContainer'
 import { UnLoggedBookContainer } from '../BookProcess/BookOptions/BookOptionsUnLogged/UnLoggedBookContainer'
 
-export const DateContainer = () => {
+export const DateContainer = (props) => {
 	const [date, setDate] = useState(new Date())
 	const [mode, setMode] = useState('date')
 	const [show, setShow] = useState(false)
@@ -59,9 +59,12 @@ export const DateContainer = () => {
 	const navigation = useNavigation()
 
 	const StartBookProcess = () => {
-		navigation.navigate('BookProcessNavigation')
+		navigation.navigate('BookProcessNavigation', {
+			dateText: dateText,
+			dateTextEnd: dateTextEnd,
+			information: props.information,
+		})
 	}
-
 	return (
 		<DateView
 			StartBookProcess={StartBookProcess}
@@ -77,6 +80,7 @@ export const DateContainer = () => {
 			onChange={onChange}
 			showDatepickerEnd={showDatepickerEnd}
 			showDatepicker={showDatepicker}
+			information={props.information}
 		/>
 	)
 }

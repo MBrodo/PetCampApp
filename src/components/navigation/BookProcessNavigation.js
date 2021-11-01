@@ -9,14 +9,22 @@ import { BookOptions } from '../book/BookProcess/BookOptions/BookOptions'
 
 const Stack = createStackNavigator()
 
-export const BookProcessNavigation = () => {
+export const BookProcessNavigation = (props) => {
 	return (
 		<Stack.Navigator
 			screenOptions={{
 				headerShown: false,
 			}}
 		>
-			<Stack.Screen name="BookOption" component={BookOptions} />
+			<Stack.Screen
+				initialParams={{
+					dateText: props.route.params.dateText,
+					dateTextEnd: props.route.params.dateTextEnd,
+					information: props.route.params.information,
+				}}
+				name="BookOption"
+				component={BookOptions}
+			/>
 			<Stack.Screen name="ChoosePet" component={ChoosePetContainer} />
 			<Stack.Screen name="Payment" component={PaymentContainer} />
 			<Stack.Screen name="Congrats" component={CongratsContainer} />

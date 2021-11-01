@@ -42,6 +42,7 @@ export const MapListView = (props) => {
 									props.setCountry(item.id)
 									props.setLatitude(item.latitude)
 									props.setLongitude(item.longitude)
+									props.setInformation(item)
 								}}
 							>
 								<Text

@@ -58,7 +58,6 @@ export const MapListContainer = (props) => {
 		})
 	}
 	mapHotelsList()
-
 	return (
 		<MapListView
 			latitude={latitude}
@@ -72,6 +71,7 @@ export const MapListContainer = (props) => {
 			setCountry={setCountry}
 			showHotels={showHotels}
 			map={props.map}
+			setInformation={props.setInformation}
 		/>
 	)
 }
