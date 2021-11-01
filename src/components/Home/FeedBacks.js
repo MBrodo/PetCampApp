@@ -9,7 +9,14 @@ import { feedbacks } from './config'
 export const FeedBacks = ({ navigation }) => {
 	return (
 		<View style={styles.feedBackContainer}>
-			<Text style={styles.feedBackArticle}>FeedBacks</Text>
+			<View style={styles.feedBackHeader}>
+				<Text style={styles.feedBackArticle}>FeedBacks</Text>
+				<View style={styles.feedBackVotes}>
+					<Icon name="star" size={15} solid style={styles.feedBackStarIcon} />
+					<Text style={styles.feedBackVotesCounter}>4.9</Text>
+					<Text style={styles.feedbackText}>(543 votes)</Text>
+				</View>
+			</View>
 
 			{feedbacks.map((props) => (
 				<View key={props.key}>

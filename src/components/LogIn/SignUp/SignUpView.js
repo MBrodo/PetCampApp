@@ -9,11 +9,11 @@ export const SignUpView = (props) => {
 			<View style={styles.logInSection}>
 				<Text style={styles.logInTitle}>Sign Up</Text>
 				<View>
-					<Text style={styles.logInText}>Phone or e-mail</Text>
+					<Text style={styles.logInText}>phone or e-mail</Text>
 					<TextInput
 						style={styles.input}
 						onChangeText={props.loginChange}
-						placeholder="Text"
+						placeholder="Email or phone number"
 						autoCorrect={false}
 					/>
 				</View>
@@ -23,7 +23,7 @@ export const SignUpView = (props) => {
 						<TextInput
 							style={styles.passwordText}
 							onChangeText={props.passwordChange}
-							placeholder="12345678"
+							placeholder="Passrowd"
 							autoCorrect={false}
 							secureTextEntry={props.hidePass}
 						/>
