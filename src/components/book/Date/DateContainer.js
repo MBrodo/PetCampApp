@@ -9,12 +9,10 @@ export const DateContainer = (props) => {
 	const [date, setDate] = useState(new Date())
 	const [mode, setMode] = useState('date')
 	const [show, setShow] = useState(false)
-	// const [dateText, setDateText] = useState('dd/mm/yyyy')
 
 	const [dateEnd, setDateEnd] = useState(new Date())
 	const [modeEnd, setModeEnd] = useState('date')
 	const [showEnd, setShowEnd] = useState(false)
-	// const [dateTextEnd, setDateTextEnd] = useState('dd/mm/yyyy')
 
 	const onChangeEnd = (event, selectedDate) => {
 		const currentDate = selectedDate || dateEnd
@@ -23,7 +21,7 @@ export const DateContainer = (props) => {
 
 		let tempDateEnd = new Date(currentDate)
 		let showDateEnd =
-			tempDateEnd.getDate() + '/' + (tempDateEnd.getMonth() + 1) + '/' + tempDateEnd.getFullYear()
+			tempDateEnd.getFullYear() + '/' + (tempDateEnd.getMonth() + 1) + '/' + tempDate.getDate()
 		props.setDateTextEnd(showDateEnd)
 	}
 
@@ -43,7 +41,7 @@ export const DateContainer = (props) => {
 
 		let tempDate = new Date(currentDate)
 		let showDate =
-			tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear()
+			tempDate.getFullYear() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getDate()
 		props.setDateText(showDate)
 	}
 
@@ -61,6 +59,7 @@ export const DateContainer = (props) => {
 	const StartBookProcess = () => {
 		navigation.navigate('BookProcessNavigation')
 	}
+
 	return (
 		<DateView
 			StartBookProcess={StartBookProcess}

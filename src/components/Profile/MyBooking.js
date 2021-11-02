@@ -19,7 +19,7 @@ export const MyBooking = () => {
 			}
 		})
 	}, [])
-	console.log(bookingList)
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerHeader}>

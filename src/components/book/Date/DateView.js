@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 
 import { styles } from '../styles'
-import DateTimePicker from '@react-native-community/datetimepicker'
+import RNDateTimePicker from '@react-native-community/datetimepicker'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 
 export const DateView = (props) => {
@@ -30,10 +30,10 @@ export const DateView = (props) => {
 						<Icon name="calendar-alt" size={24} style={styles.dateIcon} />
 					</TouchableOpacity>
 				</View>
-
 				<View>
 					{props.show && (
-						<DateTimePicker
+						<RNDateTimePicker
+							minimumDate={new Date()}
 							testID="dateTimePicker"
 							value={props.date}
 							mode={props.mode}
@@ -44,7 +44,8 @@ export const DateView = (props) => {
 					)}
 
 					{props.showEnd && (
-						<DateTimePicker
+						<RNDateTimePicker
+							minimumDate={new Date()}
 							testID="dateTimePicker"
 							value={props.dateEnd}
 							mode={props.modeEnd}

@@ -10,13 +10,14 @@ export const PaymentContainer = (props) => {
 		navigation.navigate('Congrats')
 		SendBook()
 	}
+	console.log(props.route.params.dateText)
 	const SendBook = () => {
 		sendBookController(
 			'1a9ce77a-95c3-448d-83de-ec24fa64834c',
 			props.route.params.pet.id,
 			'3fca765e-3d50-4935-a36c-3e6eb1afa3f5',
-			'2035-11-01',
-			'2035-11-10',
+			props.route.params.dateText,
+			props.route.params.dateTextEnd,
 			true
 		).then((res) => {
 			if (res.status === 200) {

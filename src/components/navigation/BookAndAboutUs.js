@@ -11,8 +11,8 @@ const Stack = createStackNavigator()
 
 export const BookAndAboutUs = (props) => {
 	const [information, setInformation] = useState()
-	const [dateText, setDateText] = useState('dd/mm/yyyy')
-	const [dateTextEnd, setDateTextEnd] = useState('dd/mm/yyyy')
+	const [dateText, setDateText] = useState('yyyy/mm/dd')
+	const [dateTextEnd, setDateTextEnd] = useState('yyyy/mm/dd')
 	const [Quantity, setQuantity] = useState(false)
 	return (
 		<Stack.Navigator
