@@ -21,9 +21,9 @@ export const PaymentContainer = (props) => {
 			true
 		).then((res) => {
 			if (res.status === 200) {
-				Alert.alert('Successful')
+				console.log('success')
 			} else if (res.status === 401 || res.status === 400) {
-				Alert.alert('Fail Payment')
+				console.log('fail')
 			}
 		})
 	}
