@@ -2,7 +2,7 @@ import axios from 'axios'
 import URLS from '../authUrls'
 import { IP } from '../hostIP'
 
-const petListController = () =>
+const bookList = () =>
 	new Promise((resolve) => {
 		axios
 			.get(`http:/${IP.HOST}${URLS.PET_LIST}`)
@@ -10,4 +10,4 @@ const petListController = () =>
 			.catch((e) => resolve(e.response))
 	})
 
-export default petListController
+export default bookList

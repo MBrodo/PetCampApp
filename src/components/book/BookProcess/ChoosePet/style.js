@@ -8,6 +8,14 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 	},
+	articelContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+	},
+	goBackButtonContainer: {
+		flexDirection: 'row',
+	},
 	localStepsContainer: {
 		flexDirection: 'row',
 		alignItems: 'center',

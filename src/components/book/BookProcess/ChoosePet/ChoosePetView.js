@@ -24,7 +24,7 @@ export const ChoosePetView = (props) => {
 
 			<View style={styles.UnLoggedBookContainer}>
 				<View style={styles.UnLoggedInsideBookContainer}>
-					<View>
+					<View style={styles.articelContainer}>
 						<Text style={styles.bookArticle}>My pets</Text>
 					</View>
 					<View>{props.petList.map((item) => props.myPetBlock(item))}</View>

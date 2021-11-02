@@ -80,6 +80,7 @@ export const ChoosePetContainer = (props) => {
 		petListController().then((res) => {
 			if (res.status === 200) {
 				dispatch(setPets(res.data.petsInfo))
+				console.log(res.data.petsInfo)
 			} else {
 				console.log('Some trouble with server!')
 			}

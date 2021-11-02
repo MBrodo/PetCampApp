@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Text, View } from 'react-native'
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
+import bookList from '../../controllers/authorization/BookListController'
+import { useSelector, useDispatch } from 'react-redux'
+import { setBook } from '../../redux/slices/bookSlice'
 
 export const MyBooking = () => {
+	const bookingList = useSelector((state) => state.book.book)
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		bookList().then((res) => {
+			if (res.status === 200) {
+				dispatch(setBook(res.data.bookingsInfo))
+			} else {
+				console.log('Some trouble with server!')
+			}
+		})
+	}, [])
+	console.log(bookingList)
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerHeader}>
@@ -13,48 +29,33 @@ export const MyBooking = () => {
 					<Icon style={styles.containerLinkIcon} name="arrow-right" size={15} />
 				</View>
 			</View>
-			<View style={styles.containerMain}>
-				<View style={styles.containerElement}>
-					<View style={styles.elementMain}>
-						<View style={styles.elementFloorAlt}>
-							<View style={styles.elementInfoAlt}>
-								<Text>Pet</Text>
-								<Text style={styles.elementText}>Milo</Text>
-							</View>
-							<View style={styles.elementInfoAlt}>
-								<Text>Adderss</Text>
-								<Text style={styles.elementText}>Minsk...</Text>
-							</View>
-						</View>
-						<View style={styles.elementFloorAlt}>
-							<View style={styles.elementInfoDate}>
-								<Text>Date</Text>
-								<Text style={styles.elementText}>11.09.2021 - 18.09.2021</Text>
-							</View>
-						</View>
-					</View>
-				</View>
-				<View style={styles.borderLine} />
-				<View style={styles.containerElement}>
-					<View style={styles.elementMain}>
-						<View style={styles.elementFloorAlt}>
-							<View style={styles.elementInfoAlt}>
-								<Text>Pet</Text>
-								<Text style={styles.elementText}>Milo</Text>
-							</View>
-							<View style={styles.elementInfoAlt}>
-								<Text>Address</Text>
-								<Text style={styles.elementText}>Minsk...</Text>
-							</View>
-						</View>
-						<View style={styles.elementFloorAlt}>
-							<View style={styles.elementInfoDate}>
-								<Text>Date</Text>
-								<Text style={styles.elementText}>01.10.2021 - 18.10.2021</Text>
+			<View>
+				{bookingList.map((item) => (
+					<View key={item.id} style={styles.containerMain}>
+						<View style={styles.containerElement}>
+							<View style={styles.elementMain}>
+								<View style={styles.elementFloorAlt}>
+									<View style={styles.elementInfoAlt}>
+										<Text>Pet</Text>
+										<Text style={styles.elementText}>{item.name}</Text>
+									</View>
+									<View style={styles.elementInfoAlt}>
+										<Text>Adderss</Text>
+										<Text style={styles.elementText}>{item.street}</Text>
+									</View>
+								</View>
+								<View style={styles.elementFloorAlt}>
+									<View style={styles.elementInfoDate}>
+										<Text>Date</Text>
+										<Text style={styles.elementText}>
+											{item.booking_start.substring(10, 0)} - {item.booking_end.substring(10, 0)}
+										</Text>
+									</View>
+								</View>
 							</View>
 						</View>
 					</View>
-				</View>
+				))}
 			</View>
 		</View>
 	)
