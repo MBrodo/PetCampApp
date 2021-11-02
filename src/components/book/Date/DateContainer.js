@@ -21,7 +21,7 @@ export const DateContainer = (props) => {
 
 		let tempDateEnd = new Date(currentDate)
 		let showDateEnd =
-			tempDateEnd.getFullYear() + '/' + (tempDateEnd.getMonth() + 1) + '/' + tempDate.getDate()
+			tempDateEnd.getFullYear() + '/' + (tempDateEnd.getMonth() + 1) + '/' + tempDateEnd.getDate()
 		props.setDateTextEnd(showDateEnd)
 	}
 
