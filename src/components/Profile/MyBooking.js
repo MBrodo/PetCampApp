@@ -10,7 +10,7 @@ export const MyBooking = () => {
 	const bookingList = useSelector((state) => state.book.book)
 	const dispatch = useDispatch()
 
-	useEffect(() => {
+	const getMyBooks = () => {
 		bookList().then((res) => {
 			if (res.status === 200) {
 				dispatch(setBook(res.data.bookingsInfo))
@@ -18,7 +18,8 @@ export const MyBooking = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [])
+	}
+	getMyBooks()
 
 	return (
 		<View style={styles.container}>
