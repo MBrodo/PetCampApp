@@ -7,8 +7,6 @@ import { CheckBox } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
 
 import { useSelector, useDispatch } from 'react-redux'
-import petListController from '../../../../controllers/authorization/petListController'
-import { setPets } from '../../../../redux/slices/petListSlice'
 
 export const ChoosePetContainer = (props) => {
 	const myPets = [
@@ -74,19 +72,6 @@ export const ChoosePetContainer = (props) => {
 	const [pickPet, setPickPet] = useState(false)
 
 	const petList = useSelector((state) => state.pets.pets)
-	const userID = useSelector((state) => state.user.user)
-
-	const dispatch = useDispatch()
-
-	useEffect(() => {
-		petListController(userID).then((res) => {
-			if (res.status === 200) {
-				dispatch(setPets(res.data.petsList))
-			} else {
-				console.log('Some trouble with server!')
-			}
-		})
-	}, [])
 
 	return (
 		<ChoosePetView

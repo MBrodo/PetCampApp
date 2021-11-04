@@ -3,9 +3,9 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import { LogIn } from '../LogIn/LogIn'
 import { ProfileSettingsContainer } from '../Profile/ProfileInfo/profileSettings/ProfileSettingsContainer'
-import { MyPetsContainer } from '../Profile/ProfileInfo/myPets/MyPetsContainer'
-import { MyBookingContainer } from '../Profile/ProfileInfo/myBooking/MyBookingContainer'
-import { MyReportsContainer } from '../Profile/ProfileInfo/myReports/MyReportsContainer'
+import { MyPetsListContainer } from '../Profile/ProfileInfo/myPets/MyPetsListContainer'
+import { MyBookingListContainer } from '../Profile/ProfileInfo/myBooking/MyBookingListContainer'
+import { MyReportsListContainer } from '../Profile/ProfileInfo/myReports/MyReportsListContainer'
 
 const Stack = createStackNavigator()
 
@@ -21,9 +21,9 @@ export const MyProfileStackNavigation = (props) => {
 				{() => <LogIn authenticate={props.authenticate} setAuthenticate={props.setAuthenticate} />}
 			</Stack.Screen>
 			<Stack.Screen name="ProfileSettingsContainer" component={ProfileSettingsContainer} />
-			<Stack.Screen name="MyPetsContainer" component={MyPetsContainer} />
-			<Stack.Screen name="MyBookingContainer" component={MyBookingContainer} />
-			<Stack.Screen name="MyReportsContainer" component={MyReportsContainer} />
+			<Stack.Screen name="MyPetsContainer" component={MyPetsListContainer} />
+			<Stack.Screen name="MyBookingContainer" component={MyBookingListContainer} />
+			<Stack.Screen name="MyReportsContainer" component={MyReportsListContainer} />
 		</Stack.Navigator>
 	)
 }

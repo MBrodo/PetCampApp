@@ -1,10 +1,10 @@
 import React from 'react'
 import { View } from 'react-native'
 
-export const MyReportsView = () => {
+export const MyBookingListView = () => {
 	return (
 		<View>
-			<Text>MyReportsView</Text>
+			<Text>MyBookingListView</Text>
 		</View>
 	)
 }

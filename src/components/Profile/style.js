@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
 	wrapper: {
-		backgroundColor: 'rgba(79,160,146, 0.2)',
+		backgroundColor: 'rgba(60, 176, 157, 0.1)',
 		width: '100%',
 		height: 1200,
 		alignItems: 'center',
@@ -67,11 +67,17 @@ export const styles = StyleSheet.create({
 		color: '#5D5FEF',
 		marginLeft: 10,
 	},
-	containerMain: {},
 	containerElement: {
-		height: 110,
+		height: 120,
 		paddingVertical: 10,
 		flexDirection: 'row',
+		borderBottomWidth: 1,
+		borderBottomColor: '#DFDFDF',
+	},
+	containerWrapper: {
+		paddingVertical: 10,
+		flexDirection: 'row',
+		paddingBottom: 10,
 	},
 	petPic: {
 		height: 50,

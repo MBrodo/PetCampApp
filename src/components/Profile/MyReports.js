@@ -44,34 +44,31 @@ export const MyReports = () => {
 						</View>
 					</View>
 				</View>
-				<View style={styles.borderLine} />
 				<View style={styles.containerElement}>
-					<View style={styles.containerElement}>
-						<View>
-							<Image source={images.dog} style={styles.petPic} />
-							<Icon style={styles.myReportsIcon} name="paw" size={20} />
-							<Icon style={styles.myReportsCamera} name="camera" size={20} />
-						</View>
-						<View style={styles.elementMain}>
-							<View style={styles.elementFloor}>
-								<View style={styles.elementInfo}>
-									<Text>Date</Text>
-									<Text style={styles.elementText}>Milo</Text>
-								</View>
-								<View style={styles.elementInfo}>
-									<Text>Booking №</Text>
-									<Text style={styles.elementText}>1000</Text>
-								</View>
+					<View>
+						<Image source={images.dog} style={styles.petPic} />
+						<Icon style={styles.myReportsIcon} name="paw" size={20} />
+						<Icon style={styles.myReportsCamera} name="camera" size={20} />
+					</View>
+					<View style={styles.elementMain}>
+						<View style={styles.elementFloor}>
+							<View style={styles.elementInfo}>
+								<Text>Date</Text>
+								<Text style={styles.elementText}>Milo</Text>
 							</View>
-							<View style={styles.elementFloor}>
-								<View style={styles.elementInfo}>
-									<Text>Manager</Text>
-									<Text style={styles.elementText}>Alex Gurbo</Text>
-								</View>
-								<View style={styles.elementInfo}>
-									<Text>Date</Text>
-									<Text style={styles.elementText}>10.08.2021</Text>
-								</View>
+							<View style={styles.elementInfo}>
+								<Text>Booking №</Text>
+								<Text style={styles.elementText}>1000</Text>
+							</View>
+						</View>
+						<View style={styles.elementFloor}>
+							<View style={styles.elementInfo}>
+								<Text>Manager</Text>
+								<Text style={styles.elementText}>Alex Gurbo</Text>
+							</View>
+							<View style={styles.elementInfo}>
+								<Text>Date</Text>
+								<Text style={styles.elementText}>10.08.2021</Text>
 							</View>
 						</View>
 					</View>

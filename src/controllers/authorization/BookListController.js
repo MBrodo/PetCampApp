@@ -5,7 +5,7 @@ import { IP } from '../hostIP'
 const bookList = (id) =>
 	new Promise((resolve) => {
 		axios
-			.get(`http:/${IP.HOST}${URLS.BOOK_LIST}/${id}`)
+			.get(`http:/${IP.HOST}${URLS.PET_LIST}/${id}`)
 			.then((response) => resolve(response))
 			.catch((e) => resolve(e.response))
 	})
