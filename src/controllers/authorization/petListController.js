@@ -2,10 +2,10 @@ import axios from 'axios'
 import URLS from '../authUrls'
 import { IP } from '../hostIP'
 
-const petListController = () =>
+const petListController = (id) =>
 	new Promise((resolve) => {
 		axios
-			.get(`http:/${IP.HOST}${URLS.PET_LIST}`)
+			.get(`http:/${IP.HOST}${URLS.PET_LIST}/${id}`)
 			.then((response) => resolve(response))
 			.catch((e) => resolve(e.response))
 	})

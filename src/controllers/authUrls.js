@@ -3,7 +3,8 @@ const URLS = {
 	SIGN_UP: '/auth/registration',
 	MAP_LIST: '/client/petCamps',
 	SEND_BOOK: '/client/bookings',
-	PET_LIST: '/client/clientProfileInfo/1a9ce77a-95c3-448d-83de-ec24fa64834c',
+	PET_LIST: '/client/pets',
+	BOOK_LIST: '/client/clientProfileInfo',
 }
 
 export default URLS

@@ -74,13 +74,14 @@ export const ChoosePetContainer = (props) => {
 	const [pickPet, setPickPet] = useState(false)
 
 	const petList = useSelector((state) => state.pets.pets)
+	const userID = useSelector((state) => state.user.user)
+
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		petListController().then((res) => {
+		petListController(userID).then((res) => {
 			if (res.status === 200) {
-				dispatch(setPets(res.data.petsInfo))
-				console.log(res.data.petsInfo)
+				dispatch(setPets(res.data.petsList))
 			} else {
 				console.log('Some trouble with server!')
 			}

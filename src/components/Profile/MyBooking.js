@@ -9,9 +9,10 @@ import { setBook } from '../../redux/slices/bookSlice'
 export const MyBooking = () => {
 	const bookingList = useSelector((state) => state.book.book)
 	const dispatch = useDispatch()
+	const userID = useSelector((state) => state.user.user)
 
 	const getMyBooks = () => {
-		bookList().then((res) => {
+		bookList(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setBook(res.data.bookingsInfo))
 			} else {

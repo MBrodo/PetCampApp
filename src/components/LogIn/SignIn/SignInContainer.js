@@ -3,6 +3,8 @@ import { Alert } from 'react-native'
 
 import loginController from '../../../controllers/authorization/loginController'
 import EncryptedStorage from 'react-native-encrypted-storage'
+import { setUser } from '../../../redux/slices/userSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { SignInView } from './SignInView'
 
@@ -23,18 +25,23 @@ export const SignInContainer = (props) => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
+	const user = useSelector((state) => state.user.user)
+	const dispatch = useDispatch()
+
 	const SignInSubmit = () => {
 		loginController(email, password, 1).then((res) => {
 			if (res.status === 200) {
 				setPassword('0')
 				Alert.alert('Welcome to the Pet Camp!')
 				storeUserSession(res)
+				dispatch(setUser(res.data.id))
 				props.setAuthenticate(true)
 			} else if (res.status === 401 || res.status === 400) {
 				Alert.alert('Login or password is incorrect')
 			}
 		})
 	}
+	console.log(user)
 
 	return (
 		<SignInView
