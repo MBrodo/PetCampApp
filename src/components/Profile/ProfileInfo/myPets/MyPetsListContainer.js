@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MyPetsListView } from './MyPetsListView'
 import { View, Text, Image, Pressable, TextInput } from 'react-native'
 import { styles } from './style'
-import { useSelector } from 'react-redux'
+
+import { useSelector, useDispatch } from 'react-redux'
+import fullpetListController from '../../../../controllers/authorization/fullPetListController'
+import { setPetsList } from '../../../../redux/slices/fullPetsSlice'
 
 export const MyPetsListContainer = () => {
 	const petsCards = (item) => (
@@ -48,7 +51,19 @@ export const MyPetsListContainer = () => {
 			</View>
 		</View>
 	)
-	const pets = useSelector((state) => state.pets.pets)
+	const dispatch = useDispatch()
+	const userID = useSelector((state) => state.user.user)
+
+	useEffect(() => {
+		fullpetListController(userID).then((res) => {
+			if (res.status === 200) {
+				dispatch(setPetsList(res.data.petsList))
+			} else {
+				console.log('Some trouble with server!')
+			}
+		})
+	}, [])
+	const pets = useSelector((state) => state.petsList.petsList)
 
 	return <MyPetsListView pets={pets} petsCards={petsCards} />
 }

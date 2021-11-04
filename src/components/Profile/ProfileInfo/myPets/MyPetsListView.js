@@ -5,10 +5,10 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 
 export const MyPetsListView = (props) => {
 	return (
-		<ScrollView showsHorizontalScrollIndicator={false}>
+		<ScrollView style={styles.mainScroll} showsHorizontalScrollIndicator={false}>
 			<View style={styles.mainBlock}>
 				{props.pets.map((item) => props.petsCards(item))}
-				<View style={styles.cardContainer}>
+				<View style={styles.addCardContainer}>
 					<View style={styles.addPetContainer}>
 						<Pressable style={styles.addPetButton}>
 							<Icon name="plus" size={50} style={styles.addPetIcon} />

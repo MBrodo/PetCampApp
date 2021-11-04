@@ -1,17 +1,36 @@
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
+	mainScroll: {
+		backgroundColor: 'rgba(60, 176, 157, 0.1)',
+	},
 	mainBlock: {
 		height: '100%',
 		alignItems: 'center',
 		justifyContent: 'center',
-		backgroundColor: 'rgba(60, 176, 157, 0.1)',
 	},
 	cardContainer: {
 		width: 250,
 		alignItems: 'center',
 		justifyContent: 'center',
 		marginVertical: 20,
+		borderRadius: 5,
+		backgroundColor: 'white',
+		shadowColor: '#000',
+		shadowOffset: {
+			width: 0,
+			height: 3,
+		},
+		shadowOpacity: 0.27,
+		shadowRadius: 4.65,
+		elevation: 6,
+	},
+	addCardContainer: {
+		width: 250,
+		marginTop: 20,
+		marginBottom: 40,
+		alignItems: 'center',
+		justifyContent: 'center',
 		borderRadius: 5,
 		backgroundColor: 'white',
 		shadowColor: '#000',

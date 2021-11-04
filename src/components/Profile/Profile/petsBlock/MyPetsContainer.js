@@ -4,7 +4,7 @@ import { styles } from '../../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import images from '../../MyProfile'
 import { useSelector, useDispatch } from 'react-redux'
-import petListController from '../../../../controllers/authorization/petListController'
+import bookList from '../../../../controllers/authorization/BookListController'
 import { setPets } from '../../../../redux/slices/petListSlice'
 
 import { MyPets } from './MyPetsView'
@@ -15,7 +15,7 @@ export const MyPetsContainer = () => {
 	const userID = useSelector((state) => state.user.user)
 
 	useEffect(() => {
-		petListController(userID).then((res) => {
+		bookList(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setPets(res.data.petsInfo))
 			} else {
@@ -24,7 +24,6 @@ export const MyPetsContainer = () => {
 		})
 	}, [])
 	const pets = useSelector((state) => state.pets.pets)
-	console.log(pets)
 	const petList = (item) => (
 		<View key={item.id} style={styles.containerElement}>
 			<View style={styles.containerWrapper}>

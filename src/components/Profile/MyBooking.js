@@ -11,7 +11,7 @@ export const MyBooking = () => {
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.user)
 
-	const getMyBooks = () => {
+	useEffect(() => {
 		bookList(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setBook(res.data.bookingsInfo))
@@ -19,8 +19,7 @@ export const MyBooking = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}
-	getMyBooks()
+	}, [])
 
 	return (
 		<View style={styles.container}>

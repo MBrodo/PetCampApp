@@ -10,7 +10,6 @@ export const PaymentContainer = (props) => {
 		navigation.navigate('Congrats')
 		SendBook()
 	}
-	console.log(props.route.params.dateText)
 	const SendBook = () => {
 		sendBookController(
 			'1a9ce77a-95c3-448d-83de-ec24fa64834c',
