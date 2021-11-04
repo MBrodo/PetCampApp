@@ -41,7 +41,6 @@ export const SignInContainer = (props) => {
 			}
 		})
 	}
-	console.log(user)
 
 	return (
 		<SignInView

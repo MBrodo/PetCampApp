@@ -7,10 +7,10 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { View, TouchableWithoutFeedback, Text } from 'react-native'
 
 import { PriceList } from '../PriceList'
-import { LogIn } from '../LogIn/LogIn'
 import { Search } from '../Search'
 import { Contacts } from '../Contacts'
 import { BookAndAboutUs } from './BookAndAboutUs'
+import { MyProfileStackNavigation } from './MyProfileStackNavigation'
 import { styles } from '../../screens/styles'
 
 const Tab = createBottomTabNavigator()
@@ -82,7 +82,9 @@ export function TabNavigation({ navigation }) {
 			</Tab.Screen>
 			<Tab.Screen name="Contacts" component={Contacts} />
 			<Tab.Screen name="LogIn">
-				{() => <LogIn authenticate={authenticate} setAuthenticate={setAuthenticate} />}
+				{() => (
+					<MyProfileStackNavigation authenticate={authenticate} setAuthenticate={setAuthenticate} />
+				)}
 			</Tab.Screen>
 		</Tab.Navigator>
 	)
