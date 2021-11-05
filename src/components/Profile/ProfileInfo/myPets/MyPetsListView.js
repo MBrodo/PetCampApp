@@ -10,7 +10,7 @@ export const MyPetsListView = (props) => {
 				{props.pets.map((item) => props.petsCards(item))}
 				<View style={styles.addCardContainer}>
 					<View style={styles.addPetContainer}>
-						<Pressable style={styles.addPetButton}>
+						<Pressable onPress={() => props.addButton()} style={styles.addPetButton}>
 							<Icon name="plus" size={50} style={styles.addPetIcon} />
 						</Pressable>
 						<Text style={styles.addPetText}>Add a pet</Text>

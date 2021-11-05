@@ -22,7 +22,8 @@ export const MyPetsContainer = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [])
+	}, [pets])
+
 	const pets = useSelector((state) => state.pets.pets)
 	const petList = (item) => (
 		<View key={item.id} style={styles.containerElement}>

@@ -3,16 +3,11 @@ import React, { useState, useEffect } from 'react'
 import { ChoosePetView } from './ChoosePetView'
 import { Text, View, Image, Pressable } from 'react-native'
 import { styles } from './style'
-import { CheckBox } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 export const ChoosePetContainer = (props) => {
-	const myPets = [
-		{ type: 'Cat', name: 'Felix', age: 10, img: require('../../../../img/myPet.png'), key: 1 },
-		{ type: 'Cat', name: 'Richard', age: 6, img: require('../../../../img/myPet.png'), key: 2 },
-	]
 	const [checkChoice, setCheckChoice] = useState(false)
 	const [pet, setPet] = useState()
 	const myPetBlock = (item) => {
@@ -69,9 +64,7 @@ export const ChoosePetContainer = (props) => {
 		})
 	}
 
-	const [pickPet, setPickPet] = useState(false)
-
-	const petList = useSelector((state) => state.pets.pets)
+	const petList = useSelector((state) => state.petsList.petsList)
 
 	return (
 		<ChoosePetView
@@ -81,7 +74,6 @@ export const ChoosePetContainer = (props) => {
 			petList={petList}
 			secondStep={thirdStep}
 			myPetBlock={myPetBlock}
-			myPets={myPets}
 		/>
 	)
 }

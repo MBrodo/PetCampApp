@@ -31,6 +31,8 @@ export const Book = (props) => {
 					setMap={setMap}
 				/>
 				<DateContainer
+					setEndDate={props.setEndDate}
+					setStartDate={props.setStartDate}
 					dateText={props.dateText}
 					setDateText={props.setDateText}
 					dateTextEnd={props.dateTextEnd}

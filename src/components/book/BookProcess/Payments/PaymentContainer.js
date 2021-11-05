@@ -1,7 +1,6 @@
 import React from 'react'
 import { PaymentView } from './PaymentView'
 import { useNavigation } from '@react-navigation/native'
-import { Alert } from 'react-native'
 import sendBookController from '../../../../controllers/authorization/sendBookController'
 
 export const PaymentContainer = (props) => {

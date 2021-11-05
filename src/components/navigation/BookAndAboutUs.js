@@ -14,6 +14,14 @@ export const BookAndAboutUs = (props) => {
 	const [dateText, setDateText] = useState('yyyy/mm/dd')
 	const [dateTextEnd, setDateTextEnd] = useState('yyyy/mm/dd')
 	const [Quantity, setQuantity] = useState(false)
+	const [startDate, setStartDate] = useState()
+	const [endDate, setEndDate] = useState()
+
+	const [totalDates, setTotalDates] = useState()
+	console.log(startDate - endDate)
+	const totalDays = () => {
+		setTotalDates(endDate - startDate)
+	}
 	return (
 		<Stack.Navigator
 			initialRouteName={'Home'}
@@ -29,6 +37,8 @@ export const BookAndAboutUs = (props) => {
 			<Stack.Screen name="Bookpage">
 				{() => (
 					<Book
+						setStartDate={setStartDate}
+						setEndDate={setEndDate}
 						setQuantity={setQuantity}
 						dateText={dateText}
 						setDateText={setDateText}
