@@ -17,9 +17,7 @@ export const MyProfileStackNavigation = (props) => {
 			}}
 			initialRouteName={'signIn'}
 		>
-			<Stack.Screen name="signIn">
-				{() => <LogIn authenticate={props.authenticate} setAuthenticate={props.setAuthenticate} />}
-			</Stack.Screen>
+			<Stack.Screen name="signIn">{() => <LogIn />}</Stack.Screen>
 			<Stack.Screen name="ProfileSettingsContainer" component={ProfileSettingsContainer} />
 			<Stack.Screen name="MyPetsContainer" component={MyPetsListContainer} />
 			<Stack.Screen name="AddMyPet" component={AddMyPetContainer} />
