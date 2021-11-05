@@ -1,3 +1,3 @@
 export const IP = {
-	HOST: '/192.168.48.161',
+	HOST: 'https://backend-pet-camp.herokuapp.com',
 }
