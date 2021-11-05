@@ -3,11 +3,34 @@ import { View, Text, Image, Pressable, TextInput } from 'react-native'
 import { AddMyPetView } from './AddMyPetView'
 import { PetCard } from '../../../../common/layouts/PetCard'
 import { styles } from './style'
-import CheckBox from '@react-native-community/checkbox'
 import { useNavigation } from '@react-navigation/native'
+import { CheckBoxView } from '../../../../common/checkBoxes/checkBox'
 
 export const AddMyPetContainer = () => {
-	const [toggleCheckBox, setToggleCheckBox] = useState(false)
+	const [dog, setDog] = useState(true)
+	const [cat, setCat] = useState(false)
+
+	const checkPetState = () => {
+		setDog(dog == false ? true : false)
+		setCat(cat == false ? true : false)
+	}
+
+	const [male, setMale] = useState(true)
+	const [female, setFemale] = useState(false)
+
+	const checkGenderState = () => {
+		setMale(male == false ? true : false)
+		setFemale(female == false ? true : false)
+	}
+
+	const [sterilizedPositive, setSterilizedPositive] = useState(true)
+	const [sterilizedNegative, setSterilizedNegative] = useState(false)
+
+	const checkSterilizedState = () => {
+		setSterilizedPositive(sterilizedPositive == false ? true : false)
+		setSterilizedNegative(sterilizedNegative == false ? true : false)
+	}
+
 	const navigation = useNavigation()
 	const addCardView = () => (
 		<View style={styles.wrapper}>
@@ -19,22 +42,12 @@ export const AddMyPetContainer = () => {
 				<Text>Cat/Dog:</Text>
 				<View style={styles.checkboxMainContainer}>
 					<View style={styles.checkboxContainer}>
-						<CheckBox
-							style={styles.checkBox}
-							disabled={false}
-							value={toggleCheckBox}
-							onValueChange={(newValue) => setToggleCheckBox(newValue)}
-						/>
+						<CheckBoxView checkState={checkPetState} toggleCheckBox={dog} />
 						<Text style={styles.checkBoxText}>Dog</Text>
 					</View>
 					<View style={styles.checkboxContainer}>
-						<CheckBox
-							style={styles.checkBox}
-							disabled={false}
-							value={toggleCheckBox}
-							onValueChange={(newValue) => setToggleCheckBox(newValue)}
-						/>
-						<Text style={styles.checkBoxText}>Dog</Text>
+						<CheckBoxView checkState={checkPetState} toggleCheckBox={cat} />
+						<Text style={styles.checkBoxText}>Cat</Text>
 					</View>
 				</View>
 			</View>
@@ -46,21 +59,11 @@ export const AddMyPetContainer = () => {
 				<Text>Gender:</Text>
 				<View style={styles.checkboxMainContainer}>
 					<View style={styles.checkboxContainer}>
-						<CheckBox
-							style={styles.checkBox}
-							disabled={false}
-							value={toggleCheckBox}
-							onValueChange={(newValue) => setToggleCheckBox(newValue)}
-						/>
+						<CheckBoxView checkState={checkGenderState} toggleCheckBox={female} />
 						<Text style={styles.checkBoxText}>female</Text>
 					</View>
 					<View style={styles.checkboxContainer}>
-						<CheckBox
-							style={styles.checkBox}
-							disabled={false}
-							value={toggleCheckBox}
-							onValueChange={(newValue) => setToggleCheckBox(newValue)}
-						/>
+						<CheckBoxView checkState={checkGenderState} toggleCheckBox={male} />
 						<Text style={styles.checkBoxText}>male</Text>
 					</View>
 				</View>
@@ -74,21 +77,11 @@ export const AddMyPetContainer = () => {
 				<Text>Sterilized:</Text>
 				<View style={styles.checkboxMainContainer}>
 					<View style={styles.checkboxContainer}>
-						<CheckBox
-							style={styles.checkBox}
-							disabled={false}
-							value={toggleCheckBox}
-							onValueChange={(newValue) => setToggleCheckBox(newValue)}
-						/>
+						<CheckBoxView checkState={checkSterilizedState} toggleCheckBox={sterilizedPositive} />
 						<Text style={styles.checkBoxText}>yes</Text>
 					</View>
 					<View style={styles.checkboxContainer}>
-						<CheckBox
-							style={styles.checkBox}
-							disabled={false}
-							value={toggleCheckBox}
-							onValueChange={(newValue) => setToggleCheckBox(newValue)}
-						/>
+						<CheckBoxView checkState={checkSterilizedState} toggleCheckBox={sterilizedNegative} />
 						<Text style={styles.checkBoxText}>no</Text>
 					</View>
 				</View>

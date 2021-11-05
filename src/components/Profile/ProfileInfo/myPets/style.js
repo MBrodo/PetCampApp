@@ -114,4 +114,9 @@ export const styles = StyleSheet.create({
 		fontSize: 20,
 		color: 'black',
 	},
+	individualNoticeInput: {
+		borderWidth: 1,
+		borderRadius: 5,
+		marginVertical: 10,
+	},
 })

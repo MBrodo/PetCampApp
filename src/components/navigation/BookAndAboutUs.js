@@ -11,11 +11,11 @@ const Stack = createStackNavigator()
 
 export const BookAndAboutUs = (props) => {
 	const [information, setInformation] = useState()
-	const [dateText, setDateText] = useState('yyyy/mm/dd')
-	const [dateTextEnd, setDateTextEnd] = useState('yyyy/mm/dd')
+	const [startDate, setStartDate] = useState('yyyy/mm/dd')
+	const [endDate, setEndDate] = useState('yyyy/mm/dd')
 	const [Quantity, setQuantity] = useState(false)
-	const [startDate, setStartDate] = useState()
-	const [endDate, setEndDate] = useState()
+	const [startDay, setStartDay] = useState()
+	const [endDay, setEndDay] = useState()
 
 	const [totalDates, setTotalDates] = useState()
 	console.log(startDate - endDate)
@@ -37,13 +37,13 @@ export const BookAndAboutUs = (props) => {
 			<Stack.Screen name="Bookpage">
 				{() => (
 					<Book
-						setStartDate={setStartDate}
-						setEndDate={setEndDate}
+						setStartDate={setStartDay}
+						setEndDate={setEndDay}
 						setQuantity={setQuantity}
-						dateText={dateText}
-						setDateText={setDateText}
-						dateTextEnd={dateTextEnd}
-						setDateTextEnd={setDateTextEnd}
+						dateText={startDate}
+						setDateText={setStartDate}
+						dateTextEnd={endDate}
+						setDateTextEnd={setEndDate}
 						information={information}
 						setInformation={setInformation}
 					/>
@@ -53,8 +53,8 @@ export const BookAndAboutUs = (props) => {
 				{() => (
 					<BookProcessNavigation
 						Quantity={Quantity}
-						dateText={dateText}
-						dateTextEnd={dateTextEnd}
+						dateText={startDate}
+						dateTextEnd={endDate}
 						information={information}
 						setInformation={setInformation}
 						authenticate={props.authenticate}
