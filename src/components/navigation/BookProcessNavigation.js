@@ -23,7 +23,6 @@ export const BookProcessNavigation = (props) => {
 						information={props.information}
 						dateTextEnd={props.dateTextEnd}
 						dateText={props.dateText}
-						authenticate={props.authenticate}
 					/>
 				)}
 			</Stack.Screen>

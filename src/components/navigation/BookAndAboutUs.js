@@ -57,7 +57,6 @@ export const BookAndAboutUs = (props) => {
 						dateTextEnd={endDate}
 						information={information}
 						setInformation={setInformation}
-						authenticate={props.authenticate}
 					/>
 				)}
 			</Stack.Screen>
