@@ -6,6 +6,8 @@ import images from '../../MyProfile'
 import { useSelector, useDispatch } from 'react-redux'
 import bookList from '../../../../controllers/authorization/BookListController'
 import { setPets } from '../../../../redux/slices/petListSlice'
+import fullpetListController from '../../../../controllers/authorization/fullPetListController'
+import { setPetsList } from '../../../../redux/slices/fullPetsSlice'
 
 import { MyPets } from './MyPetsView'
 import { useNavigation } from '@react-navigation/native'
@@ -13,6 +15,16 @@ import { useNavigation } from '@react-navigation/native'
 export const MyPetsContainer = () => {
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.user)
+
+	useEffect(() => {
+		fullpetListController(userID).then((res) => {
+			if (res.status === 200) {
+				dispatch(setPetsList(res.data.petsList))
+			} else {
+				console.log('Some trouble with server!')
+			}
+		})
+	}, [])
 
 	useEffect(() => {
 		bookList(userID).then((res) => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, View, ScrollView, Pressable, Image } from 'react-native'
 import { styles } from './style'
+import { BookPetInfo } from '../../../../common/petInfo/BookPetInfo'
 
 export const PaymentView = (props) => {
 	return (
@@ -32,24 +33,12 @@ export const PaymentView = (props) => {
 						<View>
 							<View style={styles.myPetOptionsContainer}>
 								<View style={styles.genderOptionsContainer}>
-									<View style={styles.optionsContainer}>
-										<Text style={styles.optionArticle}>Cat/Dog</Text>
-										<Text style={styles.optionName}>{props.pet.type}</Text>
-									</View>
-									<View style={styles.optionsContainer}>
-										<Text style={styles.optionArticle}>Gender</Text>
-										<Text style={styles.optionName}>{props.pet.gender}</Text>
-									</View>
+									<BookPetInfo title={'Cat/Dog:'} item={props.pet.type} />
+									<BookPetInfo title={'Gender:'} item={props.pet.gender} />
 								</View>
 								<View style={styles.genderOptionsContainer}>
-									<View style={styles.optionsContainer}>
-										<Text style={styles.optionArticle}>Name</Text>
-										<Text style={styles.optionName}>{props.pet.name}</Text>
-									</View>
-									<View style={styles.optionsContainer}>
-										<Text style={styles.optionArticle}>Age</Text>
-										<Text style={styles.optionName}>{props.pet.age} years</Text>
-									</View>
+									<BookPetInfo title={'Name:'} item={props.pet.name} />
+									<BookPetInfo title={'Age:'} item={props.pet.age} />
 								</View>
 							</View>
 							<View style={styles.bookingDates}>
@@ -59,14 +48,8 @@ export const PaymentView = (props) => {
 								</Text>
 							</View>
 							<View style={styles.bookingPaymentsInfo}>
-								<View style={styles.optionsContainer}>
-									<Text style={styles.optionArticle}>Room</Text>
-									<Text style={styles.optionName}>Room №1</Text>
-								</View>
-								<View style={styles.optionsContainer}>
-									<Text style={styles.optionArticle}>PRICE</Text>
-									<Text style={styles.optionName}>$ {props.totalPrice}</Text>
-								</View>
+								<BookPetInfo title={'Room:'} item={'Room №1'} />
+								<BookPetInfo title={'PRICE:'} item={`$ ${props.totalPrice}`} />
 							</View>
 						</View>
 					</View>

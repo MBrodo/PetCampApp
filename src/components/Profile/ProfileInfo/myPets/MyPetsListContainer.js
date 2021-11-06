@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { MyPetsListView } from './MyPetsListView'
 import { View, Text, Image, Pressable, TextInput } from 'react-native'
 import { styles } from './style'
 
-import { useSelector, useDispatch } from 'react-redux'
-import fullpetListController from '../../../../controllers/authorization/fullPetListController'
-import { setPetsList } from '../../../../redux/slices/fullPetsSlice'
+import { useSelector } from 'react-redux'
 import { PetCard } from '../../../../common/layouts/PetCard'
 import { useNavigation } from '@react-navigation/native'
 import { PetInfo } from '../../../../common/petInfo/petInfo'
@@ -35,20 +33,8 @@ export const MyPetsListContainer = () => {
 		</View>
 	)
 	const petsCards = (item) => <PetCard key={item.id} item={item} petInfo={petInfo} />
-	const dispatch = useDispatch()
-	const userID = useSelector((state) => state.user.user)
 
-	useEffect(() => {
-		fullpetListController(userID).then((res) => {
-			if (res.status === 200) {
-				dispatch(setPetsList(res.data.petsList))
-			} else {
-				console.log('Some trouble with server!')
-			}
-		})
-	}, [])
 	const pets = useSelector((state) => state.petsList.petsList)
-	console.log(pets)
 	const navigation = useNavigation()
 
 	const addButton = () => {

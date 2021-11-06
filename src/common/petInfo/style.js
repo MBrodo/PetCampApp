@@ -6,8 +6,15 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		marginVertical: 5,
 	},
+	bookPointContainer: {
+		marginVertical: 5,
+	},
 	pointText: {
 		fontSize: 14,
+		color: 'black',
+	},
+	bookPointText: {
+		fontSize: 16,
 		color: 'black',
 	},
 })

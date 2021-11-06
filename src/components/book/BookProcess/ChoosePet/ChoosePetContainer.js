@@ -4,6 +4,7 @@ import { ChoosePetView } from './ChoosePetView'
 import { Text, View, Image, Pressable } from 'react-native'
 import { styles } from './style'
 import { useNavigation } from '@react-navigation/native'
+import { BookPetInfo } from '../../../../common/petInfo/BookPetInfo'
 
 import { useSelector } from 'react-redux'
 
@@ -18,18 +19,9 @@ export const ChoosePetContainer = (props) => {
 				</View>
 				<View style={styles.myPetOptionsContainer}>
 					<View style={styles.myPetOptions}>
-						<View>
-							<Text style={styles.optionArticle}>Cat/Dog</Text>
-							<Text style={styles.optionName}>{item.type}</Text>
-						</View>
-						<View>
-							<Text style={styles.optionArticle}>Name</Text>
-							<Text style={styles.optionName}>{item.name}</Text>
-						</View>
-						<View>
-							<Text style={styles.optionArticle}>Age</Text>
-							<Text style={styles.optionName}>{item.age} years</Text>
-						</View>
+						<BookPetInfo title={'Cat/Dog:'} item={item.type} />
+						<BookPetInfo title={'Name:'} item={item.name} />
+						<BookPetInfo title={'Age:'} item={item.age} />
 					</View>
 					<View style={styles.genderOptionsContainer}>
 						<View>
@@ -65,6 +57,7 @@ export const ChoosePetContainer = (props) => {
 	}
 
 	const petList = useSelector((state) => state.petsList.petsList)
+	console.log(petList)
 
 	return (
 		<ChoosePetView
