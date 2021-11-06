@@ -17,14 +17,7 @@ export const BookProcessNavigation = (props) => {
 			}}
 		>
 			<Stack.Screen name="BookOption">
-				{() => (
-					<BookOptions
-						Quantity={props.Quantity}
-						information={props.information}
-						dateTextEnd={props.dateTextEnd}
-						dateText={props.dateText}
-					/>
-				)}
+				{() => <BookOptions Quantity={props.Quantity} information={props.information} />}
 			</Stack.Screen>
 			<Stack.Screen name="ChoosePet" component={ChoosePetContainer} />
 			<Stack.Screen name="Payment" component={PaymentContainer} />

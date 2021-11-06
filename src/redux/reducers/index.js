@@ -5,6 +5,8 @@ import BookReducer from '../slices/bookSlice'
 import userReducer from '../slices/userSlice'
 import fullPetListReducer from '../slices/fullPetsSlice'
 import authReducer from '../slices/authentication/authSlice'
+import dateEndReducer from '../slices/dates/dateEndSlice'
+import dateStartReducer from '../slices/dates/dateStartSlice'
 
 const test = () => {
 	let testReducer = 'test'
@@ -19,4 +21,6 @@ export const reducer = combineReducers({
 	user: userReducer,
 	petsList: fullPetListReducer,
 	auth: authReducer,
+	dateEnd: dateEndReducer,
+	dateStart: dateStartReducer,
 })

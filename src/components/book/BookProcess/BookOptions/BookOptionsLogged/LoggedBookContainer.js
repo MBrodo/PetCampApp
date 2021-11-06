@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import { LoggedBookView } from './LoggedBookView'
 import { useNavigation } from '@react-navigation/native'
+import { useSelector } from 'react-redux'
 
 export const LoggedBookContainer = (props) => {
 	const [transfer, setTransfer] = useState(false)
@@ -13,6 +14,8 @@ export const LoggedBookContainer = (props) => {
 	const checkPoints = () => {
 		return vaccinated && agreement ? false : true
 	}
+	const dateStart = useSelector((state) => state.dateStart.dateStart)
+	const dateEnds = useSelector((state) => state.dateEnd.dateEnd)
 
 	const totalPrice = () => {
 		let totalCount = 12
@@ -50,8 +53,8 @@ export const LoggedBookContainer = (props) => {
 	const navigation = useNavigation()
 	const secondStep = () => {
 		navigation.navigate('ChoosePet', {
-			dateTextEnd: props.dateTextEnd,
-			dateText: props.dateText,
+			dateTextEnd: dateEnds,
+			dateText: dateStart,
 			Quantity: props.Quantity,
 			totalPrice: totalPrice(),
 		})
@@ -63,8 +66,8 @@ export const LoggedBookContainer = (props) => {
 			setCheckButton={setCheckButton}
 			checkButton={checkButton}
 			totalPrice={totalPrice}
-			dateText={props.dateText}
-			dateTextEnd={props.dateTextEnd}
+			dateText={dateStart}
+			dateTextEnd={dateEnds}
 			secondStep={secondStep}
 			transfer={transfer}
 			setTransfer={checkTransfer}

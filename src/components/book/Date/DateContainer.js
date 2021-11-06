@@ -1,16 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { DateView } from './DateView'
 import { useNavigation } from '@react-navigation/native'
+import { useSelector, useDispatch } from 'react-redux'
+import { setDateEnds } from '../../../redux/slices/dates/dateEndSlice'
+import { setDateStart } from '../../../redux/slices/dates/dateStartSlice'
 
 export const DateContainer = (props) => {
 	const [date, setDate] = useState(new Date())
 	const [mode, setMode] = useState('date')
 	const [show, setShow] = useState(false)
+	const [startDate, setStartDate] = useState('yyyy/mm/dd')
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(setDateStart(startDate))
+	}, [startDate])
 
 	const [dateEnd, setDateEnd] = useState(new Date())
 	const [modeEnd, setModeEnd] = useState('date')
 	const [showEnd, setShowEnd] = useState(false)
+	const [endDate, setEndDate] = useState('yyyy/mm/dd')
+
+	const [startDay, setStartDay] = useState()
+	const [endDay, setEndDay] = useState()
+
+	useEffect(() => {
+		dispatch(setDateEnds(endDate))
+	}, [endDate])
+	const dateStart = useSelector((state) => state.dateStart.dateStart)
+	const dateEnds = useSelector((state) => state.dateEnd.dateEnd)
+	console.log(dateStart, dateEnds)
 
 	const onChangeEnd = (event, selectedDate) => {
 		const currentDate = selectedDate || dateEnd
@@ -20,8 +40,8 @@ export const DateContainer = (props) => {
 		let tempDateEnd = new Date(currentDate)
 		let showDateEnd =
 			tempDateEnd.getFullYear() + '/' + (tempDateEnd.getMonth() + 1) + '/' + tempDateEnd.getDate()
-		props.setDateTextEnd(showDateEnd)
-		props.setEndDate(parseFloat(showDateEnd.split('/')[2]))
+		setEndDate(showDateEnd)
+		setEndDay(parseFloat(showDateEnd.split('/')[2]))
 	}
 
 	const showModeEnd = (currentMode) => {
@@ -41,8 +61,8 @@ export const DateContainer = (props) => {
 		let tempDate = new Date(currentDate)
 		let showDate =
 			tempDate.getFullYear() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getDate()
-		props.setDateText(showDate)
-		props.setStartDate(parseFloat(showDate.split('/')[2]))
+		setStartDate(showDate)
+		setStartDay(parseFloat(showDate.split('/')[2]))
 	}
 
 	const showMode = (currentMode) => {
@@ -65,11 +85,11 @@ export const DateContainer = (props) => {
 			date={date}
 			mode={mode}
 			show={show}
-			dateText={props.dateText}
+			dateText={startDate}
 			dateEnd={dateEnd}
 			modeEnd={modeEnd}
 			showEnd={showEnd}
-			dateTextEnd={props.dateTextEnd}
+			dateTextEnd={endDate}
 			onChangeEnd={onChangeEnd}
 			onChange={onChange}
 			showDatepickerEnd={showDatepickerEnd}

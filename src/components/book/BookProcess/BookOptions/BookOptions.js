@@ -16,14 +16,7 @@ export const BookOptions = (props) => {
 		if (!authenticate) {
 			return <UnLoggedBookContainer information={props.information} />
 		} else {
-			return (
-				<LoggedBookContainer
-					Quantity={props.Quantity}
-					dateText={props.dateText}
-					dateTextEnd={props.dateTextEnd}
-					information={props.information}
-				/>
-			)
+			return <LoggedBookContainer Quantity={props.Quantity} information={props.information} />
 		}
 	}
 
