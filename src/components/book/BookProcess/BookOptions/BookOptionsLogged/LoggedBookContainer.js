@@ -58,8 +58,10 @@ export const LoggedBookContainer = (props) => {
 			dateText: dateStart,
 			Quantity: props.Quantity,
 			totalPrice: totalPrice(),
+			campID: props.information.id,
 		})
 	}
+
 	return (
 		<LoggedBookView
 			checkPoints={checkPoints}

@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux'
 export const ChoosePetContainer = (props) => {
 	const [checkChoice, setCheckChoice] = useState(false)
 	const [pet, setPet] = useState()
+
 	const myPetBlock = (item) => {
 		return (
 			<View key={item.id} style={styles.myPetContainer}>
@@ -53,11 +54,11 @@ export const ChoosePetContainer = (props) => {
 			dateText: props.route.params.dateText,
 			pet: pet,
 			totalPrice: props.route.params.totalPrice,
+			campID: props.route.params.campID,
 		})
 	}
 
 	const petList = useSelector((state) => state.petsList.petsList)
-	console.log(petList)
 
 	return (
 		<ChoosePetView

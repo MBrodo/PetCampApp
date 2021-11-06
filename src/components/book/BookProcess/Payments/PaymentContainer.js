@@ -2,6 +2,7 @@ import React from 'react'
 import { PaymentView } from './PaymentView'
 import { useNavigation } from '@react-navigation/native'
 import sendBookController from '../../../../controllers/authorization/sendBookController'
+import { useSelector } from 'react-redux'
 
 export const PaymentContainer = (props) => {
 	const navigation = useNavigation()
@@ -9,11 +10,13 @@ export const PaymentContainer = (props) => {
 		navigation.navigate('Congrats')
 		SendBook()
 	}
+
+	const userId = useSelector((state) => state.user.user)
 	const SendBook = () => {
 		sendBookController(
-			'1a9ce77a-95c3-448d-83de-ec24fa64834c',
+			userId,
 			props.route.params.pet.id,
-			'3fca765e-3d50-4935-a36c-3e6eb1afa3f5',
+			props.route.params.campID,
 			props.route.params.dateText,
 			props.route.params.dateTextEnd,
 			true
