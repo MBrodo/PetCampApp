@@ -3,7 +3,7 @@ import { Text, View, Button, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 
 import { styles } from './style'
-import { BookingFooter } from '../../../../../common/footer/bookingFooter'
+import { BookingFooter } from '../../../../../../common/footer/bookingFooter'
 
 export const UnLoggedBookView = (props) => {
 	return (

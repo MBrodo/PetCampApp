@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { LoggedBookContainer } from './BookOptionsLogged/LoggedBookContainer'
-import { UnLoggedBookContainer } from './BookOptionsUnLogged/UnLoggedBookContainer'
+import { UnLoggedBookContainer } from './BookOptionsLogged/BookOptionsUnLogged/UnLoggedBookContainer'
 import { useSelector, useDispatch } from 'react-redux'
 import { setAuth } from '../../../../redux/slices/authentication/authSlice'
 export const BookOptions = (props) => {

@@ -16,17 +16,18 @@ export const LoggedBookContainer = (props) => {
 	}
 	const dateStart = useSelector((state) => state.dateStart.dateStart)
 	const dateEnds = useSelector((state) => state.dateEnd.dateEnd)
+	const totalDays = useSelector((state) => state.totalDay.totalDay)
 
 	const totalPrice = () => {
 		let totalCount = 12
 		if (transfer && grooming) {
-			return (totalCount + 7) * props.Quantity
+			return (totalCount + 7) * props.Quantity * totalDays
 		} else if (transfer) {
-			return (totalCount + 5) * props.Quantity
+			return (totalCount + 5) * props.Quantity * totalDays
 		} else if (grooming) {
-			return (totalCount + 2) * props.Quantity
+			return (totalCount + 2) * props.Quantity * totalDays
 		} else {
-			return totalCount * props.Quantity
+			return totalCount * props.Quantity * totalDays
 		}
 	}
 

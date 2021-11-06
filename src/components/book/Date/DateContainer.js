@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useSelector, useDispatch } from 'react-redux'
 import { setDateEnds } from '../../../redux/slices/dates/dateEndSlice'
 import { setDateStart } from '../../../redux/slices/dates/dateStartSlice'
+import { setTotalDay } from '../../../redux/slices/dates/totalDay'
 
 export const DateContainer = (props) => {
 	const [date, setDate] = useState(new Date())
@@ -24,13 +25,15 @@ export const DateContainer = (props) => {
 
 	const [startDay, setStartDay] = useState()
 	const [endDay, setEndDay] = useState()
+	const [fullDate, setFullDate] = useState()
 
 	useEffect(() => {
 		dispatch(setDateEnds(endDate))
 	}, [endDate])
-	const dateStart = useSelector((state) => state.dateStart.dateStart)
-	const dateEnds = useSelector((state) => state.dateEnd.dateEnd)
-	console.log(dateStart, dateEnds)
+
+	useEffect(() => {
+		dispatch(setTotalDay(fullDate))
+	}, [fullDate])
 
 	const onChangeEnd = (event, selectedDate) => {
 		const currentDate = selectedDate || dateEnd
@@ -78,6 +81,7 @@ export const DateContainer = (props) => {
 
 	const StartBookProcess = () => {
 		navigation.navigate('BookProcessNavigation')
+		setFullDate(endDay - startDay)
 	}
 	return (
 		<DateView

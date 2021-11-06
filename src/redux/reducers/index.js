@@ -7,6 +7,7 @@ import fullPetListReducer from '../slices/fullPetsSlice'
 import authReducer from '../slices/authentication/authSlice'
 import dateEndReducer from '../slices/dates/dateEndSlice'
 import dateStartReducer from '../slices/dates/dateStartSlice'
+import totalDayReducer from '../slices/dates/totalDay'
 
 const test = () => {
 	let testReducer = 'test'
@@ -23,4 +24,5 @@ export const reducer = combineReducers({
 	auth: authReducer,
 	dateEnd: dateEndReducer,
 	dateStart: dateStartReducer,
+	totalDay: totalDayReducer,
 })
