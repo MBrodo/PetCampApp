@@ -6,6 +6,7 @@ import { ChoosePetContainer } from '../book/BookProcess/ChoosePet/ChoosePetConta
 import { PaymentContainer } from '../book/BookProcess/Payments/PaymentContainer'
 import { CongratsContainer } from '../book/BookProcess/Congrats/CongratsConatiner'
 import { BookOptions } from '../book/BookProcess/BookOptions/BookOptions'
+import { Payment } from '../book/BookProcess/Payments/Payment'
 
 const Stack = createStackNavigator()
 
@@ -21,6 +22,7 @@ export const BookProcessNavigation = (props) => {
 			</Stack.Screen>
 			<Stack.Screen name="ChoosePet" component={ChoosePetContainer} />
 			<Stack.Screen name="Payment" component={PaymentContainer} />
+			<Stack.Screen name="PaymentScreen" component={Payment} />
 			<Stack.Screen name="Congrats" component={CongratsContainer} />
 		</Stack.Navigator>
 	)

@@ -137,4 +137,18 @@ export const styles = StyleSheet.create({
 		color: 'white',
 		fontSize: 22,
 	},
+	paymentContainer: {
+		alignItems: 'center',
+	},
+	paymentButton: {
+		borderWidth: 1,
+		borderColor: '#5D96CC',
+		borderRadius: 5,
+		paddingVertical: 5,
+		paddingHorizontal: 20,
+	},
+	paymentText: {
+		color: '#5D96CC',
+		fontWeight: 'bold',
+	},
 })
