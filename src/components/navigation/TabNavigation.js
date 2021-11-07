@@ -63,7 +63,7 @@ export function TabNavigation({ navigation }) {
 			return <Icon name={iconName} size={size} color={color} />
 		},
 	})
-	const [authenticate, setAuthenticate] = useState(false)
+	const [authenticate, setAuthenticate] = useState(true)
 	return (
 		<Tab.Navigator initialRouteName="Book" screenOptions={tabBarOptions}>
 			<Tab.Screen name="Search" component={Search} />

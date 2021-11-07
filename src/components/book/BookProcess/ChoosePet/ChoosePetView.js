@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, ScrollView, Pressable } from 'react-native'
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
-import { BookingButton } from '../../../../common/buttons/bookingButoon'
+import { BookingButton } from '../../../../common/buttons/bookingButton'
 
 export const ChoosePetView = (props) => {
 	return (
