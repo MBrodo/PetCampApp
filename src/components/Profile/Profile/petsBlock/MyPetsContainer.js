@@ -15,7 +15,7 @@ import { useNavigation } from '@react-navigation/native'
 export const MyPetsContainer = () => {
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.user)
-
+	const petsList = useSelector((state) => state.petsList.petsList)
 	useEffect(() => {
 		fullpetListController(userID).then((res) => {
 			if (res.status === 200) {
@@ -24,7 +24,7 @@ export const MyPetsContainer = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [])
+	}, [petsList])
 
 	useEffect(() => {
 		bookList(userID).then((res) => {

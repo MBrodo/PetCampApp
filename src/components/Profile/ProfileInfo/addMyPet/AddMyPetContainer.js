@@ -72,6 +72,9 @@ export const AddMyPetContainer = () => {
 	}
 
 	const navigation = useNavigation()
+	const goToBackPoint = () => {
+		navigation.goBack()
+	}
 	const addCardView = () => (
 		<View style={styles.wrapper}>
 			<View style={styles.myPetPhoto}>
@@ -139,7 +142,13 @@ export const AddMyPetContainer = () => {
 				<TextInput onChangeText={setPetInfo} style={styles.individualNoticeInput} />
 			</View>
 			<View style={styles.ButtonContainer}>
-				<Pressable onPress={() => SendNewCard()} style={styles.changeButton}>
+				<Pressable
+					onPress={() => {
+						SendNewCard()
+						goToBackPoint()
+					}}
+					style={styles.changeButton}
+				>
 					<Text style={styles.changeButtonText}>Submit</Text>
 				</Pressable>
 				<Pressable onPress={() => navigation.goBack()} style={styles.cancleButton}>
