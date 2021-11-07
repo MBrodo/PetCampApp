@@ -5,14 +5,22 @@ import { PetCard } from '../../../../common/layouts/PetCard'
 import { styles } from './style'
 import { useNavigation } from '@react-navigation/native'
 import { CheckBoxView } from '../../../../common/checkBoxes/checkBox'
+import { useSelector } from 'react-redux'
+import sendNewCardController from '../../../../controllers/authorization/sendNewCard/sendNewCardController'
 
 export const AddMyPetContainer = () => {
+	const [petNickName, setPetNickName] = useState()
+	const [petBreed, setPetBreed] = useState()
+
 	const [dog, setDog] = useState(true)
 	const [cat, setCat] = useState(false)
 
 	const checkPetState = () => {
 		setDog(dog == false ? true : false)
 		setCat(cat == false ? true : false)
+	}
+	const petType = () => {
+		return dog ? 'DOG' : 'CAT'
 	}
 
 	const [male, setMale] = useState(true)
@@ -23,6 +31,10 @@ export const AddMyPetContainer = () => {
 		setFemale(female == false ? true : false)
 	}
 
+	const petGender = () => {
+		return male ? 'male' : 'female'
+	}
+
 	const [sterilizedPositive, setSterilizedPositive] = useState(true)
 	const [sterilizedNegative, setSterilizedNegative] = useState(false)
 
@@ -30,13 +42,45 @@ export const AddMyPetContainer = () => {
 		setSterilizedPositive(sterilizedPositive == false ? true : false)
 		setSterilizedNegative(sterilizedNegative == false ? true : false)
 	}
+	const petSterilize = () => {
+		return sterilizedPositive ? 'yes' : 'no'
+	}
+	const [petAge, setPetAge] = useState()
+	const [petVetPassport, setPetVetPassport] = useState()
+	const [petInfo, setPetInfo] = useState()
+	const userId = useSelector((state) => state.user.user)
+
+	const SendNewCard = () => {
+		sendNewCardController(
+			userId,
+			petNickName,
+			petType(),
+			petBreed,
+			petGender(),
+			userId,
+			parseFloat(petAge),
+			petSterilize(),
+			petVetPassport,
+			petInfo
+		).then((res) => {
+			if (res.status === 200) {
+				console.log('success')
+			} else if (res.status === 401 || res.status === 400) {
+				console.log('fail')
+			}
+		})
+	}
 
 	const navigation = useNavigation()
 	const addCardView = () => (
 		<View style={styles.wrapper}>
 			<View style={styles.myPetPhoto}>
 				<Image source={require('../../../../img/ProfileMyPet.jpg')} />
-				<TextInput placeholder={'add nickname'} style={styles.textInputNickName} />
+				<TextInput
+					onChangeText={setPetNickName}
+					placeholder={'add nickname'}
+					style={styles.textInputNickName}
+				/>
 			</View>
 			<View style={styles.pointContainer}>
 				<Text>Cat/Dog:</Text>
@@ -53,7 +97,7 @@ export const AddMyPetContainer = () => {
 			</View>
 			<View style={styles.pointContainer}>
 				<Text>Breed:</Text>
-				<TextInput style={styles.textInput} />
+				<TextInput onChangeText={setPetBreed} style={styles.textInput} />
 			</View>
 			<View style={styles.pointContainer}>
 				<Text>Gender:</Text>
@@ -70,7 +114,7 @@ export const AddMyPetContainer = () => {
 			</View>
 			<View style={styles.pointContainer}>
 				<Text>Age, years full:</Text>
-				<TextInput style={styles.textInputAge} />
+				<TextInput onChangeText={setPetAge} style={styles.textInputAge} />
 				<Text style={styles.pointText}>years</Text>
 			</View>
 			<View style={styles.pointContainer}>
@@ -88,14 +132,14 @@ export const AddMyPetContainer = () => {
 			</View>
 			<View style={styles.pointContainer}>
 				<Text>Vet Passport number:</Text>
-				<TextInput style={styles.textInput} />
+				<TextInput onChangeText={setPetVetPassport} style={styles.textInput} />
 			</View>
 			<View style={styles.individualNotice}>
 				<Text>Individual notice (preferances):</Text>
-				<TextInput style={styles.individualNoticeInput} />
+				<TextInput onChangeText={setPetInfo} style={styles.individualNoticeInput} />
 			</View>
 			<View style={styles.ButtonContainer}>
-				<Pressable style={styles.changeButton}>
+				<Pressable onPress={() => SendNewCard()} style={styles.changeButton}>
 					<Text style={styles.changeButtonText}>Submit</Text>
 				</Pressable>
 				<Pressable onPress={() => navigation.goBack()} style={styles.cancleButton}>

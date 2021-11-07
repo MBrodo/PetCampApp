@@ -23,7 +23,7 @@ export const MyPetsListContainer = () => {
 			<PetInfo title={'Vet Passport:'} item={'№10-1000'} />
 			<View>
 				<Text>Individual notice (preferances):</Text>
-				<TextInput style={styles.individualNoticeInput}></TextInput>
+				<Text style={styles.individualNoticeInput}>----</Text>
 			</View>
 			<View style={styles.ButtonContainer}>
 				<Pressable style={styles.changeButton}>
