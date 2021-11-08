@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-	pets: [],
+	profilePetsList: [],
 }
 
 export const petListSlice = createSlice({
-	name: 'pets',
+	name: 'profilePetsList',
 	initialState,
 	reducers: {
 		setPets: (state, action) => {
-			state.pets = action.payload
+			state.profilePetsList = action.payload
 		},
 	},
 })

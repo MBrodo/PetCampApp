@@ -7,9 +7,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setBook } from '../../redux/slices/bookSlice'
 
 export const MyBooking = () => {
-	const bookingList = useSelector((state) => state.book.book)
+	const bookingList = useSelector((state) => state.booking.bookingList)
+	console.log(bookingList)
 	const dispatch = useDispatch()
-	const userID = useSelector((state) => state.user.user)
+	const userID = useSelector((state) => state.user.id)
 
 	useEffect(() => {
 		bookList(userID).then((res) => {

@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-	dateStart: [],
+	startBooking: [],
 }
 
 export const dateStartSlice = createSlice({
-	name: 'dateStart',
+	name: 'startBooking',
 	initialState,
 	reducers: {
 		setDateStart: (state, action) => {
-			state.dateStart = action.payload
+			state.startBooking = action.payload
 		},
 	},
 })

@@ -87,6 +87,12 @@ export const styles = StyleSheet.create({
 		marginTop: 10,
 		justifyContent: 'flex-end',
 	},
+	priceContainer: {
+		flexDirection: 'row',
+		justifyContent: 'flex-end',
+		marginRight: 60,
+		marginTop: 5,
+	},
 	hotelPriceArticle: {
 		fontSize: 14,
 		color: '#A0A0A0',

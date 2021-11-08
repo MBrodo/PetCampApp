@@ -137,21 +137,9 @@ export const styles = StyleSheet.create({
 		fontSize: 20,
 		color: 'black',
 	},
-	checkboxMainContainer: {
-		flexDirection: 'row',
-	},
-	checkboxContainer: {
-		flexDirection: 'row',
-		marginLeft: 10,
-	},
 	checkBox: {
 		width: 20,
 		height: 20,
-	},
-	checkBoxText: {
-		fontSize: 14,
-		color: 'black',
-		marginLeft: 10,
 	},
 	textInput: {
 		borderWidth: 1,

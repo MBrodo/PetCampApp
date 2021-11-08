@@ -14,20 +14,20 @@ export const LoggedBookContainer = (props) => {
 	const checkPoints = () => {
 		return vaccinated && agreement ? false : true
 	}
-	const dateStart = useSelector((state) => state.dateStart.dateStart)
-	const dateEnds = useSelector((state) => state.dateEnd.dateEnd)
-	const totalDays = useSelector((state) => state.totalDay.totalDay)
+	const bookingStart = useSelector((state) => state.dateStart.startBooking)
+	const bookingEnds = useSelector((state) => state.dateEnd.endBooking)
+	const totalBookingDays = useSelector((state) => state.totalDays.totalBookingDays)
 
 	const totalPrice = () => {
 		let totalCount = 12
 		if (transfer && grooming) {
-			return (totalCount + 7) * props.Quantity * totalDays
+			return (totalCount + 7) * props.Quantity * totalBookingDays
 		} else if (transfer) {
-			return (totalCount + 5) * props.Quantity * totalDays
+			return (totalCount + 5) * props.Quantity * totalBookingDays
 		} else if (grooming) {
-			return (totalCount + 2) * props.Quantity * totalDays
+			return (totalCount + 2) * props.Quantity * totalBookingDays
 		} else {
-			return totalCount * props.Quantity * totalDays
+			return totalCount * props.Quantity * totalBookingDays
 		}
 	}
 
@@ -52,10 +52,8 @@ export const LoggedBookContainer = (props) => {
 		})
 	}
 	const navigation = useNavigation()
-	const secondStep = () => {
+	const goToSecondStep = () => {
 		navigation.navigate('ChoosePet', {
-			dateTextEnd: dateEnds,
-			dateText: dateStart,
 			Quantity: props.Quantity,
 			totalPrice: totalPrice(),
 			campID: props.information.id,
@@ -69,9 +67,9 @@ export const LoggedBookContainer = (props) => {
 			setCheckButton={setCheckButton}
 			checkButton={checkButton}
 			totalPrice={totalPrice}
-			dateText={dateStart}
-			dateTextEnd={dateEnds}
-			secondStep={secondStep}
+			dateText={bookingStart}
+			dateTextEnd={bookingEnds}
+			goToSecondStep={goToSecondStep}
 			transfer={transfer}
 			setTransfer={checkTransfer}
 			grooming={grooming}

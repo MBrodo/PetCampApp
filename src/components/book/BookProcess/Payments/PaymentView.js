@@ -44,7 +44,7 @@ export const PaymentView = (props) => {
 							<View style={styles.bookingDates}>
 								<Text style={styles.optionArticle}>Booking dates</Text>
 								<Text style={styles.optionName}>
-									{props.dateStart} - {props.dateEnd}
+									{props.bookingDateStart} - {props.bookingDateEnds}
 								</Text>
 							</View>
 							<View style={styles.bookingPaymentsInfo}>
@@ -54,7 +54,7 @@ export const PaymentView = (props) => {
 						</View>
 					</View>
 					<View style={styles.acceptButtonContainer}>
-						<Pressable onPress={() => props.thirdStep()} style={styles.acceptButton}>
+						<Pressable onPress={() => props.goToPayment()} style={styles.acceptButton}>
 							<Text style={styles.acceptButtonText}>Book</Text>
 						</Pressable>
 					</View>
