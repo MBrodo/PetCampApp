@@ -8,7 +8,6 @@ import { setBook } from '../../redux/slices/bookSlice'
 
 export const MyBooking = () => {
 	const bookingList = useSelector((state) => state.booking.bookingList)
-	console.log(bookingList)
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.id)
 
@@ -20,7 +19,7 @@ export const MyBooking = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [])
+	}, [bookingList])
 
 	return (
 		<View style={styles.container}>

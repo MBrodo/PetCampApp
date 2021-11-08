@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-	checkAuthenticate: [],
+	status: [],
 }
 
 export const authSlice = createSlice({
-	name: 'checkAuthenticate',
+	name: 'status',
 	initialState,
 	reducers: {
 		setAuth: (state, action) => {
-			state.checkAuthenticate = action.payload
+			state.status = action.payload
 		},
 	},
 })

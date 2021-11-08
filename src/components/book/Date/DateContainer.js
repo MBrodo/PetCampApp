@@ -3,9 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { DateView } from './DateView'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector, useDispatch } from 'react-redux'
-import { setDateEnds } from '../../../redux/slices/dates/dateEndSlice'
-import { setDateStart } from '../../../redux/slices/dates/dateStartSlice'
-import { setTotalDay } from '../../../redux/slices/dates/totalDay'
+import { setDateStart, setDateEnds, setTotalDay } from '../../../redux/slices/bookSlice'
 
 export const DateContainer = (props) => {
 	const [date, setDate] = useState(new Date())

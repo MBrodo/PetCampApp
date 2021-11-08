@@ -1,19 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-	fullPetsList: [],
+	all: [],
+	profilePetsList: [],
 }
 
 export const fullPetList = createSlice({
-	name: 'fullPetsList',
+	name: 'all',
 	initialState,
 	reducers: {
 		setPetsList: (state, action) => {
-			state.fullPetsList = action.payload
+			state.all = action.payload
+		},
+		setPets: (state, action) => {
+			state.profilePetsList = action.payload
 		},
 	},
 })
 
-export const { setPetsList } = fullPetList.actions
+export const { setPetsList, setPets } = fullPetList.actions
 
 export default fullPetList.reducer

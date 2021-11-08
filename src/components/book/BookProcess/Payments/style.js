@@ -151,4 +151,17 @@ export const styles = StyleSheet.create({
 		color: '#5D96CC',
 		fontWeight: 'bold',
 	},
+	card: {
+		backgroundColor: '#F2F2F2',
+		textColor: '#000000',
+		borderColor: '#000000',
+		borderWidth: 1,
+		borderRadius: 5,
+	},
+	cardContainer: {
+		width: '95%',
+		height: 50,
+		marginVertical: 30,
+		marginHorizontal: 10,
+	},
 })

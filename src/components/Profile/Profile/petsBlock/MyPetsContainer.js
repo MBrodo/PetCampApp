@@ -5,9 +5,8 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import images from '../../MyProfile'
 import { useSelector, useDispatch } from 'react-redux'
 import bookList from '../../../../controllers/authorization/BookListController'
-import { setPets } from '../../../../redux/slices/petListSlice'
 import fullpetListController from '../../../../controllers/authorization/fullPetListController'
-import { setPetsList } from '../../../../redux/slices/fullPetsSlice'
+import { setPetsList, setPets } from '../../../../redux/slices/fullPetsSlice'
 
 import { MyPets } from './MyPetsView'
 import { useNavigation } from '@react-navigation/native'
@@ -15,7 +14,8 @@ import { useNavigation } from '@react-navigation/native'
 export const MyPetsContainer = () => {
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.id)
-	const petsList = useSelector((state) => state.petsList.fullPetsList)
+	const petsList = useSelector((state) => state.pets.all)
+
 	useEffect(() => {
 		fullpetListController(userID).then((res) => {
 			if (res.status === 200) {

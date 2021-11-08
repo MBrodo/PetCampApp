@@ -60,9 +60,9 @@ export const ChoosePetContainer = (props) => {
 			campID: props.route.params.campID,
 		})
 	}
-	const bookingStart = useSelector((state) => state.dateStart.startBooking)
-	const bookingEnds = useSelector((state) => state.dateEnd.endBooking)
-	const petList = useSelector((state) => state.petsList.fullPetsList)
+	const bookingStart = useSelector((state) => state.booking.startBooking)
+	const bookingEnds = useSelector((state) => state.booking.endBooking)
+	const petList = useSelector((state) => state.pets.all)
 
 	return (
 		<ChoosePetView
