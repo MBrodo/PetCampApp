@@ -15,10 +15,10 @@ export const bookSlice = createSlice({
 			state.bookingList = action.payload
 		},
 		setDateStart: (state, action) => {
-			state.startBooking = action.payload
+			state.startDate = action.payload
 		},
 		setDateEnds: (state, action) => {
-			state.endBooking = action.payload
+			state.endDate = action.payload
 		},
 		setTotalDay: (state, action) => {
 			state.totalDays = action.payload

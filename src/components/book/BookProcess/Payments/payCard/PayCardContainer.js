@@ -6,8 +6,8 @@ import { PayCardView } from './PayCardView'
 
 export const PayCardContainer = (props) => {
 	const userId = useSelector((state) => state.user.id)
-	const bookingStart = useSelector((state) => state.booking.startBooking)
-	const bookingEnds = useSelector((state) => state.booking.endBooking)
+	const bookingStart = useSelector((state) => state.booking.startDate)
+	const bookingEnds = useSelector((state) => state.booking.endDate)
 	const SendBook = () => {
 		sendBookController(
 			userId,

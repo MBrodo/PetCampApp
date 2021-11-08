@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
-import { View, Text, Image, Pressable, TextInput } from 'react-native'
 import { AddMyPetView } from './AddMyPetView'
-import { PetCard } from '../../../../common/layouts/PetCard'
-import { styles } from './style'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
 import sendNewCardController from '../../../../controllers/authorization/sendNewCard/sendNewCardController'
-import { AddCardCheckBox } from '../../../../common/checkBoxes/addCardCheckBox'
+
 export const AddMyPetContainer = () => {
 	const [petInfoContainer, setPetInfoContainer] = useState({
 		petNickName: '',
@@ -123,74 +120,20 @@ export const AddMyPetContainer = () => {
 	const goToBackPoint = () => {
 		navigation.goBack()
 	}
-	const addCardView = () => (
-		<View style={styles.wrapper}>
-			<View style={styles.myPetPhoto}>
-				<Image source={require('../../../../img/ProfileMyPet.jpg')} />
-				<TextInput
-					onChangeText={(item) => petNickName(item)}
-					placeholder={'add nickname'}
-					style={styles.textInputNickName}
-				/>
-			</View>
-			<AddCardCheckBox
-				name={'Cat/Dog:'}
-				firstCheckBoxName={'Dog'}
-				SecondCheckBoxName={'Cat'}
-				checkPetState={checkPetState}
-				firstCheckBoxItem={petInfoContainer.dog}
-				secondCheckBoxItem={petInfoContainer.cat}
-			/>
-			<View style={styles.pointContainer}>
-				<Text>Breed:</Text>
-				<TextInput onChangeText={(item) => breed(item)} style={styles.textInput} />
-			</View>
-			<AddCardCheckBox
-				name={'Gender:'}
-				firstCheckBoxName={'female'}
-				SecondCheckBoxName={'male'}
-				checkPetState={checkGenderState}
-				firstCheckBoxItem={petInfoContainer.female}
-				secondCheckBoxItem={petInfoContainer.male}
-			/>
-			<View style={styles.pointContainer}>
-				<Text>Age, years full:</Text>
-				<TextInput onChangeText={(item) => petAge(item)} style={styles.textInputAge} />
-				<Text style={styles.pointText}>years</Text>
-			</View>
-			<AddCardCheckBox
-				name={'Sterilized:'}
-				firstCheckBoxName={'yes'}
-				SecondCheckBoxName={'no'}
-				checkPetState={checkSterilizedState}
-				firstCheckBoxItem={petInfoContainer.sterilizedPositive}
-				secondCheckBoxItem={petInfoContainer.sterilizedNegative}
-			/>
-			<View style={styles.pointContainer}>
-				<Text>Vet Passport number:</Text>
-				<TextInput onChangeText={(item) => petVetPassport(item)} style={styles.textInput} />
-			</View>
-			<View style={styles.individualNotice}>
-				<Text>Individual notice (preferances):</Text>
-				<TextInput onChangeText={(item) => petInfo(item)} style={styles.individualNoticeInput} />
-			</View>
-			<View style={styles.ButtonContainer}>
-				<Pressable
-					onPress={() => {
-						SendNewCard()
-						goToBackPoint()
-					}}
-					style={styles.changeButton}
-				>
-					<Text style={styles.changeButtonText}>Submit</Text>
-				</Pressable>
-				<Pressable onPress={() => navigation.goBack()} style={styles.cancleButton}>
-					<Text style={styles.cancleButtonText}>Cancle</Text>
-				</Pressable>
-			</View>
-		</View>
-	)
 
-	const addCard = () => <PetCard petInfo={addCardView} />
-	return <AddMyPetView addCard={addCard} />
+	return (
+		<AddMyPetView
+			goToBackPoint={goToBackPoint}
+			petInfo={petInfo}
+			petVetPassport={petVetPassport}
+			checkSterilizedState={checkSterilizedState}
+			petAge={petAge}
+			checkGenderState={checkGenderState}
+			breed={breed}
+			SendNewCard={SendNewCard}
+			checkPetState={checkPetState}
+			petInfoContainer={petInfoContainer}
+			petNickName={petNickName}
+		/>
+	)
 }

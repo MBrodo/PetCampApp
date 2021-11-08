@@ -16,8 +16,8 @@ export const LoggedBookContainer = (props) => {
 	const checkPoints = () => {
 		return vaccinated && agreement ? false : true
 	}
-	const bookingStart = useSelector((state) => state.booking.startBooking)
-	const bookingEnds = useSelector((state) => state.booking.endBooking)
+	const bookingStart = useSelector((state) => state.booking.startDate)
+	const bookingEnds = useSelector((state) => state.booking.startDate)
 	const totalBookingDays = useSelector((state) => state.booking.totalDays)
 
 	const totalPrice = () => {
