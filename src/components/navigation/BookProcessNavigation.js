@@ -17,9 +17,7 @@ export const BookProcessNavigation = (props) => {
 				headerShown: false,
 			}}
 		>
-			<Stack.Screen name="BookOption">
-				{() => <BookOptions Quantity={props.Quantity} information={props.information} />}
-			</Stack.Screen>
+			<Stack.Screen name="BookOption" component={BookOptions} />
 			<Stack.Screen name="ChoosePet" component={ChoosePetContainer} />
 			<Stack.Screen name="Payment" component={PaymentContainer} />
 			<Stack.Screen name="PaymentScreen" component={PayCardContainer} />

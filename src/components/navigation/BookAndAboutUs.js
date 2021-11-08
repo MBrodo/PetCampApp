@@ -10,9 +10,6 @@ import { BookProcessNavigation } from './BookProcessNavigation'
 const Stack = createStackNavigator()
 
 export const BookAndAboutUs = (props) => {
-	const [information, setInformation] = useState()
-	const [Quantity, setQuantity] = useState(false)
-
 	return (
 		<Stack.Navigator
 			initialRouteName={'Home'}
@@ -25,24 +22,8 @@ export const BookAndAboutUs = (props) => {
 			}}
 		>
 			<Stack.Screen name="Home" component={Home} />
-			<Stack.Screen name="Bookpage">
-				{() => (
-					<Book
-						setQuantity={setQuantity}
-						information={information}
-						setInformation={setInformation}
-					/>
-				)}
-			</Stack.Screen>
-			<Stack.Screen name="BookProcessNavigation">
-				{() => (
-					<BookProcessNavigation
-						Quantity={Quantity}
-						information={information}
-						setInformation={setInformation}
-					/>
-				)}
-			</Stack.Screen>
+			<Stack.Screen name="Bookpage" component={Book} />
+			<Stack.Screen name="BookProcessNavigation" component={BookProcessNavigation} />
 		</Stack.Navigator>
 	)
 }

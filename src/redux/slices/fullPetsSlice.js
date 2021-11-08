@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
 	all: [],
 	profilePetsList: [],
+	quantity: [],
+	petInformation: [],
 }
 
 export const fullPetList = createSlice({
@@ -15,9 +17,15 @@ export const fullPetList = createSlice({
 		setPets: (state, action) => {
 			state.profilePetsList = action.payload
 		},
+		setPetQuantity: (state, action) => {
+			state.quantity = action.payload
+		},
+		setPetInformation: (state, action) => {
+			state.petInformation = action.payload
+		},
 	},
 })
 
-export const { setPetsList, setPets } = fullPetList.actions
+export const { setPetsList, setPets, setPetQuantity, setPetInformation } = fullPetList.actions
 
 export default fullPetList.reducer

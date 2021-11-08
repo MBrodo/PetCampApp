@@ -149,6 +149,7 @@ export const DateContainer = (props) => {
 		navigation.navigate('BookProcessNavigation')
 		fullDate(dateInfo.endDay - dateInfo.startDay)
 	}
+	const petInformation = useSelector((state) => state.camps.camps)
 	return (
 		<DateView
 			StartBookProcess={StartBookProcess}
@@ -164,7 +165,7 @@ export const DateContainer = (props) => {
 			onChange={onChange}
 			showDatepickerEnd={showDatepickerEnd}
 			showDatepicker={showDatepicker}
-			information={props.information}
+			information={petInformation}
 		/>
 	)
 }

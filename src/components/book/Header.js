@@ -1,18 +1,23 @@
-import React, { useState } from 'react'
-import { Text, View, TextInput } from 'react-native'
-
+import React, { useState, useEffect } from 'react'
+import { Text, View } from 'react-native'
 import { styles, pickerSelectStyles } from './styles'
-
 import { CheckBox } from 'react-native-elements'
-
 import RNPickerSelect from 'react-native-picker-select'
+import { useSelector, useDispatch } from 'react-redux'
+import { setPetQuantity } from '../../redux/slices/fullPetsSlice'
 
 export const Header = (props) => {
 	const checkState = () => {
 		props.setDog(props.dog == false ? true : false)
 		props.setCat(props.cat == false ? true : false)
 	}
-
+	const [Quantity, setQuantity] = useState(false)
+	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch(setPetQuantity(Quantity))
+	}, [Quantity])
+	const quant = useSelector((state) => state.pets.quantity)
+	console.log(quant)
 	return (
 		<View>
 			<View>
@@ -49,7 +54,7 @@ export const Header = (props) => {
 							placeholder={{}}
 							style={pickerSelectStyles}
 							useNativeAndroidPickerStyle={false}
-							onValueChange={(value) => props.setQuantity(value)}
+							onValueChange={(value) => setQuantity(value)}
 							fixAndroidTouchableBug={true}
 							items={[
 								{ label: '1', value: 1 },
