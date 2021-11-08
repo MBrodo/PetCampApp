@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { Text, View, Image } from 'react-native'
 import { styles } from '../../style'
-import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import images from '../../MyProfile'
 import { useSelector, useDispatch } from 'react-redux'
 import bookList from '../../../../controllers/authorization/BookListController'

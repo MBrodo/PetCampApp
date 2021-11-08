@@ -5,18 +5,22 @@ import { Text, View, Image, Pressable } from 'react-native'
 import { styles } from './style'
 import { useNavigation } from '@react-navigation/native'
 import { BookPetInfo } from '../../../../common/petInfo/BookPetInfo'
+import { images } from '../../../Profile/ProfileInfo/addMyPet/AddMyPetContainer'
 
 import { useSelector } from 'react-redux'
 
 export const ChoosePetContainer = (props) => {
 	const [checkChoice, setCheckChoice] = useState(false)
 	const [pet, setPet] = useState()
+	const checkImage = (item) => {
+		return item.type == 'CAT' ? images.cat : images.dog
+	}
 
 	const myPetBlock = (item) => {
 		return (
 			<View key={item.id} style={styles.myPetContainer}>
 				<View>
-					<Image source={require('../../../../img/myPet.png')} />
+					<Image style={styles.picture} source={checkImage(item)} />
 				</View>
 				<View style={styles.myPetOptionsContainer}>
 					<View style={styles.myPetOptions}>
@@ -58,6 +62,7 @@ export const ChoosePetContainer = (props) => {
 			pet: pet,
 			totalPrice: props.route.params.totalPrice,
 			campID: props.route.params.campID,
+			checkImage: checkImage,
 		})
 	}
 	const bookingStart = useSelector((state) => state.booking.startDate)

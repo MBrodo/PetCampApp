@@ -14,6 +14,12 @@ export const styles = StyleSheet.create({
 		marginVertical: 20,
 		marginHorizontal: 5,
 	},
+	picture: {
+		height: 60,
+		width: 60,
+		borderRadius: 100,
+		borderColor: 'white',
+	},
 	activeStepNumber: {
 		fontSize: 40,
 		color: 'black',

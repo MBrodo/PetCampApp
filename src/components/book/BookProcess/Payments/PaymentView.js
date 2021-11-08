@@ -28,7 +28,7 @@ export const PaymentView = (props) => {
 					</View>
 					<View style={styles.myPetContainer}>
 						<View>
-							<Image source={require('../../../../img/myPet.png')} />
+							<Image style={styles.picture} source={props.checkImage(props.pet.type)} />
 						</View>
 						<View>
 							<View style={styles.myPetOptionsContainer}>
