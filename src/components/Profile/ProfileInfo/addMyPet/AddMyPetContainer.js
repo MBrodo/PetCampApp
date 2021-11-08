@@ -16,8 +16,8 @@ export const AddMyPetContainer = () => {
 	const [cat, setCat] = useState(false)
 
 	const checkPetState = () => {
-		setDog(!dog ? true : false)
-		setCat(!cat ? true : false)
+		setDog(!dog)
+		setCat(!cat)
 	}
 	const petType = () => {
 		return dog ? 'DOG' : 'CAT'
@@ -27,8 +27,8 @@ export const AddMyPetContainer = () => {
 	const [female, setFemale] = useState(false)
 
 	const checkGenderState = () => {
-		setMale(!male ? true : false)
-		setFemale(!female ? true : false)
+		setMale(!male)
+		setFemale(!female)
 	}
 
 	const petGender = () => {
@@ -39,8 +39,8 @@ export const AddMyPetContainer = () => {
 	const [sterilizedNegative, setSterilizedNegative] = useState(false)
 
 	const checkSterilizedState = () => {
-		setSterilizedPositive(!sterilizedPositive ? true : false)
-		setSterilizedNegative(!sterilizedNegative ? true : false)
+		setSterilizedPositive(!sterilizedPositive)
+		setSterilizedNegative(!sterilizedNegative)
 	}
 	const petSterilize = () => {
 		return sterilizedPositive ? 'yes' : 'no'
