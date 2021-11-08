@@ -12,7 +12,8 @@ export const BookOptions = (props) => {
 		if (authenticate.length === 0) {
 			dispatch(setAuth(false))
 		}
-		const petInformation = useSelector((state) => state.camps.camps)
+		const petInformation = useSelector((state) => state.pets.petInformation)
+
 		if (!authenticate) {
 			return <UnLoggedBookContainer information={petInformation} />
 		} else {

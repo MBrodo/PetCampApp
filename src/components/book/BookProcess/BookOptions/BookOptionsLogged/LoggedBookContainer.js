@@ -61,7 +61,6 @@ export const LoggedBookContainer = (props) => {
 			campID: props.information.id,
 		})
 	}
-
 	return (
 		<LoggedBookView
 			checkPoints={checkPoints}

@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 
 export const PaymentContainer = (props) => {
 	const navigation = useNavigation()
-
+	console.log(props)
 	const goToPayment = () => {
 		navigation.navigate('PaymentScreen', {
 			pet: props.route.params.pet.id,
