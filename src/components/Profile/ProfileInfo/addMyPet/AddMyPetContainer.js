@@ -4,64 +4,112 @@ import { AddMyPetView } from './AddMyPetView'
 import { PetCard } from '../../../../common/layouts/PetCard'
 import { styles } from './style'
 import { useNavigation } from '@react-navigation/native'
-import { CheckBoxView } from '../../../../common/checkBoxes/checkBox'
 import { useSelector } from 'react-redux'
 import sendNewCardController from '../../../../controllers/authorization/sendNewCard/sendNewCardController'
 import { AddCardCheckBox } from '../../../../common/checkBoxes/addCardCheckBox'
 export const AddMyPetContainer = () => {
-	const [petNickName, setPetNickName] = useState()
-	const [petBreed, setPetBreed] = useState()
-
-	const [dog, setDog] = useState(true)
-	const [cat, setCat] = useState(false)
+	const [petInfoContainer, setPetInfoContainer] = useState({
+		petNickName: '',
+		dog: true,
+		cat: false,
+		male: true,
+		female: false,
+		breed: '',
+		sterilizedPositive: true,
+		sterilizedNegative: false,
+		petAge: 0,
+		petVetPassport: '',
+		petInfo: '',
+	})
+	const petNickName = (item) => {
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			petNickName: item,
+		}))
+	}
 
 	const checkPetState = () => {
-		setDog(!dog)
-		setCat(!cat)
-	}
-	const petType = () => {
-		return dog ? 'DOG' : 'CAT'
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			dog: !prevState.dog,
+		}))
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			cat: !prevState.cat,
+		}))
 	}
 
-	const [male, setMale] = useState(true)
-	const [female, setFemale] = useState(false)
+	const petType = () => {
+		return petInfoContainer.dog ? 'DOG' : 'CAT'
+	}
 
 	const checkGenderState = () => {
-		setMale(!male)
-		setFemale(!female)
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			male: !prevState.male,
+		}))
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			female: !prevState.female,
+		}))
 	}
 
 	const petGender = () => {
-		return male ? 'male' : 'female'
+		return petInfoContainer.male ? 'male' : 'female'
 	}
-
-	const [sterilizedPositive, setSterilizedPositive] = useState(true)
-	const [sterilizedNegative, setSterilizedNegative] = useState(false)
 
 	const checkSterilizedState = () => {
-		setSterilizedPositive(!sterilizedPositive)
-		setSterilizedNegative(!sterilizedNegative)
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			sterilizedPositive: !prevState.sterilizedPositive,
+		}))
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			sterilizedNegative: !prevState.sterilizedNegative,
+		}))
 	}
 	const petSterilize = () => {
-		return sterilizedPositive ? 'yes' : 'no'
+		return petInfoContainer.sterilizedPositive ? 'yes' : 'no'
 	}
-	const [petAge, setPetAge] = useState()
-	const [petVetPassport, setPetVetPassport] = useState()
-	const [petInfo, setPetInfo] = useState()
+
+	const breed = (item) => {
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			breed: item,
+		}))
+	}
+
+	const petAge = (item) => {
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			petAge: parseFloat(item),
+		}))
+	}
+	const petVetPassport = (item) => {
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			petVetPassport: item,
+		}))
+	}
+	const petInfo = (item) => {
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			petInfo: item,
+		}))
+	}
 	const userId = useSelector((state) => state.user.id)
-	console.log(userId)
 	const SendNewCard = () => {
 		sendNewCardController(
 			userId,
-			petNickName,
+			petInfoContainer.petNickName,
 			petType(),
-			petBreed,
+			petInfoContainer.breed,
 			petGender(),
 			userId,
-			parseFloat(petAge),
+			petInfoContainer.petAge,
 			petSterilize(),
-			petVetPassport,
-			petInfo
+			petInfoContainer.petVetPassport,
+			petInfoContainer.petInfo
 		).then((res) => {
 			if (res.status === 200) {
 				console.log('success')
@@ -80,7 +128,7 @@ export const AddMyPetContainer = () => {
 			<View style={styles.myPetPhoto}>
 				<Image source={require('../../../../img/ProfileMyPet.jpg')} />
 				<TextInput
-					onChangeText={setPetNickName}
+					onChangeText={(item) => petNickName(item)}
 					placeholder={'add nickname'}
 					style={styles.textInputNickName}
 				/>
@@ -90,24 +138,24 @@ export const AddMyPetContainer = () => {
 				firstCheckBoxName={'Dog'}
 				SecondCheckBoxName={'Cat'}
 				checkPetState={checkPetState}
-				firstCheckBoxItem={dog}
-				secondCheckBoxItem={cat}
+				firstCheckBoxItem={petInfoContainer.dog}
+				secondCheckBoxItem={petInfoContainer.cat}
 			/>
 			<View style={styles.pointContainer}>
 				<Text>Breed:</Text>
-				<TextInput onChangeText={setPetBreed} style={styles.textInput} />
+				<TextInput onChangeText={(item) => breed(item)} style={styles.textInput} />
 			</View>
 			<AddCardCheckBox
 				name={'Gender:'}
 				firstCheckBoxName={'female'}
 				SecondCheckBoxName={'male'}
 				checkPetState={checkGenderState}
-				firstCheckBoxItem={female}
-				secondCheckBoxItem={male}
+				firstCheckBoxItem={petInfoContainer.female}
+				secondCheckBoxItem={petInfoContainer.male}
 			/>
 			<View style={styles.pointContainer}>
 				<Text>Age, years full:</Text>
-				<TextInput onChangeText={setPetAge} style={styles.textInputAge} />
+				<TextInput onChangeText={(item) => petAge(item)} style={styles.textInputAge} />
 				<Text style={styles.pointText}>years</Text>
 			</View>
 			<AddCardCheckBox
@@ -115,16 +163,16 @@ export const AddMyPetContainer = () => {
 				firstCheckBoxName={'yes'}
 				SecondCheckBoxName={'no'}
 				checkPetState={checkSterilizedState}
-				firstCheckBoxItem={sterilizedPositive}
-				secondCheckBoxItem={sterilizedNegative}
+				firstCheckBoxItem={petInfoContainer.sterilizedPositive}
+				secondCheckBoxItem={petInfoContainer.sterilizedNegative}
 			/>
 			<View style={styles.pointContainer}>
 				<Text>Vet Passport number:</Text>
-				<TextInput onChangeText={setPetVetPassport} style={styles.textInput} />
+				<TextInput onChangeText={(item) => petVetPassport(item)} style={styles.textInput} />
 			</View>
 			<View style={styles.individualNotice}>
 				<Text>Individual notice (preferances):</Text>
-				<TextInput onChangeText={setPetInfo} style={styles.individualNoticeInput} />
+				<TextInput onChangeText={(item) => petInfo(item)} style={styles.individualNoticeInput} />
 			</View>
 			<View style={styles.ButtonContainer}>
 				<Pressable
