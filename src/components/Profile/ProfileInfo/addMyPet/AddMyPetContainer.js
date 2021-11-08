@@ -4,6 +4,11 @@ import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
 import sendNewCardController from '../../../../controllers/authorization/sendNewCard/sendNewCardController'
 
+export const images = {
+	cat: require('../../../../img/cat1.jpg'),
+	dog: require('../../../../img/dog1.jpg'),
+}
+
 export const AddMyPetContainer = () => {
 	const [petInfoContainer, setPetInfoContainer] = useState({
 		petNickName: '',
@@ -120,9 +125,12 @@ export const AddMyPetContainer = () => {
 	const goToBackPoint = () => {
 		navigation.goBack()
 	}
-
+	const checkImage = () => {
+		return petInfoContainer.dog ? images.dog : images.cat
+	}
 	return (
 		<AddMyPetView
+			checkImage={checkImage}
 			goToBackPoint={goToBackPoint}
 			petInfo={petInfo}
 			petVetPassport={petVetPassport}

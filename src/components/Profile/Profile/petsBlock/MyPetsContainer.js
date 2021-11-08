@@ -38,11 +38,15 @@ export const MyPetsContainer = () => {
 
 	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
 
+	const checkImage = (item) => {
+		return item.type == 'CAT' ? images.cat : images.dog
+	}
+
 	const petList = (item) => (
 		<View key={item.id} style={styles.containerElement}>
 			<View style={styles.containerWrapper}>
 				<View>
-					<Image source={images.dog} style={styles.petPic} />
+					<Image source={checkImage(item)} style={styles.petPic} />
 				</View>
 				<View style={styles.elementMain}>
 					<View style={styles.elementFloor}>
@@ -66,7 +70,7 @@ export const MyPetsContainer = () => {
 						</View>
 						<View style={styles.elementInfo}>
 							<Text>Vacinated</Text>
-							<Icon name="check" size={20} style={{ color: '#5D5FEF' }} />
+							<Text style={styles.elementText}>{item.vet_pasport}</Text>
 						</View>
 					</View>
 				</View>

@@ -8,7 +8,7 @@ export const AddMyPetView = (props) => {
 	const addCardView = () => (
 		<View style={styles.wrapper}>
 			<View style={styles.myPetPhoto}>
-				<Image source={require('../../../../img/ProfileMyPet.jpg')} />
+				<Image style={styles.picture} source={props.checkImage()} />
 				<TextInput
 					onChangeText={(item) => props.petNickName(item)}
 					placeholder={'add nickname'}

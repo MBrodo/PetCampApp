@@ -9,6 +9,13 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
+	picture: {
+		height: 140,
+		width: 140,
+		borderRadius: 100,
+		borderColor: 'white',
+		borderWidth: 8,
+	},
 	cardContainer: {
 		width: 250,
 		alignItems: 'center',

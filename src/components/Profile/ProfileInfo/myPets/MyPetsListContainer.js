@@ -7,12 +7,16 @@ import { useSelector } from 'react-redux'
 import { PetCard } from '../../../../common/layouts/PetCard'
 import { useNavigation } from '@react-navigation/native'
 import { PetInfo } from '../../../../common/petInfo/petInfo'
+import { images } from '../addMyPet/AddMyPetContainer'
 
 export const MyPetsListContainer = () => {
+	const checkImage = (item) => {
+		return item.type == 'CAT' ? images.cat : images.dog
+	}
 	const petInfo = (item) => (
 		<View style={styles.wrapper}>
 			<View style={styles.myPetPhoto}>
-				<Image source={require('../../../../img/ProfileMyPet.jpg')} />
+				<Image style={styles.picture} source={checkImage(item)} />
 				<Text style={styles.myPetPhotoText}>{item.name}</Text>
 			</View>
 			<PetInfo title={'Cat/Dog:'} item={item.type} />
