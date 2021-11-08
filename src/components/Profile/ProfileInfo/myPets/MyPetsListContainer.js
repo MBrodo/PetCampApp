@@ -34,7 +34,7 @@ export const MyPetsListContainer = () => {
 	)
 	const petsCards = (item) => <PetCard key={item.id} item={item} petInfo={petInfo} />
 
-	const pets = useSelector((state) => state.petsList.petsList)
+	const pets = useSelector((state) => state.petsList.fullPetsList)
 	const navigation = useNavigation()
 
 	const addButton = () => {

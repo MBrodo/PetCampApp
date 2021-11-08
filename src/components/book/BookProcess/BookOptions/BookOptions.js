@@ -7,7 +7,7 @@ import { setAuth } from '../../../../redux/slices/authentication/authSlice'
 export const BookOptions = (props) => {
 	const checkStore = () => {
 		const dispatch = useDispatch()
-		const authenticate = useSelector((state) => state.auth.auth)
+		const authenticate = useSelector((state) => state.auth.checkAuthenticate)
 
 		if (authenticate.length === 0) {
 			dispatch(setAuth(false))

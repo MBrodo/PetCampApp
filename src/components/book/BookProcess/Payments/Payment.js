@@ -7,14 +7,14 @@ import { useSelector } from 'react-redux'
 import sendBookController from '../../../../controllers/authorization/sendBookController'
 
 export const Payment = (props) => {
-	const userId = useSelector((state) => state.user.user)
+	const userId = useSelector((state) => state.user.id)
 	const SendBook = () => {
 		sendBookController(
 			userId,
 			props.route.params.pet,
 			props.route.params.campID,
-			props.route.params.dateText,
-			props.route.params.dateTextEnd,
+			props.route.params.bookingDateStart,
+			props.route.params.bookingDateEnds,
 			true
 		).then((res) => {
 			if (res.status === 200) {
@@ -26,7 +26,7 @@ export const Payment = (props) => {
 	}
 
 	const navigation = useNavigation()
-	const handlePayPress = () => {
+	const goToCongrats = () => {
 		navigation.navigate('Congrats')
 		SendBook()
 	}
@@ -57,7 +57,7 @@ export const Payment = (props) => {
 					console.log('focusField', focusedField)
 				}}
 			/>
-			<Pressable onPress={handlePayPress} style={styles.paymentButton}>
+			<Pressable onPress={goToCongrats} style={styles.paymentButton}>
 				<Text style={styles.paymentText}>Pay</Text>
 			</Pressable>
 		</View>

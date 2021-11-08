@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-	petsList: [],
+	fullPetsList: [],
 }
 
 export const fullPetList = createSlice({
-	name: 'petsList',
+	name: 'fullPetsList',
 	initialState,
 	reducers: {
 		setPetsList: (state, action) => {
-			state.petsList = action.payload
+			state.fullPetsList = action.payload
 		},
 	},
 })

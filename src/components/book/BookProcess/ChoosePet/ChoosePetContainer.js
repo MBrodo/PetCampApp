@@ -51,25 +51,26 @@ export const ChoosePetContainer = (props) => {
 	const addPet = () => {
 		navigation.navigate('AddMyPet')
 	}
-	const thirdStep = () => {
+	const goToThirdStep = () => {
 		navigation.navigate('Payment', {
-			dateTextEnd: props.route.params.dateTextEnd,
-			dateText: props.route.params.dateText,
+			bookingDateEnds: bookingEnds,
+			bookingDateStart: bookingStart,
 			pet: pet,
 			totalPrice: props.route.params.totalPrice,
 			campID: props.route.params.campID,
 		})
 	}
-
-	const petList = useSelector((state) => state.petsList.petsList)
+	const bookingStart = useSelector((state) => state.dateStart.startBooking)
+	const bookingEnds = useSelector((state) => state.dateEnd.endBooking)
+	const petList = useSelector((state) => state.petsList.fullPetsList)
 
 	return (
 		<ChoosePetView
-			dateText={props.route.params.dateText}
-			dateTextEnd={props.route.params.dateTextEnd}
+			dateText={bookingStart}
+			dateTextEnd={bookingEnds}
 			pet={pet}
 			petList={petList}
-			secondStep={thirdStep}
+			goToThirdStep={goToThirdStep}
 			myPetBlock={myPetBlock}
 			addPet={addPet}
 		/>

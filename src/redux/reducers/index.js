@@ -18,11 +18,11 @@ export const reducer = combineReducers({
 	menu: test,
 	camps: campsReducer,
 	pets: petReducer,
-	book: BookReducer,
+	booking: BookReducer,
 	user: userReducer,
 	petsList: fullPetListReducer,
 	auth: authReducer,
 	dateEnd: dateEndReducer,
 	dateStart: dateStartReducer,
-	totalDay: totalDayReducer,
+	totalDays: totalDayReducer,
 })

@@ -44,9 +44,15 @@ export const LoggedBookView = (props) => {
 					<View>
 						<Text style={styles.hotelRooms}>8 standard rooms are avaliable</Text>
 					</View>
-					<View style={styles.priceBlock}>
-						<Text style={styles.hotelPriceArticle}>PRICE:</Text>
-						<Text style={styles.hotelPrice}>$ 12 / day</Text>
+					<View>
+						<View style={styles.priceBlock}>
+							<Text style={styles.hotelPriceArticle}>PRICE:</Text>
+							<Text style={styles.hotelPrice}>$ 12 / day</Text>
+						</View>
+						<View style={styles.priceBlock}>
+							<Text style={styles.hotelPriceArticle}>PETS:</Text>
+							<Text style={styles.hotelPrice}>{props.Quantity}</Text>
+						</View>
 					</View>
 					<View style={styles.checkContainer}>
 						<View style={styles.checkInContainer}>
@@ -103,9 +109,7 @@ export const LoggedBookView = (props) => {
 							</View>
 						</View>
 						<View style={styles.totalPriceContainer}>
-							<Text style={styles.additionalOptionsText}>
-								Total price({props.Quantity} pets): {props.totalPrice()}$
-							</Text>
+							<Text style={styles.additionalOptionsText}>Total price: {props.totalPrice()}$</Text>
 						</View>
 						<View>
 							<Text style={styles.additionalOptionsText}>I state that:</Text>
@@ -135,7 +139,7 @@ export const LoggedBookView = (props) => {
 						<BookingButton
 							checkPoints={props.checkPoints()}
 							checkButton={props.checkButton}
-							secondStep={props.secondStep}
+							nextBookingStep={props.goToSecondStep}
 						/>
 						<BookingFooter />
 					</View>

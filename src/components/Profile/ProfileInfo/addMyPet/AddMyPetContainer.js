@@ -16,8 +16,8 @@ export const AddMyPetContainer = () => {
 	const [cat, setCat] = useState(false)
 
 	const checkPetState = () => {
-		setDog(dog == false ? true : false)
-		setCat(cat == false ? true : false)
+		setDog(!dog ? true : false)
+		setCat(!cat ? true : false)
 	}
 	const petType = () => {
 		return dog ? 'DOG' : 'CAT'
@@ -27,8 +27,8 @@ export const AddMyPetContainer = () => {
 	const [female, setFemale] = useState(false)
 
 	const checkGenderState = () => {
-		setMale(male == false ? true : false)
-		setFemale(female == false ? true : false)
+		setMale(!male ? true : false)
+		setFemale(!female ? true : false)
 	}
 
 	const petGender = () => {
@@ -39,8 +39,8 @@ export const AddMyPetContainer = () => {
 	const [sterilizedNegative, setSterilizedNegative] = useState(false)
 
 	const checkSterilizedState = () => {
-		setSterilizedPositive(sterilizedPositive == false ? true : false)
-		setSterilizedNegative(sterilizedNegative == false ? true : false)
+		setSterilizedPositive(!sterilizedPositive ? true : false)
+		setSterilizedNegative(!sterilizedNegative ? true : false)
 	}
 	const petSterilize = () => {
 		return sterilizedPositive ? 'yes' : 'no'
@@ -48,8 +48,8 @@ export const AddMyPetContainer = () => {
 	const [petAge, setPetAge] = useState()
 	const [petVetPassport, setPetVetPassport] = useState()
 	const [petInfo, setPetInfo] = useState()
-	const userId = useSelector((state) => state.user.user)
-
+	const userId = useSelector((state) => state.user.id)
+	console.log(userId)
 	const SendNewCard = () => {
 		sendNewCardController(
 			userId,

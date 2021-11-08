@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-	totalDay: [],
+	totalBookingDays: [],
 }
 
 export const totalDay = createSlice({
-	name: 'totalDay',
+	name: 'totalBookingDays',
 	initialState,
 	reducers: {
 		setTotalDay: (state, action) => {
-			state.totalDay = action.payload
+			state.totalBookingDays = action.payload
 		},
 	},
 })
