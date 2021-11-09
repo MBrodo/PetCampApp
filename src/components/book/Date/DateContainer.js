@@ -144,25 +144,25 @@ export const DateContainer = (props) => {
 	const showDatepicker = () => {
 		showMode('date')
 	}
-	const type = useSelector((state) => state.pets.type)
-	const userId = useSelector((state) => state.user.id)
+	// const type = useSelector((state) => state.pets.type)
+	// const userId = useSelector((state) => state.user.id)
 
-	const getTypePet = (userId, type) => {
-		petTypeController(userId, type).then((res) => {
-			if (res.status === 200) {
-				dispatch(setTypeList(res.data.petsList))
-			} else {
-				console.log('Some trouble with server!')
-			}
-		})
-	}
+	// const getTypePet = (userId, type) => {
+	// 	petTypeController(userId, type).then((res) => {
+	// 		if (res.status === 200) {
+	// 			dispatch(setTypeList(res.data.petsList))
+	// 		} else {
+	// 			console.log('Some trouble with server!')
+	// 		}
+	// 	})
+	// }
 
 	const navigation = useNavigation()
 
 	const StartBookProcess = () => {
 		navigation.navigate('BookProcessNavigation')
 		fullDate(dateInfo.endDay - dateInfo.startDay)
-		getTypePet(userId, type)
+		// getTypePet(userId, type)
 	}
 	const petInformation = useSelector((state) => state.camps.camps)
 	return (
