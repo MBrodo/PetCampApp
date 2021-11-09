@@ -17,4 +17,17 @@ export const styles = StyleSheet.create({
 		color: 'white',
 		fontSize: 22,
 	},
+	button: {
+		height: 25,
+		width: 70,
+		borderWidth: 1,
+		borderRadius: 5,
+		borderColor: '#7879F1',
+		backgroundColor: 'white',
+		alignItems: 'center',
+		justifyContent: 'space-around',
+	},
+	buttonText: {
+		color: '#7879F1',
+	},
 })
