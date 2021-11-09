@@ -16,7 +16,7 @@ const sendNewCardController = async (
 ) =>
 	new Promise((resolve) => {
 		axios
-			.post(`${IP.HOST}${URLS.BOOK_LIST}/${id}`, {
+			.post(`${IP.HOST}${URLS.SEND_CARD}/${id}`, {
 				id,
 				name,
 				type,

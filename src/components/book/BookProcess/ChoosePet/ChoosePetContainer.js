@@ -6,8 +6,9 @@ import { styles } from './style'
 import { useNavigation } from '@react-navigation/native'
 import { BookPetInfo } from '../../../../common/petInfo/BookPetInfo'
 import { images } from '../../../Profile/ProfileInfo/addMyPet/AddMyPetContainer'
-
-import { useSelector } from 'react-redux'
+import petTypeController from '../../../../controllers/petTypeController'
+import { setTypeList } from '../../../../redux/slices/fullPetsSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 export const ChoosePetContainer = (props) => {
 	const [checkChoice, setCheckChoice] = useState(false)
@@ -15,6 +16,21 @@ export const ChoosePetContainer = (props) => {
 	const checkImage = (item) => {
 		return item.type == 'CAT' ? images.cat : images.dog
 	}
+	const dispatch = useDispatch()
+
+	const type = useSelector((state) => state.pets.type)
+	const userId = useSelector((state) => state.user.id)
+	const allPets = useSelector((state) => state.pets.all)
+
+	useEffect(() => {
+		petTypeController(userId, type).then((res) => {
+			if (res.status === 200) {
+				dispatch(setTypeList(res.data.petsList))
+			} else {
+				console.log('Some trouble with server!')
+			}
+		})
+	}, [allPets])
 
 	const myPetBlock = (item) => {
 		return (
@@ -70,7 +86,7 @@ export const ChoosePetContainer = (props) => {
 	}
 	const bookingStart = useSelector((state) => state.booking.startDate)
 	const bookingEnds = useSelector((state) => state.booking.endDate)
-	const petList = useSelector((state) => state.pets.all)
+	const petList = useSelector((state) => state.pets.typeList)
 
 	return (
 		<ChoosePetView
