@@ -7,7 +7,7 @@ export const SubmitButton = (props) => {
 		<Pressable
 			style={styles.button}
 			onPress={() => {
-				props.checkSettings()
+				props.checkState()
 			}}
 		>
 			<Text style={styles.buttonText}>{props.name}</Text>

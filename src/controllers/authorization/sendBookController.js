@@ -5,7 +5,7 @@ import axios from 'axios'
 const sendBookController = async (user, pet, camp, bookingStart, bookingEnd, isActive = true) =>
 	new Promise((resolve) => {
 		axios
-			.post(`http:/${IP.HOST}${URLS.SEND_BOOK}`, {
+			.post(`${IP.HOST}${URLS.SEND_BOOK}`, {
 				user,
 				pet,
 				camp,

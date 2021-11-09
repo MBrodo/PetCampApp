@@ -5,6 +5,7 @@ const URLS = {
 	SEND_BOOK: '/client/bookings',
 	PET_LIST: '/client/clientProfileInfo',
 	BOOK_LIST: '/client/pets',
+	SEND_SETTINGS: '/client/mySettings',
 }
 
 export default URLS
