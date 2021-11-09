@@ -77,7 +77,7 @@ export const AddMyPetView = (props) => {
 					}}
 					style={styles.cancleButton}
 				>
-					<Text style={styles.cancleButtonText}>Cancle</Text>
+					<Text style={styles.cancleButtonText}>Cancel</Text>
 				</Pressable>
 			</View>
 		</View>

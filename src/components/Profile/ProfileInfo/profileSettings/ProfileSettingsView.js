@@ -10,7 +10,7 @@ const images = {
 
 export const ProfileSettingsView = (props) => {
 	return (
-		<ScrollView>
+		<ScrollView style={styles.mainContainer}>
 			<View style={styles.wrapper}>
 				<ImageBackground
 					source={images.backGround}
@@ -45,12 +45,7 @@ export const ProfileSettingsView = (props) => {
 						</View>
 						{props.checkSettings()}
 					</View>
-					<View style={styles.buttonsContainer}>
-						{props.checkButton()}
-						<Pressable style={styles.button} onPress={() => props.toMyProfile()}>
-							<Text style={styles.buttonText}>Go back</Text>
-						</Pressable>
-					</View>
+					<View style={styles.buttonsContainer}>{props.checkButton()}</View>
 				</View>
 			</View>
 		</ScrollView>

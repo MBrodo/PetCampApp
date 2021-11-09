@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
-	wrapper: {
+	mainContainer: {
 		backgroundColor: 'rgba(60, 176, 157, 0.1)',
 		width: '100%',
-		height: 580,
+		height: '100%',
+	},
+	wrapper: {
 		alignItems: 'center',
 	},
 	imageBackGround: {

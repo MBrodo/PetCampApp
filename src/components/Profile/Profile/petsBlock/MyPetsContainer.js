@@ -14,6 +14,7 @@ export const MyPetsContainer = () => {
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.id)
 	const petsList = useSelector((state) => state.pets.all)
+	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
 
 	useEffect(() => {
 		fullpetListController(userID).then((res) => {
@@ -34,8 +35,6 @@ export const MyPetsContainer = () => {
 			}
 		})
 	}, [profilePetsList])
-
-	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
 
 	const checkImage = (item) => {
 		return item.type == 'CAT' ? images.cat : images.dog
