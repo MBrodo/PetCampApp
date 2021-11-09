@@ -7,7 +7,7 @@ export const BookingButton = (props) => {
 		<View style={styles.acceptButtonContainer}>
 			<Pressable
 				onPress={() => {
-					props.secondStep()
+					props.nextBookingStep()
 				}}
 				disabled={props.checkPoints}
 				style={styles.acceptButton}

@@ -65,7 +65,7 @@ export const LoggedBookContainer = (props) => {
 			totalPrice={totalPrice}
 			dateText={props.dateText}
 			dateTextEnd={props.dateTextEnd}
-			secondStep={secondStep}
+			nextBookingStep={secondStep}
 			transfer={transfer}
 			setTransfer={checkTransfer}
 			grooming={grooming}

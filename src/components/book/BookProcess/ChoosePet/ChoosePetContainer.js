@@ -79,7 +79,7 @@ export const ChoosePetContainer = (props) => {
 			dateTextEnd={props.route.params.dateTextEnd}
 			pet={pet}
 			petList={petList}
-			secondStep={thirdStep}
+			nextBookingStep={thirdStep}
 			myPetBlock={myPetBlock}
 			myPets={myPets}
 		/>

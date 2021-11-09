@@ -35,7 +35,7 @@ export const ChoosePetView = (props) => {
 						<Text style={styles.addButtonText}>Add a pet</Text>
 					</View>
 
-					<BookingButton secondStep={props.secondStep} />
+					<BookingButton nextBookingStep={props.nextBookingStep} />
 				</View>
 			</View>
 		</ScrollView>
