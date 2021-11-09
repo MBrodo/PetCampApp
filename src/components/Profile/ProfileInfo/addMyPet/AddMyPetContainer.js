@@ -9,7 +9,7 @@ export const images = {
 	dog: require('../../../../img/dog1.jpg'),
 }
 
-export const AddMyPetContainer = () => {
+export const AddMyPetContainer = (props) => {
 	const [petInfoContainer, setPetInfoContainer] = useState({
 		petNickName: '',
 		dog: true,
@@ -122,7 +122,7 @@ export const AddMyPetContainer = () => {
 	}
 
 	const navigation = useNavigation()
-	const goToBackPoint = () => {
+	const backPoint = () => {
 		navigation.goBack()
 	}
 	const checkImage = () => {
@@ -130,8 +130,9 @@ export const AddMyPetContainer = () => {
 	}
 	return (
 		<AddMyPetView
+			goToBackPoint={props.route.params.goToBackPoint}
 			checkImage={checkImage}
-			goToBackPoint={goToBackPoint}
+			backPoint={backPoint}
 			petInfo={petInfo}
 			petVetPassport={petVetPassport}
 			checkSterilizedState={checkSterilizedState}

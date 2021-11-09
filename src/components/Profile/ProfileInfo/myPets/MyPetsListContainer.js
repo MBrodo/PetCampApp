@@ -40,9 +40,12 @@ export const MyPetsListContainer = () => {
 
 	const pets = useSelector((state) => state.pets.all)
 	const navigation = useNavigation()
+	const goToBackPoint = () => {
+		navigation.goBack()
+	}
 
 	const addButton = () => {
-		navigation.navigate('AddMyPet')
+		navigation.navigate('AddMyPet', { goToBackPoint: goToBackPoint })
 	}
 
 	return <MyPetsListView addButton={addButton} pets={pets} petsCards={petsCards} />

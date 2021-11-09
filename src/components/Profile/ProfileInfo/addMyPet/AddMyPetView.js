@@ -69,7 +69,13 @@ export const AddMyPetView = (props) => {
 				>
 					<Text style={styles.changeButtonText}>Submit</Text>
 				</Pressable>
-				<Pressable onPress={() => props.goToBackPoint()} style={styles.cancleButton}>
+				<Pressable
+					onPress={() => {
+						props.goToBackPoint()
+						props.backPoint()
+					}}
+					style={styles.cancleButton}
+				>
 					<Text style={styles.cancleButtonText}>Cancle</Text>
 				</Pressable>
 			</View>

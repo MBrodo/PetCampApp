@@ -52,8 +52,11 @@ export const ChoosePetContainer = (props) => {
 		)
 	}
 	const navigation = useNavigation()
+	const goToBackPoint = () => {
+		navigation.navigate('ChoosePet')
+	}
 	const addPet = () => {
-		navigation.navigate('AddMyPet')
+		navigation.navigate('AddMyPet', { goToBackPoint: goToBackPoint })
 	}
 	const goToThirdStep = () => {
 		navigation.navigate('Payment', {
