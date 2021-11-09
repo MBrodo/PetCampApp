@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import { BookPetInfo } from '../../../../common/petInfo/BookPetInfo'
 import { images } from '../../../Profile/ProfileInfo/addMyPet/AddMyPetContainer'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 export const ChoosePetContainer = (props) => {
 	const [checkChoice, setCheckChoice] = useState(false)
@@ -15,6 +15,10 @@ export const ChoosePetContainer = (props) => {
 	const checkImage = (item) => {
 		return item.type == 'CAT' ? images.cat : images.dog
 	}
+	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch
+	})
 
 	const myPetBlock = (item) => {
 		return (
@@ -70,7 +74,7 @@ export const ChoosePetContainer = (props) => {
 	}
 	const bookingStart = useSelector((state) => state.booking.startDate)
 	const bookingEnds = useSelector((state) => state.booking.endDate)
-	const petList = useSelector((state) => state.pets.all)
+	const petList = useSelector((state) => state.pets.typeList)
 
 	return (
 		<ChoosePetView

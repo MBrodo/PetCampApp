@@ -4,6 +4,8 @@ import { DateView } from './DateView'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector, useDispatch } from 'react-redux'
 import { setDateStart, setDateEnds, setTotalDay } from '../../../redux/slices/bookSlice'
+import { setTypeList } from '../../../redux/slices/fullPetsSlice'
+import petTypeController from '../../../controllers/petTypeController'
 
 export const DateContainer = (props) => {
 	const [dateInfo, setDateInfo] = useState({
@@ -142,12 +144,25 @@ export const DateContainer = (props) => {
 	const showDatepicker = () => {
 		showMode('date')
 	}
+	const type = useSelector((state) => state.pets.type)
+	const userId = useSelector((state) => state.user.id)
+
+	const getTypePet = (userId, type) => {
+		petTypeController(userId, type).then((res) => {
+			if (res.status === 200) {
+				dispatch(setTypeList(res.data.petsList))
+			} else {
+				console.log('Some trouble with server!')
+			}
+		})
+	}
 
 	const navigation = useNavigation()
 
 	const StartBookProcess = () => {
 		navigation.navigate('BookProcessNavigation')
 		fullDate(dateInfo.endDay - dateInfo.startDay)
+		getTypePet(userId, type)
 	}
 	const petInformation = useSelector((state) => state.camps.camps)
 	return (

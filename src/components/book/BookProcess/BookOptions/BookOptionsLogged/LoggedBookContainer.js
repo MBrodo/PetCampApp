@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { LoggedBookView } from './LoggedBookView'
 import { useNavigation } from '@react-navigation/native'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 export const LoggedBookContainer = (props) => {
 	const [transfer, setTransfer] = useState(false)
@@ -12,6 +12,7 @@ export const LoggedBookContainer = (props) => {
 	const [checkButton, setCheckButton] = useState(true)
 
 	const quantity = useSelector((state) => state.pets.quantity)
+	const dispatch = useDispatch()
 
 	const checkPoints = () => {
 		return vaccinated && agreement ? false : true

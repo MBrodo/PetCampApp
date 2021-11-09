@@ -5,6 +5,8 @@ const initialState = {
 	profilePetsList: [],
 	quantity: [],
 	petInformation: [],
+	type: [],
+	typeList: [],
 }
 
 export const fullPetList = createSlice({
@@ -23,9 +25,16 @@ export const fullPetList = createSlice({
 		setPetInformation: (state, action) => {
 			state.petInformation = action.payload
 		},
+		setType: (state, action) => {
+			state.type = action.payload
+		},
+		setTypeList: (state, action) => {
+			state.typeList = action.payload
+		},
 	},
 })
 
-export const { setPetsList, setPets, setPetQuantity, setPetInformation } = fullPetList.actions
+export const { setPetsList, setPets, setPetQuantity, setPetInformation, setType, setTypeList } =
+	fullPetList.actions
 
 export default fullPetList.reducer

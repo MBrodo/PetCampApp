@@ -64,6 +64,7 @@ export const AddMyPetView = (props) => {
 					onPress={() => {
 						props.SendNewCard()
 						props.goToBackPoint()
+						props.backPoint()
 					}}
 					style={styles.changeButton}
 				>

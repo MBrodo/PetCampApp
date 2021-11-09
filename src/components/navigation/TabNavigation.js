@@ -54,7 +54,7 @@ export function TabNavigation({ navigation }) {
 				iconName = 'id-badge'
 				size = focused ? 30 : 25
 				color = focused ? '#297164' : 'white'
-			} else if (route.name === 'LogIn') {
+			} else if (route.name === 'Profile') {
 				iconName = 'user'
 				size = focused ? 30 : 25
 				color = focused ? '#297164' : 'white'
@@ -79,7 +79,7 @@ export function TabNavigation({ navigation }) {
 				}}
 			/>
 			<Tab.Screen name="Contacts" component={Contacts} />
-			<Tab.Screen name="LogIn" component={MyProfileStackNavigation} />
+			<Tab.Screen name="Profile" component={MyProfileStackNavigation} />
 		</Tab.Navigator>
 	)
 }
