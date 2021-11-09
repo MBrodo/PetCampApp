@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 export const UnLoggedBookContainer = (props) => {
 	const navigation = useNavigation()
 	const StartBookProcess = () => {
-		navigation.navigate('LogIn')
+		navigation.navigate('Profile')
 	}
 
 	return <UnLoggedBookView information={props.information} StartBookProcess={StartBookProcess} />

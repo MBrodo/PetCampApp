@@ -3,6 +3,8 @@ import { Text, View } from 'react-native'
 
 import { styles } from '../styles'
 import { setCamps } from '../../../redux/slices/petCampsSlise'
+import { setType } from '../../../redux/slices/fullPetsSlice'
+import { setPetInformation } from '../../../redux/slices/fullPetsSlice'
 import mapListController from '../../../controllers/authorization/mapListController'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -33,8 +35,21 @@ export const MapListContainer = (props) => {
 			return showHotels(item)
 		}
 	}
+	const [information, setInformation] = useState()
 	const camps = useSelector((state) => state.camps.camps)
 	const dispatch = useDispatch()
+
+	const chechType = () => {
+		return props.cat ? 'CAT' : 'DOG'
+	}
+
+	useEffect(() => {
+		dispatch(setType(chechType()))
+	}, [props.cat])
+
+	useEffect(() => {
+		dispatch(setPetInformation(information))
+	}, [information])
 
 	useEffect(() => {
 		mapListController().then((res) => {
@@ -71,7 +86,7 @@ export const MapListContainer = (props) => {
 			setCountry={setCountry}
 			showHotels={showHotels}
 			map={props.map}
-			setInformation={props.setInformation}
+			setInformation={setInformation}
 		/>
 	)
 }

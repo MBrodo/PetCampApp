@@ -120,6 +120,12 @@ export const styles = StyleSheet.create({
 	acceptButtonContainer: {
 		alignItems: 'center',
 	},
+	picture: {
+		height: 60,
+		width: 60,
+		borderRadius: 100,
+		borderColor: 'white',
+	},
 	acceptButton: {
 		width: 120,
 		height: 40,

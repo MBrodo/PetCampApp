@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, ScrollView, Pressable } from 'react-native'
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
-import { BookingButton } from '../../../../common/buttons/bookingButton'
+import { BookingButton } from '../../../../common/buttons/bookingButoon'
 
 export const ChoosePetView = (props) => {
 	return (
@@ -28,12 +28,12 @@ export const ChoosePetView = (props) => {
 						<Text style={styles.bookArticle}>My pets</Text>
 					</View>
 					<View>{props.petList.map((item) => props.myPetBlock(item))}</View>
-					<View style={styles.addButtonContainer}>
+					<Pressable onPress={() => props.addPet()} style={styles.addButtonContainer}>
 						<View style={styles.addButton}>
 							<Icon name={'plus'} size={30} color={'#5D5FEF'} />
 						</View>
 						<Text style={styles.addButtonText}>Add a pet</Text>
-					</View>
+					</Pressable>
 
 					<BookingButton nextBookingStep={props.goToThirdStep} />
 				</View>

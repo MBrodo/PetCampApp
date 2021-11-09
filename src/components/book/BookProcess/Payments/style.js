@@ -14,6 +14,12 @@ export const styles = StyleSheet.create({
 		marginVertical: 20,
 		marginHorizontal: 5,
 	},
+	picture: {
+		height: 60,
+		width: 60,
+		borderRadius: 100,
+		borderColor: 'white',
+	},
 	activeStepNumber: {
 		fontSize: 40,
 		color: 'black',
@@ -136,5 +142,32 @@ export const styles = StyleSheet.create({
 	acceptButtonText: {
 		color: 'white',
 		fontSize: 22,
+	},
+	paymentContainer: {
+		alignItems: 'center',
+	},
+	paymentButton: {
+		borderWidth: 1,
+		borderColor: '#5D96CC',
+		borderRadius: 5,
+		paddingVertical: 5,
+		paddingHorizontal: 20,
+	},
+	paymentText: {
+		color: '#5D96CC',
+		fontWeight: 'bold',
+	},
+	card: {
+		backgroundColor: '#F2F2F2',
+		textColor: '#000000',
+		borderColor: '#000000',
+		borderWidth: 1,
+		borderRadius: 5,
+	},
+	cardContainer: {
+		width: '95%',
+		height: 50,
+		marginVertical: 30,
+		marginHorizontal: 10,
 	},
 })

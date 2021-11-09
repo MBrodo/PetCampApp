@@ -3,38 +3,46 @@ import React, { useState, useEffect } from 'react'
 import { ChoosePetView } from './ChoosePetView'
 import { Text, View, Image, Pressable } from 'react-native'
 import { styles } from './style'
-import { CheckBox } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
-
+import { BookPetInfo } from '../../../../common/petInfo/BookPetInfo'
+import { images } from '../../../Profile/ProfileInfo/addMyPet/AddMyPetContainer'
+import petTypeController from '../../../../controllers/petTypeController'
+import { setTypeList } from '../../../../redux/slices/fullPetsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 export const ChoosePetContainer = (props) => {
-	const myPets = [
-		{ type: 'Cat', name: 'Felix', age: 10, img: require('../../../../img/myPet.png'), key: 1 },
-		{ type: 'Cat', name: 'Richard', age: 6, img: require('../../../../img/myPet.png'), key: 2 },
-	]
 	const [checkChoice, setCheckChoice] = useState(false)
 	const [pet, setPet] = useState()
+	const checkImage = (item) => {
+		return item.type == 'CAT' ? images.cat : images.dog
+	}
+	const dispatch = useDispatch()
+
+	const type = useSelector((state) => state.pets.type)
+	const userId = useSelector((state) => state.user.id)
+	const allPets = useSelector((state) => state.pets.all)
+
+	useEffect(() => {
+		petTypeController(userId, type).then((res) => {
+			if (res.status === 200) {
+				dispatch(setTypeList(res.data.petsList))
+			} else {
+				console.log('Some trouble with server!')
+			}
+		})
+	}, [allPets])
+
 	const myPetBlock = (item) => {
 		return (
 			<View key={item.id} style={styles.myPetContainer}>
 				<View>
-					<Image source={require('../../../../img/myPet.png')} />
+					<Image style={styles.picture} source={checkImage(item)} />
 				</View>
 				<View style={styles.myPetOptionsContainer}>
 					<View style={styles.myPetOptions}>
-						<View>
-							<Text style={styles.optionArticle}>Cat/Dog</Text>
-							<Text style={styles.optionName}>{item.type}</Text>
-						</View>
-						<View>
-							<Text style={styles.optionArticle}>Name</Text>
-							<Text style={styles.optionName}>{item.name}</Text>
-						</View>
-						<View>
-							<Text style={styles.optionArticle}>Age</Text>
-							<Text style={styles.optionName}>{item.age} years</Text>
-						</View>
+						<BookPetInfo title={'Cat/Dog:'} item={item.type} />
+						<BookPetInfo title={'Name:'} item={item.name} />
+						<BookPetInfo title={'Age:'} item={item.age} />
 					</View>
 					<View style={styles.genderOptionsContainer}>
 						<View>
@@ -60,28 +68,35 @@ export const ChoosePetContainer = (props) => {
 		)
 	}
 	const navigation = useNavigation()
+	const goToBackPoint = () => {
+		navigation.navigate('ChoosePet')
+	}
+	const addPet = () => {
+		navigation.navigate('AddMyPet', { goToBackPoint: goToBackPoint })
+	}
 	const goToThirdStep = () => {
 		navigation.navigate('Payment', {
-			dateTextEnd: props.route.params.dateTextEnd,
-			dateText: props.route.params.dateText,
+			bookingDateEnds: bookingEnds,
+			bookingDateStart: bookingStart,
 			pet: pet,
 			totalPrice: props.route.params.totalPrice,
+			campID: props.route.params.campID,
+			checkImage: checkImage,
 		})
 	}
-
-	const [pickPet, setPickPet] = useState(false)
-
-	const petList = useSelector((state) => state.pets.pets)
+	const bookingStart = useSelector((state) => state.booking.startDate)
+	const bookingEnds = useSelector((state) => state.booking.endDate)
+	const petList = useSelector((state) => state.pets.typeList)
 
 	return (
 		<ChoosePetView
-			dateText={props.route.params.dateText}
-			dateTextEnd={props.route.params.dateTextEnd}
+			dateText={bookingStart}
+			dateTextEnd={bookingEnds}
 			pet={pet}
 			petList={petList}
 			goToThirdStep={goToThirdStep}
 			myPetBlock={myPetBlock}
-			myPets={myPets}
+			addPet={addPet}
 		/>
 	)
 }

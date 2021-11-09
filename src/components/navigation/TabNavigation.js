@@ -54,7 +54,7 @@ export function TabNavigation({ navigation }) {
 				iconName = 'id-badge'
 				size = focused ? 30 : 25
 				color = focused ? '#297164' : 'white'
-			} else if (route.name === 'LogIn') {
+			} else if (route.name === 'Profile') {
 				iconName = 'user'
 				size = focused ? 30 : 25
 				color = focused ? '#297164' : 'white'
@@ -63,13 +63,13 @@ export function TabNavigation({ navigation }) {
 			return <Icon name={iconName} size={size} color={color} />
 		},
 	})
-	const [authenticate, setAuthenticate] = useState(false)
 	return (
 		<Tab.Navigator initialRouteName="Book" screenOptions={tabBarOptions}>
 			<Tab.Screen name="Search" component={Search} />
 			<Tab.Screen name="PriceList" component={PriceList} />
 			<Tab.Screen
 				name="Book"
+				component={BookAndAboutUs}
 				options={{
 					tabBar: { visible: false },
 					tabBarIcon: tabBarButton,
@@ -77,15 +77,9 @@ export function TabNavigation({ navigation }) {
 						fontSize: 0,
 					},
 				}}
-			>
-				{() => <BookAndAboutUs authenticate={authenticate} />}
-			</Tab.Screen>
+			/>
 			<Tab.Screen name="Contacts" component={Contacts} />
-			<Tab.Screen name="LogIn">
-				{() => (
-					<MyProfileStackNavigation authenticate={authenticate} setAuthenticate={setAuthenticate} />
-				)}
-			</Tab.Screen>
+			<Tab.Screen name="Profile" component={MyProfileStackNavigation} />
 		</Tab.Navigator>
 	)
 }

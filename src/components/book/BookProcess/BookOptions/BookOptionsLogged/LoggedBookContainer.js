@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import { LoggedBookView } from './LoggedBookView'
 import { useNavigation } from '@react-navigation/native'
+import { useSelector, useDispatch } from 'react-redux'
 
 export const LoggedBookContainer = (props) => {
 	const [transfer, setTransfer] = useState(false)
@@ -10,20 +11,26 @@ export const LoggedBookContainer = (props) => {
 	const [agreement, setAgreement] = useState(false)
 	const [checkButton, setCheckButton] = useState(true)
 
+	const quantity = useSelector((state) => state.pets.quantity)
+	const dispatch = useDispatch()
+
 	const checkPoints = () => {
 		return vaccinated && agreement ? false : true
 	}
+	const bookingStart = useSelector((state) => state.booking.startDate)
+	const bookingEnds = useSelector((state) => state.booking.startDate)
+	const totalBookingDays = useSelector((state) => state.booking.totalDays)
 
 	const totalPrice = () => {
 		let totalCount = 12
 		if (transfer && grooming) {
-			return (totalCount + 7) * props.Quantity
+			return (totalCount + 7) * quantity * totalBookingDays
 		} else if (transfer) {
-			return (totalCount + 5) * props.Quantity
+			return (totalCount + 5) * quantity * totalBookingDays
 		} else if (grooming) {
-			return (totalCount + 2) * props.Quantity
+			return (totalCount + 2) * quantity * totalBookingDays
 		} else {
-			return totalCount * props.Quantity
+			return totalCount * quantity * totalBookingDays
 		}
 	}
 
@@ -50,21 +57,20 @@ export const LoggedBookContainer = (props) => {
 	const navigation = useNavigation()
 	const goToSecondStep = () => {
 		navigation.navigate('ChoosePet', {
-			dateTextEnd: props.dateTextEnd,
-			dateText: props.dateText,
-			Quantity: props.Quantity,
+			Quantity: quantity,
 			totalPrice: totalPrice(),
+			campID: props.information.id,
 		})
 	}
 	return (
 		<LoggedBookView
 			checkPoints={checkPoints}
-			Quantity={props.Quantity}
+			Quantity={quantity}
 			setCheckButton={setCheckButton}
 			checkButton={checkButton}
 			totalPrice={totalPrice}
-			dateText={props.dateText}
-			dateTextEnd={props.dateTextEnd}
+			dateText={bookingStart}
+			dateTextEnd={bookingEnds}
 			goToSecondStep={goToSecondStep}
 			transfer={transfer}
 			setTransfer={checkTransfer}

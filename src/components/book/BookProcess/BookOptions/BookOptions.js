@@ -1,21 +1,23 @@
 import React from 'react'
 
 import { LoggedBookContainer } from './BookOptionsLogged/LoggedBookContainer'
-import { UnLoggedBookContainer } from './BookOptionsUnLogged/UnLoggedBookContainer'
-
+import { UnLoggedBookContainer } from './BookOptionsLogged/BookOptionsUnLogged/UnLoggedBookContainer'
+import { useSelector, useDispatch } from 'react-redux'
+import { setAuth } from '../../../../redux/slices/authentication/authSlice'
 export const BookOptions = (props) => {
 	const checkStore = () => {
-		if (props.authenticate) {
-			return (
-				<LoggedBookContainer
-					Quantity={props.Quantity}
-					dateText={props.dateText}
-					dateTextEnd={props.dateTextEnd}
-					information={props.information}
-				/>
-			)
+		const dispatch = useDispatch()
+		const authenticate = useSelector((state) => state.auth.status)
+
+		if (authenticate.length === 0) {
+			dispatch(setAuth(false))
+		}
+		const petInformation = useSelector((state) => state.pets.petInformation)
+
+		if (!authenticate) {
+			return <UnLoggedBookContainer information={petInformation} />
 		} else {
-			return <UnLoggedBookContainer information={props.information} />
+			return <LoggedBookContainer information={petInformation} />
 		}
 	}
 

@@ -1,18 +1,29 @@
 import React, { useEffect } from 'react'
 import { Text, View, Image } from 'react-native'
 import { styles } from '../../style'
-import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import images from '../../MyProfile'
 import { useSelector, useDispatch } from 'react-redux'
 import bookList from '../../../../controllers/authorization/BookListController'
-import { setPets } from '../../../../redux/slices/petListSlice'
+import fullpetListController from '../../../../controllers/authorization/fullPetListController'
+import { setPetsList, setPets } from '../../../../redux/slices/fullPetsSlice'
 
 import { MyPets } from './MyPetsView'
 import { useNavigation } from '@react-navigation/native'
 
 export const MyPetsContainer = () => {
 	const dispatch = useDispatch()
-	const userID = useSelector((state) => state.user.user)
+	const userID = useSelector((state) => state.user.id)
+	const petsList = useSelector((state) => state.pets.all)
+
+	useEffect(() => {
+		fullpetListController(userID).then((res) => {
+			if (res.status === 200) {
+				dispatch(setPetsList(res.data.petsList))
+			} else {
+				console.log('Some trouble with server!')
+			}
+		})
+	}, [petsList])
 
 	useEffect(() => {
 		bookList(userID).then((res) => {
@@ -22,13 +33,19 @@ export const MyPetsContainer = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [])
-	const pets = useSelector((state) => state.pets.pets)
+	}, [profilePetsList])
+
+	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
+
+	const checkImage = (item) => {
+		return item.type == 'CAT' ? images.cat : images.dog
+	}
+
 	const petList = (item) => (
 		<View key={item.id} style={styles.containerElement}>
 			<View style={styles.containerWrapper}>
 				<View>
-					<Image source={images.dog} style={styles.petPic} />
+					<Image source={checkImage(item)} style={styles.petPic} />
 				</View>
 				<View style={styles.elementMain}>
 					<View style={styles.elementFloor}>
@@ -52,7 +69,7 @@ export const MyPetsContainer = () => {
 						</View>
 						<View style={styles.elementInfo}>
 							<Text>Vacinated</Text>
-							<Icon name="check" size={20} style={{ color: '#5D5FEF' }} />
+							<Text style={styles.elementText}>{item.vet_pasport}</Text>
 						</View>
 					</View>
 				</View>
@@ -63,5 +80,5 @@ export const MyPetsContainer = () => {
 	const goToPetList = () => {
 		navigation.navigate('MyPetsContainer')
 	}
-	return <MyPets goToPetList={goToPetList} pets={pets} petList={petList} />
+	return <MyPets goToPetList={goToPetList} pets={profilePetsList} petList={petList} />
 }
