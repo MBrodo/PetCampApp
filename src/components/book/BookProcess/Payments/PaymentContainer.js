@@ -2,10 +2,25 @@ import React from 'react'
 import { PaymentView } from './PaymentView'
 import { useNavigation } from '@react-navigation/native'
 
-export const PaymentContainer = () => {
+export const PaymentContainer = (props) => {
 	const navigation = useNavigation()
-	const thirdStep = () => {
-		navigation.navigate('Congrats')
+	console.log(props)
+	const goToPayment = () => {
+		navigation.navigate('PaymentScreen', {
+			pet: props.route.params.pet.id,
+			campID: props.route.params.campID,
+			bookingDateStart: props.route.params.bookingDateStart,
+			bookingDateEnds: props.route.params.bookingDateEnds,
+		})
 	}
-	return <PaymentView thirdStep={thirdStep} />
+	return (
+		<PaymentView
+			checkImage={props.route.params.checkImage}
+			totalPrice={props.route.params.totalPrice}
+			bookingDateStart={props.route.params.bookingDateStart}
+			bookingDateEnds={props.route.params.bookingDateEnds}
+			pet={props.route.params.pet}
+			goToPayment={goToPayment}
+		/>
+	)
 }

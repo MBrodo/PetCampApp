@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, Image, ScrollView, ImageBackground } from 'react-native'
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
-import { MyPets } from './MyPets'
+import { MyPetsContainer } from './Profile/petsBlock/MyPetsContainer'
 import { MyBooking } from './MyBooking'
 import { MyReports } from './MyReports'
 
@@ -32,7 +32,7 @@ export const MyProfile = () => {
 					</View>
 				</ImageBackground>
 				<View style={styles.main}>
-					<MyPets />
+					<MyPetsContainer />
 					<MyBooking />
 					<MyReports />
 				</View>

@@ -5,7 +5,7 @@ import axios from 'axios'
 const registrationController = async (email, password, role) =>
 	new Promise((resolve) => {
 		axios
-			.post(`http:/${IP.HOST}${URLS.SIGN_UP}`, {
+			.post(`${IP.HOST}${URLS.SIGN_UP}`, {
 				email,
 				password,
 				role,

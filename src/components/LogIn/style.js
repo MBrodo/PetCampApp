@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		height: '100%',
+		marginVertical: 20,
 	},
 	logInSection: {
 		width: 350,

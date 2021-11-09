@@ -7,10 +7,10 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { View, TouchableWithoutFeedback, Text } from 'react-native'
 
 import { PriceList } from '../PriceList'
-import { LogIn } from '../LogIn/LogIn'
 import { Search } from '../Search'
 import { Contacts } from '../Contacts'
 import { BookAndAboutUs } from './BookAndAboutUs'
+import { MyProfileStackNavigation } from './MyProfileStackNavigation'
 import { styles } from '../../screens/styles'
 
 const Tab = createBottomTabNavigator()
@@ -63,13 +63,13 @@ export function TabNavigation({ navigation }) {
 			return <Icon name={iconName} size={size} color={color} />
 		},
 	})
-	const [authenticate, setAuthenticate] = useState(false)
 	return (
 		<Tab.Navigator initialRouteName="Book" screenOptions={tabBarOptions}>
 			<Tab.Screen name="Search" component={Search} />
 			<Tab.Screen name="PriceList" component={PriceList} />
 			<Tab.Screen
 				name="Book"
+				component={BookAndAboutUs}
 				options={{
 					tabBar: { visible: false },
 					tabBarIcon: tabBarButton,
@@ -77,13 +77,9 @@ export function TabNavigation({ navigation }) {
 						fontSize: 0,
 					},
 				}}
-			>
-				{() => <BookAndAboutUs authenticate={authenticate} />}
-			</Tab.Screen>
+			/>
 			<Tab.Screen name="Contacts" component={Contacts} />
-			<Tab.Screen name="LogIn">
-				{() => <LogIn authenticate={authenticate} setAuthenticate={setAuthenticate} />}
-			</Tab.Screen>
+			<Tab.Screen name="LogIn" component={MyProfileStackNavigation} />
 		</Tab.Navigator>
 	)
 }

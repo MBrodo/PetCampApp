@@ -5,7 +5,13 @@ import { styles } from './style'
 export const BookingButton = (props) => {
 	return (
 		<View style={styles.acceptButtonContainer}>
-			<Pressable onPress={() => props.secondStep()} style={styles.acceptButton}>
+			<Pressable
+				onPress={() => {
+					props.nextBookingStep()
+				}}
+				disabled={props.checkPoints}
+				style={styles.acceptButton}
+			>
 				<Text style={styles.acceptButtonText}>Next</Text>
 			</Pressable>
 		</View>

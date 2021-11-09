@@ -122,6 +122,23 @@ export const styles = StyleSheet.create({
 	feedBackContainer: {
 		marginHorizontal: 15,
 	},
+	feedBackHeader: {
+		flexDirection: 'row',
+	},
+	feedBackVotes: {
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	feedBackVotesCounter: {
+		color: 'black',
+		fontSize: 12,
+		fontWeight: 'bold',
+		marginHorizontal: 3,
+	},
+	feedBackStarIcon: {
+		color: '#FFD474',
+		marginVertical: 4,
+	},
 	feedbackText: {
 		color: 'black',
 		fontSize: 12,
@@ -133,6 +150,7 @@ export const styles = StyleSheet.create({
 	feedBackArticle: {
 		fontSize: 18,
 		color: 'black',
+		marginRight: 20,
 	},
 	headerFeedBack: {
 		flexDirection: 'row',

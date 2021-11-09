@@ -8,6 +8,14 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 	},
+	articelContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+	},
+	goBackButtonContainer: {
+		flexDirection: 'row',
+	},
 	localStepsContainer: {
 		flexDirection: 'row',
 		alignItems: 'center',
@@ -112,6 +120,12 @@ export const styles = StyleSheet.create({
 	acceptButtonContainer: {
 		alignItems: 'center',
 	},
+	picture: {
+		height: 60,
+		width: 60,
+		borderRadius: 100,
+		borderColor: 'white',
+	},
 	acceptButton: {
 		width: 120,
 		height: 40,
@@ -124,5 +138,22 @@ export const styles = StyleSheet.create({
 	acceptButtonText: {
 		color: 'white',
 		fontSize: 22,
+	},
+	chooseButtonActive: {
+		paddingVertical: 3,
+		paddingHorizontal: 10,
+		backgroundColor: 'rgb(15, 112, 15)',
+		borderRadius: 10,
+		marginBottom: 30,
+	},
+	chooseButtonInactive: {
+		paddingVertical: 3,
+		paddingHorizontal: 10,
+		backgroundColor: '#7878F1',
+		borderRadius: 10,
+		marginBottom: 30,
+	},
+	chooseButtonText: {
+		color: 'white',
 	},
 })

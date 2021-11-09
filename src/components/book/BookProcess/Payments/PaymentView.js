@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, View, ScrollView, Pressable, Image } from 'react-native'
 import { styles } from './style'
+import { BookPetInfo } from '../../../../common/petInfo/BookPetInfo'
 
 export const PaymentView = (props) => {
 	return (
@@ -27,49 +28,33 @@ export const PaymentView = (props) => {
 					</View>
 					<View style={styles.myPetContainer}>
 						<View>
-							<Image source={require('../../../../img/myPet.png')} />
+							<Image style={styles.picture} source={props.checkImage(props.pet.type)} />
 						</View>
 						<View>
 							<View style={styles.myPetOptionsContainer}>
 								<View style={styles.genderOptionsContainer}>
-									<View style={styles.optionsContainer}>
-										<Text style={styles.optionArticle}>Cat/Dog</Text>
-										<Text style={styles.optionName}>Cat</Text>
-									</View>
-									<View style={styles.optionsContainer}>
-										<Text style={styles.optionArticle}>Gender</Text>
-										<Text style={styles.optionName}>m</Text>
-									</View>
+									<BookPetInfo title={'Cat/Dog:'} item={props.pet.type} />
+									<BookPetInfo title={'Gender:'} item={props.pet.gender} />
 								</View>
 								<View style={styles.genderOptionsContainer}>
-									<View style={styles.optionsContainer}>
-										<Text style={styles.optionArticle}>Name</Text>
-										<Text style={styles.optionName}>Felix</Text>
-									</View>
-									<View style={styles.optionsContainer}>
-										<Text style={styles.optionArticle}>Age</Text>
-										<Text style={styles.optionName}>10 years</Text>
-									</View>
+									<BookPetInfo title={'Name:'} item={props.pet.name} />
+									<BookPetInfo title={'Age:'} item={props.pet.age} />
 								</View>
 							</View>
 							<View style={styles.bookingDates}>
 								<Text style={styles.optionArticle}>Booking dates</Text>
-								<Text style={styles.optionName}>01.10.2021-11.10.2021</Text>
+								<Text style={styles.optionName}>
+									{props.bookingDateStart} - {props.bookingDateEnds}
+								</Text>
 							</View>
 							<View style={styles.bookingPaymentsInfo}>
-								<View style={styles.optionsContainer}>
-									<Text style={styles.optionArticle}>Room</Text>
-									<Text style={styles.optionName}>Room №1</Text>
-								</View>
-								<View style={styles.optionsContainer}>
-									<Text style={styles.optionArticle}>PRICE</Text>
-									<Text style={styles.optionName}>$120</Text>
-								</View>
+								<BookPetInfo title={'Room:'} item={'Room №1'} />
+								<BookPetInfo title={'PRICE:'} item={`$ ${props.totalPrice}`} />
 							</View>
 						</View>
 					</View>
 					<View style={styles.acceptButtonContainer}>
-						<Pressable onPress={() => props.thirdStep()} style={styles.acceptButton}>
+						<Pressable onPress={() => props.goToPayment()} style={styles.acceptButton}>
 							<Text style={styles.acceptButtonText}>Book</Text>
 						</Pressable>
 					</View>

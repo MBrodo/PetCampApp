@@ -10,9 +10,6 @@ import { BookProcessNavigation } from './BookProcessNavigation'
 const Stack = createStackNavigator()
 
 export const BookAndAboutUs = (props) => {
-	const [information, setInformation] = useState()
-	const [dateText, setDateText] = useState('dd/mm/yyyy')
-	const [dateTextEnd, setDateTextEnd] = useState('dd/mm/yyyy')
 	return (
 		<Stack.Navigator
 			initialRouteName={'Home'}
@@ -25,29 +22,8 @@ export const BookAndAboutUs = (props) => {
 			}}
 		>
 			<Stack.Screen name="Home" component={Home} />
-			<Stack.Screen name="Bookpage">
-				{() => (
-					<Book
-						dateText={dateText}
-						setDateText={setDateText}
-						dateTextEnd={dateTextEnd}
-						setDateTextEnd={setDateTextEnd}
-						information={information}
-						setInformation={setInformation}
-					/>
-				)}
-			</Stack.Screen>
-			<Stack.Screen name="BookProcessNavigation">
-				{() => (
-					<BookProcessNavigation
-						dateText={dateText}
-						dateTextEnd={dateTextEnd}
-						information={information}
-						setInformation={setInformation}
-						authenticate={props.authenticate}
-					/>
-				)}
-			</Stack.Screen>
+			<Stack.Screen name="Bookpage" component={Book} />
+			<Stack.Screen name="BookProcessNavigation" component={BookProcessNavigation} />
 		</Stack.Navigator>
 	)
 }

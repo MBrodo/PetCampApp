@@ -1,24 +1,23 @@
-import React, { useState } from 'react'
-import { Text, View, TextInput } from 'react-native'
-
+import React, { useState, useEffect } from 'react'
+import { Text, View } from 'react-native'
 import { styles, pickerSelectStyles } from './styles'
-
 import { CheckBox } from 'react-native-elements'
-
 import RNPickerSelect from 'react-native-picker-select'
+import { useSelector, useDispatch } from 'react-redux'
+import { setPetQuantity } from '../../redux/slices/fullPetsSlice'
 
 export const Header = (props) => {
-	const [Quantity, setQuantity] = useState(false)
-
 	const checkState = () => {
 		props.setDog(props.dog == false ? true : false)
 		props.setCat(props.cat == false ? true : false)
 	}
-
-	const checkQuantityState = () => {
-		setQuantity(Quantity == false ? true : false)
-	}
-
+	const [Quantity, setQuantity] = useState(false)
+	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch(setPetQuantity(Quantity))
+	}, [Quantity])
+	const quant = useSelector((state) => state.pets.quantity)
+	console.log(quant)
 	return (
 		<View>
 			<View>
@@ -55,19 +54,19 @@ export const Header = (props) => {
 							placeholder={{}}
 							style={pickerSelectStyles}
 							useNativeAndroidPickerStyle={false}
-							onValueChange={(value) => console.log(value)}
+							onValueChange={(value) => setQuantity(value)}
 							fixAndroidTouchableBug={true}
 							items={[
-								{ label: '1', value: '1', inputLabel: '1' },
-								{ label: '2', value: '2', inputLabel: '2' },
-								{ label: '3', value: '3', inputLabel: '3' },
-								{ label: '4', value: '4', inputLabel: '4' },
-								{ label: '5', value: '5', inputLabel: '5' },
-								{ label: '6', value: '6', inputLabel: '6' },
-								{ label: '7', value: '7', inputLabel: '7' },
-								{ label: '8', value: '8', inputLabel: '8' },
-								{ label: '9', value: '9', inputLabel: '9' },
-								{ label: '10', value: '10', inputLabel: '10' },
+								{ label: '1', value: 1 },
+								{ label: '2', value: 2 },
+								{ label: '3', value: 3 },
+								{ label: '4', value: 4 },
+								{ label: '5', value: 5 },
+								{ label: '6', value: 6 },
+								{ label: '7', value: 7 },
+								{ label: '8', value: 8 },
+								{ label: '9', value: 9 },
+								{ label: '10', value: 10 },
 							]}
 						/>
 					</View>

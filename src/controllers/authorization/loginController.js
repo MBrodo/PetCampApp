@@ -5,7 +5,7 @@ import axios from 'axios'
 const loginController = async (email, password, role) =>
 	new Promise((resolve) => {
 		axios
-			.post(`http:/${IP.HOST}${URLS.SIGN_IN}`, {
+			.post(`${IP.HOST}${URLS.SIGN_IN}`, {
 				email,
 				password,
 				role,

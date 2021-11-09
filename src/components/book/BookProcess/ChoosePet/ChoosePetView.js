@@ -24,18 +24,18 @@ export const ChoosePetView = (props) => {
 
 			<View style={styles.UnLoggedBookContainer}>
 				<View style={styles.UnLoggedInsideBookContainer}>
-					<View>
+					<View style={styles.articelContainer}>
 						<Text style={styles.bookArticle}>My pets</Text>
 					</View>
-					<View>{props.myPets.map((item) => props.myPetBlock(item))}</View>
-					<View style={styles.addButtonContainer}>
+					<View>{props.petList.map((item) => props.myPetBlock(item))}</View>
+					<Pressable onPress={() => props.addPet()} style={styles.addButtonContainer}>
 						<View style={styles.addButton}>
 							<Icon name={'plus'} size={30} color={'#5D5FEF'} />
 						</View>
 						<Text style={styles.addButtonText}>Add a pet</Text>
-					</View>
+					</Pressable>
 
-					<BookingButton secondStep={props.secondStep} />
+					<BookingButton nextBookingStep={props.goToThirdStep} />
 				</View>
 			</View>
 		</ScrollView>
