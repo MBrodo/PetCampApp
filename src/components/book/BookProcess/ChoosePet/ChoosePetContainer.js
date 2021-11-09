@@ -60,7 +60,7 @@ export const ChoosePetContainer = (props) => {
 		)
 	}
 	const navigation = useNavigation()
-	const thirdStep = () => {
+	const goToThirdStep = () => {
 		navigation.navigate('Payment', {
 			dateTextEnd: props.route.params.dateTextEnd,
 			dateText: props.route.params.dateText,
@@ -79,7 +79,7 @@ export const ChoosePetContainer = (props) => {
 			dateTextEnd={props.route.params.dateTextEnd}
 			pet={pet}
 			petList={petList}
-			nextBookingStep={thirdStep}
+			goToThirdStep={goToThirdStep}
 			myPetBlock={myPetBlock}
 			myPets={myPets}
 		/>

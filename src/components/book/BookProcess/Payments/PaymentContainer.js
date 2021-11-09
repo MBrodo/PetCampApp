@@ -6,7 +6,7 @@ import sendBookController from '../../../../controllers/authorization/sendBookCo
 
 export const PaymentContainer = (props) => {
 	const navigation = useNavigation()
-	const thirdStep = () => {
+	const goToPayment = () => {
 		navigation.navigate('Congrats')
 		SendBook()
 	}
@@ -32,7 +32,7 @@ export const PaymentContainer = (props) => {
 			dateStart={props.route.params.dateText}
 			dateEnd={props.route.params.dateTextEnd}
 			pet={props.route.params.pet}
-			thirdStep={thirdStep}
+			goToPayment={goToPayment}
 		/>
 	)
 }

@@ -135,7 +135,7 @@ export const LoggedBookView = (props) => {
 						<BookingButton
 							checkPoints={props.checkPoints()}
 							checkButton={props.checkButton}
-							nextBookingStep={props.nextBookingStep}
+							nextBookingStep={props.goToSecondStep}
 						/>
 						<BookingFooter />
 					</View>

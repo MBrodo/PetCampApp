@@ -48,7 +48,7 @@ export const LoggedBookContainer = (props) => {
 		})
 	}
 	const navigation = useNavigation()
-	const secondStep = () => {
+	const goToSecondStep = () => {
 		navigation.navigate('ChoosePet', {
 			dateTextEnd: props.dateTextEnd,
 			dateText: props.dateText,
@@ -65,7 +65,7 @@ export const LoggedBookContainer = (props) => {
 			totalPrice={totalPrice}
 			dateText={props.dateText}
 			dateTextEnd={props.dateTextEnd}
-			nextBookingStep={secondStep}
+			goToSecondStep={goToSecondStep}
 			transfer={transfer}
 			setTransfer={checkTransfer}
 			grooming={grooming}
