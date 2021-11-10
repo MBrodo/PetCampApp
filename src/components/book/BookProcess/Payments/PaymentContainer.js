@@ -20,7 +20,7 @@ export const PaymentContainer = (props) => {
 			totalPrice={props.route.params.totalPrice}
 			bookingDateStart={props.route.params.bookingDateStart}
 			bookingDateEnds={props.route.params.bookingDateEnds}
-			pet={selectedPet[0]}
+			pet={selectedPet}
 			goToPayment={goToPayment}
 		/>
 	)

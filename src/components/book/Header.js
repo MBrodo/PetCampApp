@@ -16,7 +16,6 @@ export const Header = (props) => {
 	useEffect(() => {
 		dispatch(setPetQuantity(Quantity))
 	}, [Quantity])
-	const quant = useSelector((state) => state.pets.quantity)
 	return (
 		<View>
 			<View>

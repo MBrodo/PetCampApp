@@ -33,7 +33,10 @@ export const fullPetList = createSlice({
 			state.typeList = action.payload
 		},
 		setSelected: (state, action) => {
-			state.selected = action.payload
+			state.selected.push(action.payload)
+		},
+		setClear: (state) => {
+			state.selected = []
 		},
 	},
 })
@@ -46,6 +49,7 @@ export const {
 	setType,
 	setTypeList,
 	setSelected,
+	setClear,
 } = fullPetList.actions
 
 export default fullPetList.reducer

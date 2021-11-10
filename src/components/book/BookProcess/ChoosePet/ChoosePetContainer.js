@@ -7,24 +7,33 @@ import { useNavigation } from '@react-navigation/native'
 import { BookPetInfo } from '../../../../common/petInfo/BookPetInfo'
 import { images } from '../../../Profile/ProfileInfo/addMyPet/AddMyPetContainer'
 import petTypeController from '../../../../controllers/petTypeController'
-import { setTypeList, setSelected } from '../../../../redux/slices/fullPetsSlice'
+import { setTypeList, setSelected, setClear } from '../../../../redux/slices/fullPetsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 export const ChoosePetContainer = (props) => {
-	const [checkChoice, setCheckChoice] = useState(false)
-	const [pet, setPet] = useState()
-	const checkImage = (item) => {
-		return item.type == 'CAT' ? images.cat : images.dog
-	}
-	const dispatch = useDispatch()
-	useEffect(() => {
-		dispatch(setSelected([pet]))
-	}, [pet])
+	const bookingStart = useSelector((state) => state.booking.startDate)
+	const bookingEnds = useSelector((state) => state.booking.endDate)
+	const petList = useSelector((state) => state.pets.typeList)
+	const quantity = useSelector((state) => state.pets.quantity)
+	const selectedPet = useSelector((state) => state.pets.selected)
 
 	const type = useSelector((state) => state.pets.type)
 	const userId = useSelector((state) => state.user.id)
 	const allPets = useSelector((state) => state.pets.all)
+	const [checkChoice, setCheckChoice] = useState(false)
+	const [pet, setPet] = useState('')
+	const checkImage = (item) => {
+		return item.type == 'CAT' ? images.cat : images.dog
+	}
+	const dispatch = useDispatch()
+	const PickPet = (item) => {
+		dispatch(setSelected(item))
+	}
 
+	const checkButton = () => {
+		return quantity === selectedPet.length
+	}
+	// console.log(checkButtonState, 'd')
 	useEffect(() => {
 		petTypeController(userId, type).then((res) => {
 			if (res.status === 200) {
@@ -34,6 +43,10 @@ export const ChoosePetContainer = (props) => {
 			}
 		})
 	}, [allPets])
+
+	useEffect(() => {
+		dispatch(setClear())
+	}, [])
 
 	const myPetBlock = (item) => {
 		return (
@@ -55,12 +68,15 @@ export const ChoosePetContainer = (props) => {
 						<View style={styles.checkBoxOptions}>
 							<Pressable
 								style={
-									item.id === checkChoice ? styles.chooseButtonActive : styles.chooseButtonInactive
+									quantity === selectedPet.length
+										? styles.chooseButtonActive
+										: styles.chooseButtonInactive
 								}
 								onPress={() => {
 									setCheckChoice(item.id)
-									setPet(item)
+									PickPet(item)
 								}}
+								disabled={checkButton()}
 							>
 								<Text style={styles.chooseButtonText}>Choose</Text>
 							</Pressable>
@@ -86,10 +102,6 @@ export const ChoosePetContainer = (props) => {
 			checkImage: checkImage,
 		})
 	}
-	const bookingStart = useSelector((state) => state.booking.startDate)
-	const bookingEnds = useSelector((state) => state.booking.endDate)
-	const petList = useSelector((state) => state.pets.typeList)
-
 	return (
 		<ChoosePetView
 			dateText={bookingStart}

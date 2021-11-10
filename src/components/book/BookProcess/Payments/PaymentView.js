@@ -26,33 +26,35 @@ export const PaymentView = (props) => {
 					<View>
 						<Text style={styles.bookArticle}>My pets</Text>
 					</View>
-					<View style={styles.myPetContainer}>
-						<View>
-							<Image style={styles.picture} source={props.checkImage(props.pet.type)} />
-						</View>
-						<View>
-							<View style={styles.myPetOptionsContainer}>
-								<View style={styles.genderOptionsContainer}>
-									<BookPetInfo title={'Cat/Dog:'} item={props.pet.type} />
-									<BookPetInfo title={'Gender:'} item={props.pet.gender} />
+					{props.pet.map((item) => (
+						<View style={styles.myPetContainer}>
+							<View>
+								<Image style={styles.picture} source={props.checkImage(item.type)} />
+							</View>
+							<View>
+								<View style={styles.myPetOptionsContainer}>
+									<View style={styles.genderOptionsContainer}>
+										<BookPetInfo title={'Cat/Dog:'} item={item.type} />
+										<BookPetInfo title={'Gender:'} item={item.gender} />
+									</View>
+									<View style={styles.genderOptionsContainer}>
+										<BookPetInfo title={'Name:'} item={item.name} />
+										<BookPetInfo title={'Age:'} item={item.age} />
+									</View>
 								</View>
-								<View style={styles.genderOptionsContainer}>
-									<BookPetInfo title={'Name:'} item={props.pet.name} />
-									<BookPetInfo title={'Age:'} item={props.pet.age} />
+								<View style={styles.bookingDates}>
+									<Text style={styles.optionArticle}>Booking dates</Text>
+									<Text style={styles.optionName}>
+										{props.bookingDateStart} - {props.bookingDateEnds}
+									</Text>
+								</View>
+								<View style={styles.bookingPaymentsInfo}>
+									<BookPetInfo title={'Room:'} item={'Room №1'} />
+									<BookPetInfo title={'PRICE:'} item={`$ ${props.totalPrice}`} />
 								</View>
 							</View>
-							<View style={styles.bookingDates}>
-								<Text style={styles.optionArticle}>Booking dates</Text>
-								<Text style={styles.optionName}>
-									{props.bookingDateStart} - {props.bookingDateEnds}
-								</Text>
-							</View>
-							<View style={styles.bookingPaymentsInfo}>
-								<BookPetInfo title={'Room:'} item={'Room №1'} />
-								<BookPetInfo title={'PRICE:'} item={`$ ${props.totalPrice}`} />
-							</View>
 						</View>
-					</View>
+					))}
 					<View style={styles.acceptButtonContainer}>
 						<Pressable onPress={() => props.goToPayment()} style={styles.acceptButton}>
 							<Text style={styles.acceptButtonText}>Book</Text>
