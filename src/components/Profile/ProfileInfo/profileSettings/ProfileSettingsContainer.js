@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { ProfileSettingsView } from './ProfileSettingsView'
-import { useNavigation } from '@react-navigation/native'
 import { TextInfoUser } from './TextInfo/TextInfo'
 import { TextInputUser } from './TextInfo/TextInput'
 import { SubmitButton } from '../../../../common/buttons/settingsButton'
@@ -15,11 +14,6 @@ export const ProfileSettingsContainer = () => {
 	const [phone, onChangePhone] = useState('+375(29)733-57-44')
 
 	const [settingsState, setSettingsState] = useState(false)
-
-	const navigation = useNavigation()
-	const toMyProfile = () => {
-		navigation.goBack()
-	}
 
 	const checkButton = () => {
 		return settingsState ? (
@@ -67,7 +61,6 @@ export const ProfileSettingsContainer = () => {
 			buttonCheck={buttonCheck}
 			settingsState={settingsState}
 			setSettingsSate={setSettingsState}
-			toMyProfile={toMyProfile}
 			checkSettings={checkSettings}
 		/>
 	)
