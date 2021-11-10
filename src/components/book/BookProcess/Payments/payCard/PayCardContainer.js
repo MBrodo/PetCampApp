@@ -8,10 +8,13 @@ export const PayCardContainer = (props) => {
 	const userId = useSelector((state) => state.user.id)
 	const bookingStart = useSelector((state) => state.booking.startDate)
 	const bookingEnds = useSelector((state) => state.booking.endDate)
+	const selectedPet = useSelector((state) => state.pets.selected)
+	console.log(selectedPet)
+
 	const SendBook = () => {
 		sendBookController(
 			userId,
-			props.route.params.pet,
+			selectedPet,
 			props.route.params.campID,
 			bookingStart,
 			bookingEnds,

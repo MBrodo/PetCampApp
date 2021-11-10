@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import { BookPetInfo } from '../../../../common/petInfo/BookPetInfo'
 import { images } from '../../../Profile/ProfileInfo/addMyPet/AddMyPetContainer'
 import petTypeController from '../../../../controllers/petTypeController'
-import { setTypeList } from '../../../../redux/slices/fullPetsSlice'
+import { setTypeList, setSelected } from '../../../../redux/slices/fullPetsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 export const ChoosePetContainer = (props) => {
@@ -17,6 +17,9 @@ export const ChoosePetContainer = (props) => {
 		return item.type == 'CAT' ? images.cat : images.dog
 	}
 	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch(setSelected([pet]))
+	}, [pet])
 
 	const type = useSelector((state) => state.pets.type)
 	const userId = useSelector((state) => state.user.id)
@@ -78,7 +81,6 @@ export const ChoosePetContainer = (props) => {
 		navigation.navigate('Payment', {
 			bookingDateEnds: bookingEnds,
 			bookingDateStart: bookingStart,
-			pet: pet,
 			totalPrice: props.route.params.totalPrice,
 			campID: props.route.params.campID,
 			checkImage: checkImage,

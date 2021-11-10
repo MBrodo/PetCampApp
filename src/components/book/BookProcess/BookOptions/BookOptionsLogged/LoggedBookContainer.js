@@ -18,17 +18,17 @@ export const LoggedBookContainer = (props) => {
 		return vaccinated && agreement ? false : true
 	}
 	const bookingStart = useSelector((state) => state.booking.startDate)
-	const bookingEnds = useSelector((state) => state.booking.startDate)
+	const bookingEnds = useSelector((state) => state.booking.endDate)
 	const totalBookingDays = useSelector((state) => state.booking.totalDays)
 
 	const totalPrice = () => {
 		let totalCount = 12
 		if (transfer && grooming) {
-			return (totalCount + 7) * quantity * totalBookingDays
+			return totalCount * quantity * totalBookingDays + 7
 		} else if (transfer) {
-			return (totalCount + 5) * quantity * totalBookingDays
+			return totalCount * quantity * totalBookingDays + 5
 		} else if (grooming) {
-			return (totalCount + 2) * quantity * totalBookingDays
+			return totalCount * quantity * totalBookingDays + 2
 		} else {
 			return totalCount * quantity * totalBookingDays
 		}
@@ -62,6 +62,7 @@ export const LoggedBookContainer = (props) => {
 			campID: props.information.id,
 		})
 	}
+	console.log(bookingStart, bookingEnds)
 	return (
 		<LoggedBookView
 			checkPoints={checkPoints}

@@ -7,6 +7,7 @@ import { SignUpView } from './SignUpView'
 
 export const SignUpContainer = () => {
 	const [email, setEmail] = useState('')
+	const [userName, setUserName] = useState('')
 	const [password, setPassword] = useState('')
 	const [hidePass, setHidePass] = useState(true)
 
@@ -32,9 +33,9 @@ export const SignUpContainer = () => {
 	}
 
 	const SignUpSubmit = () => {
-		registrationController(email, password, 1).then((res) => {
+		registrationController(userName, email, password, 1).then((res) => {
 			if (res.status === 200) {
-				Alert.alert(res.data.message)
+				Alert.alert('Confirm your e-mail to finish registration')
 				// setPassword('0')
 			} else if (res.status === 409) {
 				Alert.alert(res.data.message)
@@ -44,6 +45,7 @@ export const SignUpContainer = () => {
 
 	return (
 		<SignUpView
+			setUserName={setUserName}
 			loginChange={loginChange}
 			passwordChange={passwordChange}
 			hidePass={hidePass}

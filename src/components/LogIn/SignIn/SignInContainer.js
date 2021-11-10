@@ -34,6 +34,7 @@ export const SignInContainer = (props) => {
 				Alert.alert('Welcome to the Pet Camp!')
 				storeUserSession(res)
 				dispatch(setUser(res.data.id))
+				console.log(res.data)
 				props.setAuthenticate(true)
 			} else if (res.status === 401 || res.status === 400) {
 				Alert.alert('Login or password is incorrect')

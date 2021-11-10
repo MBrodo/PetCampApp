@@ -42,8 +42,8 @@ export function TabNavigation({ navigation }) {
 		tabBarActiveBackgroundColor: '#3CB09D',
 		tabBarIcon: ({ focused, size, color, tabBarVisible }) => {
 			let iconName
-			if (route.name === 'Search') {
-				iconName = 'search'
+			if (route.name === 'Settings') {
+				iconName = 'cog'
 				size = focused ? 30 : 25
 				color = focused ? '#297164' : 'white'
 			} else if (route.name === 'PriceList') {
@@ -65,7 +65,7 @@ export function TabNavigation({ navigation }) {
 	})
 	return (
 		<Tab.Navigator initialRouteName="Book" screenOptions={tabBarOptions}>
-			<Tab.Screen name="Search" component={Search} />
+			<Tab.Screen name="Settings" component={Search} />
 			<Tab.Screen name="PriceList" component={PriceList} />
 			<Tab.Screen
 				name="Book"
