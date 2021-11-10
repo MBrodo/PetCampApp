@@ -16,6 +16,13 @@
   dependencies:
     "@babel/highlight" "^7.10.4"
 
+"@babel/code-frame@~7.10.4":
+  "integrity" "sha512-vG6SvB6oYEhvgisZNFRmRCUkLz11c7rp+tbNTynGqc6mS1d5ATd/sGyV6W0KZZnXRKMTzZDRgQT3Ou9jhpAfUg=="
+  "resolved" "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.10.4.tgz"
+  "version" "7.10.4"
+  dependencies:
+    "@babel/highlight" "^7.10.4"
+
 "@babel/code-frame@7.12.11":
   "integrity" "sha512-Zt1yodBx1UcyiePMSkWnU4hPqhwq7hGi2nFL1LeA3EUl+q2LQx16MISgJ0+z7dnmgvP9QtIleuETGOiOH1RcIw=="
   "resolved" "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.12.11.tgz"
@@ -2127,6 +2134,16 @@
     "diagnostic-channel" "0.3.1"
     "diagnostic-channel-publishers" "0.4.4"
 
+"applicationinsights@^1.8.8":
+  "integrity" "sha512-ZLDA7mShh4mP2Z/HlFolmvhBPX1LfnbIWXrselyYVA7EKjHhri1fZzpu2EiWAmfbRxNBY6fRjoPJWbx5giKy4A=="
+  "resolved" "https://registry.npmjs.org/applicationinsights/-/applicationinsights-1.8.10.tgz"
+  "version" "1.8.10"
+  dependencies:
+    "cls-hooked" "^4.2.2"
+    "continuation-local-storage" "^3.2.1"
+    "diagnostic-channel" "0.3.1"
+    "diagnostic-channel-publishers" "0.4.4"
+
 "argparse@^1.0.7":
   "integrity" "sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg=="
   "resolved" "https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz"
@@ -3067,6 +3084,11 @@
   "resolved" "https://registry.npmjs.org/deep-is/-/deep-is-0.1.4.tgz"
   "version" "0.1.4"
 
+"deepmerge@^2.1.1":
+  "integrity" "sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA=="
+  "resolved" "https://registry.npmjs.org/deepmerge/-/deepmerge-2.2.1.tgz"
+  "version" "2.2.1"
+
 "deepmerge@^3.2.0":
   "integrity" "sha512-GRQOafGHwMHpjPx9iCvTgpu9NojZ49q794EEL94JVEw6VaeA8XTUyBKvAkOOjBX9oJNiV6G3P+T+tihFjo2TqA=="
   "resolved" "https://registry.npmjs.org/deepmerge/-/deepmerge-3.3.0.tgz"
@@ -3154,6 +3176,13 @@
   "integrity" "sha512-ag6wfpBFyNXZ0p8pcuIDS//D8H062ZQJ3fzYxjpmeKjnz8W4pekL3AI8VohmyZmsWW2PWaHgjsmqR6L13101VQ=="
   "resolved" "https://registry.npmjs.org/diff-sequences/-/diff-sequences-27.0.6.tgz"
   "version" "27.0.6"
+
+"dir-glob@^2.0.0":
+  "integrity" "sha512-f9LBi5QWzIW3I6e//uxZoLBlUt9kcp66qo0sSCxL6YZKc75R1c4MFCoe/LaZiBGmgujvQdxc5Bn3QhfyvK5Hsw=="
+  "resolved" "https://registry.npmjs.org/dir-glob/-/dir-glob-2.2.2.tgz"
+  "version" "2.2.2"
+  dependencies:
+    "path-type" "^3.0.0"
 
 "dir-glob@^2.0.0":
   "integrity" "sha512-f9LBi5QWzIW3I6e//uxZoLBlUt9kcp66qo0sSCxL6YZKc75R1c4MFCoe/LaZiBGmgujvQdxc5Bn3QhfyvK5Hsw=="
@@ -3854,6 +3883,19 @@
     "asynckit" "^0.4.0"
     "combined-stream" "^1.0.8"
     "mime-types" "^2.1.12"
+
+"formik@^2.2.9":
+  "integrity" "sha512-LQLcISMmf1r5at4/gyJigGn0gOwFbeEAlji+N9InZF6LIMXnFNkO42sCI8Jt84YZggpD4cPWObAZaxpEFtSzNA=="
+  "resolved" "https://registry.npmjs.org/formik/-/formik-2.2.9.tgz"
+  "version" "2.2.9"
+  dependencies:
+    "deepmerge" "^2.1.1"
+    "hoist-non-react-statics" "^3.3.0"
+    "lodash" "^4.17.21"
+    "lodash-es" "^4.17.21"
+    "react-fast-compare" "^2.0.1"
+    "tiny-warning" "^1.0.2"
+    "tslib" "^1.10.0"
 
 "fragment-cache@^0.2.1":
   "integrity" "sha1-QpD60n8T6Jvn8zeZxrxaCr//DRk="
@@ -5440,7 +5482,7 @@
   "resolved" "https://registry.npmjs.org/lodash.truncate/-/lodash.truncate-4.4.2.tgz"
   "version" "4.4.2"
 
-"lodash@^4.17.10", "lodash@^4.17.14", "lodash@^4.17.15", "lodash@^4.7.0":
+"lodash@^4.17.10", "lodash@^4.17.14", "lodash@^4.17.15", "lodash@^4.17.21", "lodash@^4.7.0":
   "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
   "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   "version" "4.17.21"
@@ -5504,6 +5546,13 @@
   "version" "1.0.12"
   dependencies:
     "tmpl" "1.0.5"
+
+"map-age-cleaner@^0.1.1":
+  "integrity" "sha512-bJzx6nMoP6PDLPBFmg7+xRKeFZvFboMrGlxmNj9ClvX53KrmvM5bXFXEWjbz4cz1AFn+jWJ9z/DJSz7hrs0w3w=="
+  "resolved" "https://registry.npmjs.org/map-age-cleaner/-/map-age-cleaner-0.1.3.tgz"
+  "version" "0.1.3"
+  dependencies:
+    "p-defer" "^1.0.0"
 
 "map-age-cleaner@^0.1.1":
   "integrity" "sha512-bJzx6nMoP6PDLPBFmg7+xRKeFZvFboMrGlxmNj9ClvX53KrmvM5bXFXEWjbz4cz1AFn+jWJ9z/DJSz7hrs0w3w=="
@@ -7358,6 +7407,11 @@
   "resolved" "https://registry.npmjs.org/shimmer/-/shimmer-1.2.1.tgz"
   "version" "1.2.1"
 
+"shimmer@^1.1.0", "shimmer@^1.2.0":
+  "integrity" "sha512-sQTKC1Re/rM6XyFM6fIAGHRPVGvyXfgzIDvzoq608vM+jeyVD0Tu1E6Np0Kc2zAIFWIj963V2800iF/9LPieQw=="
+  "resolved" "https://registry.npmjs.org/shimmer/-/shimmer-1.2.1.tgz"
+  "version" "1.2.1"
+
 "side-channel@^1.0.4":
   "integrity" "sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw=="
   "resolved" "https://registry.npmjs.org/side-channel/-/side-channel-1.0.4.tgz"
@@ -7861,6 +7915,11 @@
     "json5" "^1.0.1"
     "minimist" "^1.2.0"
     "strip-bom" "^3.0.0"
+
+"tslib@^1.10.0":
+  "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
+  "version" "1.14.1"
 
 "tslib@^1.8.1":
   "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="

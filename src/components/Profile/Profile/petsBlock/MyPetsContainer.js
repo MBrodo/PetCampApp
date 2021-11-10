@@ -14,6 +14,7 @@ export const MyPetsContainer = () => {
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.id)
 	const petsList = useSelector((state) => state.pets.all)
+
 	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
 
 	useEffect(() => {
