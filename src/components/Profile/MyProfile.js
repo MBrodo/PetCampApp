@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { MyPetsContainer } from './Profile/petsBlock/MyPetsContainer'
 import { MyBooking } from './MyBooking'
 import { MyReports } from './MyReports'
-import { useNavigation } from '@react-navigation/native'
 
 const images = {
 	backGround: require('../../img/ProfileBG.png'),
@@ -16,10 +15,6 @@ const images = {
 export default images
 
 export const MyProfile = () => {
-	const navigation = useNavigation()
-	const toSettings = () => {
-		navigation.navigate('ProfileSettingsContainer')
-	}
 	return (
 		<ScrollView>
 			<View style={styles.wrapper}>
@@ -30,11 +25,6 @@ export const MyProfile = () => {
 				>
 					<View style={styles.userInfo}>
 						<Image source={images.userPicture} style={styles.userPic} />
-						<View style={styles.uploadImageContainer}>
-							<Pressable onPress={() => toSettings()}>
-								<Icon style={styles.uploadUserPic} name="pen" size={13} />
-							</Pressable>
-						</View>
 						<Text style={styles.userName}>Lisa</Text>
 					</View>
 				</ImageBackground>

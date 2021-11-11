@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { View, TouchableWithoutFeedback, Text } from 'react-native'
 
 import { PriceList } from '../PriceList'
-import { Search } from '../Search'
+import { Settings } from '../Settings/'
 import { Contacts } from '../Contacts'
 import { BookAndAboutUs } from './BookAndAboutUs'
 import { MyProfileStackNavigation } from './MyProfileStackNavigation'
@@ -65,7 +65,7 @@ export function TabNavigation({ navigation }) {
 	})
 	return (
 		<Tab.Navigator initialRouteName="Book" screenOptions={tabBarOptions}>
-			<Tab.Screen name="Settings" component={Search} />
+			<Tab.Screen name="Settings" component={Settings} />
 			<Tab.Screen name="PriceList" component={PriceList} />
 			<Tab.Screen
 				name="Book"

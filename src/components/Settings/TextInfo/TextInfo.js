@@ -7,7 +7,7 @@ export const TextInfoUser = (props) => {
 	return (
 		<View style={styles.valueContainer}>
 			<Text style={styles.text}>{props.name}</Text>
-			<Text style={styles.text}>{props.midName}</Text>
+			<Text style={styles.text}>{props.middlename}</Text>
 			<Text style={styles.text}>{props.surname}</Text>
 			<Text style={styles.text}>{props.email}</Text>
 			<Text style={styles.text}>{props.city}</Text>

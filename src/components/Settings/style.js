@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
 	mainContainer: {
 		backgroundColor: 'rgba(60, 176, 157, 0.1)',
+		height: '100%',
 	},
 	wrapper: {
 		alignItems: 'center',
