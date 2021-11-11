@@ -33,7 +33,7 @@ export const SignUpView = (props) => {
 					<View style={styles.passwordInput}>
 						<TextInput
 							style={styles.passwordText}
-							onChangeText={props.middleName}
+							onChangeText={props.setMiddleName}
 							placeholder="middle name"
 							autoCorrect={false}
 						/>
@@ -44,7 +44,7 @@ export const SignUpView = (props) => {
 					<View style={styles.passwordInput}>
 						<TextInput
 							style={styles.passwordText}
-							onChangeText={props.surname}
+							onChangeText={props.setSurname}
 							placeholder="surname"
 							autoCorrect={false}
 						/>
@@ -55,7 +55,7 @@ export const SignUpView = (props) => {
 					<View style={styles.passwordInput}>
 						<TextInput
 							style={styles.passwordText}
-							onChangeText={props.mobileNumber}
+							onChangeText={props.setMobileNumber}
 							placeholder="mobile number"
 							autoCorrect={false}
 						/>

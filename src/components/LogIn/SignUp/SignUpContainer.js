@@ -35,7 +35,6 @@ export const SignUpContainer = () => {
 		setEmail(e)
 		validateLogin(e)
 	}
-
 	const SignUpSubmit = () => {
 		registrationController(email, userName, middleName, surname, mobileNumber, password, 1).then(
 			(res) => {
@@ -51,9 +50,9 @@ export const SignUpContainer = () => {
 
 	return (
 		<SignUpView
-			middleName={middleName}
-			surname={surname}
-			mobileNumber={mobileNumber}
+			setMiddleName={setMiddleName}
+			setSurname={setSurname}
+			setMobileNumber={setMobileNumber}
 			setUserName={setUserName}
 			loginChange={loginChange}
 			passwordChange={passwordChange}
