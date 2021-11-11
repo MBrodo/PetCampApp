@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Text, View, Image, ScrollView, ImageBackground, Pressable } from 'react-native'
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { MyPetsContainer } from './Profile/petsBlock/MyPetsContainer'
 import { MyBooking } from './MyBooking'
 import { MyReports } from './MyReports'
+import getSettingsController from '../../controllers/settings/getSettingsController'
+import { setSettings } from '../../redux/slices/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const images = {
 	backGround: require('../../img/ProfileBG.png'),
@@ -15,6 +18,20 @@ const images = {
 export default images
 
 export const MyProfile = () => {
+	const dispatch = useDispatch()
+	const userID = useSelector((state) => state.user.id)
+
+	useEffect(() => {
+		getSettingsController(userID).then((res) => {
+			if (res.status === 200) {
+				console.log('successs')
+				dispatch(setSettings(res.data.mySettingsInfo))
+			} else {
+				console.log('fail')
+			}
+		})
+	}, [])
+
 	return (
 		<ScrollView>
 			<View style={styles.wrapper}>

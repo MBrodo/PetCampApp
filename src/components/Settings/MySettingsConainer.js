@@ -9,13 +9,14 @@ import sendSettingsController from '../../controllers/settings/sendSettingsContr
 import getSettingsController from '../../controllers/settings/getSettingsController'
 
 export const MySettingsContainer = () => {
-	const [name, onChangeName] = useState('Lisa')
-	const [middlename, onChangeMiddlename] = useState('Ivanova')
-	const [surname, onChangeSurname] = useState('Ivanova')
-	const [email, onChangeEmail] = useState('gern5051@gmail.com')
-	const [city, onChangeCity] = useState('Minsk')
-	const [street, onChangeStreet] = useState('Nezavisimosty, 30')
-	const [phone, onChangePhone] = useState('+375(29)733-57-44')
+	const profileInfo = useSelector((state) => state.user.settings)
+	const [name, onChangeName] = useState(profileInfo[0].name)
+	const [middlename, onChangeMiddlename] = useState(profileInfo[0].middlename)
+	const [surname, onChangeSurname] = useState(profileInfo[0].surname)
+	const [email, onChangeEmail] = useState(profileInfo[0].email)
+	const [city, onChangeCity] = useState(profileInfo[0].city)
+	const [street, onChangeStreet] = useState(profileInfo[0].street)
+	const [phone, onChangePhone] = useState(profileInfo[0].phone)
 
 	const [settingsState, setSettingsState] = useState(false)
 
@@ -28,7 +29,6 @@ export const MySettingsContainer = () => {
 	}
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.id)
-	console.log(userID, name, middlename, surname, email, city, street, phone)
 
 	const SendSettings = () => {
 		sendSettingsController(userID, name, middlename, surname, email, city, street, phone).then(
@@ -41,10 +41,10 @@ export const MySettingsContainer = () => {
 			}
 		)
 	}
-	const test = () => {
+	const getProfileInfo = () => {
 		getSettingsController(userID).then((res) => {
 			if (res.status === 200) {
-				console.log('success')
+				console.log('successsdds')
 				dispatch(setSettings(res.data.mySettingsInfo))
 			} else {
 				console.log('fail')
@@ -54,13 +54,12 @@ export const MySettingsContainer = () => {
 	const submitCheck = () => {
 		setSettingsState(!settingsState)
 		SendSettings()
+		getProfileInfo()
 	}
 	const changeCheck = () => {
 		setSettingsState(!settingsState)
-		test()
 	}
-	const settings = useSelector((state) => state.user.settings)
-	console.log(settings, 'd')
+
 	const checkSettings = () => {
 		return settingsState ? (
 			<TextInputUser
@@ -81,13 +80,13 @@ export const MySettingsContainer = () => {
 			/>
 		) : (
 			<TextInfoUser
-				name={name}
-				middlename={middlename}
-				surname={surname}
-				email={email}
-				city={city}
-				street={street}
-				phone={phone}
+				name={profileInfo[0].name}
+				middlename={profileInfo[0].middlename}
+				surname={profileInfo[0].surname}
+				email={profileInfo[0].email}
+				city={profileInfo[0].city}
+				street={profileInfo[0].street}
+				phone={profileInfo[0].phone}
 			/>
 		)
 	}

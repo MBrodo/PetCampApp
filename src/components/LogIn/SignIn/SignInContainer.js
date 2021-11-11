@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { Alert } from 'react-native'
 
 import loginController from '../../../controllers/authorization/loginController'
+import getSettingsController from '../../../controllers/settings/getSettingsController'
 import EncryptedStorage from 'react-native-encrypted-storage'
-import { setUser } from '../../../redux/slices/userSlice'
-import { useDispatch } from 'react-redux'
+import { setUser, setSettings } from '../../../redux/slices/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { SignInView } from './SignInView'
 
@@ -24,7 +25,6 @@ export const SignInContainer = (props) => {
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-
 	const dispatch = useDispatch()
 
 	const SignInSubmit = () => {
