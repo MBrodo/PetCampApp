@@ -38,6 +38,10 @@ export const fullPetList = createSlice({
 		setClear: (state) => {
 			state.selected = []
 		},
+		removePet: (state, action) => {
+			const index = state.selected.findIndex((elem) => elem.id === action.payload.id)
+			state.selected.splice(index, 1)
+		},
 	},
 })
 
@@ -50,6 +54,7 @@ export const {
 	setTypeList,
 	setSelected,
 	setClear,
+	removePet,
 } = fullPetList.actions
 
 export default fullPetList.reducer

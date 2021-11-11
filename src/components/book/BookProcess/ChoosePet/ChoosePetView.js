@@ -3,6 +3,7 @@ import { Text, View, ScrollView, Pressable } from 'react-native'
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { BookingButton } from '../../../../common/buttons/bookingButoon'
+import { PetCardContainer } from './petCard/petCardContainer'
 
 export const ChoosePetView = (props) => {
 	return (
@@ -27,7 +28,15 @@ export const ChoosePetView = (props) => {
 					<View style={styles.articelContainer}>
 						<Text style={styles.bookArticle}>My pets</Text>
 					</View>
-					<View>{props.petList.map((item) => props.myPetBlock(item))}</View>
+					<View>
+						{props.petList.map((item) => (
+							<PetCardContainer
+								checkImage={props.checkImage}
+								checkButton={props.checkButton}
+								item={item}
+							/>
+						))}
+					</View>
 					<Pressable onPress={() => props.addPet()} style={styles.addButtonContainer}>
 						<View style={styles.addButton}>
 							<Icon name={'plus'} size={30} color={'#5D5FEF'} />
