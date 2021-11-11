@@ -8,8 +8,8 @@ export const TextInputUser = (props) => {
 			<TextInput style={styles.textInput} value={props.name} onChangeText={props.onChangeName} />
 			<TextInput
 				style={styles.textInput}
-				value={props.midName}
-				onChangeText={props.onChangeMidName}
+				value={props.middlename}
+				onChangeText={props.onChangeMiddlename}
 			/>
 			<TextInput
 				style={styles.textInput}

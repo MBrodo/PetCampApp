@@ -1,14 +1,14 @@
 import React from 'react'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
-import { View, Text, ScrollView, ImageBackground, Pressable, Image, TextInput } from 'react-native'
+import { View, Text, ScrollView, ImageBackground, Pressable, Image } from 'react-native'
 import { styles } from './style'
 
 const images = {
-	backGround: require('../../../../img/ProfileBG.png'),
-	userPicture: require('../../../../img/ProfileUserPicture.jpg'),
+	backGround: require('../../img/ProfileBG.png'),
+	userPicture: require('../../img/ProfileUserPicture.jpg'),
 }
 
-export const ProfileSettingsView = (props) => {
+export const MySettingsView = (props) => {
 	return (
 		<ScrollView style={styles.mainContainer}>
 			<View style={styles.wrapper}>

@@ -2,7 +2,6 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import { LogIn } from '../LogIn/LogIn'
-import { ProfileSettingsContainer } from '../Profile/ProfileInfo/profileSettings/ProfileSettingsContainer'
 import { MyPetsListContainer } from '../Profile/ProfileInfo/myPets/MyPetsListContainer'
 import { MyBookingListContainer } from '../Profile/ProfileInfo/myBooking/MyBookingListContainer'
 import { MyReportsListContainer } from '../Profile/ProfileInfo/myReports/MyReportsListContainer'
@@ -18,7 +17,6 @@ export const MyProfileStackNavigation = (props) => {
 			initialRouteName={'signIn'}
 		>
 			<Stack.Screen name="signIn" component={LogIn} />
-			<Stack.Screen name="ProfileSettingsContainer" component={ProfileSettingsContainer} />
 			<Stack.Screen name="MyPetsContainer" component={MyPetsListContainer} />
 			<Stack.Screen name="AddMyPet" component={AddMyPetContainer} />
 			<Stack.Screen name="MyBookingContainer" component={MyBookingListContainer} />

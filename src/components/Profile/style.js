@@ -26,14 +26,12 @@ export const styles = StyleSheet.create({
 		borderColor: 'white',
 		borderWidth: 8,
 	},
-	uploadUserPic: {
-		color: 'white',
-	},
 	userName: {
 		color: 'black',
 		fontSize: 40,
 		fontFamily: 'Bahianita-Regular',
 		marginTop: 90,
+		marginLeft: 20,
 	},
 	main: {
 		width: '100%',
@@ -124,16 +122,5 @@ export const styles = StyleSheet.create({
 		borderBottomColor: 'gray',
 		borderBottomWidth: 1,
 		marginVertical: 8,
-	},
-	uploadImageContainer: {
-		position: 'relative',
-		top: 10,
-		right: 30,
-		justifyContent: 'center',
-		alignItems: 'center',
-		width: 33,
-		height: 33,
-		borderRadius: 16,
-		backgroundColor: '#5D5FEF',
 	},
 })
