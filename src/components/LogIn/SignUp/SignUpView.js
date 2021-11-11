@@ -1,13 +1,22 @@
 import { styles } from '../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import React from 'react'
-import { Text, View, TextInput, TouchableHighlight } from 'react-native'
+import { Text, View, TextInput, TouchableHighlight, ScrollView } from 'react-native'
 
 export const SignUpView = (props) => {
 	return (
 		<View style={styles.wrapper}>
 			<View style={styles.logInSection}>
 				<Text style={styles.logInTitle}>Sign Up</Text>
+				<View>
+					<Text style={styles.logInText}>e-mail</Text>
+					<TextInput
+						style={styles.input}
+						onChangeText={props.loginChange}
+						placeholder="Email or phone number"
+						autoCorrect={false}
+					/>
+				</View>
 				<View>
 					<Text style={styles.logInText}>Name</Text>
 					<View style={styles.passwordInput}>
@@ -20,13 +29,37 @@ export const SignUpView = (props) => {
 					</View>
 				</View>
 				<View>
-					<Text style={styles.logInText}>phone or e-mail</Text>
-					<TextInput
-						style={styles.input}
-						onChangeText={props.loginChange}
-						placeholder="Email or phone number"
-						autoCorrect={false}
-					/>
+					<Text style={styles.logInText}>middle name</Text>
+					<View style={styles.passwordInput}>
+						<TextInput
+							style={styles.passwordText}
+							onChangeText={props.middleName}
+							placeholder="middle name"
+							autoCorrect={false}
+						/>
+					</View>
+				</View>
+				<View>
+					<Text style={styles.logInText}>surname</Text>
+					<View style={styles.passwordInput}>
+						<TextInput
+							style={styles.passwordText}
+							onChangeText={props.surname}
+							placeholder="surname"
+							autoCorrect={false}
+						/>
+					</View>
+				</View>
+				<View>
+					<Text style={styles.logInText}>mobile number</Text>
+					<View style={styles.passwordInput}>
+						<TextInput
+							style={styles.passwordText}
+							onChangeText={props.mobileNumber}
+							placeholder="mobile number"
+							autoCorrect={false}
+						/>
+					</View>
 				</View>
 				<View>
 					<Text style={styles.logInText}>password</Text>

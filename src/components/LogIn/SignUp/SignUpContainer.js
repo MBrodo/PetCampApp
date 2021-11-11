@@ -11,6 +11,10 @@ export const SignUpContainer = () => {
 	const [password, setPassword] = useState('')
 	const [hidePass, setHidePass] = useState(true)
 
+	const [middleName, setMiddleName] = useState('')
+	const [surname, setSurname] = useState('')
+	const [mobileNumber, setMobileNumber] = useState('')
+
 	const [isPasswordValid, setPasswordValid] = useState(true)
 	const [isLoginValid, setIsLoginValid] = useState(false)
 
@@ -33,18 +37,23 @@ export const SignUpContainer = () => {
 	}
 
 	const SignUpSubmit = () => {
-		registrationController(userName, email, password, 1).then((res) => {
-			if (res.status === 200) {
-				Alert.alert('Confirm your e-mail to finish registration')
-				// setPassword('0')
-			} else if (res.status === 409) {
-				Alert.alert(res.data.message)
+		registrationController(email, userName, middleName, surname, mobileNumber, password, 1).then(
+			(res) => {
+				if (res.status === 200) {
+					Alert.alert('Confirm your e-mail to finish registration')
+					// setPassword('0')
+				} else if (res.status === 409) {
+					Alert.alert(res.data.message)
+				}
 			}
-		})
+		)
 	}
 
 	return (
 		<SignUpView
+			middleName={middleName}
+			surname={surname}
+			mobileNumber={mobileNumber}
 			setUserName={setUserName}
 			loginChange={loginChange}
 			passwordChange={passwordChange}

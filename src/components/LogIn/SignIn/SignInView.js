@@ -18,13 +18,15 @@ export const SignInView = (props) => {
 			<KeyboardAvoidingView>
 				<View style={styles.wrapper}>
 					<Modal visible={props.modalWindow}>
-						<Icon
-							style={styles.closeIcon}
-							name="times"
-							size={30}
-							onPress={() => props.setModalWindow(false)}
-						/>
-						<SignUpContainer setModalWindow={props.modalWindow} />
+						<ScrollView>
+							<Icon
+								style={styles.closeIcon}
+								name="times"
+								size={30}
+								onPress={() => props.setModalWindow(false)}
+							/>
+							<SignUpContainer setModalWindow={props.modalWindow} />
+						</ScrollView>
 					</Modal>
 
 					<View style={styles.logInSection}>

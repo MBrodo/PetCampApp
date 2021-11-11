@@ -2,12 +2,23 @@ import URLS from '../authUrls'
 import { IP } from '../hostIP'
 import axios from 'axios'
 
-const registrationController = async (userName, email, password, role) =>
+const registrationController = async (
+	email,
+	username,
+	middleName,
+	surname,
+	phone,
+	password,
+	role
+) =>
 	new Promise((resolve) => {
 		axios
 			.post(`${IP.HOST}${URLS.SIGN_UP}`, {
-				userName,
 				email,
+				username,
+				middleName,
+				surname,
+				phone,
 				password,
 				role,
 			})
