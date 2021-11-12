@@ -21,7 +21,7 @@ export const AddMyPetView = (props) => {
 				SecondCheckBoxName={'Cat'}
 				firstName={'dog'}
 				secondName={'cat'}
-				checkPetState={props.petCheckBoxInfo}
+				checkPetState={props.setPetCheckBoxInfo}
 				firstCheckBoxItem={props.petInfoContainer.dog}
 				secondCheckBoxItem={props.petInfoContainer.cat}
 			/>
@@ -38,7 +38,7 @@ export const AddMyPetView = (props) => {
 				SecondCheckBoxName={'male'}
 				firstName={'female'}
 				secondName={'male'}
-				checkPetState={props.petCheckBoxInfo}
+				checkPetState={props.setPetCheckBoxInfo}
 				firstCheckBoxItem={props.petInfoContainer.female}
 				secondCheckBoxItem={props.petInfoContainer.male}
 			/>
@@ -56,7 +56,7 @@ export const AddMyPetView = (props) => {
 				SecondCheckBoxName={'no'}
 				firstName={'sterilizedPositive'}
 				secondName={'sterilizedNegative'}
-				checkPetState={props.petCheckBoxInfo}
+				checkPetState={props.setPetCheckBoxInfo}
 				firstCheckBoxItem={props.petInfoContainer.sterilizedPositive}
 				secondCheckBoxItem={props.petInfoContainer.sterilizedNegative}
 			/>

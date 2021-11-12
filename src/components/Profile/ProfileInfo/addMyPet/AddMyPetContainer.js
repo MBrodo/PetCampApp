@@ -89,7 +89,7 @@ export const AddMyPetContainer = (props) => {
 			backPoint={backPoint}
 			setPetInfo={setPetInputInfo}
 			SendNewCard={SendNewCard}
-			petCheckBoxInfo={setPetCheckBoxInfo}
+			setPetCheckBoxInfo={setPetCheckBoxInfo}
 			petInfoContainer={petInfoContainer}
 		/>
 	)
