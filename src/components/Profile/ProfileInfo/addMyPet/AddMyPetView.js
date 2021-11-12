@@ -10,7 +10,7 @@ export const AddMyPetView = (props) => {
 			<View style={styles.myPetPhoto}>
 				<Image style={styles.picture} source={props.checkImage()} />
 				<TextInput
-					onChangeText={(item) => props.petInfo(item, 'petNickName')}
+					onChangeText={(item) => props.setPetInfo(item, 'petNickName')}
 					placeholder={'add nickname'}
 					style={styles.textInputNickName}
 				/>
@@ -27,7 +27,10 @@ export const AddMyPetView = (props) => {
 			/>
 			<View style={styles.pointContainer}>
 				<Text>Breed:</Text>
-				<TextInput onChangeText={(item) => props.petInfo(item, 'breed')} style={styles.textInput} />
+				<TextInput
+					onChangeText={(item) => props.setPetInfo(item, 'breed')}
+					style={styles.textInput}
+				/>
 			</View>
 			<AddCardCheckBox
 				name={'Gender:'}
@@ -42,7 +45,7 @@ export const AddMyPetView = (props) => {
 			<View style={styles.pointContainer}>
 				<Text>Age, years full:</Text>
 				<TextInput
-					onChangeText={(item) => props.petInfo(item, 'petAge')}
+					onChangeText={(item) => props.setPetInfo(item, 'petAge')}
 					style={styles.textInputAge}
 				/>
 				<Text style={styles.pointText}>years</Text>
@@ -60,14 +63,14 @@ export const AddMyPetView = (props) => {
 			<View style={styles.pointContainer}>
 				<Text>Vet Passport number:</Text>
 				<TextInput
-					onChangeText={(item) => props.petInfo(item, 'petVetPassport')}
+					onChangeText={(item) => props.setPetInfo(item, 'petVetPassport')}
 					style={styles.textInput}
 				/>
 			</View>
 			<View style={styles.individualNotice}>
 				<Text>Individual notice (preferances):</Text>
 				<TextInput
-					onChangeText={(item) => props.petInfo(item, 'petInfo')}
+					onChangeText={(item) => props.setPetInfo(item, 'petInfo')}
 					style={styles.individualNoticeInput}
 				/>
 			</View>

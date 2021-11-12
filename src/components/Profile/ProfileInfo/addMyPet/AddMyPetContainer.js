@@ -23,15 +23,14 @@ export const AddMyPetContainer = (props) => {
 		petVetPassport: '',
 		petInfo: '',
 	})
-	const petInputInfo = (item, name) => {
+	const setPetInputInfo = (item, name) => {
 		setPetInfoContainer((prevState) => ({
 			...prevState,
 			[name]: item,
 		}))
 	}
 
-	const petCheckBoxInfo = (firstName, secondName) => {
-		console.log(!petInfoContainer[firstName])
+	const setPetCheckBoxInfo = (firstName, secondName) => {
 		setPetInfoContainer((prevState) => ({
 			...prevState,
 			[firstName]: !prevState[firstName],
@@ -88,9 +87,9 @@ export const AddMyPetContainer = (props) => {
 			goToBackPoint={props.route.params.goToBackPoint}
 			checkImage={checkImage}
 			backPoint={backPoint}
-			petInfo={petInputInfo}
+			setPetInfo={setPetInputInfo}
 			SendNewCard={SendNewCard}
-			petCheckBoxInfo={petCheckBoxInfo}
+			petCheckBoxInfo={setPetCheckBoxInfo}
 			petInfoContainer={petInfoContainer}
 		/>
 	)
