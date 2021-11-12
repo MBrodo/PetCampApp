@@ -10,7 +10,7 @@ export const AddMyPetView = (props) => {
 			<View style={styles.myPetPhoto}>
 				<Image style={styles.picture} source={props.checkImage()} />
 				<TextInput
-					onChangeText={(item) => props.petNickName(item)}
+					onChangeText={(item) => props.setPetInfo(item, 'petNickName')}
 					placeholder={'add nickname'}
 					style={styles.textInputNickName}
 				/>
@@ -19,43 +19,58 @@ export const AddMyPetView = (props) => {
 				name={'Cat/Dog:'}
 				firstCheckBoxName={'Dog'}
 				SecondCheckBoxName={'Cat'}
-				checkPetState={props.checkPetState}
+				firstName={'dog'}
+				secondName={'cat'}
+				checkPetState={props.setPetCheckBoxInfo}
 				firstCheckBoxItem={props.petInfoContainer.dog}
 				secondCheckBoxItem={props.petInfoContainer.cat}
 			/>
 			<View style={styles.pointContainer}>
 				<Text>Breed:</Text>
-				<TextInput onChangeText={(item) => props.breed(item)} style={styles.textInput} />
+				<TextInput
+					onChangeText={(item) => props.setPetInfo(item, 'breed')}
+					style={styles.textInput}
+				/>
 			</View>
 			<AddCardCheckBox
 				name={'Gender:'}
 				firstCheckBoxName={'female'}
 				SecondCheckBoxName={'male'}
-				checkPetState={props.checkGenderState}
+				firstName={'female'}
+				secondName={'male'}
+				checkPetState={props.setPetCheckBoxInfo}
 				firstCheckBoxItem={props.petInfoContainer.female}
 				secondCheckBoxItem={props.petInfoContainer.male}
 			/>
 			<View style={styles.pointContainer}>
 				<Text>Age, years full:</Text>
-				<TextInput onChangeText={(item) => props.petAge(item)} style={styles.textInputAge} />
+				<TextInput
+					onChangeText={(item) => props.setPetInfo(item, 'petAge')}
+					style={styles.textInputAge}
+				/>
 				<Text style={styles.pointText}>years</Text>
 			</View>
 			<AddCardCheckBox
 				name={'Sterilized:'}
 				firstCheckBoxName={'yes'}
 				SecondCheckBoxName={'no'}
-				checkPetState={props.checkSterilizedState}
+				firstName={'sterilizedPositive'}
+				secondName={'sterilizedNegative'}
+				checkPetState={props.setPetCheckBoxInfo}
 				firstCheckBoxItem={props.petInfoContainer.sterilizedPositive}
 				secondCheckBoxItem={props.petInfoContainer.sterilizedNegative}
 			/>
 			<View style={styles.pointContainer}>
 				<Text>Vet Passport number:</Text>
-				<TextInput onChangeText={(item) => props.petVetPassport(item)} style={styles.textInput} />
+				<TextInput
+					onChangeText={(item) => props.setPetInfo(item, 'petVetPassport')}
+					style={styles.textInput}
+				/>
 			</View>
 			<View style={styles.individualNotice}>
 				<Text>Individual notice (preferances):</Text>
 				<TextInput
-					onChangeText={(item) => props.petInfo(item)}
+					onChangeText={(item) => props.setPetInfo(item, 'petInfo')}
 					style={styles.individualNoticeInput}
 				/>
 			</View>
