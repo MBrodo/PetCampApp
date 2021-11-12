@@ -23,21 +23,22 @@ export const AddMyPetContainer = (props) => {
 		petVetPassport: '',
 		petInfo: '',
 	})
-	const petNickName = (item) => {
+	const petInputInfo = (item, name) => {
 		setPetInfoContainer((prevState) => ({
 			...prevState,
-			petNickName: item,
+			[name]: item,
 		}))
 	}
 
-	const checkPetState = () => {
+	const petCheckBoxInfo = (firstName, secondName) => {
+		console.log(!petInfoContainer[firstName])
 		setPetInfoContainer((prevState) => ({
 			...prevState,
-			dog: !prevState.dog,
+			[firstName]: !prevState[firstName],
 		}))
 		setPetInfoContainer((prevState) => ({
 			...prevState,
-			cat: !prevState.cat,
+			[secondName]: !prevState[secondName],
 		}))
 	}
 
@@ -45,60 +46,14 @@ export const AddMyPetContainer = (props) => {
 		return petInfoContainer.dog ? 'DOG' : 'CAT'
 	}
 
-	const checkGenderState = () => {
-		setPetInfoContainer((prevState) => ({
-			...prevState,
-			male: !prevState.male,
-		}))
-		setPetInfoContainer((prevState) => ({
-			...prevState,
-			female: !prevState.female,
-		}))
-	}
-
 	const petGender = () => {
 		return petInfoContainer.male ? 'male' : 'female'
 	}
 
-	const checkSterilizedState = () => {
-		setPetInfoContainer((prevState) => ({
-			...prevState,
-			sterilizedPositive: !prevState.sterilizedPositive,
-		}))
-		setPetInfoContainer((prevState) => ({
-			...prevState,
-			sterilizedNegative: !prevState.sterilizedNegative,
-		}))
-	}
 	const petSterilize = () => {
 		return petInfoContainer.sterilizedPositive ? 'yes' : 'no'
 	}
 
-	const breed = (item) => {
-		setPetInfoContainer((prevState) => ({
-			...prevState,
-			breed: item,
-		}))
-	}
-
-	const petAge = (item) => {
-		setPetInfoContainer((prevState) => ({
-			...prevState,
-			petAge: parseFloat(item),
-		}))
-	}
-	const petVetPassport = (item) => {
-		setPetInfoContainer((prevState) => ({
-			...prevState,
-			petVetPassport: item,
-		}))
-	}
-	const petInfo = (item) => {
-		setPetInfoContainer((prevState) => ({
-			...prevState,
-			petInfo: item,
-		}))
-	}
 	const userId = useSelector((state) => state.user.id)
 	const SendNewCard = () => {
 		sendNewCardController(
@@ -133,16 +88,10 @@ export const AddMyPetContainer = (props) => {
 			goToBackPoint={props.route.params.goToBackPoint}
 			checkImage={checkImage}
 			backPoint={backPoint}
-			petInfo={petInfo}
-			petVetPassport={petVetPassport}
-			checkSterilizedState={checkSterilizedState}
-			petAge={petAge}
-			checkGenderState={checkGenderState}
-			breed={breed}
+			petInfo={petInputInfo}
 			SendNewCard={SendNewCard}
-			checkPetState={checkPetState}
+			petCheckBoxInfo={petCheckBoxInfo}
 			petInfoContainer={petInfoContainer}
-			petNickName={petNickName}
 		/>
 	)
 }

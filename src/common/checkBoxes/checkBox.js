@@ -8,7 +8,7 @@ export const CheckBoxView = (props) => {
 			style={styles.checkBox}
 			disabled={false}
 			value={props.toggleCheckBox}
-			onValueChange={() => props.checkState()}
+			onValueChange={() => props.checkState(props.firstName, props.secondName)}
 		/>
 	)
 }

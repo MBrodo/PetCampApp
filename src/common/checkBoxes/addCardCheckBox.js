@@ -9,11 +9,18 @@ export const AddCardCheckBox = (props) => {
 			<Text>{props.name}</Text>
 			<View style={styles.checkboxMainContainer}>
 				<View style={styles.checkboxContainer}>
-					<CheckBoxView checkState={props.checkPetState} toggleCheckBox={props.firstCheckBoxItem} />
+					<CheckBoxView
+						firstName={props.firstName}
+						secondName={props.secondName}
+						checkState={props.checkPetState}
+						toggleCheckBox={props.firstCheckBoxItem}
+					/>
 					<Text style={styles.checkBoxText}>{props.firstCheckBoxName}</Text>
 				</View>
 				<View style={styles.checkboxContainer}>
 					<CheckBoxView
+						firstName={props.firstName}
+						secondName={props.secondName}
 						checkState={props.checkPetState}
 						toggleCheckBox={props.secondCheckBoxItem}
 					/>
