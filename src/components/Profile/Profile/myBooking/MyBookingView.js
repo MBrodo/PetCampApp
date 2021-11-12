@@ -1,37 +1,20 @@
-import React, { useEffect } from 'react'
-import { Text, View } from 'react-native'
+import React from 'react'
+import { Text, View, Pressable } from 'react-native'
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
-import bookList from '../../controllers/authorization/BookListController'
-import { useSelector, useDispatch } from 'react-redux'
-import { setBook } from '../../redux/slices/bookSlice'
 
-export const MyBooking = () => {
-	const bookingList = useSelector((state) => state.booking.bookingList)
-	const dispatch = useDispatch()
-	const userID = useSelector((state) => state.user.id)
-
-	useEffect(() => {
-		bookList(userID).then((res) => {
-			if (res.status === 200) {
-				dispatch(setBook(res.data.bookingsInfo))
-			} else {
-				console.log('Some trouble with server!')
-			}
-		})
-	}, [bookingList])
-
+export const MyBookingView = (props) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerHeader}>
 				<Text style={styles.containerTitle}>My booking</Text>
-				<View style={styles.containerLink}>
+				<Pressable onPress={() => props.goToBookList()} style={styles.containerLink}>
 					<Text style={styles.containerLinkText}>See more</Text>
 					<Icon style={styles.containerLinkIcon} name="arrow-right" size={15} />
-				</View>
+				</Pressable>
 			</View>
 			<View>
-				{bookingList.map((item) => (
+				{props.bookingList.map((item) => (
 					<View key={item.id} style={styles.containerMain}>
 						<View style={styles.containerElement}>
 							<View style={styles.elementMain}>

@@ -5,6 +5,7 @@ const initialState = {
 	startBooking: [],
 	endBooking: [],
 	totalDays: [],
+	all: [],
 }
 
 export const bookSlice = createSlice({
@@ -23,9 +24,12 @@ export const bookSlice = createSlice({
 		setTotalDay: (state, action) => {
 			state.totalDays = action.payload
 		},
+		setAllBookings: (state, action) => {
+			state.all = action.payload
+		},
 	},
 })
 
-export const { setBook, setDateStart, setDateEnds, setTotalDay } = bookSlice.actions
+export const { setBook, setDateStart, setDateEnds, setTotalDay, setAllBookings } = bookSlice.actions
 
 export default bookSlice.reducer

@@ -3,7 +3,7 @@ import { Text, View, Image, ScrollView, ImageBackground, Pressable } from 'react
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { MyPetsContainer } from './Profile/petsBlock/MyPetsContainer'
-import { MyBooking } from './MyBooking'
+import { MyBookingContainer } from './Profile/myBooking/MyBookingContainer'
 import { MyReports } from './MyReports'
 import getSettingsController from '../../controllers/settings/getSettingsController'
 import { setSettings } from '../../redux/slices/userSlice'
@@ -47,7 +47,7 @@ export const MyProfile = () => {
 				</ImageBackground>
 				<View style={styles.main}>
 					<MyPetsContainer />
-					<MyBooking />
+					<MyBookingContainer />
 					<MyReports />
 				</View>
 			</View>

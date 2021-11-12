@@ -1,10 +1,12 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, ScrollView, Text, Pressable } from 'react-native'
+import { styles } from './style'
+import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 
-export const MyBookingListView = () => {
+export const MyBookingListView = (props) => {
 	return (
-		<View>
-			<Text>MyBookingListView</Text>
-		</View>
+		<ScrollView style={styles.mainScroll} showsHorizontalScrollIndicator={false}>
+			<View style={styles.mainBlock}>{props.pets.map((item) => props.petsCards(item))}</View>
+		</ScrollView>
 	)
 }

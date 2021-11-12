@@ -8,7 +8,7 @@ import { MyReportsListContainer } from '../Profile/ProfileInfo/myReports/MyRepor
 import { AddMyPetContainer } from '../Profile/ProfileInfo/addMyPet/AddMyPetContainer'
 const Stack = createStackNavigator()
 
-export const MyProfileStackNavigation = (props) => {
+export const MyProfileStackNavigation = () => {
 	return (
 		<Stack.Navigator
 			screenOptions={{
