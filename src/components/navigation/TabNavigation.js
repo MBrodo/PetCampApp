@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { View, TouchableWithoutFeedback, Text } from 'react-native'
 
 import { PriceList } from '../PriceList'
-import { Settings } from '../Settings/'
+import { Settings } from '../Settings'
 import { Contacts } from '../Contacts'
 import { BookAndAboutUs } from './BookAndAboutUs'
 import { MyProfileStackNavigation } from './MyProfileStackNavigation'
