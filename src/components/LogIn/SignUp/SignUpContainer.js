@@ -1,40 +1,38 @@
 import React, { useState } from 'react'
 import { Alert } from 'react-native'
 
-import { PHONE_VALIDATION, EMAIL_VALIDATION, PASSWORD_VALIDATION } from '../validation'
 import registrationController from '../../../controllers/authorization/registrationController'
 import { SignUpView } from './SignUpView'
+import { styles } from '../style'
 
 export const SignUpContainer = () => {
-	const [email, setEmail] = useState('')
-	const [userName, setUserName] = useState('')
-	const [password, setPassword] = useState('')
-	const [hidePass, setHidePass] = useState(true)
+	const [signUp, setSignUp] = useState({
+		email: '',
+		userName: '',
+		password: '',
+		hidePass: '',
+		middleName: '',
+		surname: '',
+		mobileNumber: '',
+		isPasswordValid: false,
+		isEmailValid: false,
+		isNameValid: false,
+		isMiddleNameValid: false,
+		isSurnameValid: false,
+		isPhoneValid: false,
+	})
 
-	const [middleName, setMiddleName] = useState('')
-	const [surname, setSurname] = useState('')
-	const [mobileNumber, setMobileNumber] = useState('')
-
-	const [isPasswordValid, setPasswordValid] = useState(true)
-	const [isLoginValid, setIsLoginValid] = useState(false)
-
-	const validatePassword = (e) => {
-		setPasswordValid(PASSWORD_VALIDATION.test(e))
+	const checkValidation = (name) => {
+		return signUp[name] ? styles.passwordInputValid : styles.passwordInput
+	}
+	const changeState = (firstName, secondName, item, regular) => {
+		setSignUp((prevState) => ({
+			...prevState,
+			[firstName]: item,
+			[secondName]: regular,
+		}))
 	}
 
-	const validateLogin = (e) => {
-		setIsLoginValid(PHONE_VALIDATION.test(e) || EMAIL_VALIDATION.test(e))
-	}
-
-	const passwordChange = (e) => {
-		setPassword(e)
-		validatePassword(e)
-	}
-
-	const loginChange = (e) => {
-		setEmail(e)
-		validateLogin(e)
-	}
 	const SignUpSubmit = () => {
 		registrationController(email, userName, middleName, surname, mobileNumber, password, 1).then(
 			(res) => {
@@ -50,17 +48,11 @@ export const SignUpContainer = () => {
 
 	return (
 		<SignUpView
-			setMiddleName={setMiddleName}
-			setSurname={setSurname}
-			setMobileNumber={setMobileNumber}
-			setUserName={setUserName}
-			loginChange={loginChange}
-			passwordChange={passwordChange}
-			hidePass={hidePass}
-			setHidePass={setHidePass}
+			signUp={signUp}
+			isEmailValid={signUp.isEmailValid}
+			checkValidation={checkValidation}
+			changeState={changeState}
 			SignUpSubmit={SignUpSubmit}
-			isPasswordValid={isPasswordValid}
-			isLoginValid={isLoginValid}
 		/>
 	)
 }

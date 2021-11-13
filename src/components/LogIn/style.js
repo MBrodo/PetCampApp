@@ -34,6 +34,14 @@ export const styles = StyleSheet.create({
 		marginTop: 5,
 		borderWidth: 1,
 	},
+	passwordInputValid: {
+		flexDirection: 'row',
+		borderRadius: 4,
+		height: 50,
+		marginTop: 5,
+		borderWidth: 1,
+		borderColor: 'green',
+	},
 	passwordText: {
 		padding: 10,
 		width: 280,
