@@ -67,7 +67,7 @@ export const MyPetsContainer = () => {
 							<Text style={styles.elementText}>{item.gender}</Text>
 						</View>
 						<View style={styles.elementInfo}>
-							<Text>Vacinated</Text>
+							<Text>Vet Passport</Text>
 							<Text style={styles.elementText}>{item.vet_pasport}</Text>
 						</View>
 					</View>

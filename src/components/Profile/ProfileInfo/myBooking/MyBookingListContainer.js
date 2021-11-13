@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { MyBookingListView } from './MyBookingListView'
-import { View, Text, Image, Pressable, TextInput } from 'react-native'
-import { styles } from './style'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { PetCard } from '../../../../common/layouts/PetCard'
-import { PetInfo } from '../../../../common/petInfo/petInfo'
 import { images } from '../addMyPet/AddMyPetContainer'
 import getBookingController from '../../../../controllers/bookList/getBookings'
 import { setAllBookings } from '../../../../redux/slices/bookSlice'
