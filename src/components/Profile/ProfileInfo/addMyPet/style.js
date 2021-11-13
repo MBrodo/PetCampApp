@@ -157,6 +157,15 @@ export const styles = StyleSheet.create({
 		borderColor: '#76707F',
 		fontSize: 12,
 	},
+	textInputValid: {
+		borderWidth: 1,
+		width: 100,
+		height: 20,
+		padding: 0,
+		borderRadius: 5,
+		borderColor: 'green',
+		fontSize: 12,
+	},
 	textInputNickName: {
 		textAlign: 'center',
 		width: 100,
