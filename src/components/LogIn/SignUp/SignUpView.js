@@ -2,6 +2,12 @@ import { styles } from '../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import React from 'react'
 import { Text, View, TextInput, TouchableHighlight, ScrollView } from 'react-native'
+import {
+	PHONE_VALIDATION,
+	NAME_VALIDATION,
+	EMAIL_VALIDATION,
+	PASSWORD_VALIDATION,
+} from '../validation'
 
 export const SignUpView = (props) => {
 	return (
@@ -11,62 +17,66 @@ export const SignUpView = (props) => {
 				<View>
 					<Text style={styles.logInText}>e-mail</Text>
 					<TextInput
-						style={styles.input}
-						onChangeText={props.loginChange}
+						style={props.checkValidation('isEmailValid')}
+						onChangeText={(e) =>
+							props.changeState('email', 'isEmailValid', e, EMAIL_VALIDATION.test(e))
+						}
 						placeholder="Email or phone number"
 						autoCorrect={false}
 					/>
 				</View>
 				<View>
 					<Text style={styles.logInText}>Name</Text>
-					<View style={styles.passwordInput}>
-						<TextInput
-							style={styles.passwordText}
-							onChangeText={props.setUserName}
-							placeholder="Name"
-							autoCorrect={false}
-						/>
-					</View>
+					<TextInput
+						style={props.checkValidation('isNameValid')}
+						onChangeText={(e) =>
+							props.changeState('userName', 'isNameValid', e, NAME_VALIDATION.test(e))
+						}
+						placeholder="Name"
+						autoCorrect={false}
+					/>
 				</View>
 				<View>
 					<Text style={styles.logInText}>middle name</Text>
-					<View style={styles.passwordInput}>
-						<TextInput
-							style={styles.passwordText}
-							onChangeText={props.setMiddleName}
-							placeholder="middle name"
-							autoCorrect={false}
-						/>
-					</View>
+					<TextInput
+						style={props.checkValidation('isMiddleNameValid')}
+						onChangeText={(e) =>
+							props.changeState('middleName', 'isMiddleNameValid', e, NAME_VALIDATION.test(e))
+						}
+						placeholder="middle name"
+						autoCorrect={false}
+					/>
 				</View>
 				<View>
 					<Text style={styles.logInText}>surname</Text>
-					<View style={styles.passwordInput}>
-						<TextInput
-							style={styles.passwordText}
-							onChangeText={props.setSurname}
-							placeholder="surname"
-							autoCorrect={false}
-						/>
-					</View>
+					<TextInput
+						style={props.checkValidation('isSurnameValid')}
+						onChangeText={(e) =>
+							props.changeState('surname', 'isSurnameValid', e, NAME_VALIDATION.test(e))
+						}
+						placeholder="surname"
+						autoCorrect={false}
+					/>
 				</View>
 				<View>
 					<Text style={styles.logInText}>mobile number</Text>
-					<View style={styles.passwordInput}>
-						<TextInput
-							style={styles.passwordText}
-							onChangeText={props.setMobileNumber}
-							placeholder="mobile number"
-							autoCorrect={false}
-						/>
-					</View>
+					<TextInput
+						style={props.checkValidation('isPhoneValid')}
+						onChangeText={(e) =>
+							props.changeState('mobileNumber', 'isPhoneValid', e, PHONE_VALIDATION.test(e))
+						}
+						placeholder="mobile number"
+						autoCorrect={false}
+					/>
 				</View>
 				<View>
 					<Text style={styles.logInText}>password</Text>
-					<View style={styles.passwordInput}>
+					<View style={props.checkValidation('isPasswordValid')}>
 						<TextInput
 							style={styles.passwordText}
-							onChangeText={props.passwordChange}
+							onChangeText={(e) =>
+								props.changeState('password', 'isPasswordValid', e, PASSWORD_VALIDATION.test(e))
+							}
 							placeholder="Passrowd"
 							autoCorrect={false}
 							secureTextEntry={props.hidePass}
