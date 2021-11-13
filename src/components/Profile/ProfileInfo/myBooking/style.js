@@ -57,6 +57,7 @@ export const styles = StyleSheet.create({
 	},
 	myPetPhotoText: {
 		marginTop: 5,
+		marginLeft: 10,
 		fontSize: 20,
 		color: 'black',
 	},
@@ -95,5 +96,28 @@ export const styles = StyleSheet.create({
 	},
 	individualNoticeInput: {
 		color: 'black',
+	},
+	nickNameBlock: {
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	cardContainer: {
+		width: 300,
+		alignItems: 'center',
+		justifyContent: 'center',
+		marginVertical: 20,
+		borderRadius: 5,
+		backgroundColor: 'white',
+		shadowColor: '#000',
+		shadowOffset: {
+			width: 0,
+			height: 3,
+		},
+		shadowOpacity: 0.27,
+		shadowRadius: 4.65,
+		elevation: 6,
+	},
+	arrowContainer: {
+		alignItems: 'flex-end',
 	},
 })
