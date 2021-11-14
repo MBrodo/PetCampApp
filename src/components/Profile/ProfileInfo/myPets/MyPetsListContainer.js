@@ -10,13 +10,10 @@ import { PetInfo } from '../../../../common/petInfo/petInfo'
 import { images } from '../addMyPet/AddMyPetContainer'
 
 export const MyPetsListContainer = () => {
-	const checkImage = (item) => {
-		return item.type == 'CAT' ? images.cat : images.dog
-	}
 	const petInfo = (item) => (
 		<View style={styles.wrapper}>
 			<View style={styles.myPetPhoto}>
-				<Image style={styles.picture} source={checkImage(item)} />
+				<Image style={styles.picture} source={images.defaultImage} />
 				<Text style={styles.myPetPhotoText}>{item.name}</Text>
 			</View>
 			<PetInfo title={'Cat/Dog:'} item={item.type} />

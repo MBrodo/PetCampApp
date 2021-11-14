@@ -11,8 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const images = {
 	backGround: require('../../img/ProfileBG.png'),
-	cat: require('../../img/cat1.jpg'),
-	dog: require('../../img/dog1.jpg'),
+	defaultImage: require('../../img/defaultImage.png'),
 	userPicture: require('../../img/ProfileUserPicture.jpg'),
 }
 export default images

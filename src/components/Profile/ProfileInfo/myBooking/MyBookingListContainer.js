@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { MyBookingListView } from './MyBookingListView'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { images } from '../addMyPet/AddMyPetContainer'
 import getBookingController from '../../../../controllers/bookList/getBookings'
 import { setAllBookings } from '../../../../redux/slices/bookSlice'
 
@@ -10,9 +9,6 @@ export const MyBookingListContainer = () => {
 	const userID = useSelector((state) => state.user.id)
 	const bookings = useSelector((state) => state.booking.all)
 
-	const checkImage = (item) => {
-		return item.type == 'CAT' ? images.cat : images.dog
-	}
 	const dispatch = useDispatch()
 	useEffect(() => {
 		getBookingController(userID).then((res) => {
@@ -25,5 +21,5 @@ export const MyBookingListContainer = () => {
 		})
 	}, [bookings])
 
-	return <MyBookingListView checkImage={checkImage} pets={bookings} />
+	return <MyBookingListView pets={bookings} />
 }

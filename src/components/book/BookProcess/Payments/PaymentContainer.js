@@ -16,7 +16,6 @@ export const PaymentContainer = (props) => {
 	}
 	return (
 		<PaymentView
-			checkImage={props.route.params.checkImage}
 			totalPrice={props.route.params.totalPrice}
 			bookingDateStart={props.route.params.bookingDateStart}
 			bookingDateEnds={props.route.params.bookingDateEnds}

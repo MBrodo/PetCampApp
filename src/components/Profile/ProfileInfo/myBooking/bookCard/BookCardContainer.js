@@ -33,7 +33,6 @@ export const BookCardContainer = (props) => {
 	return (
 		<BookCardView
 			deleteBookCard={deleteBookCard}
-			checkImage={props.checkImage}
 			item={props.item}
 			reanimatedStyle={reanimatedStyle}
 			progress={progress}
