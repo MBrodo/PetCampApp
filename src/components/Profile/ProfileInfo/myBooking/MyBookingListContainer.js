@@ -23,7 +23,7 @@ export const MyBookingListContainer = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [])
+	}, [bookings])
 
 	return <MyBookingListView checkImage={checkImage} pets={bookings} />
 }

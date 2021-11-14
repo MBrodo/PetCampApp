@@ -9,6 +9,7 @@ const URLS = {
 	TYPE_PET: '/client/pets',
 	SEND_SETTINGS: '/client/mySettings',
 	LIST_OF_BOOKINGS: '/client/bookings',
+	DELETE_BOOK: '/client/delete-booking',
 }
 
 export default URLS

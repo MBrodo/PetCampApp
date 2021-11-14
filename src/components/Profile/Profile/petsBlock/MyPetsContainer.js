@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text, View, Image } from 'react-native'
 import { styles } from '../../style'
 import images from '../../MyProfile'
@@ -15,6 +15,8 @@ export const MyPetsContainer = () => {
 	const userID = useSelector((state) => state.user.id)
 	const petsList = useSelector((state) => state.pets.all)
 	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
+	const [allPets, setAllPets] = useState(petsList)
+	const [profilePets, setProfilePets] = useState(profilePetsList)
 
 	useEffect(() => {
 		fullpetListController(userID).then((res) => {
@@ -24,7 +26,7 @@ export const MyPetsContainer = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [petsList])
+	}, [allPets])
 
 	useEffect(() => {
 		bookList(userID).then((res) => {
@@ -34,7 +36,7 @@ export const MyPetsContainer = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [profilePetsList])
+	}, [profilePets])
 
 	const checkImage = (item) => {
 		return item.type == 'CAT' ? images.cat : images.dog
@@ -67,7 +69,7 @@ export const MyPetsContainer = () => {
 							<Text style={styles.elementText}>{item.gender}</Text>
 						</View>
 						<View style={styles.elementInfo}>
-							<Text>Vet Passport</Text>
+							<Text style={styles.vetText}>Vet Passport</Text>
 							<Text style={styles.elementText}>{item.vet_pasport}</Text>
 						</View>
 					</View>

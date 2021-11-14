@@ -42,7 +42,11 @@ export const BookCardView = (props) => {
 					<PetInfo title={'Additional'} item={props.item.vet_pasport} />
 					<PetInfo title={'Video control'} item={props.item.vet_pasport} />
 
-					<DefaultButton textButton={'Cancle'} />
+					<DefaultButton
+						item={props.item.id}
+						onPress={props.deleteBookCard}
+						textButton={'Cancle'}
+					/>
 				</>
 			) : null}
 		</>
