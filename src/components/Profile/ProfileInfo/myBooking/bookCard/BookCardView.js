@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import Animated from 'react-native-reanimated'
 import { DefaultButton } from '../../../../../common/buttons/defaultButton'
 import { images } from '../../addMyPet/AddMyPetContainer'
+import { ModalWindow } from '../../../../../common/modal/modal'
 
 export const BookCardView = (props) => {
 	const checkButton = () => {
@@ -14,6 +15,10 @@ export const BookCardView = (props) => {
 	const changeBookState = () => {
 		props.deleteBookCard(props.item.id)
 		props.deleteBookAnimation()
+		props.chechState()
+	}
+	const openModal = () => {
+		props.chechState()
 	}
 	const petInfoBlock = () => (
 		<>
@@ -25,7 +30,7 @@ export const BookCardView = (props) => {
 			<PetInfo title={'Additional'} item={props.item.vet_pasport} />
 			<PetInfo title={'Video control'} item={props.item.vet_pasport} />
 
-			<DefaultButton onPress={changeBookState} textButton={'Cancle'} />
+			<DefaultButton onPress={openModal} textButton={'Cancle'} />
 		</>
 	)
 
@@ -34,6 +39,11 @@ export const BookCardView = (props) => {
 			key={props.item.id}
 			style={[styles.cardContainer, props.reanimatedStyle, props.deleteAnimation]}
 		>
+			<ModalWindow
+				isOpenModal={props.isOpenModal}
+				accept={changeBookState}
+				cancel={props.chechState}
+			/>
 			<View style={styles.wrapper}>
 				<View style={styles.myPetPhoto}>
 					<Image style={styles.picture} source={images.defaultImage} />

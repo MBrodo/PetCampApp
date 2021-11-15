@@ -41,9 +41,14 @@ export const BookCardContainer = (props) => {
 			}
 		})
 	}
-
+	const [isOpenModal, setOpenModal] = useState(false)
+	const chechState = () => {
+		setOpenModal((state) => !state)
+	}
 	return (
 		<BookCardView
+			isOpenModal={isOpenModal}
+			chechState={chechState}
 			deleteBookCard={deleteBookCard}
 			deleteBookAnimation={deleteBookAnimation}
 			deleteBooking={deleteBooking}
