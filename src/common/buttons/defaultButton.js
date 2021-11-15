@@ -7,7 +7,7 @@ export const DefaultButton = (props) => {
 		<View style={styles.ButtonContainer}>
 			<Pressable
 				onPress={() => {
-					props.onPress(props.item)
+					props.delete(props.item)
 					props.animation()
 				}}
 				style={styles.cancleButton}

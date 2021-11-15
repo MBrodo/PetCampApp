@@ -25,8 +25,7 @@ export const AddMyPetContainer = (props) => {
 		petInfo: '',
 		ispetVetPassportValid: false,
 	})
-	console.log(petInfoContainer.ispetVetPassportValid, 'check')
-	console.log(petInfoContainer.petVetPassport, 'num')
+
 	const setPetInputInfo = (item, name) => {
 		setPetInfoContainer((prevState) => ({
 			...prevState,
