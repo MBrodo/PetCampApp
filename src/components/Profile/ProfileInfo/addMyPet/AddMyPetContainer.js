@@ -22,6 +22,7 @@ export const AddMyPetContainer = (props) => {
 		petVetPassport: '',
 		petInfo: '',
 	})
+
 	const setPetInputInfo = (item, name) => {
 		setPetInfoContainer((prevState) => ({
 			...prevState,

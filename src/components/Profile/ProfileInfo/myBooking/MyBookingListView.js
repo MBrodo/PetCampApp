@@ -8,7 +8,7 @@ export const MyBookingListView = (props) => {
 		<ScrollView style={styles.mainScroll} showsHorizontalScrollIndicator={false}>
 			<View style={styles.mainBlock}>
 				{props.pets.map((item) => (
-					<BookCardContainer item={item} />
+					<BookCardContainer key={item.id} checkImage={props.checkImage} item={item} />
 				))}
 			</View>
 		</ScrollView>

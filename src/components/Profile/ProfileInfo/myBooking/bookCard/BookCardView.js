@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { View, Text, Image, Pressable, TextInput } from 'react-native'
 import { styles } from '../style'
 import { PetInfo } from '../../../../../common/petInfo/petInfo'
@@ -8,52 +8,32 @@ import { DefaultButton } from '../../../../../common/buttons/defaultButton'
 import { images } from '../../addMyPet/AddMyPetContainer'
 
 export const BookCardView = (props) => {
-	const checkButton = () => (
+	const checkButton = () => {
+		return props.showBookInfo ? 'sort-up' : 'sort-down'
+	}
+	const changeBookState = () => {
+		props.deleteBookCard(props.item.id)
+		props.deleteBookAnimation()
+	}
+	const petInfoBlock = () => (
 		<>
-			{props.showBookInfo ? (
-				<Pressable
-					onPress={() => {
-						props.progress.value = { width: 300, height: 220 }
-						props.setShowBookInfo(!props.showBookInfo)
-					}}
-				>
-					<Icon name={'sort-up'} size={20} />
-				</Pressable>
-			) : (
-				<Pressable
-					onPress={() => {
-						props.progress.value = { width: 300, height: 500 }
-						props.setShowBookInfo(!props.showBookInfo)
-					}}
-				>
-					<Icon name={'sort-down'} size={20} />
-				</Pressable>
-			)}
-		</>
-	)
-	const checkBookCard = () => (
-		<>
-			{props.showBookInfo ? (
-				<>
-					<PetInfo title={'Start date'} item={props.item.booking_start.substring(10, 0)} />
-					<PetInfo title={'End date'} item={props.item.booking_end.substring(10, 0)} />
-					<PetInfo title={'Paid'} item={props.item.paid} />
-					<PetInfo title={'Cat/Dog'} item={props.item.type} />
-					<PetInfo title={'Option'} item={props.item.vet_pasport} />
-					<PetInfo title={'Additional'} item={props.item.vet_pasport} />
-					<PetInfo title={'Video control'} item={props.item.vet_pasport} />
+			<PetInfo title={'Start date'} item={props.item.booking_start.substring(10, 0)} />
+			<PetInfo title={'End date'} item={props.item.booking_end.substring(10, 0)} />
+			<PetInfo title={'Paid'} item={props.item.paid} />
+			<PetInfo title={'Cat/Dog'} item={props.item.type} />
+			<PetInfo title={'Option'} item={props.item.vet_pasport} />
+			<PetInfo title={'Additional'} item={props.item.vet_pasport} />
+			<PetInfo title={'Video control'} item={props.item.vet_pasport} />
 
-					<DefaultButton
-						item={props.item.id}
-						onPress={props.deleteBookCard}
-						textButton={'Cancel'}
-					/>
-				</>
-			) : null}
+			<DefaultButton onPress={changeBookState} textButton={'Cancle'} />
 		</>
 	)
+
 	return (
-		<Animated.View key={props.item.id} style={[styles.cardContainer, props.reanimatedStyle]}>
+		<Animated.View
+			key={props.item.id}
+			style={[styles.cardContainer, props.reanimatedStyle, props.deleteAnimation]}
+		>
 			<View style={styles.wrapper}>
 				<View style={styles.myPetPhoto}>
 					<Image style={styles.picture} source={images.defaultImage} />
@@ -63,8 +43,19 @@ export const BookCardView = (props) => {
 					</View>
 				</View>
 				<PetInfo title={'Booking №'} item={props.item.id} />
-				{checkBookCard()}
-				<View style={styles.arrowContainer}>{checkButton()}</View>
+				{props.showBookInfo ? petInfoBlock() : null}
+				<View style={styles.arrowContainer}>
+					<Pressable
+						onPress={() => {
+							props.showBookInfo
+								? (props.progress.value = { width: 300, height: 220 })
+								: (props.progress.value = { width: 300, height: 500 })
+							props.setShowBookInfo(!props.showBookInfo)
+						}}
+					>
+						<Icon name={props.showBookInfo ? 'sort-up' : 'sort-down'} size={20} />
+					</Pressable>
+				</View>
 			</View>
 		</Animated.View>
 	)
