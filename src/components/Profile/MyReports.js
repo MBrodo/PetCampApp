@@ -17,7 +17,7 @@ export const MyReports = () => {
 			<View style={styles.containerMain}>
 				<View style={styles.containerElement}>
 					<View>
-						<Image source={images.dog} style={styles.petPic} />
+						<Image source={images.defaultImage} style={styles.petPic} />
 						<Icon style={styles.myReportsIcon} name="paw" size={20} />
 						<Icon style={styles.myReportsCamera} name="camera" size={20} />
 					</View>
@@ -46,7 +46,7 @@ export const MyReports = () => {
 				</View>
 				<View style={styles.containerElement}>
 					<View>
-						<Image source={images.dog} style={styles.petPic} />
+						<Image source={images.defaultImage} style={styles.petPic} />
 						<Icon style={styles.myReportsIcon} name="paw" size={20} />
 						<Icon style={styles.myReportsCamera} name="camera" size={20} />
 					</View>

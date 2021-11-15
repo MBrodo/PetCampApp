@@ -5,6 +5,7 @@ import { PetInfo } from '../../../../../common/petInfo/petInfo'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import Animated from 'react-native-reanimated'
 import { DefaultButton } from '../../../../../common/buttons/defaultButton'
+import { images } from '../../addMyPet/AddMyPetContainer'
 
 export const BookCardView = (props) => {
 	const checkButton = () => {
@@ -35,7 +36,7 @@ export const BookCardView = (props) => {
 		>
 			<View style={styles.wrapper}>
 				<View style={styles.myPetPhoto}>
-					<Image style={styles.picture} source={props.checkImage(props.item)} />
+					<Image style={styles.picture} source={images.defaultImage} />
 					<View style={styles.nickNameBlock}>
 						<Icon name={'paw'} size={20} color={'#75B158'} />
 						<Text style={styles.myPetPhotoText}>{props.item.name}</Text>

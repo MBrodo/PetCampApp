@@ -30,11 +30,7 @@ export const ChoosePetView = (props) => {
 					</View>
 					<View>
 						{props.petList.map((item) => (
-							<PetCardContainer
-								checkImage={props.checkImage}
-								checkButton={props.checkButton}
-								item={item}
-							/>
+							<PetCardContainer checkButton={props.checkButton} item={item} />
 						))}
 					</View>
 					<Pressable onPress={() => props.addPet()} style={styles.addButtonContainer}>

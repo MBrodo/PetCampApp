@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 import { ChoosePetView } from './ChoosePetView'
 import { useNavigation } from '@react-navigation/native'
-import { images } from '../../../Profile/ProfileInfo/addMyPet/AddMyPetContainer'
 import petTypeController from '../../../../controllers/petTypeController'
 import { setTypeList, setSelected, setClear } from '../../../../redux/slices/fullPetsSlice'
 import { useSelector, useDispatch } from 'react-redux'
@@ -18,9 +17,7 @@ export const ChoosePetContainer = (props) => {
 	const userId = useSelector((state) => state.user.id)
 	const allPets = useSelector((state) => state.pets.all)
 	const [pet, setPet] = useState('')
-	const checkImage = (item) => {
-		return item.type == 'CAT' ? images.cat : images.dog
-	}
+
 	const dispatch = useDispatch()
 	const PickPet = (item) => {
 		dispatch(setSelected(item))
@@ -57,13 +54,11 @@ export const ChoosePetContainer = (props) => {
 			bookingDateStart: bookingStart,
 			totalPrice: props.route.params.totalPrice,
 			campID: props.route.params.campID,
-			checkImage: checkImage,
 		})
 	}
 	return (
 		<ChoosePetView
 			checkButton={checkButton}
-			checkImage={checkImage}
 			dateText={bookingStart}
 			dateTextEnd={bookingEnds}
 			pet={pet}

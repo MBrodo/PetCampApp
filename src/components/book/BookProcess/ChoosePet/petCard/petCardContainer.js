@@ -16,7 +16,6 @@ export const PetCardContainer = (props) => {
 	}
 	return (
 		<PetCardView
-			checkImage={props.checkImage}
 			checkButton={props.checkButton}
 			item={props.item}
 			changeHandler={changeHandler}

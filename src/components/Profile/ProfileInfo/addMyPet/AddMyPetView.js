@@ -3,13 +3,13 @@ import { View, Text, Image, Pressable, TextInput } from 'react-native'
 import { styles } from './style'
 import { PetCard } from '../../../../common/layouts/PetCard'
 import { AddCardCheckBox } from '../../../../common/checkBoxes/addCardCheckBox'
-import { VET_PASSPORT_VALIDATION } from '../../../LogIn/validation'
+import { images } from './AddMyPetContainer'
 
 export const AddMyPetView = (props) => {
 	const addCardView = () => (
 		<View style={styles.wrapper}>
 			<View style={styles.myPetPhoto}>
-				<Image style={styles.picture} source={props.checkImage()} />
+				<Image style={styles.picture} source={images.defaultImage} />
 				<TextInput
 					onChangeText={(item) => props.setPetInfo(item, 'petNickName')}
 					placeholder={'add nickname'}
@@ -64,15 +64,8 @@ export const AddMyPetView = (props) => {
 			<View style={styles.pointContainer}>
 				<Text>Vet Passport number:</Text>
 				<TextInput
-					onChangeText={(item) =>
-						props.setVetPassport(
-							'petVetPassport',
-							'ispetVetPassportValid',
-							item,
-							VET_PASSPORT_VALIDATION.test(item)
-						)
-					}
-					style={props.checkVetPasport()}
+					onChangeText={(item) => props.setPetInfo(item, 'petVetPassport')}
+					style={styles.textInput}
 				/>
 			</View>
 			<View style={styles.individualNotice}>
@@ -100,7 +93,7 @@ export const AddMyPetView = (props) => {
 					}}
 					style={styles.cancleButton}
 				>
-					<Text style={styles.cancleButtonText}>Cancle</Text>
+					<Text style={styles.cancleButtonText}>Cancel</Text>
 				</Pressable>
 			</View>
 		</View>

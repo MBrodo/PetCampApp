@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, View, ScrollView, Pressable, Image } from 'react-native'
 import { styles } from './style'
 import { BookPetInfo } from '../../../../common/petInfo/BookPetInfo'
+import { images } from '../../../Profile/ProfileInfo/addMyPet/AddMyPetContainer'
 
 export const PaymentView = (props) => {
 	return (
@@ -29,7 +30,7 @@ export const PaymentView = (props) => {
 					{props.pet.map((item) => (
 						<View style={styles.myPetContainer}>
 							<View>
-								<Image style={styles.picture} source={props.checkImage(item.type)} />
+								<Image style={styles.picture} source={images.defaultImage} />
 							</View>
 							<View>
 								<View style={styles.myPetOptionsContainer}>
