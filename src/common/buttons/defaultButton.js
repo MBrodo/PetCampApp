@@ -5,13 +5,7 @@ import { styles } from './style'
 export const DefaultButton = (props) => {
 	return (
 		<View style={styles.ButtonContainer}>
-			<Pressable
-				onPress={() => {
-					props.delete(props.item)
-					props.animation()
-				}}
-				style={styles.cancleButton}
-			>
+			<Pressable onPress={props.onPress} style={styles.cancleButton}>
 				<Text style={styles.cancleButtonText}>{props.textButton}</Text>
 			</Pressable>
 		</View>

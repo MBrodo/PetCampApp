@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { View, Text, Image, Pressable, TextInput } from 'react-native'
 import { styles } from '../style'
 import { PetInfo } from '../../../../../common/petInfo/petInfo'
@@ -10,15 +10,9 @@ export const BookCardView = (props) => {
 	const checkButton = () => {
 		return props.showBookInfo ? 'sort-up' : 'sort-down'
 	}
-
-	const setSize = () => {
-		if (props.showBookInfo) {
-			props.progress.value = { width: 300, height: 220 }
-			props.setShowBookInfo(!props.showBookInfo)
-		} else {
-			props.progress.value = { width: 300, height: 500 }
-			props.setShowBookInfo(!props.showBookInfo)
-		}
+	const changeBookState = () => {
+		props.deleteBookCard(props.item.id)
+		props.deleteBookAnimation()
 	}
 	const petInfoBlock = () => (
 		<>
@@ -30,16 +24,10 @@ export const BookCardView = (props) => {
 			<PetInfo title={'Additional'} item={props.item.vet_pasport} />
 			<PetInfo title={'Video control'} item={props.item.vet_pasport} />
 
-			<DefaultButton
-				item={props.item.id}
-				delete={props.deleteBookCard}
-				animation={props.deleteBookAnimation}
-				textButton={'Cancle'}
-			/>
+			<DefaultButton onPress={changeBookState} textButton={'Cancle'} />
 		</>
 	)
 
-	const checkBookCard = () => <>{props.showBookInfo ? petInfoBlock() : null}</>
 	return (
 		<Animated.View
 			key={props.item.id}
@@ -54,15 +42,21 @@ export const BookCardView = (props) => {
 					</View>
 				</View>
 				<PetInfo title={'Booking №'} item={props.item.id} />
-				{checkBookCard()}
+				{props.showBookInfo ? petInfoBlock() : null}
 				<View style={styles.arrowContainer}>
 					{
 						<Pressable
 							onPress={() => {
-								setSize()
+								if (props.showBookInfo) {
+									props.progress.value = { width: 300, height: 220 }
+									props.setShowBookInfo(!props.showBookInfo)
+								} else {
+									props.progress.value = { width: 300, height: 500 }
+									props.setShowBookInfo(!props.showBookInfo)
+								}
 							}}
 						>
-							<Icon name={checkButton()} size={20} />
+							<Icon name={props.showBookInfo ? 'sort-up' : 'sort-down'} size={20} />
 						</Pressable>
 					}
 				</View>
