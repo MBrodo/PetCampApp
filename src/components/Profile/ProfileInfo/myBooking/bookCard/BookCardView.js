@@ -46,7 +46,7 @@ export const BookCardView = (props) => {
 						item={props.item.id}
 						onPress={props.deleteBookCard}
 						animation={props.deleteBookAnimation}
-						textButton={'Cancle'}
+						textButton={'Cancel'}
 					/>
 				</>
 			) : null}
