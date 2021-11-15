@@ -1,6 +1,6 @@
 import React from 'react'
+import { View, Text, Image, Pressable } from 'react-native'
 import { MyPetsListView } from './MyPetsListView'
-import { View, Text, Image, Pressable, TextInput } from 'react-native'
 import { styles } from './style'
 
 import { useSelector } from 'react-redux'

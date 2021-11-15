@@ -1,10 +1,16 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, ScrollView } from 'react-native'
+import { styles } from './style'
+import { BookCardContainer } from './bookCard/BookCardContainer'
 
-export const MyBookingListView = () => {
+export const MyBookingListView = (props) => {
 	return (
-		<View>
-			<Text>MyBookingListView</Text>
-		</View>
+		<ScrollView style={styles.mainScroll} showsHorizontalScrollIndicator={false}>
+			<View style={styles.mainBlock}>
+				{props.pets.map((item) => (
+					<BookCardContainer key={item.id} checkImage={props.checkImage} item={item} />
+				))}
+			</View>
+		</ScrollView>
 	)
 }

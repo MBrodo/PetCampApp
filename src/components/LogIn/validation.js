@@ -3,3 +3,5 @@ export const PHONE_VALIDATION =
 export const EMAIL_VALIDATION =
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 export const PASSWORD_VALIDATION = /^(?=.*[A-Z])[a-zA-Z0-9.,;:?!*+%\-<>@[\]{}/\\$#()]{8,14}$/
+export const NAME_VALIDATION = /^[a-z ,.'-]+$/i
+export const VET_PASSPORT_VALIDATION = /^\d\d-\d\d\d$/

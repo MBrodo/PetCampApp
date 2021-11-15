@@ -123,7 +123,4 @@ export const styles = StyleSheet.create({
 		borderBottomWidth: 1,
 		marginVertical: 8,
 	},
-	vetText: {
-		fontSize: 13,
-	},
 })
