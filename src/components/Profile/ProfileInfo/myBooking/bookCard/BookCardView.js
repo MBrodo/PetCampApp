@@ -44,21 +44,16 @@ export const BookCardView = (props) => {
 				<PetInfo title={'Booking №'} item={props.item.id} />
 				{props.showBookInfo ? petInfoBlock() : null}
 				<View style={styles.arrowContainer}>
-					{
-						<Pressable
-							onPress={() => {
-								if (props.showBookInfo) {
-									props.progress.value = { width: 300, height: 220 }
-									props.setShowBookInfo(!props.showBookInfo)
-								} else {
-									props.progress.value = { width: 300, height: 500 }
-									props.setShowBookInfo(!props.showBookInfo)
-								}
-							}}
-						>
-							<Icon name={props.showBookInfo ? 'sort-up' : 'sort-down'} size={20} />
-						</Pressable>
-					}
+					<Pressable
+						onPress={() => {
+							props.showBookInfo
+								? (props.progress.value = { width: 300, height: 220 })
+								: (props.progress.value = { width: 300, height: 500 })
+							props.setShowBookInfo(!props.showBookInfo)
+						}}
+					>
+						<Icon name={props.showBookInfo ? 'sort-up' : 'sort-down'} size={20} />
+					</Pressable>
 				</View>
 			</View>
 		</Animated.View>
