@@ -13,7 +13,6 @@ export const MyBookingContainer = () => {
 	const navigation = useNavigation()
 	const goToBookList = () => {
 		navigation.navigate('MyBookingContainer')
-		console.log('dd')
 	}
 
 	useEffect(() => {

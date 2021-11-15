@@ -1,13 +1,14 @@
 import React from 'react'
 import { View, Text, Image, Pressable } from 'react-native'
 import { BookPetInfo } from '../../../../../common/petInfo/BookPetInfo'
+import { images } from '../../../../Profile/ProfileInfo/addMyPet/AddMyPetContainer'
 import { styles } from '../style'
 
 export const PetCardView = (props) => {
 	return (
 		<View key={props.item.id} style={styles.myPetContainer}>
 			<View>
-				<Image style={styles.picture} source={props.checkImage(props.item)} />
+				<Image style={styles.picture} source={images.defaultImage} />
 			</View>
 			<View style={styles.myPetOptionsContainer}>
 				<View style={styles.myPetOptions}>

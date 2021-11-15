@@ -38,15 +38,11 @@ export const MyPetsContainer = () => {
 		})
 	}, [profilePets])
 
-	const checkImage = (item) => {
-		return item.type == 'CAT' ? images.cat : images.dog
-	}
-
 	const petList = (item) => (
 		<View key={item.id} style={styles.containerElement}>
 			<View style={styles.containerWrapper}>
 				<View>
-					<Image source={checkImage(item)} style={styles.petPic} />
+					<Image source={images.defaultImage} style={styles.petPic} />
 				</View>
 				<View style={styles.elementMain}>
 					<View style={styles.elementFloor}>
