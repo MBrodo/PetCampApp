@@ -45,6 +45,7 @@ export const BookCardView = (props) => {
 					<DefaultButton
 						item={props.item.id}
 						onPress={props.deleteBookCard}
+						animation={props.deleteBookAnimation}
 						textButton={'Cancle'}
 					/>
 				</>
@@ -52,7 +53,10 @@ export const BookCardView = (props) => {
 		</>
 	)
 	return (
-		<Animated.View key={props.item.id} style={[styles.cardContainer, props.reanimatedStyle]}>
+		<Animated.View
+			key={props.item.id}
+			style={[styles.cardContainer, props.reanimatedStyle, props.deleteAnimation]}
+		>
 			<View style={styles.wrapper}>
 				<View style={styles.myPetPhoto}>
 					<Image style={styles.picture} source={props.checkImage(props.item)} />
