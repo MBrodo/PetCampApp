@@ -120,4 +120,52 @@ export const styles = StyleSheet.create({
 	arrowContainer: {
 		alignItems: 'flex-end',
 	},
+	modalContainer: {
+		height: '100%',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	modalWrapper: {
+		backgroundColor: 'red',
+		width: 300,
+		marginTop: 20,
+		marginBottom: 40,
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 5,
+		backgroundColor: 'rgba(255, 255, 255, 0.9)',
+		shadowColor: '#000',
+		shadowOffset: {
+			width: 0,
+			height: 3,
+		},
+		shadowOpacity: 0.27,
+		shadowRadius: 4.65,
+		elevation: 6,
+	},
+	titleText: {
+		textAlign: 'center',
+		fontSize: 16,
+		color: 'black',
+		marginTop: 20,
+	},
+	acceptButton: {
+		shadowOffset: {
+			width: 0,
+			height: 3,
+		},
+		shadowOpacity: 0.27,
+		shadowRadius: 4.65,
+		elevation: 6,
+		borderWidth: 2,
+		borderColor: '#a8abfd',
+		paddingVertical: 5,
+		paddingHorizontal: 25,
+		borderRadius: 5,
+		backgroundColor: 'white',
+		marginVertical: 20,
+	},
+	acceptText: {
+		color: '#a8abfd',
+	},
 })

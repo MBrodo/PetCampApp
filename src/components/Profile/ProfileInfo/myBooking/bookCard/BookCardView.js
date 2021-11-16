@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { View, Text, Image, Pressable, TextInput } from 'react-native'
+import { View, Text, Image, Pressable, TextInput, Modal } from 'react-native'
 import { styles } from '../style'
 import { PetInfo } from '../../../../../common/petInfo/petInfo'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
@@ -16,6 +16,7 @@ export const BookCardView = (props) => {
 		props.deleteBookCard(props.item.id)
 		props.deleteBookAnimation()
 		props.chechState()
+		props.setSuccessDelete((state) => !state)
 	}
 	const openModal = () => {
 		props.chechState()
@@ -30,7 +31,7 @@ export const BookCardView = (props) => {
 			<PetInfo title={'Additional'} item={props.item.vet_pasport} />
 			<PetInfo title={'Video control'} item={props.item.vet_pasport} />
 
-			<DefaultButton onPress={openModal} textButton={'Cancle'} />
+			<DefaultButton onPress={openModal} textButton={'Cancel'} />
 		</>
 	)
 
@@ -44,6 +45,19 @@ export const BookCardView = (props) => {
 				accept={changeBookState}
 				cancel={props.chechState}
 			/>
+
+			<Modal animationType="slide" transparent={true} visible={props.successDelete}>
+				<View style={styles.modalContainer}>
+					<View style={styles.modalWrapper}>
+						<Text style={styles.titleText}>
+							Pet camp manager will contact you to start cancelation process
+						</Text>
+						<Pressable onPress={() => props.accept()} style={styles.acceptButton}>
+							<Text style={styles.acceptText}>Yes</Text>
+						</Pressable>
+					</View>
+				</View>
+			</Modal>
 			<View style={styles.wrapper}>
 				<View style={styles.myPetPhoto}>
 					<Image style={styles.picture} source={images.defaultImage} />
