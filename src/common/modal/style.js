@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
 		shadowRadius: 4.65,
 		elevation: 6,
 		borderWidth: 2,
-		borderColor: '#D4D5F2',
+		borderColor: '#999cff',
 		paddingVertical: 5,
 		paddingHorizontal: 25,
 		borderRadius: 5,
@@ -58,7 +58,7 @@ export const styles = StyleSheet.create({
 		shadowRadius: 4.65,
 		elevation: 6,
 		borderWidth: 2,
-		borderColor: '#F1BED8',
+		borderColor: '#ffaad6',
 		paddingVertical: 5,
 		paddingHorizontal: 25,
 		borderRadius: 5,
@@ -66,9 +66,9 @@ export const styles = StyleSheet.create({
 		marginLeft: 15,
 	},
 	cancelText: {
-		color: '#F1BED8',
+		color: '#ffaad6',
 	},
 	acceptText: {
-		color: '#D4D5F2',
+		color: '#999cff',
 	},
 })

@@ -46,8 +46,20 @@ export const BookCardContainer = (props) => {
 	const chechState = () => {
 		setOpenModal((state) => !state)
 	}
+	const showNotificationModal = () => {
+		setOpenModal((state) => !state)
+		setSuccessDelete((state) => !state)
+	}
+	const changeBookState = () => {
+		deleteBookCard(props.item.id)
+		deleteBookAnimation()
+		setSuccessDelete((state) => !state)
+	}
+
 	return (
 		<BookCardView
+			showNotificationModal={showNotificationModal}
+			changeBookState={changeBookState}
 			successDelete={successDelete}
 			setSuccessDelete={setSuccessDelete}
 			isOpenModal={isOpenModal}

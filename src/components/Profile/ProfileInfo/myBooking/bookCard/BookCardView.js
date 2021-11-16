@@ -9,15 +9,6 @@ import { images } from '../../addMyPet/AddMyPetContainer'
 import { ModalWindow } from '../../../../../common/modal/modal'
 
 export const BookCardView = (props) => {
-	const checkButton = () => {
-		return props.showBookInfo ? 'sort-up' : 'sort-down'
-	}
-	const changeBookState = () => {
-		props.deleteBookCard(props.item.id)
-		props.deleteBookAnimation()
-		props.chechState()
-		props.setSuccessDelete((state) => !state)
-	}
 	const openModal = () => {
 		props.chechState()
 	}
@@ -42,7 +33,7 @@ export const BookCardView = (props) => {
 		>
 			<ModalWindow
 				isOpenModal={props.isOpenModal}
-				accept={changeBookState}
+				accept={props.showNotificationModal}
 				cancel={props.chechState}
 			/>
 
@@ -52,7 +43,7 @@ export const BookCardView = (props) => {
 						<Text style={styles.titleText}>
 							Pet camp manager will contact you to start cancelation process
 						</Text>
-						<Pressable onPress={() => props.accept()} style={styles.acceptButton}>
+						<Pressable onPress={() => props.changeBookState()} style={styles.acceptButton}>
 							<Text style={styles.acceptText}>Yes</Text>
 						</Pressable>
 					</View>
