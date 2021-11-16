@@ -87,14 +87,14 @@ export const SignUpView = (props) => {
 								}
 								placeholder="Passrowd"
 								autoCorrect={false}
-								secureTextEntry={props.hidePass}
+								secureTextEntry={props.signUp.hidePass}
 							/>
 							<Icon
 								style={styles.passwordIcon}
-								name={props.hidePass ? 'eye-slash' : 'eye'}
+								name={props.signUp.hidePass ? 'eye-slash' : 'eye'}
 								size={20}
 								color="grey"
-								onPress={() => props.setHidePass(props.hidePass ? false : true)}
+								onPress={() => props.hidePassword()}
 							/>
 						</View>
 
@@ -104,7 +104,16 @@ export const SignUpView = (props) => {
 						style={styles.logInButton}
 						onPress={props.SignUpSubmit}
 						underlayColor="#4A4CBF"
-						disabled={!(props.isPasswordValid && props.isLoginValid)}
+						disabled={
+							!(
+								props.signUp.email &&
+								props.signUp.userName &&
+								props.signUp.middleName &&
+								props.signUp.surname &&
+								props.signUp.mobileNumber &&
+								props.signUp.password
+							)
+						}
 					>
 						<Text style={styles.logInButtonText}>sign up</Text>
 					</TouchableHighlight>

@@ -10,7 +10,7 @@ export const SignUpContainer = () => {
 		email: '',
 		userName: '',
 		password: '',
-		hidePass: '',
+		hidePass: true,
 		middleName: '',
 		surname: '',
 		mobileNumber: '',
@@ -21,6 +21,13 @@ export const SignUpContainer = () => {
 		isSurnameValid: false,
 		isPhoneValid: false,
 	})
+
+	const hidePassword = () => {
+		setSignUp((prevState) => ({
+			...prevState,
+			hidePass: !prevState.hidePass,
+		}))
+	}
 
 	const checkValidation = (name) => {
 		return signUp[name] ? styles.passwordInputValid : styles.passwordInput
@@ -34,20 +41,27 @@ export const SignUpContainer = () => {
 	}
 
 	const SignUpSubmit = () => {
-		registrationController(email, userName, middleName, surname, mobileNumber, password, 1).then(
-			(res) => {
-				if (res.status === 200) {
-					Alert.alert('Confirm your e-mail to finish registration')
-					// setPassword('0')
-				} else if (res.status === 409) {
-					Alert.alert(res.data.message)
-				}
+		registrationController(
+			signUp.email,
+			signUp.userName,
+			signUp.middleName,
+			signUp.surname,
+			signUp.mobileNumber,
+			signUp.password,
+			1
+		).then((res) => {
+			if (res.status === 200) {
+				Alert.alert('Confirm your e-mail to finish registration')
+				// setPassword('0')
+			} else if (res.status === 409) {
+				Alert.alert(res.data.message)
 			}
-		)
+		})
 	}
 
 	return (
 		<SignUpView
+			hidePassword={hidePassword}
 			signUp={signUp}
 			isEmailValid={signUp.isEmailValid}
 			checkValidation={checkValidation}
