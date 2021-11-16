@@ -9,6 +9,7 @@ import {
 	Modal,
 	KeyboardAvoidingView,
 	ScrollView,
+	Pressable,
 } from 'react-native'
 import { SignUpContainer } from '../SignUp/SignUpContainer'
 
@@ -19,12 +20,9 @@ export const SignInView = (props) => {
 				<View style={styles.wrapper}>
 					<Modal visible={props.modalWindow}>
 						<ScrollView>
-							<Icon
-								style={styles.closeIcon}
-								name="times"
-								size={30}
-								onPress={() => props.setModalWindow(false)}
-							/>
+							<Pressable style={styles.closeIcon} onPress={() => props.setModalWindow(false)}>
+								<Icon name="times" size={30} />
+							</Pressable>
 							<SignUpContainer setModalWindow={props.modalWindow} />
 						</ScrollView>
 					</Modal>

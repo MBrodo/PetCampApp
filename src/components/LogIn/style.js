@@ -78,10 +78,9 @@ export const styles = StyleSheet.create({
 		fontWeight: '700',
 	},
 	closeIcon: {
-		position: 'relative',
-		top: '12.5%',
-		left: '89%',
-		width: 30,
+		alignItems: 'flex-end',
+		marginTop: 10,
+		marginRight: 10,
 	},
 	subContainer: {
 		alignItems: 'center',

@@ -18,7 +18,13 @@ export const PayCardContainer = (props) => {
 			props.route.params.campID,
 			bookingStart,
 			bookingEnds,
-			true
+			true,
+			[
+				{
+					id: 'e67978f5-3801-4fb5-bd74-4488a3b71e9d',
+					room_number: 7,
+				},
+			]
 		).then((res) => {
 			if (res.status === 200) {
 				console.log('success')

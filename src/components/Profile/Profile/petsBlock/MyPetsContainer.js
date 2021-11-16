@@ -26,7 +26,7 @@ export const MyPetsContainer = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [allPets])
+	}, [petsList])
 
 	useEffect(() => {
 		bookList(userID).then((res) => {
@@ -36,7 +36,7 @@ export const MyPetsContainer = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [profilePets])
+	}, [profilePetsList])
 
 	const petList = (item) => (
 		<View key={item.id} style={styles.containerElement}>

@@ -11,6 +11,7 @@ export const LogIn = () => {
 	useEffect(() => {
 		dispatch(setAuth(authenticate))
 	}, [authenticate])
+
 	const checkAuthentication = () => {
 		return authenticate ? <Profile /> : <SignInContainer setAuthenticate={setAuthenticate} />
 	}
