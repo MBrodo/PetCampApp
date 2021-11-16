@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
 	camps: [],
+	rooms: [],
 }
 
 export const petCampsSlice = createSlice({
@@ -11,9 +12,12 @@ export const petCampsSlice = createSlice({
 		setCamps: (state, action) => {
 			state.camps = action.payload
 		},
+		setRoom: (state, action) => {
+			state.rooms = action.payload
+		},
 	},
 })
 
-export const { setCamps } = petCampsSlice.actions
+export const { setCamps, setRoom } = petCampsSlice.actions
 
 export default petCampsSlice.reducer
