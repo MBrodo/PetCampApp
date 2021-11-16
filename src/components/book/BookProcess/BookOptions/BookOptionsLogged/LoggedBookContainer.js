@@ -1,25 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { LoggedBookView } from './LoggedBookView'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector, useDispatch } from 'react-redux'
+import getFreeRooms from '../../../../../controllers/rooms/getFreeRooms'
+import { setRoom } from '../../../../../redux/slices/petCampsSlise'
 
 export const LoggedBookContainer = (props) => {
+	const campId = useSelector((state) => state.booking.currentCamp.id)
+	const bookingStart = useSelector((state) => state.booking.startDate)
+	const bookingEnds = useSelector((state) => state.booking.endDate)
+	const totalBookingDays = useSelector((state) => state.booking.totalDays)
+
 	const [transfer, setTransfer] = useState(false)
 	const [grooming, setGrooming] = useState(false)
 	const [vaccinated, setVaccinated] = useState(false)
 	const [agreement, setAgreement] = useState(false)
 	const [checkButton, setCheckButton] = useState(true)
+	const [freeRooms, setFreeRooms] = useState(0)
 
-	const quantity = useSelector((state) => state.pets.quantity)
 	const dispatch = useDispatch()
+	console.log(bookingStart.split('/').join('-'), 'tt')
+	useEffect(() => {
+		getFreeRooms(campId, bookingStart.split('/').join('-'), bookingEnds.split('/').join('-'))
+			.then((res) => {
+				if (res.status === 200) {
+					setFreeRooms(res.data.freeRooms)
+					dispatch(setRoom(res.data.freeRooms))
+				}
+			})
+			.catch((e) => console.log(e.message))
+	}, [])
+	const quantity = useSelector((state) => state.pets.quantity)
 
 	const checkPoints = () => {
 		return vaccinated && agreement ? false : true
 	}
-	const bookingStart = useSelector((state) => state.booking.startDate)
-	const bookingEnds = useSelector((state) => state.booking.endDate)
-	const totalBookingDays = useSelector((state) => state.booking.totalDays)
 
 	const totalPrice = () => {
 		let totalCount = 12
@@ -82,6 +98,7 @@ export const LoggedBookContainer = (props) => {
 			agreement={agreement}
 			setAgreement={checkAgreement}
 			information={props.information}
+			freeRooms={freeRooms}
 		/>
 	)
 }
