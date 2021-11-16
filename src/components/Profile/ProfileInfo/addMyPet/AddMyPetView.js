@@ -4,6 +4,7 @@ import { styles } from './style'
 import { PetCard } from '../../../../common/layouts/PetCard'
 import { AddCardCheckBox } from '../../../../common/checkBoxes/addCardCheckBox'
 import { images } from './AddMyPetContainer'
+import { VET_PASSPORT_VALIDATION } from '../../../LogIn/validation'
 
 export const AddMyPetView = (props) => {
 	const addCardView = () => (
@@ -64,8 +65,15 @@ export const AddMyPetView = (props) => {
 			<View style={styles.pointContainer}>
 				<Text>Vet Passport number:</Text>
 				<TextInput
-					onChangeText={(item) => props.setPetInfo(item, 'petVetPassport')}
-					style={styles.textInput}
+					onChangeText={(item) =>
+						props.checkVetState(
+							'petVetPassport',
+							'isVaccinated',
+							item,
+							VET_PASSPORT_VALIDATION.test(item)
+						)
+					}
+					style={props.checkVetPasport()}
 				/>
 			</View>
 			<View style={styles.individualNotice}>
