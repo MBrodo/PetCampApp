@@ -27,6 +27,7 @@ export const AddMyPetContainer = (props) => {
 	const checkVetPasport = () => {
 		return petInfoContainer.isVaccinated ? styles.vetInputPositive : styles.textInput
 	}
+	console.log(petInfoContainer.isVaccinated)
 	const checkVetState = (firstName, secondName, item, regular) => {
 		setPetInfoContainer((prevState) => ({
 			...prevState,
@@ -66,6 +67,7 @@ export const AddMyPetContainer = (props) => {
 
 	const userId = useSelector((state) => state.user.id)
 	const SendNewCard = () => {
+		props.route.params.setCheckState((state) => !state)
 		sendNewCardController(
 			userId,
 			petInfoContainer.petNickName,

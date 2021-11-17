@@ -11,8 +11,9 @@ import { images } from '../addMyPet/AddMyPetContainer'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import deletePet from '../../../../controllers/pets/deletePet'
 
-export const MyPetsListContainer = () => {
+export const MyPetsListContainer = (props) => {
 	const deletePetCard = (id) => {
+		props.route.params.setCheckState((state) => !state)
 		deletePet(id).then((res) => {
 			if (res.status === 200) {
 				console.log('delete is success')
@@ -60,7 +61,10 @@ export const MyPetsListContainer = () => {
 	}
 
 	const addButton = () => {
-		navigation.navigate('AddMyPet', { goToBackPoint: goToBackPoint })
+		navigation.navigate('AddMyPet', {
+			goToBackPoint: goToBackPoint,
+			setCheckState: props.route.params.setCheckState,
+		})
 	}
 
 	return <MyPetsListView addButton={addButton} pets={pets} petsCards={petsCards} />

@@ -15,8 +15,7 @@ export const MyPetsContainer = () => {
 	const userID = useSelector((state) => state.user.id)
 	const petsList = useSelector((state) => state.pets.all)
 	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
-	const [allPets, setAllPets] = useState(petsList)
-	const [profilePets, setProfilePets] = useState(profilePetsList)
+	const [checkState, setCheckState] = useState(false)
 
 	useEffect(() => {
 		fullpetListController(userID).then((res) => {
@@ -26,8 +25,8 @@ export const MyPetsContainer = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [petsList])
-
+	}, [checkState])
+	console.log('d')
 	useEffect(() => {
 		bookList(userID).then((res) => {
 			if (res.status === 200) {
@@ -36,7 +35,7 @@ export const MyPetsContainer = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [profilePetsList])
+	}, [checkState])
 
 	const petList = (item) => (
 		<View key={item.id} style={styles.containerElement}>
@@ -75,7 +74,7 @@ export const MyPetsContainer = () => {
 	)
 	const navigation = useNavigation()
 	const goToPetList = () => {
-		navigation.navigate('MyPetsContainer')
+		navigation.navigate('MyPetsContainer', { setCheckState: setCheckState })
 	}
 	return <MyPets goToPetList={goToPetList} pets={profilePetsList} petList={petList} />
 }

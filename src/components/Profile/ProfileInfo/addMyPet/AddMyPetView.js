@@ -91,6 +91,7 @@ export const AddMyPetView = (props) => {
 						props.backPoint()
 					}}
 					style={styles.changeButton}
+					disabled={!props.petInfoContainer.isVaccinated}
 				>
 					<Text style={styles.changeButtonText}>Submit</Text>
 				</Pressable>
