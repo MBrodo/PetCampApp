@@ -40,7 +40,6 @@ export const ChoosePetContainer = (props) => {
 	useEffect(() => {
 		dispatch(setClear())
 	}, [])
-
 	const navigation = useNavigation()
 	const goToBackPoint = () => {
 		navigation.navigate('ChoosePet')

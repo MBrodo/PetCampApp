@@ -39,7 +39,6 @@ export const ChoosePetView = (props) => {
 						</View>
 						<Text style={styles.addButtonText}>Add a pet</Text>
 					</Pressable>
-
 					<BookingButton nextBookingStep={props.goToThirdStep} />
 				</View>
 			</View>

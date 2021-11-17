@@ -21,7 +21,6 @@ export const Header = (props) => {
 			<View>
 				<Text style={styles.bookArticle}>Book</Text>
 			</View>
-
 			<View style={styles.checkBoxContainer}>
 				<CheckBox
 					center
@@ -49,12 +48,14 @@ export const Header = (props) => {
 				<View style={styles.headerQuantityContainer}>
 					<View style={styles.headerQuantityInputContainer}>
 						<RNPickerSelect
+							onValueChange={(value) => setQuantity(value)}
+							value={0}
 							placeholder={{}}
 							style={pickerSelectStyles}
 							useNativeAndroidPickerStyle={false}
-							onValueChange={(value) => setQuantity(value)}
 							fixAndroidTouchableBug={true}
 							items={[
+								{ label: 'Select pet quantity', value: 0, inputLabel: ' ' },
 								{ label: '1', value: 1 },
 								{ label: '2', value: 2 },
 								{ label: '3', value: 3 },
