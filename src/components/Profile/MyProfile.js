@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react'
-import { Text, View, Image, ScrollView, ImageBackground, Pressable } from 'react-native'
+import React from 'react'
+import { Text, View, Image, ScrollView, ImageBackground, Pressable, Button } from 'react-native'
 import { styles } from './style'
-import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { MyPetsContainer } from './Profile/petsBlock/MyPetsContainer'
 import { MyBookingContainer } from './Profile/myBooking/MyBookingContainer'
 import { MyReports } from './MyReports'
-import getSettingsController from '../../controllers/settings/getSettingsController'
-import { setSettings } from '../../redux/slices/userSlice'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
+import EncryptedStorage from 'react-native-encrypted-storage'
 
 const images = {
 	backGround: require('../../img/ProfileBG.png'),
@@ -17,19 +15,12 @@ const images = {
 export default images
 
 export const MyProfile = () => {
-	const dispatch = useDispatch()
-	const userID = useSelector((state) => state.user.id)
-
-	useEffect(() => {
-		getSettingsController(userID).then((res) => {
-			if (res.status === 200) {
-				console.log('successs')
-				dispatch(setSettings(res.data.mySettingsInfo))
-			} else {
-				console.log('fail')
-			}
-		})
-	}, [])
+	const profileInfo = useSelector((state) => state.user.settings)
+	async function removeUserSession() {
+		try {
+			await EncryptedStorage.removeItem('user_session')
+		} catch (error) {}
+	}
 
 	return (
 		<ScrollView>
@@ -41,9 +32,12 @@ export const MyProfile = () => {
 				>
 					<View style={styles.userInfo}>
 						<Image source={images.userPicture} style={styles.userPic} />
-						<Text style={styles.userName}>Lisa</Text>
+						<Text style={styles.userName}>
+							{profileInfo.length === 0 ? 'Random' : profileInfo[0].name}
+						</Text>
 					</View>
 				</ImageBackground>
+				<Button onPress={() => removeUserSession()} title="test" />
 				<View style={styles.main}>
 					<MyPetsContainer />
 					<MyBookingContainer />
