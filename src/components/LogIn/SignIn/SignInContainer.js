@@ -37,7 +37,6 @@ export const SignInContainer = (props) => {
 			}
 		})
 	}
-
 	const SignInSubmit = () => {
 		loginController(email, password, 1).then((res) => {
 			if (res.status === 200) {

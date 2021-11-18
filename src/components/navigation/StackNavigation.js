@@ -9,6 +9,8 @@ import checkToken from '../../services/token/checkToken'
 import getToken from '../../services/token/getToken'
 import { setUserId, setUser } from '../../redux/slices/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import getSettingsController from '../../controllers/settings/getSettingsController'
+import { setSettings } from '../../redux/slices/userSlice'
 
 const Stack = createStackNavigator()
 
@@ -28,11 +30,23 @@ export const StackNavigation = () => {
 	}
 	retrieveUserSession()
 
+	const setProfileSettings = (userID) => {
+		getSettingsController(userID).then((res) => {
+			if (res.status === 200) {
+				console.log('successs')
+				dispatch(setSettings(res.data.mySettingsInfo))
+			} else {
+				console.log('fail')
+			}
+		})
+	}
+
 	useEffect(() => {
 		if (token) {
 			if (checkToken(token)) {
 				const { id } = getToken(token)
 				dispatch(setUserId(id))
+				setProfileSettings(id)
 				dispatch(setUser(token))
 			} else {
 				dispatch(setUserId({}))
