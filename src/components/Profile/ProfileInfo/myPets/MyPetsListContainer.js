@@ -8,13 +8,32 @@ import { PetCard } from '../../../../common/layouts/PetCard'
 import { useNavigation } from '@react-navigation/native'
 import { PetInfo } from '../../../../common/petInfo/petInfo'
 import { images } from '../addMyPet/AddMyPetContainer'
+import Icon from 'react-native-vector-icons/dist/FontAwesome5'
+import deletePet from '../../../../controllers/pets/deletePet'
 
-export const MyPetsListContainer = () => {
+export const MyPetsListContainer = (props) => {
+	const deletePetCard = (id) => {
+		props.route.params.setCheckState((state) => !state)
+		deletePet(id).then((res) => {
+			if (res.status === 200) {
+				console.log('delete is success')
+			} else if (res.status === 401 || res.status === 400) {
+				console.log('fail')
+			}
+		})
+	}
 	const petInfo = (item) => (
 		<View style={styles.wrapper}>
 			<View style={styles.myPetPhoto}>
-				<Image style={styles.picture} source={images.defaultImage} />
-				<Text style={styles.myPetPhotoText}>{item.name}</Text>
+				<View style={styles.deleteButton}>
+					<Pressable onPress={() => deletePetCard(item.id)}>
+						<Icon name="trash-alt" size={20} />
+					</Pressable>
+				</View>
+				<>
+					<Image style={styles.picture} source={images.defaultImage} />
+					<Text style={styles.myPetPhotoText}>{item.name}</Text>
+				</>
 			</View>
 			<PetInfo title={'Cat/Dog:'} item={item.type} />
 			<PetInfo title={'Breed:'} item={item.breed} />
@@ -42,7 +61,10 @@ export const MyPetsListContainer = () => {
 	}
 
 	const addButton = () => {
-		navigation.navigate('AddMyPet', { goToBackPoint: goToBackPoint })
+		navigation.navigate('AddMyPet', {
+			goToBackPoint: goToBackPoint,
+			setCheckState: props.route.params.setCheckState,
+		})
 	}
 
 	return <MyPetsListView addButton={addButton} pets={pets} petsCards={petsCards} />

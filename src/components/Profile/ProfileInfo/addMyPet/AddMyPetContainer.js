@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { AddMyPetView } from './AddMyPetView'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
+import { styles } from './style'
 import sendNewCardController from '../../../../controllers/authorization/sendNewCard/sendNewCardController'
 
 export const images = {
@@ -20,9 +21,20 @@ export const AddMyPetContainer = (props) => {
 		sterilizedNegative: false,
 		petAge: 0,
 		petVetPassport: '',
+		isVaccinated: false,
 		petInfo: '',
 	})
-
+	const checkVetPasport = () => {
+		return petInfoContainer.isVaccinated ? styles.vetInputPositive : styles.textInput
+	}
+	console.log(petInfoContainer.isVaccinated)
+	const checkVetState = (firstName, secondName, item, regular) => {
+		setPetInfoContainer((prevState) => ({
+			...prevState,
+			[firstName]: item,
+			[secondName]: regular,
+		}))
+	}
 	const setPetInputInfo = (item, name) => {
 		setPetInfoContainer((prevState) => ({
 			...prevState,
@@ -55,6 +67,7 @@ export const AddMyPetContainer = (props) => {
 
 	const userId = useSelector((state) => state.user.id)
 	const SendNewCard = () => {
+		props.route.params.setCheckState((state) => !state)
 		sendNewCardController(
 			userId,
 			petInfoContainer.petNickName,
@@ -81,6 +94,8 @@ export const AddMyPetContainer = (props) => {
 	}
 	return (
 		<AddMyPetView
+			checkVetState={checkVetState}
+			checkVetPasport={checkVetPasport}
 			goToBackPoint={props.route.params.goToBackPoint}
 			backPoint={backPoint}
 			setPetInfo={setPetInputInfo}

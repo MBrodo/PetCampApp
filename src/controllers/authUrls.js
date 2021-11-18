@@ -10,6 +10,8 @@ const URLS = {
 	SEND_SETTINGS: '/client/mySettings',
 	LIST_OF_BOOKINGS: '/client/bookings',
 	DELETE_BOOK: '/client/delete-booking',
+	DELETE_PET: '/client/delete-pet',
+	GET_FREE_ROOMS: '/client/freeRooms',
 }
 
 export default URLS

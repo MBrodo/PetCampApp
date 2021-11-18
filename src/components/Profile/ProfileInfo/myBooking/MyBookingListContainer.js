@@ -20,7 +20,7 @@ export const MyBookingListContainer = () => {
 				console.log('Some trouble with server!')
 			}
 		})
-	}, [book])
+	}, [bookings])
 
 	return <MyBookingListView pets={bookings} />
 }

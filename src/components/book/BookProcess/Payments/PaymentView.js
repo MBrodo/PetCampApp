@@ -27,8 +27,8 @@ export const PaymentView = (props) => {
 					<View>
 						<Text style={styles.bookArticle}>My pets</Text>
 					</View>
-					{props.pet.map((item) => (
-						<View style={styles.myPetContainer}>
+					{props.pet.map((item, index) => (
+						<View key={item.id} style={styles.myPetContainer}>
 							<View>
 								<Image style={styles.picture} source={images.defaultImage} />
 							</View>
@@ -50,7 +50,7 @@ export const PaymentView = (props) => {
 									</Text>
 								</View>
 								<View style={styles.bookingPaymentsInfo}>
-									<BookPetInfo title={'Room:'} item={'Room №1'} />
+									<BookPetInfo title={'Room:'} item={props.freeRooms[index].room_number} />
 									<BookPetInfo title={'PRICE:'} item={`$ ${props.totalPrice}`} />
 								</View>
 							</View>

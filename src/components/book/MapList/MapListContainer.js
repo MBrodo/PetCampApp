@@ -7,6 +7,7 @@ import { setType } from '../../../redux/slices/fullPetsSlice'
 import { setPetInformation } from '../../../redux/slices/fullPetsSlice'
 import mapListController from '../../../controllers/authorization/mapListController'
 import { useSelector, useDispatch } from 'react-redux'
+import { setCurrentCamp } from '../../../redux/slices/bookSlice'
 
 import { MapListView } from './MapListView'
 
@@ -43,6 +44,10 @@ export const MapListContainer = (props) => {
 		return props.cat ? 'CAT' : 'DOG'
 	}
 
+	const setCampID = (item) => {
+		dispatch(setCurrentCamp(item))
+	}
+
 	useEffect(() => {
 		dispatch(setType(chechType()))
 	}, [props.cat])
@@ -75,6 +80,7 @@ export const MapListContainer = (props) => {
 	mapHotelsList()
 	return (
 		<MapListView
+			setCampID={setCampID}
 			latitude={latitude}
 			setLatitude={setLatitude}
 			longitude={longitude}

@@ -124,4 +124,8 @@ export const styles = StyleSheet.create({
 	individualNoticeInput: {
 		color: 'black',
 	},
+	deleteButton: {
+		width: '100%',
+		alignItems: 'flex-end',
+	},
 })

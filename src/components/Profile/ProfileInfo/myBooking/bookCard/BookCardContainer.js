@@ -6,6 +6,7 @@ import deleteBook from '../../../../../controllers/bookList/deleteBook'
 
 export const BookCardContainer = (props) => {
 	const [showBookInfo, setShowBookInfo] = useState(false)
+	const [successDelete, setSuccessDelete] = useState(false)
 
 	const progress = useSharedValue({ width: 300, height: 220 })
 
@@ -41,9 +42,28 @@ export const BookCardContainer = (props) => {
 			}
 		})
 	}
+	const [isOpenModal, setOpenModal] = useState(false)
+	const chechState = () => {
+		setOpenModal((state) => !state)
+	}
+	const showNotificationModal = () => {
+		setOpenModal((state) => !state)
+		setSuccessDelete((state) => !state)
+	}
+	const changeBookState = () => {
+		deleteBookCard(props.item.id)
+		deleteBookAnimation()
+		setSuccessDelete((state) => !state)
+	}
 
 	return (
 		<BookCardView
+			showNotificationModal={showNotificationModal}
+			changeBookState={changeBookState}
+			successDelete={successDelete}
+			setSuccessDelete={setSuccessDelete}
+			isOpenModal={isOpenModal}
+			chechState={chechState}
 			deleteBookCard={deleteBookCard}
 			deleteBookAnimation={deleteBookAnimation}
 			deleteBooking={deleteBooking}

@@ -42,7 +42,9 @@ export const LoggedBookView = (props) => {
 						<Text style={styles.cityOfHotel}>{props.information.street}</Text>
 					</View>
 					<View>
-						<Text style={styles.hotelRooms}>8 standard rooms are avaliable</Text>
+						<Text style={styles.hotelRooms}>
+							{props.freeRooms.length} standard rooms are avaliable
+						</Text>
 					</View>
 					<View>
 						<View style={styles.priceBlock}>
@@ -57,11 +59,11 @@ export const LoggedBookView = (props) => {
 					<View style={styles.checkContainer}>
 						<View style={styles.checkInContainer}>
 							<Text style={styles.checkText}>CHECK-IN</Text>
-							<Text style={styles.checkTime}>{props.dateText}</Text>
+							<Text style={styles.checkTime}>2 PM - 8 PM</Text>
 						</View>
 						<View>
 							<Text style={styles.checkText}>CHECK-OUT</Text>
-							<Text style={styles.checkTime}>{props.dateTextEnd}</Text>
+							<Text style={styles.checkTime}>10 AM - 1 PM</Text>
 						</View>
 					</View>
 					<View>

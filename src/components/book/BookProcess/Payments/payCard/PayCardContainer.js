@@ -9,7 +9,6 @@ export const PayCardContainer = (props) => {
 	const bookingStart = useSelector((state) => state.booking.startDate)
 	const bookingEnds = useSelector((state) => state.booking.endDate)
 	const selectedPet = useSelector((state) => state.pets.selected)
-	console.log(selectedPet)
 
 	const SendBook = () => {
 		sendBookController(
@@ -18,7 +17,13 @@ export const PayCardContainer = (props) => {
 			props.route.params.campID,
 			bookingStart,
 			bookingEnds,
-			true
+			true,
+			[
+				{
+					id: 'e67978f5-3801-4fb5-bd74-4488a3b71e9d',
+					room_number: 7,
+				},
+			]
 		).then((res) => {
 			if (res.status === 200) {
 				console.log('success')
