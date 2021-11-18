@@ -4,6 +4,7 @@ import { styles } from './style'
 import { BookCardContainer } from './bookCard/BookCardContainer'
 
 export const MyBookingListView = (props) => {
+	console.log(props)
 	return (
 		<ScrollView style={styles.mainScroll} showsHorizontalScrollIndicator={false}>
 			<View style={styles.mainBlock}>

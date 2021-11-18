@@ -33,10 +33,7 @@ export const StackNavigation = () => {
 	const setProfileSettings = (userID) => {
 		getSettingsController(userID).then((res) => {
 			if (res.status === 200) {
-				console.log('successs')
 				dispatch(setSettings(res.data.mySettingsInfo))
-			} else {
-				console.log('fail')
 			}
 		})
 	}

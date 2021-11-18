@@ -17,10 +17,7 @@ export const PayCardContainer = (props) => {
 	const allBookings = () => {
 		getBookingController(userId).then((res) => {
 			if (res.status === 200) {
-				console.log('get bookings success')
 				dispatch(setAllBookings(res.data.booking))
-			} else {
-				console.log('Some trouble with server!')
 			}
 		})
 	}
@@ -29,8 +26,6 @@ export const PayCardContainer = (props) => {
 		bookList(userId).then((res) => {
 			if (res.status === 200) {
 				dispatch(setBook(res.data.bookingsInfo))
-			} else {
-				console.log('Some trouble with server!')
 			}
 		})
 	}
