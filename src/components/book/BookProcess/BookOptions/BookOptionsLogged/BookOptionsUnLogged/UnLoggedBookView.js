@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, Button, Pressable } from 'react-native'
+import { Text, View, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 
 import { styles } from './style'
@@ -23,7 +23,9 @@ export const UnLoggedBookView = (props) => {
 					<Text style={styles.cityOfHotel}>{props.information.street}</Text>
 				</View>
 				<View>
-					<Text style={styles.hotelRooms}>8 standard rooms are avaliable</Text>
+					<Text style={styles.hotelRooms}>
+						{props.freeRooms.length} standard rooms are avaliable
+					</Text>
 				</View>
 				<View style={styles.priceBlock}>
 					<Text style={styles.hotelPriceArticle}>PRICE:</Text>

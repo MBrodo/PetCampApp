@@ -1,4 +1,4 @@
-import { CardField, useStripe } from '@stripe/stripe-react-native'
+import { CardField } from '@stripe/stripe-react-native'
 import React from 'react'
 import { Text, View, Pressable } from 'react-native'
 import { styles } from '../style'

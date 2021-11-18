@@ -1,8 +1,7 @@
 import React from 'react'
-import { Text, View, Pressable, ScrollView } from 'react-native'
+import { Text, View, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { CheckBox } from 'react-native-elements'
-
 import { styles } from './style'
 import { BookingFooter } from '../../../../../common/footer/bookingFooter'
 import { BookingButton } from '../../../../../common/buttons/bookingButoon'
