@@ -23,4 +23,11 @@ export const styles = StyleSheet.create({
 		fontSize: 18,
 		fontWeight: 'bold',
 	},
+	profileText: {
+		fontSize: 12,
+		color: 'white',
+	},
+	profileIcon: {
+		color: 'white',
+	},
 })
