@@ -7,7 +7,7 @@ import { setPickRooms } from '../../redux/slices/petCampsSlise'
 export const BookPetInfo = (props) => {
 	const dispatch = useDispatch()
 	useEffect(() => {
-		dispatch(setPickRooms(props.item))
+		props.room == undefined ? console.log('') : dispatch(setPickRooms(props.room))
 	}, [])
 	return (
 		<View style={styles.bookPointContainer}>
