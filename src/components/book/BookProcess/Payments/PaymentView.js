@@ -8,14 +8,18 @@ export const PaymentView = (props) => {
 	return (
 		<ScrollView style={styles.UnLoggedScrollContainer}>
 			<View style={styles.stepsContainer}>
-				<View style={styles.localStepsContainer}>
-					<Text style={styles.inActiveStepNumber}>1</Text>
-					<Text style={styles.inActiveStepText}>book an option</Text>
-				</View>
-				<View style={styles.localStepsContainer}>
-					<Text style={styles.inActiveStepNumber}>2</Text>
-					<Text style={styles.inActiveStepText}>choose a pet</Text>
-				</View>
+				<Pressable onPress={props.goBackToFirstStep}>
+					<View style={styles.localStepsContainer}>
+						<Text style={styles.inActiveStepNumber}>1</Text>
+						<Text style={styles.inActiveStepText}>book an option</Text>
+					</View>
+				</Pressable>
+				<Pressable onPress={props.goBackToSecondStep}>
+					<View style={styles.localStepsContainer}>
+						<Text style={styles.inActiveStepNumber}>2</Text>
+						<Text style={styles.inActiveStepText}>choose a pet</Text>
+					</View>
+				</Pressable>
 				<View style={styles.localStepsContainer}>
 					<Text style={styles.activeStepNumber}>3</Text>
 					<Text style={styles.activeStepText}>payment</Text>
