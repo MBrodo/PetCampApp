@@ -3,27 +3,44 @@ import { View, TextInput } from 'react-native'
 import { styles } from '../style'
 
 export const TextInputUser = (props) => {
+	console.log(props.userInformation.name, 'name')
 	return (
 		<View style={styles.valueContainer}>
-			<TextInput style={styles.textInput} value={props.name} onChangeText={props.onChangeName} />
 			<TextInput
 				style={styles.textInput}
-				value={props.middlename}
-				onChangeText={props.onChangeMiddlename}
+				value={props.userInformation.name}
+				onChangeText={(item) => props.setName(item, 'name')}
 			/>
 			<TextInput
 				style={styles.textInput}
-				value={props.surname}
-				onChangeText={props.onChangeSurname}
+				value={props.userInformation.middlename}
+				onChangeText={(item) => props.setName(item, 'middlename')}
 			/>
-			<TextInput style={styles.textInput} value={props.email} onChangeText={props.onChangeEmail} />
-			<TextInput style={styles.textInput} value={props.city} onChangeText={props.onChangeCity} />
 			<TextInput
 				style={styles.textInput}
-				value={props.street}
-				onChangeText={props.onChangeStreet}
+				value={props.userInformation.surname}
+				onChangeText={(item) => props.setName(item, 'surname')}
 			/>
-			<TextInput style={styles.textInput} value={props.phone} onChangeText={props.onChangePhone} />
+			<TextInput
+				style={styles.textInput}
+				value={props.userInformation.email}
+				onChangeText={(item) => props.setName(item, 'email')}
+			/>
+			<TextInput
+				style={styles.textInput}
+				value={props.userInformation.city}
+				onChangeText={(item) => props.setName(item, 'city')}
+			/>
+			<TextInput
+				style={styles.textInput}
+				value={props.userInformation.street}
+				onChangeText={(item) => props.setName(item, 'street')}
+			/>
+			<TextInput
+				style={styles.textInput}
+				value={props.userInformation.phone}
+				onChangeText={(item) => props.setName(item, 'phone')}
+			/>
 		</View>
 	)
 }
