@@ -13,7 +13,6 @@ import { useNavigation } from '@react-navigation/native'
 export const MyPetsContainer = () => {
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.id)
-	const petsList = useSelector((state) => state.pets.all)
 	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
 	const [checkState, setCheckState] = useState(false)
 
@@ -21,18 +20,14 @@ export const MyPetsContainer = () => {
 		fullpetListController(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setPetsList(res.data.petsList))
-			} else {
-				console.log('Some trouble with server!')
 			}
 		})
 	}, [checkState])
-	console.log('d')
+
 	useEffect(() => {
 		bookList(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setPets(res.data.petsInfo))
-			} else {
-				console.log('Some trouble with server!')
 			}
 		})
 	}, [checkState])

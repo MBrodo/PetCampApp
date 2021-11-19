@@ -1,7 +1,10 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import sendBookController from '../../../../../controllers/authorization/sendBookController'
+import getBookingController from '../../../../../controllers/bookList/getBookings'
+import bookList from '../../../../../controllers/authorization/BookListController'
+import { setBook, setAllBookings } from '../../../../../redux/slices/bookSlice'
 import { PayCardView } from './PayCardView'
 
 export const PayCardContainer = (props) => {
@@ -9,6 +12,23 @@ export const PayCardContainer = (props) => {
 	const bookingStart = useSelector((state) => state.booking.startDate)
 	const bookingEnds = useSelector((state) => state.booking.endDate)
 	const selectedPet = useSelector((state) => state.pets.selected)
+	const dispatch = useDispatch()
+
+	const allBookings = () => {
+		getBookingController(userId).then((res) => {
+			if (res.status === 200) {
+				dispatch(setAllBookings(res.data.booking))
+			}
+		})
+	}
+
+	const updateBookings = () => {
+		bookList(userId).then((res) => {
+			if (res.status === 200) {
+				dispatch(setBook(res.data.bookingsInfo))
+			}
+		})
+	}
 
 	const SendBook = () => {
 		sendBookController(
@@ -37,6 +57,8 @@ export const PayCardContainer = (props) => {
 	const goToCongrats = () => {
 		navigation.navigate('Congrats')
 		SendBook()
+		updateBookings()
+		allBookings()
 	}
 	return <PayCardView goToCongrats={goToCongrats} />
 }
