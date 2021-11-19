@@ -3,7 +3,6 @@ import { View, TextInput } from 'react-native'
 import { styles } from '../style'
 
 export const TextInputUser = (props) => {
-	console.log(props.userInformation.name, 'name')
 	return (
 		<View style={styles.valueContainer}>
 			<TextInput
