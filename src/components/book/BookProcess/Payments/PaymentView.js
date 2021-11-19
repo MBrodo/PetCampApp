@@ -50,7 +50,11 @@ export const PaymentView = (props) => {
 									</Text>
 								</View>
 								<View style={styles.bookingPaymentsInfo}>
-									<BookPetInfo title={'Room:'} item={props.freeRooms[index].room_number} />
+									<BookPetInfo
+										title={'Room:'}
+										room={props.freeRooms[index]}
+										item={props.freeRooms[index].room_number}
+									/>
 									<BookPetInfo title={'PRICE:'} item={`$ ${props.totalPrice}`} />
 								</View>
 							</View>

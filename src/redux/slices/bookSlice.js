@@ -28,23 +28,13 @@ export const bookSlice = createSlice({
 		setAllBookings: (state, action) => {
 			state.all = action.payload
 		},
-		setRoom: (state, action) => {
-			state.rooms = action.payload
-		},
 		setCurrentCamp: (state, action) => {
 			state.currentCamp = action.payload
 		},
 	},
 })
 
-export const {
-	setBook,
-	setDateStart,
-	setDateEnds,
-	setTotalDay,
-	setAllBookings,
-	setRoom,
-	setCurrentCamp,
-} = bookSlice.actions
+export const { setBook, setDateStart, setDateEnds, setTotalDay, setAllBookings, setCurrentCamp } =
+	bookSlice.actions
 
 export default bookSlice.reducer

@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import { styles, pickerSelectStyles } from './styles'
 import { CheckBox } from 'react-native-elements'
 import RNPickerSelect from 'react-native-picker-select'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setPetQuantity } from '../../redux/slices/fullPetsSlice'
 
 export const Header = (props) => {
@@ -54,7 +54,9 @@ export const Header = (props) => {
 							useNativeAndroidPickerStyle={false}
 							onValueChange={(value) => setQuantity(value)}
 							fixAndroidTouchableBug={true}
+							value={0}
 							items={[
+								{ label: 'Select pet quantity', value: 0, inputLabel: ' ' },
 								{ label: '1', value: 1 },
 								{ label: '2', value: 2 },
 								{ label: '3', value: 3 },

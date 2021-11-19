@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-
 import { LoggedBookView } from './LoggedBookView'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector, useDispatch } from 'react-redux'
@@ -11,16 +10,13 @@ export const LoggedBookContainer = (props) => {
 	const bookingStart = useSelector((state) => state.booking.startDate)
 	const bookingEnds = useSelector((state) => state.booking.endDate)
 	const totalBookingDays = useSelector((state) => state.booking.totalDays)
-
 	const [transfer, setTransfer] = useState(false)
 	const [grooming, setGrooming] = useState(false)
 	const [vaccinated, setVaccinated] = useState(false)
 	const [agreement, setAgreement] = useState(false)
 	const [checkButton, setCheckButton] = useState(true)
 	const [freeRooms, setFreeRooms] = useState(0)
-
 	const dispatch = useDispatch()
-	console.log(bookingStart.split('/').join('-'), 'tt')
 	useEffect(() => {
 		getFreeRooms(campId, bookingStart.split('/').join('-'), bookingEnds.split('/').join('-'))
 			.then((res) => {
@@ -32,11 +28,9 @@ export const LoggedBookContainer = (props) => {
 			.catch((e) => console.log(e.message))
 	}, [])
 	const quantity = useSelector((state) => state.pets.quantity)
-
 	const checkPoints = () => {
 		return vaccinated && agreement ? false : true
 	}
-
 	const totalPrice = () => {
 		let totalCount = 12
 		if (transfer && grooming) {
@@ -49,7 +43,6 @@ export const LoggedBookContainer = (props) => {
 			return totalCount * quantity * totalBookingDays
 		}
 	}
-
 	const checkTransfer = () => {
 		setTransfer(() => {
 			return transfer ? false : true
@@ -78,7 +71,7 @@ export const LoggedBookContainer = (props) => {
 			campID: props.information.id,
 		})
 	}
-	console.log(bookingStart, bookingEnds)
+
 	return (
 		<LoggedBookView
 			checkPoints={checkPoints}
