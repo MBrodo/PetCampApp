@@ -54,6 +54,8 @@ export const BookCardContainer = (props) => {
 		deleteBookCard(props.item.id)
 		deleteBookAnimation()
 		setSuccessDelete((state) => !state)
+		props.updateBook
+		props.allBookings
 	}
 
 	return (
