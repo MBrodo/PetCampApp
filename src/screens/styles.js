@@ -30,4 +30,8 @@ export const styles = StyleSheet.create({
 	profileIcon: {
 		color: 'white',
 	},
+	tabBar: {
+		height: 170,
+		alignItems: 'center',
+	},
 })

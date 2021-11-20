@@ -4,12 +4,11 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { styles } from './style'
 
-const Row = ({ label, icon }) => {
+const Row = ({ label, onPress }) => {
 	return (
-		<TouchableWithoutFeedback onPress={() => Alert.alert(label)}>
+		<TouchableWithoutFeedback onPress={() => onPress()}>
 			<View style={styles.container}>
 				<Text style={styles.label}>{label}</Text>
-				<Icon name={icon} color="white" size={24} />
 			</View>
 		</TouchableWithoutFeedback>
 	)

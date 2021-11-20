@@ -12,7 +12,7 @@ import { Contacts } from '../Contacts'
 import { BookAndAboutUs } from './BookAndAboutUs'
 import { MyProfileStackNavigation } from './MyProfileStackNavigation'
 import { styles } from '../../screens/styles'
-import Tabbar from '../profileModal/TabModal'
+import TabBarConatainer from '../profileModal/TabBar/TabBarConatainer'
 
 const Tab = createBottomTabNavigator()
 
@@ -29,11 +29,9 @@ export function TabNavigation({ navigation }) {
 
 	const tabBarProfileButton = () => (
 		<TouchableWithoutFeedback>
-			<>
-				<Tabbar />
-				<Icon style={styles.profileIcon} name={'user'} size={25} />
-				<Text style={styles.profileText}>Profile</Text>
-			</>
+			<View style={styles.tabBar}>
+				<TabBarConatainer />
+			</View>
 		</TouchableWithoutFeedback>
 	)
 
