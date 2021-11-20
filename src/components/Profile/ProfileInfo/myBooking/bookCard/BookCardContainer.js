@@ -7,11 +7,13 @@ import getBookingController from '../../../../../controllers/bookList/getBooking
 import { setAllBookings, setBook } from '../../../../../redux/slices/bookSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import bookList from '../../../../../controllers/authorization/BookListController'
+import EncryptedStorage from 'react-native-encrypted-storage'
 
 export const BookCardContainer = (props) => {
 	const [showBookInfo, setShowBookInfo] = useState(false)
 	const [successDelete, setSuccessDelete] = useState(false)
 	const userID = useSelector((state) => state.user.id)
+	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 	const dispatch = useDispatch()
 	const progress = useSharedValue({ width: 300, height: 220 })
 
@@ -39,7 +41,7 @@ export const BookCardContainer = (props) => {
 	}
 
 	const allBookings = () => {
-		getBookingController(userID).then((res) => {
+		getBookingController(userID, userInfo).then((res) => {
 			if (res.status === 200) {
 				dispatch(setAllBookings(res.data.booking))
 			}
@@ -47,7 +49,7 @@ export const BookCardContainer = (props) => {
 	}
 
 	const updateBookings = () => {
-		bookList(userID).then((res) => {
+		bookList(userID, userInfo).then((res) => {
 			if (res.status === 200) {
 				dispatch(setBook(res.data.bookingsInfo))
 			}
@@ -55,7 +57,7 @@ export const BookCardContainer = (props) => {
 	}
 
 	const deleteBookCard = (id) => {
-		deleteBook(id).then((res) => {
+		deleteBook(id, userInfo).then((res) => {
 			if (res.status === 200) {
 				console.log('delete is success')
 			} else if (res.status === 401 || res.status === 400) {

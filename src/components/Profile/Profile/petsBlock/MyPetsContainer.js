@@ -9,23 +9,27 @@ import { setPetsList, setPets } from '../../../../redux/slices/fullPetsSlice'
 
 import { MyPets } from './MyPetsView'
 import { useNavigation } from '@react-navigation/native'
+import getToken from '../../../../services/token/getToken'
 
 export const MyPetsContainer = () => {
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.id)
 	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
+	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 	const [checkState, setCheckState] = useState(false)
 
 	useEffect(() => {
-		fullpetListController(userID).then((res) => {
+		fullpetListController(userID, userInfo).then((res) => {
 			if (res.status === 200) {
 				dispatch(setPetsList(res.data.petsList))
+			} else {
+				console.log('dsalse')
 			}
 		})
 	}, [checkState])
 
 	useEffect(() => {
-		bookList(userID).then((res) => {
+		bookList(userID, userInfo).then((res) => {
 			if (res.status === 200) {
 				dispatch(setPets(res.data.petsInfo))
 			}

@@ -63,7 +63,7 @@ export const AddMyPetContainer = (props) => {
 	const petSterilize = () => {
 		return petInfoContainer.sterilizedPositive ? 'yes' : 'no'
 	}
-
+	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 	const userId = useSelector((state) => state.user.id)
 	const SendNewCard = () => {
 		props.route.params.setCheckState((state) => !state)
@@ -77,7 +77,8 @@ export const AddMyPetContainer = (props) => {
 			petInfoContainer.petAge,
 			petSterilize(),
 			petInfoContainer.petVetPassport,
-			petInfoContainer.petInfo
+			petInfoContainer.petInfo,
+			userInfo
 		).then((res) => {
 			if (res.status === 200) {
 				console.log('success')
