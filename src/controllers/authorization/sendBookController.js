@@ -9,28 +9,19 @@ const sendBookController = async (
 	bookingStart,
 	bookingEnd,
 	isActive = true,
-	rooms,
-	token
+	rooms
 ) =>
 	new Promise((resolve) => {
 		axios
-			.post(
-				`${IP.HOST}${URLS.SEND_BOOK}`,
-				{
-					user,
-					pets,
-					camp,
-					bookingStart,
-					bookingEnd,
-					isActive,
-					rooms,
-				},
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				}
-			)
+			.post(`${IP.HOST}${URLS.SEND_BOOK}`, {
+				user,
+				pets,
+				camp,
+				bookingStart,
+				bookingEnd,
+				isActive,
+				rooms,
+			})
 			.then((response) => resolve(response))
 			.catch((e) => resolve(e.response))
 	})

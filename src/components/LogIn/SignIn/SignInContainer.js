@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { SignInView } from './SignInView'
 
 export const SignInContainer = (props) => {
-	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 	async function storeUserSession(res) {
 		try {
 			await EncryptedStorage.setItem(
@@ -29,7 +28,7 @@ export const SignInContainer = (props) => {
 	const dispatch = useDispatch()
 
 	const setProfileSettings = (userID) => {
-		getSettingsController(userID, userInfo).then((res) => {
+		getSettingsController(userID).then((res) => {
 			if (res.status === 200) {
 				console.log('successs')
 				dispatch(setSettings(res.data.mySettingsInfo))

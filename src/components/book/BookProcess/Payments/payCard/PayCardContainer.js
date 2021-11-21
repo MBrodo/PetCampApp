@@ -14,11 +14,10 @@ export const PayCardContainer = (props) => {
 	const bookingEnds = useSelector((state) => state.booking.endDate)
 	const selectedPet = useSelector((state) => state.pets.selected)
 	const updateRooms = useSelector((state) => state.camps.pickRooms)
-	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 	const dispatch = useDispatch()
 
 	const allBookings = () => {
-		getBookingController(userId, userInfo).then((res) => {
+		getBookingController(userId).then((res) => {
 			if (res.status === 200) {
 				dispatch(setAllBookings(res.data.booking))
 			}
@@ -26,7 +25,7 @@ export const PayCardContainer = (props) => {
 	}
 
 	const updateBookings = () => {
-		bookList(userId, userInfo).then((res) => {
+		bookList(userId).then((res) => {
 			if (res.status === 200) {
 				dispatch(setBook(res.data.bookingsInfo))
 			}

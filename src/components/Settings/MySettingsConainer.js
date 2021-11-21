@@ -17,7 +17,6 @@ export const MySettingsContainer = () => {
 	const [city, onChangeCity] = useState(profileInfo[0].city)
 	const [street, onChangeStreet] = useState(profileInfo[0].street)
 	const [phone, onChangePhone] = useState(profileInfo[0].phone)
-	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 
 	const [settingsState, setSettingsState] = useState(false)
 
@@ -43,7 +42,7 @@ export const MySettingsContainer = () => {
 		)
 	}
 	const getProfileInfo = () => {
-		getSettingsController(userID, userInfo).then((res) => {
+		getSettingsController(userID).then((res) => {
 			if (res.status === 200) {
 				console.log('successsdds')
 				dispatch(setSettings(res.data.mySettingsInfo))

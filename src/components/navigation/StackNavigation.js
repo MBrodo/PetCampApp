@@ -30,12 +30,20 @@ export const StackNavigation = () => {
 	}
 	retrieveUserSession()
 
+	const setProfileSettings = (userID) => {
+		getSettingsController(userID).then((res) => {
+			if (res.status === 200) {
+				dispatch(setSettings(res.data.mySettingsInfo))
+			}
+		})
+	}
+
 	useEffect(() => {
 		if (token) {
 			if (checkToken(token)) {
 				const { id } = getToken(token)
 				dispatch(setUserId(id))
-				// setProfileSettings(id)
+				setProfileSettings(id)
 				dispatch(setUser(token))
 			} else {
 				dispatch(setUserId({}))
@@ -43,15 +51,6 @@ export const StackNavigation = () => {
 			}
 		}
 	})
-
-	// const userInfo = useSelector((state) => state.user.info.substring(19, 248))
-	// const setProfileSettings = (userID) => {
-	// 	getSettingsController(userID, userInfo).then((res) => {
-	// 		if (res.status === 200) {
-	// 			dispatch(setSettings(res.data.mySettingsInfo))
-	// 		}
-	// 	})
-	// }
 	return (
 		<Stack.Navigator
 			screenOptions={{

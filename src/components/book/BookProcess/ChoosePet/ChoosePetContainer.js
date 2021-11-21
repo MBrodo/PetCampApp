@@ -14,7 +14,6 @@ export const ChoosePetContainer = (props) => {
 	const type = useSelector((state) => state.pets.type)
 	const userId = useSelector((state) => state.user.id)
 	const allPets = useSelector((state) => state.pets.all)
-	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 	const [pet, setPet] = useState('')
 	const dispatch = useDispatch()
 	const PickPet = (item) => {
@@ -39,7 +38,7 @@ export const ChoosePetContainer = (props) => {
 		})
 	}
 	useEffect(() => {
-		petTypeController(userId, type, userInfo).then((res) => {
+		petTypeController(userId, type).then((res) => {
 			if (res.status === 200) {
 				dispatch(setTypeList(res.data.petsList))
 			} else {

@@ -12,10 +12,9 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import deletePet from '../../../../controllers/pets/deletePet'
 
 export const MyPetsListContainer = (props) => {
-	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 	const deletePetCard = (id) => {
 		props.route.params.setCheckState((state) => !state)
-		deletePet(id, userInfo).then((res) => {
+		deletePet(id).then((res) => {
 			if (res.status === 200) {
 				console.log('delete is success')
 			} else if (res.status === 401 || res.status === 400) {

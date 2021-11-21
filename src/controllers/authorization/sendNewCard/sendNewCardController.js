@@ -12,31 +12,22 @@ const sendNewCardController = async (
 	age,
 	sterilized,
 	passport,
-	info,
-	token
+	info
 ) =>
 	new Promise((resolve) => {
 		axios
-			.post(
-				`${IP.HOST}${URLS.SEND_CARD}/${id}`,
-				{
-					id,
-					name,
-					type,
-					breed,
-					gender,
-					owner,
-					age,
-					sterilized,
-					passport,
-					info,
-				},
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				}
-			)
+			.post(`${IP.HOST}${URLS.SEND_CARD}/${id}`, {
+				id,
+				name,
+				type,
+				breed,
+				gender,
+				owner,
+				age,
+				sterilized,
+				passport,
+				info,
+			})
 			.then((response) => resolve(response))
 			.catch((e) => resolve(e.response))
 	})

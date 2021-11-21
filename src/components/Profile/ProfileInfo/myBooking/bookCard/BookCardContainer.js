@@ -13,7 +13,6 @@ export const BookCardContainer = (props) => {
 	const [showBookInfo, setShowBookInfo] = useState(false)
 	const [successDelete, setSuccessDelete] = useState(false)
 	const userID = useSelector((state) => state.user.id)
-	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 	const dispatch = useDispatch()
 	const progress = useSharedValue({ width: 300, height: 220 })
 
@@ -41,7 +40,7 @@ export const BookCardContainer = (props) => {
 	}
 
 	const allBookings = () => {
-		getBookingController(userID, userInfo).then((res) => {
+		getBookingController(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setAllBookings(res.data.booking))
 			}
@@ -49,7 +48,7 @@ export const BookCardContainer = (props) => {
 	}
 
 	const updateBookings = () => {
-		bookList(userID, userInfo).then((res) => {
+		bookList(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setBook(res.data.bookingsInfo))
 			}
@@ -57,7 +56,7 @@ export const BookCardContainer = (props) => {
 	}
 
 	const deleteBookCard = (id) => {
-		deleteBook(id, userInfo).then((res) => {
+		deleteBook(id).then((res) => {
 			if (res.status === 200) {
 				console.log('delete is success')
 			} else if (res.status === 401 || res.status === 400) {

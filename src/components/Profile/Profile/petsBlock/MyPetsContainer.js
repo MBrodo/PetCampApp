@@ -15,11 +15,10 @@ export const MyPetsContainer = () => {
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.id)
 	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
-	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 	const [checkState, setCheckState] = useState(false)
 
 	useEffect(() => {
-		fullpetListController(userID, userInfo).then((res) => {
+		fullpetListController(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setPetsList(res.data.petsList))
 			} else {
@@ -29,7 +28,7 @@ export const MyPetsContainer = () => {
 	}, [checkState])
 
 	useEffect(() => {
-		bookList(userID, userInfo).then((res) => {
+		bookList(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setPets(res.data.petsInfo))
 			}

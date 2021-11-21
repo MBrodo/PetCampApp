@@ -9,17 +9,16 @@ import bookList from '../../../../controllers/authorization/BookListController'
 export const MyBookingContainer = () => {
 	const bookingList = useSelector((state) => state.booking.bookingList)
 	const userID = useSelector((state) => state.user.id)
-	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 	const dispatch = useDispatch()
 	const allBookings = () => {
-		getBookingController(userID, userInfo).then((res) => {
+		getBookingController(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setAllBookings(res.data.booking))
 			}
 		})
 	}
 	useEffect(() => {
-		bookList(userID, userInfo).then((res) => {
+		bookList(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setBook(res.data.bookingsInfo))
 			}
