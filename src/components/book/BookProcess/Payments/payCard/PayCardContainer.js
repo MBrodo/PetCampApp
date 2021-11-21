@@ -52,8 +52,7 @@ export const PayCardContainer = (props) => {
 			bookingStart,
 			bookingEnds,
 			true,
-			updateRooms,
-			userInfo
+			updateRooms
 		).then((res) => {
 			if (res.status === 200) {
 				console.log('success')
