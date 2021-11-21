@@ -17,6 +17,13 @@ const Stack = createStackNavigator()
 export const StackNavigation = () => {
 	const dispatch = useDispatch()
 	const [token, setToken] = useState('')
+	const setProfileSettings = (userID, token) => {
+		getSettingsController(userID, token).then((res) => {
+			if (res.status === 200) {
+				dispatch(setSettings(res.data.mySettingsInfo))
+			}
+		})
+	}
 	async function retrieveUserSession() {
 		try {
 			const session = await EncryptedStorage.getItem('user_session')
@@ -35,7 +42,7 @@ export const StackNavigation = () => {
 			if (checkToken(token)) {
 				const { id } = getToken(token)
 				dispatch(setUserId(id))
-				// setProfileSettings(id)
+				setProfileSettings(id, token.substring(19, 248))
 				dispatch(setUser(token))
 			} else {
 				dispatch(setUserId({}))
@@ -44,14 +51,6 @@ export const StackNavigation = () => {
 		}
 	})
 
-	// const userInfo = useSelector((state) => state.user.info.substring(19, 248))
-	// const setProfileSettings = (userID) => {
-	// 	getSettingsController(userID, userInfo).then((res) => {
-	// 		if (res.status === 200) {
-	// 			dispatch(setSettings(res.data.mySettingsInfo))
-	// 		}
-	// 	})
-	// }
 	return (
 		<Stack.Navigator
 			screenOptions={{

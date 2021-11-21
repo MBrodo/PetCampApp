@@ -9,7 +9,11 @@ export const LogIn = () => {
 	const [userID] = useState(useSelector((state) => state.user.id.length))
 	const [authenticate, setAuthenticate] = useState(false)
 	const dispatch = useDispatch()
-
+	console.log(
+		useSelector((state) => state.pets.profilePetsList),
+		useSelector((state) => state.user.settings),
+		'check'
+	)
 	useEffect(() => {
 		dispatch(setAuth(authenticate))
 	}, [authenticate])

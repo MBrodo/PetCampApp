@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { SignInView } from './SignInView'
 
 export const SignInContainer = (props) => {
-	const userInfo = useSelector((state) => state.user.info.substring(19, 248))
+	// const userInfo = useSelector((state) => state.user.info.substring(19, 248))
 	async function storeUserSession(res) {
 		try {
 			await EncryptedStorage.setItem(
@@ -28,7 +28,7 @@ export const SignInContainer = (props) => {
 	const [password, setPassword] = useState('')
 	const dispatch = useDispatch()
 
-	const setProfileSettings = (userID) => {
+	const setProfileSettings = (userID, userInfo) => {
 		getSettingsController(userID, userInfo).then((res) => {
 			if (res.status === 200) {
 				console.log('successs')
@@ -42,12 +42,16 @@ export const SignInContainer = (props) => {
 		loginController(email, password, 1).then((res) => {
 			if (res.status === 200) {
 				setPassword('0')
-				Alert.alert('Welcome to the Pet Camp!')
 				storeUserSession(res)
 				dispatch(setUserId(res.data.id))
 				dispatch(setUser(res.data))
-				setProfileSettings(res.data.id)
+				setProfileSettings(
+					res.data.id,
+					useSelector((state) => state.user.info.substring(19, 248))
+				)
 				props.setAuthenticate(true)
+				Alert.alert('Welcome to the Pet Camp!')
+				console.log(res.data)
 			} else if (res.status === 401 || res.status === 400) {
 				Alert.alert('Login or password is incorrect')
 			}

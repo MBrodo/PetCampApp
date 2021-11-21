@@ -41,5 +41,5 @@ export const MyProfile = () => {
 		</ScrollView>
 	)
 
-	return useSelector((state) => state.user.id.length) === 0 ? <SignInContainer /> : <ProfileView />
+	return useSelector((state) => state.user.id.length) === 0 ? <LogIn /> : <ProfileView />
 }

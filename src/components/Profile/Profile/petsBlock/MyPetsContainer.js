@@ -22,8 +22,6 @@ export const MyPetsContainer = () => {
 		fullpetListController(userID, userInfo).then((res) => {
 			if (res.status === 200) {
 				dispatch(setPetsList(res.data.petsList))
-			} else {
-				console.log('dsalse')
 			}
 		})
 	}, [checkState])
