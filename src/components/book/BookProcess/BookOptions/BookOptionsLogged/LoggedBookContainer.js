@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useSelector, useDispatch } from 'react-redux'
 import getFreeRooms from '../../../../../controllers/rooms/getFreeRooms'
 import { setRoom } from '../../../../../redux/slices/petCampsSlise'
+import { log } from 'react-native-reanimated'
 
 export const LoggedBookContainer = (props) => {
 	const campId = useSelector((state) => state.booking.currentCamp.id)
@@ -32,7 +33,7 @@ export const LoggedBookContainer = (props) => {
 				if (res.status === 200) {
 					setCheckBoxes((prevState) => ({
 						...prevState,
-						[prevState.freeRooms]: res.data.freeRooms,
+						freeRooms: res.data.freeRooms,
 					}))
 					dispatch(setRoom(res.data.freeRooms))
 				}

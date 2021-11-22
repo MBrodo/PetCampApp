@@ -85,7 +85,7 @@ export const styles = StyleSheet.create({
 	priceBlock: {
 		flexDirection: 'row',
 		marginTop: 10,
-		justifyContent: 'flex-end',
+		justifyContent: 'flex-start',
 	},
 	priceContainer: {
 		flexDirection: 'row',
@@ -97,6 +97,7 @@ export const styles = StyleSheet.create({
 		fontSize: 14,
 		color: '#A0A0A0',
 		fontWeight: 'bold',
+		marginRight: 5,
 	},
 	hotelPrice: {
 		fontSize: 14,
