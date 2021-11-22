@@ -76,8 +76,8 @@ export const BookCardContainer = (props) => {
 		deleteBookCard(props.item.id)
 		deleteBookAnimation()
 		setSuccessDelete((state) => !state)
-		props.updateBook
-		props.allBookings
+		// props.updateBook
+		// props.allBookings
 		allBookings()
 		updateBookings()
 	}

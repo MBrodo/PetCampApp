@@ -1,7 +1,7 @@
 export const SIZE = 30
 export const R = SIZE / 4
 export const COLOR = '#3DB09D'
-export const END_COLOR = '#98fceb'
+export const END_COLOR = '#45c2ad'
 export const WIDTH = 3 * SIZE
 export const HEIGHT = 3.5 * SIZE
 

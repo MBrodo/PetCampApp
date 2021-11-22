@@ -18,13 +18,6 @@ export const styles = StyleSheet.create({
 		justifyContent: 'flex-end',
 		alignItems: 'center',
 	},
-	icon: {
-		width: SIZE,
-		height: SIZE,
-		borderRadius: R,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
 	content: {
 		position: 'absolute',
 		bottom: 20,

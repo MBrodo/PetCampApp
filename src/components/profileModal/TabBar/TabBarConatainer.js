@@ -5,6 +5,7 @@ import {
 	useAnimatedProps,
 	useAnimatedStyle,
 	useSharedValue,
+	withTiming,
 } from 'react-native-reanimated'
 import { mix } from 'react-native-redash'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -41,7 +42,8 @@ const TabBarConatainer = () => {
 
 	const navigation = useNavigation()
 	const goToProfile = () => {
-		navigation.navigate('Profile')
+		navigation.navigate('Profile', { screen: 'ProfilePage' })
+		open.value = withTiming(open.value === 1 ? 0 : 1)
 	}
 
 	async function removeUserSession() {
@@ -53,6 +55,7 @@ const TabBarConatainer = () => {
 	const logOut = () => {
 		removeUserSession()
 		dispatch(setUserId([]))
+		open.value = withTiming(open.value === 1 ? 0 : 1)
 	}
 
 	return (
