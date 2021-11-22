@@ -43,6 +43,7 @@ export const PayCardContainer = (props) => {
 		allBookings()
 		updateBookings()
 	}
+
 	const SendBook = () => {
 		sendBookController(
 			userId,

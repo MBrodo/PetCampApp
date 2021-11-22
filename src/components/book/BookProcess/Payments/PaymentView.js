@@ -35,7 +35,7 @@ export const PaymentView = (props) => {
 							<View>
 								<View style={styles.myPetOptionsContainer}>
 									<View style={styles.genderOptionsContainer}>
-										<BookPetInfo title={'Cat/Dog:'} item={item.type} />
+										<BookPetInfo title={'Cat/Dog:'} item={item.type.toLowerCase()} />
 										<BookPetInfo title={'Gender:'} item={item.gender} />
 									</View>
 									<View style={styles.genderOptionsContainer}>

@@ -27,7 +27,7 @@ export const ChoosePetContainer = (props) => {
 		navigation.navigate('ChoosePet')
 	}
 	const addPet = () => {
-		navigation.navigate('AddMyPet', { goToBackPoint: goToBackPoint })
+		navigation.navigate('Profile', { screen: 'AddMyPet', params: { goToBackPoint: goToBackPoint } })
 	}
 	const goToThirdStep = () => {
 		navigation.navigate('Payment', {

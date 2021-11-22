@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import { useSharedValue, useAnimatedStyle, withTiming, withSpring } from 'react-native-reanimated'
 import { BookCardView } from './BookCardView'
 import deleteBook from '../../../../../controllers/bookList/deleteBook'
-import getBookingController from '../../../../../controllers/bookList/getBookings'
-import { setAllBookings, setBook } from '../../../../../redux/slices/bookSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import bookList from '../../../../../controllers/authorization/BookListController'
 
 export const BookCardContainer = (props) => {
 	const [showBookInfo, setShowBookInfo] = useState(false)
 	const [successDelete, setSuccessDelete] = useState(false)
-	const userID = useSelector((state) => state.user.id)
-	const dispatch = useDispatch()
 	const progress = useSharedValue({ width: 300, height: 220 })
 
 	const reanimatedStyle = useAnimatedStyle(() => {
@@ -38,22 +32,6 @@ export const BookCardContainer = (props) => {
 		deleteBooking.value = withSpring(-370)
 	}
 
-	const allBookings = () => {
-		getBookingController(userID).then((res) => {
-			if (res.status === 200) {
-				dispatch(setAllBookings(res.data.booking))
-			}
-		})
-	}
-
-	const updateBookings = () => {
-		bookList(userID).then((res) => {
-			if (res.status === 200) {
-				dispatch(setBook(res.data.bookingsInfo))
-			}
-		})
-	}
-
 	const deleteBookCard = (id) => {
 		deleteBook(id).then((res) => {
 			if (res.status === 200) {
@@ -75,10 +53,8 @@ export const BookCardContainer = (props) => {
 		deleteBookCard(props.item.id)
 		deleteBookAnimation()
 		setSuccessDelete((state) => !state)
-		props.updateBook
-		props.allBookings
-		allBookings()
-		updateBookings()
+		props.updateBook()
+		props.allBookings()
 	}
 
 	return (

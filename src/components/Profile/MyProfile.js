@@ -1,11 +1,12 @@
-import React from 'react'
-import { Text, View, Image, ScrollView, ImageBackground, Pressable, Button } from 'react-native'
+import React, { useState } from 'react'
+import { Text, View, Image, ScrollView, ImageBackground } from 'react-native'
 import { styles } from './style'
 import { MyPetsContainer } from './Profile/petsBlock/MyPetsContainer'
 import { MyBookingContainer } from './Profile/myBooking/MyBookingContainer'
 import { MyReports } from './MyReports'
 import { useSelector } from 'react-redux'
-import EncryptedStorage from 'react-native-encrypted-storage'
+import { SignInContainer } from '../LogIn/SignIn/SignInContainer'
+import { LogIn } from '../LogIn/LogIn'
 
 const images = {
 	backGround: require('../../img/ProfileBG.png'),
@@ -16,13 +17,7 @@ export default images
 
 export const MyProfile = () => {
 	const profileInfo = useSelector((state) => state.user.settings)
-	async function removeUserSession() {
-		try {
-			await EncryptedStorage.removeItem('user_session')
-		} catch (error) {}
-	}
-
-	return (
+	const ProfileView = () => (
 		<ScrollView>
 			<View style={styles.wrapper}>
 				<ImageBackground
@@ -37,7 +32,6 @@ export const MyProfile = () => {
 						</Text>
 					</View>
 				</ImageBackground>
-				<Button onPress={() => removeUserSession()} title="test" />
 				<View style={styles.main}>
 					<MyPetsContainer />
 					<MyBookingContainer />
@@ -46,4 +40,6 @@ export const MyProfile = () => {
 			</View>
 		</ScrollView>
 	)
+
+	return useSelector((state) => state.user.id.length) === 0 ? <SignInContainer /> : <ProfileView />
 }

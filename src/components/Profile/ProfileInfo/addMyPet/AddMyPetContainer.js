@@ -63,10 +63,8 @@ export const AddMyPetContainer = (props) => {
 	const petSterilize = () => {
 		return petInfoContainer.sterilizedPositive ? 'yes' : 'no'
 	}
-
 	const userId = useSelector((state) => state.user.id)
 	const SendNewCard = () => {
-		props.route.params.setCheckState((state) => !state)
 		sendNewCardController(
 			userId,
 			petInfoContainer.petNickName,
@@ -95,7 +93,6 @@ export const AddMyPetContainer = (props) => {
 		<AddMyPetView
 			checkVetState={checkVetState}
 			checkVetPasport={checkVetPasport}
-			goToBackPoint={props.route.params.goToBackPoint}
 			backPoint={backPoint}
 			setPetInfo={setPetInputInfo}
 			SendNewCard={SendNewCard}

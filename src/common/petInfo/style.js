@@ -17,4 +17,14 @@ export const styles = StyleSheet.create({
 		fontSize: 16,
 		color: 'black',
 	},
+	elementInfo: {
+		alignItems: 'center',
+		width: 80,
+	},
+	elementText: {
+		color: 'black',
+	},
+	elementVetPass: {
+		fontSize: 13,
+	},
 })

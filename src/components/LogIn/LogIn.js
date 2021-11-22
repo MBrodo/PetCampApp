@@ -13,13 +13,6 @@ export const LogIn = () => {
 	useEffect(() => {
 		dispatch(setAuth(authenticate))
 	}, [authenticate])
-	const checkProfile = () => {
-		if (userID === 0) {
-			return authenticate
-		} else {
-			return true
-		}
-	}
 
 	const checkAuthentication = () => {
 		return (userID === 0 ? authenticate : true) ? (
