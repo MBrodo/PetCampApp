@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import sendBookController from '../../../../../controllers/authorization/sendBookController'
 import getBookingController from '../../../../../controllers/bookList/getBookings'
 import bookList from '../../../../../controllers/authorization/BookListController'
@@ -15,15 +15,35 @@ export const PayCardContainer = (props) => {
 	const selectedPet = useSelector((state) => state.pets.selected)
 	const updateRooms = useSelector((state) => state.camps.pickRooms)
 	const dispatch = useDispatch()
+
+	const allBookings = () => {
+		getBookingController(userId).then((res) => {
+			if (res.status === 200) {
+				dispatch(setAllBookings(res.data.booking))
+			}
+		})
+	}
+
+	const updateBookings = () => {
+		bookList(userId).then((res) => {
+			if (res.status === 200) {
+				dispatch(setBook(res.data.bookingsInfo))
+			}
+		})
+	}
+	const clearRooms = () => {
+		dispatch(clearPickRooms([]))
+	}
+
 	const navigation = useNavigation()
 	const goToCongrats = () => {
 		navigation.navigate('Congrats')
 		SendBook()
 		clearRooms()
+		allBookings()
+		updateBookings()
 	}
-	const clearRooms = () => {
-		dispatch(clearPickRooms([]))
-	}
+
 	const SendBook = () => {
 		sendBookController(
 			userId,

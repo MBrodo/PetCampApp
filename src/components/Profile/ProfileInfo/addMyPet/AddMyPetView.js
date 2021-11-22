@@ -87,7 +87,6 @@ export const AddMyPetView = (props) => {
 				<Pressable
 					onPress={() => {
 						props.SendNewCard()
-						props.goToBackPoint()
 						props.backPoint()
 					}}
 					style={styles.changeButton}
@@ -97,7 +96,6 @@ export const AddMyPetView = (props) => {
 				</Pressable>
 				<Pressable
 					onPress={() => {
-						props.goToBackPoint()
 						props.backPoint()
 					}}
 					style={styles.cancleButton}

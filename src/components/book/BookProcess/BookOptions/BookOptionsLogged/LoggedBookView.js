@@ -31,7 +31,9 @@ export const LoggedBookView = (props) => {
 						<Text style={styles.bookArticle}>Avaliable hotels</Text>
 					</View>
 					<View>
-						<Text style={styles.numberOfHotel}>{props.information.type} Hotel №1</Text>
+						<Text style={styles.numberOfHotel}>
+							{props.information.type.toLowerCase()} Hotel №1
+						</Text>
 					</View>
 					<View style={styles.hotelStreetContainer}>
 						<View style={styles.hotelStreet}>
@@ -42,7 +44,7 @@ export const LoggedBookView = (props) => {
 					</View>
 					<View>
 						<Text style={styles.hotelRooms}>
-							{props.freeRooms.length} standard rooms are avaliable
+							{props.checkBoxes.freeRooms.length} standard rooms are avaliable
 						</Text>
 					</View>
 					<View>
@@ -74,9 +76,9 @@ export const LoggedBookView = (props) => {
 								<CheckBox
 									checkedColor="#4fa09285"
 									containerStyle={styles.petTransferCheckBox}
-									checked={props.transfer}
+									checked={props.checkBoxes.transfer}
 									onPress={() => {
-										props.setTransfer()
+										props.setCheckBoxOptions('transfer')
 									}}
 								/>
 								<Text style={styles.petTransferText}>Pet transfer </Text>
@@ -97,9 +99,9 @@ export const LoggedBookView = (props) => {
 								<CheckBox
 									checkedColor="#4fa09285"
 									containerStyle={styles.petTransferCheckBox}
-									checked={props.grooming}
+									checked={props.checkBoxes.grooming}
 									onPress={() => {
-										props.setGrooming()
+										props.setCheckBoxOptions('grooming')
 									}}
 								/>
 								<Text style={styles.petTransferText}>Pet grooming </Text>
@@ -119,9 +121,9 @@ export const LoggedBookView = (props) => {
 							<CheckBox
 								checkedColor="#4fa09285"
 								containerStyle={styles.petTransferCheckBox}
-								checked={props.vaccinated}
+								checked={props.checkBoxes.vaccinated}
 								onPress={() => {
-									props.setVaccinated()
+									props.setCheckBoxOptions('vaccinated')
 								}}
 							/>
 							<Text style={styles.petTransferText}>My pet is vaccinated.</Text>
@@ -130,16 +132,16 @@ export const LoggedBookView = (props) => {
 							<CheckBox
 								checkedColor="#4fa09285"
 								containerStyle={styles.petTransferCheckBox}
-								checked={props.agreement}
+								checked={props.checkBoxes.agreement}
 								onPress={() => {
-									props.setAgreement()
+									props.setCheckBoxOptions('agreement')
 								}}
 							/>
 							<Text style={styles.petTransferText}>I agree with Client Agreement</Text>
 						</View>
 						<BookingButton
 							checkPoints={props.checkPoints()}
-							checkButton={props.checkButton}
+							checkButton={props.checkBoxes.checkButton}
 							nextBookingStep={props.goToSecondStep}
 						/>
 						<BookingFooter />

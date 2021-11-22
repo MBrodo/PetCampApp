@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import { useSharedValue, useAnimatedStyle, withTiming, withSpring } from 'react-native-reanimated'
 import { BookCardView } from './BookCardView'
@@ -7,7 +7,6 @@ import deleteBook from '../../../../../controllers/bookList/deleteBook'
 export const BookCardContainer = (props) => {
 	const [showBookInfo, setShowBookInfo] = useState(false)
 	const [successDelete, setSuccessDelete] = useState(false)
-
 	const progress = useSharedValue({ width: 300, height: 220 })
 
 	const reanimatedStyle = useAnimatedStyle(() => {
@@ -54,8 +53,8 @@ export const BookCardContainer = (props) => {
 		deleteBookCard(props.item.id)
 		deleteBookAnimation()
 		setSuccessDelete((state) => !state)
-		props.updateBook
-		props.allBookings
+		props.updateBook()
+		props.allBookings()
 	}
 
 	return (

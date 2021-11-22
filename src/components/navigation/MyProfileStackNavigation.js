@@ -6,6 +6,7 @@ import { MyPetsListContainer } from '../Profile/ProfileInfo/myPets/MyPetsListCon
 import { MyBookingListContainer } from '../Profile/ProfileInfo/myBooking/MyBookingListContainer'
 import { MyReportsListContainer } from '../Profile/ProfileInfo/myReports/MyReportsListContainer'
 import { AddMyPetContainer } from '../Profile/ProfileInfo/addMyPet/AddMyPetContainer'
+import { Profile } from '../../screens/Profile'
 const Stack = createStackNavigator()
 
 export const MyProfileStackNavigation = () => {
@@ -16,6 +17,7 @@ export const MyProfileStackNavigation = () => {
 			}}
 			initialRouteName={'signIn'}
 		>
+			<Stack.Screen name="ProfilePage" component={Profile} />
 			<Stack.Screen name="signIn" component={LogIn} />
 			<Stack.Screen name="MyPetsContainer" component={MyPetsListContainer} />
 			<Stack.Screen name="AddMyPet" component={AddMyPetContainer} />

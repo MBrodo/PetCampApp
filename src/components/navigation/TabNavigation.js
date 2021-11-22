@@ -12,6 +12,7 @@ import { Contacts } from '../Contacts'
 import { BookAndAboutUs } from './BookAndAboutUs'
 import { MyProfileStackNavigation } from './MyProfileStackNavigation'
 import { styles } from '../../screens/styles'
+import TabBarConatainer from '../profileModal/TabBar/TabBarConatainer'
 
 const Tab = createBottomTabNavigator()
 
@@ -22,6 +23,14 @@ export function TabNavigation({ navigation }) {
 				<View style={styles.navigationButton}>
 					<Text style={styles.navigationButtonText}>Book</Text>
 				</View>
+			</View>
+		</TouchableWithoutFeedback>
+	)
+
+	const tabBarProfileButton = () => (
+		<TouchableWithoutFeedback>
+			<View style={styles.tabBar}>
+				<TabBarConatainer />
 			</View>
 		</TouchableWithoutFeedback>
 	)
@@ -54,10 +63,6 @@ export function TabNavigation({ navigation }) {
 				iconName = 'id-badge'
 				size = focused ? 30 : 25
 				color = focused ? '#297164' : 'white'
-			} else if (route.name === 'Profile') {
-				iconName = 'user'
-				size = focused ? 30 : 25
-				color = focused ? '#297164' : 'white'
 			}
 
 			return <Icon name={iconName} size={size} color={color} />
@@ -79,7 +84,17 @@ export function TabNavigation({ navigation }) {
 				}}
 			/>
 			<Tab.Screen name="Contacts" component={Contacts} />
-			<Tab.Screen name="Profile" component={MyProfileStackNavigation} />
+			<Tab.Screen
+				name="Profile"
+				component={MyProfileStackNavigation}
+				options={{
+					tabBar: { visible: false },
+					tabBarIcon: tabBarProfileButton,
+					tabBarLabelStyle: {
+						fontSize: 0,
+					},
+				}}
+			/>
 		</Tab.Navigator>
 	)
 }
