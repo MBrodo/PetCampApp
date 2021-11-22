@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { MyBookingListView } from './MyBookingListView'
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -9,8 +9,6 @@ import bookList from '../../../../controllers/authorization/BookListController'
 export const MyBookingListContainer = () => {
 	const userID = useSelector((state) => state.user.id)
 	const bookings = useSelector((state) => state.booking.all)
-	const [book] = useState(bookings)
-
 	const dispatch = useDispatch()
 	const allBookings = () => {
 		getBookingController(userID).then((res) => {
@@ -27,5 +25,5 @@ export const MyBookingListContainer = () => {
 		})
 	}
 
-	return <MyBookingListView allBookings pets={bookings} updateBook />
+	return <MyBookingListView allBookings={allBookings} pets={bookings} updateBook={updateBook} />
 }
