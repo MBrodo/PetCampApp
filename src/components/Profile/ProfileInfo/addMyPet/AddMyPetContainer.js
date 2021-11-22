@@ -10,6 +10,7 @@ export const images = {
 }
 
 export const AddMyPetContainer = (props) => {
+	const userId = useSelector((state) => state.user.id)
 	const [petInfoContainer, setPetInfoContainer] = useState({
 		petNickName: '',
 		dog: true,
@@ -64,7 +65,6 @@ export const AddMyPetContainer = (props) => {
 		return petInfoContainer.sterilizedPositive ? 'yes' : 'no'
 	}
 
-	const userId = useSelector((state) => state.user.id)
 	const SendNewCard = () => {
 		props.route.params.setCheckState((state) => !state)
 		sendNewCardController(

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, ScrollView } from 'react-native'
+import { View, VirtualizedList } from 'react-native'
 
 import { styles } from '../components/book/styles'
 
@@ -12,7 +12,7 @@ export const Book = (props) => {
 	const [map, setMap] = useState(false)
 	const [dog, setDog] = useState(true)
 	const [cat, setCat] = useState(false)
-	return (
+	const book = () => (
 		<View style={styles.bookOutsidecontainer}>
 			<View style={styles.bookInsideContainer}>
 				<Header dog={dog} setDog={setDog} cat={cat} setCat={setCat} />
@@ -28,5 +28,12 @@ export const Book = (props) => {
 				/>
 			</View>
 		</View>
+	)
+	const getItemCount = () => 1
+	const getItem = () => ({
+		id: Math.random().toString(12).substring(0),
+	})
+	return (
+		<VirtualizedList data={[]} getItemCount={getItemCount} getItem={getItem} renderItem={book} />
 	)
 }
