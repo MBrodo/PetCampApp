@@ -12,7 +12,7 @@ export const PetCardView = (props) => {
 			</View>
 			<View style={styles.myPetOptionsContainer}>
 				<View style={styles.myPetOptions}>
-					<BookPetInfo title={'Cat/Dog:'} item={props.item.type} />
+					<BookPetInfo title={'Cat/Dog:'} item={props.item.type.toLowerCase()} />
 					<BookPetInfo title={'Name:'} item={props.item.name} />
 					<BookPetInfo title={'Age:'} item={props.item.age} />
 				</View>
