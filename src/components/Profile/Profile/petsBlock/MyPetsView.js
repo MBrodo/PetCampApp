@@ -3,6 +3,7 @@ import { Text, View, Pressable, Image } from 'react-native'
 import { styles } from '../../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import images from '../../MyProfile'
+import { ProfileRowInfo } from '../../../../common/petInfo/ProfileRowInfo'
 
 export const MyPets = (props) => {
 	const petList = (item) => (
@@ -13,28 +14,13 @@ export const MyPets = (props) => {
 				</View>
 				<View style={styles.elementMain}>
 					<View style={styles.elementFloor}>
-						<View style={styles.elementInfo}>
-							<Text>Cat/Dog</Text>
-							<Text style={styles.elementText}>{item.type.toLowerCase()}</Text>
-						</View>
-						<View style={styles.elementInfo}>
-							<Text>Name</Text>
-							<Text style={styles.elementText}>{item.name}</Text>
-						</View>
-						<View style={styles.elementInfo}>
-							<Text>Age</Text>
-							<Text style={styles.elementText}>{item.age} years</Text>
-						</View>
+						<ProfileRowInfo item={item.type.toLowerCase()} title={'Cat/Dog'} />
+						<ProfileRowInfo item={item.name} title={'Name'} />
+						<ProfileRowInfo item={item.age} title={'Age'} />
 					</View>
 					<View style={styles.elementFloor}>
-						<View style={styles.elementInfo}>
-							<Text>Gender</Text>
-							<Text style={styles.elementText}>{item.gender}</Text>
-						</View>
-						<View style={styles.elementInfo}>
-							<Text style={styles.vetText}>Vet Passport</Text>
-							<Text style={styles.elementText}>{item.vet_pasport}</Text>
-						</View>
+						<ProfileRowInfo item={item.gender} title={'Gender'} />
+						<ProfileRowInfo item={item.vet_pasport} title={'Vet Passport'} />
 					</View>
 				</View>
 			</View>
