@@ -10,18 +10,30 @@ export const LoggedBookContainer = (props) => {
 	const bookingStart = useSelector((state) => state.booking.startDate)
 	const bookingEnds = useSelector((state) => state.booking.endDate)
 	const totalBookingDays = useSelector((state) => state.booking.totalDays)
-	const [transfer, setTransfer] = useState(false)
-	const [grooming, setGrooming] = useState(false)
-	const [vaccinated, setVaccinated] = useState(false)
-	const [agreement, setAgreement] = useState(false)
-	const [checkButton, setCheckButton] = useState(true)
-	const [freeRooms, setFreeRooms] = useState(0)
+	const [checkBoxes, setCheckBoxes] = useState({
+		transfer: false,
+		grooming: false,
+		vaccinated: false,
+		agreement: false,
+		checkButton: true,
+		freeRooms: 0,
+	})
+	const setCheckBoxOptions = (name) => {
+		setCheckBoxes((prevState) => ({
+			...prevState,
+			[name]: !prevState[name],
+		}))
+	}
+
 	const dispatch = useDispatch()
 	useEffect(() => {
 		getFreeRooms(campId, bookingStart.split('/').join('-'), bookingEnds.split('/').join('-'))
 			.then((res) => {
 				if (res.status === 200) {
-					setFreeRooms(res.data.freeRooms)
+					setCheckBoxes((prevState) => ({
+						...prevState,
+						[prevState.freeRooms]: res.data.freeRooms,
+					}))
 					dispatch(setRoom(res.data.freeRooms))
 				}
 			})
@@ -29,40 +41,21 @@ export const LoggedBookContainer = (props) => {
 	}, [])
 	const quantity = useSelector((state) => state.pets.quantity)
 	const checkPoints = () => {
-		return vaccinated && agreement ? false : true
+		return checkBoxes.vaccinated && checkBoxes.agreement ? false : true
 	}
 	const totalPrice = () => {
 		let totalCount = 12
-		if (transfer && grooming) {
+		if (checkBoxes.transfer && checkBoxes.grooming) {
 			return totalCount * quantity * totalBookingDays + 7
-		} else if (transfer) {
+		} else if (checkBoxes.transfer) {
 			return totalCount * quantity * totalBookingDays + 5
-		} else if (grooming) {
+		} else if (checkBoxes.grooming) {
 			return totalCount * quantity * totalBookingDays + 2
 		} else {
 			return totalCount * quantity * totalBookingDays
 		}
 	}
-	const checkTransfer = () => {
-		setTransfer(() => {
-			return transfer ? false : true
-		})
-	}
-	const checkGrooming = () => {
-		setGrooming(() => {
-			return grooming ? false : true
-		})
-	}
-	const checkVaccinated = () => {
-		setVaccinated(() => {
-			return vaccinated ? false : true
-		})
-	}
-	const checkAgreement = () => {
-		setAgreement(() => {
-			return agreement ? false : true
-		})
-	}
+
 	const navigation = useNavigation()
 	const goToSecondStep = () => {
 		navigation.navigate('ChoosePet', {
@@ -74,24 +67,15 @@ export const LoggedBookContainer = (props) => {
 
 	return (
 		<LoggedBookView
+			checkBoxes={checkBoxes}
+			setCheckBoxOptions={setCheckBoxOptions}
 			checkPoints={checkPoints}
 			Quantity={quantity}
-			setCheckButton={setCheckButton}
-			checkButton={checkButton}
 			totalPrice={totalPrice}
 			dateText={bookingStart}
 			dateTextEnd={bookingEnds}
 			goToSecondStep={goToSecondStep}
-			transfer={transfer}
-			setTransfer={checkTransfer}
-			grooming={grooming}
-			setGrooming={checkGrooming}
-			vaccinated={vaccinated}
-			setVaccinated={checkVaccinated}
-			agreement={agreement}
-			setAgreement={checkAgreement}
 			information={props.information}
-			freeRooms={freeRooms}
 		/>
 	)
 }
