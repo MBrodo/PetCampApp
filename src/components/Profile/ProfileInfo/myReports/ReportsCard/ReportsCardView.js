@@ -10,11 +10,11 @@ import { images } from '../../addMyPet/AddMyPetContainer'
 export const ReportsCardView = (props) => {
 	const petInfoBlock = () => (
 		<>
-			<PetInfo title={'Room №'} item={props.item.room_number} />
-			<PetInfo title={'Report №'} item={props.item.report_number} />
+			<PetInfo title={'Booking №'} item={props.item.booking} />
 			<PetInfo title={'Date'} item={props.item.write_time.substring(10, 0)} />
+			<PetInfo title={'Room'} item={'Room ' + props.item.room_number} />
 			<PetInfo title={'Stress level'} item={props.item.stress_level} />
-			<PetInfo title={'Appetite'} item={props.item.appetite} />
+			<PetInfo title={'Appetite'} item={props.item.appetite + ' appetite'} />
 			<PetInfo title={'Play time'} item={props.item.play_time} />
 			<View style={styles.imagesContainer}>
 				<Image style={styles.cameraImage} source={images.cameraImage} />
@@ -42,7 +42,7 @@ export const ReportsCardView = (props) => {
 						<Text style={styles.myPetPhotoText}>{props.item.pet_name}</Text>
 					</View>
 				</View>
-				<PetInfo title={'Booking №'} item={props.item.booking} />
+				<PetInfo title={'Report №'} item={props.item.report_number} />
 				{props.showReportInfo ? petInfoBlock() : null}
 				<View style={styles.arrowContainer}>
 					<Pressable
