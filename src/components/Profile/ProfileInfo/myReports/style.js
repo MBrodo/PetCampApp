@@ -168,4 +168,13 @@ export const styles = StyleSheet.create({
 	acceptText: {
 		color: '#a8abfd',
 	},
+	imagesContainer: {
+		flexDirection: 'row',
+	},
+	cameraImage: {
+		height: 50,
+		width: 70,
+		marginHorizontal: 7,
+		marginVertical: 5,
+	},
 })

@@ -11,7 +11,13 @@ export const MyReportsContainer = () => {
 	const userID = useSelector((state) => state.user.id)
 	const profileReportsList = useSelector((state) => state.reports.profileReportsList)
 	const [checkState, setCheckState] = useState(false)
-
+	const allReports = () => {
+		getReportsController(userID).then((res) => {
+			if (res.status === 200) {
+				dispatch(setReportsList(res.data.reportRequest))
+			}
+		})
+	}
 	useEffect(() => {
 		bookList(userID).then((res) => {
 			if (res.status === 200) {
@@ -23,6 +29,7 @@ export const MyReportsContainer = () => {
 	const navigation = useNavigation()
 	const goToReportsList = () => {
 		navigation.navigate('MyReportsContainer', { setCheckState: setCheckState })
+		allReports()
 	}
 	return <MyReports goToReportsList={goToReportsList} reports={profileReportsList} />
 }
