@@ -1,10 +1,22 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, ScrollView, Text } from 'react-native'
+import { styles } from './style'
+import { ReportsCardContainer } from './ReportsCard/ReportsCardContainer'
 
-export const MyReportsListView = () => {
+export const MyReportsListView = (props) => {
 	return (
-		<View>
-			<Text>MyReportsListView</Text>
-		</View>
+		<ScrollView style={styles.mainScroll} showsHorizontalScrollIndicator={false}>
+			<View style={styles.mainBlock}>
+				{props.reports.map((item) => (
+					<ReportsCardContainer
+						allReports={props.allReports}
+						updateReport={props.updateReport}
+						key={item.id}
+						checkImage={props.checkImage}
+						item={item}
+					/>
+				))}
+			</View>
+		</ScrollView>
 	)
 }
