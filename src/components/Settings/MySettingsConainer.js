@@ -10,41 +10,53 @@ import getSettingsController from '../../controllers/settings/getSettingsControl
 
 export const MySettingsContainer = () => {
 	const profileInfo = useSelector((state) => state.user.settings)
-	const [name, onChangeName] = useState(profileInfo[0].name)
-	const [middlename, onChangeMiddlename] = useState(profileInfo[0].middlename)
-	const [surname, onChangeSurname] = useState(profileInfo[0].surname)
-	const [email, onChangeEmail] = useState(profileInfo[0].email)
-	const [city, onChangeCity] = useState(profileInfo[0].city)
-	const [street, onChangeStreet] = useState(profileInfo[0].street)
-	const [phone, onChangePhone] = useState(profileInfo[0].phone)
-
+	const [userInformation, setUserInformation] = useState({
+		name: profileInfo[0].name,
+		middlename: profileInfo[0].middlename,
+		surname: profileInfo[0].surname,
+		email: profileInfo[0].email,
+		city: profileInfo[0].city,
+		street: profileInfo[0].street,
+		phone: profileInfo[0].phone,
+	})
+	const setName = (item, name) => {
+		setUserInformation((prevState) => ({
+			...prevState,
+			[name]: item,
+		}))
+	}
 	const [settingsState, setSettingsState] = useState(false)
-
 	const checkButton = () => {
 		return settingsState ? (
-			<SubmitButton checkState={submitCheck} name={'Submit'} /> //sendRequest={}
+			<SubmitButton checkState={submitCheck} name={'Submit'} />
 		) : (
 			<SubmitButton checkState={changeCheck} name={'Change'} />
 		)
 	}
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.id)
-
 	const SendSettings = () => {
-		sendSettingsController(userID, name, middlename, surname, email, city, street, phone).then(
-			(res) => {
-				if (res.status === 200) {
-					console.log('success')
-				} else {
-					console.log('fail')
-				}
+		sendSettingsController(
+			userID,
+			userInformation.name,
+			userInformation.middlename,
+			userInformation.surname,
+			userInformation.email,
+			userInformation.city,
+			userInformation.street,
+			userInformation.phone
+		).then((res) => {
+			if (res.status === 200) {
+				console.log('success11')
+			} else {
+				console.log('fail')
 			}
-		)
+		})
 	}
 	const getProfileInfo = () => {
 		getSettingsController(userID).then((res) => {
 			if (res.status === 200) {
-				console.log('successsdds')
+				console.log('successs')
 				dispatch(setSettings(res.data.mySettingsInfo))
 			} else {
 				console.log('fail')
@@ -59,35 +71,11 @@ export const MySettingsContainer = () => {
 	const changeCheck = () => {
 		setSettingsState(!settingsState)
 	}
-
 	const checkSettings = () => {
 		return settingsState ? (
-			<TextInputUser
-				name={name}
-				onChangeName={onChangeName}
-				middlename={middlename}
-				onChangeMiddlename={onChangeMiddlename}
-				surname={surname}
-				onChangeSurname={onChangeSurname}
-				email={email}
-				onChangeEmail={onChangeEmail}
-				city={city}
-				onChangeCity={onChangeCity}
-				street={street}
-				onChangeStreet={onChangeStreet}
-				phone={phone}
-				onChangePhone={onChangePhone}
-			/>
+			<TextInputUser userInformation={userInformation} setName={setName} />
 		) : (
-			<TextInfoUser
-				name={profileInfo[0].name}
-				middlename={profileInfo[0].middlename}
-				surname={profileInfo[0].surname}
-				email={profileInfo[0].email}
-				city={profileInfo[0].city}
-				street={profileInfo[0].street}
-				phone={profileInfo[0].phone}
-			/>
+			<TextInfoUser userInformation={userInformation} />
 		)
 	}
 	return (
