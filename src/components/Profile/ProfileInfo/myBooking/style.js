@@ -124,6 +124,7 @@ export const styles = StyleSheet.create({
 		height: '100%',
 		alignItems: 'center',
 		justifyContent: 'center',
+		backgroundColor: 'rgba(187, 187, 187, 0.5)',
 	},
 	modalWrapper: {
 		backgroundColor: 'red',
@@ -133,7 +134,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		borderRadius: 5,
-		backgroundColor: 'rgba(255, 255, 255, 0.9)',
+		backgroundColor: 'rgba(255, 255, 255, 1)',
 		shadowColor: '#000',
 		shadowOffset: {
 			width: 0,

@@ -4,10 +4,7 @@ import { Text, View, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
 
 export const MapView = (props) => {
-	const [list, setList] = useState(true)
-
 	const switchOptions = () => {
-		setList(list ? false : true)
 		props.setMap(props.map ? false : true)
 	}
 	return (
@@ -18,12 +15,12 @@ export const MapView = (props) => {
 
 			<View style={styles.bodyContainer}>
 				<TouchableOpacity
-					style={list ? styles.bodyButtonActive : styles.bodyButtonInactive}
+					style={props.map ? styles.bodyButtonInactive : styles.bodyButtonActive}
 					onPress={() => {
 						switchOptions()
 					}}
 				>
-					<Text style={list ? styles.bodyTextActive : styles.bodyTextInactive}>LIST</Text>
+					<Text style={props.map ? styles.bodyTextInactive : styles.bodyTextActive}>LIST</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity

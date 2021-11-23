@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { AddMyPetView } from './AddMyPetView'
 import { useNavigation } from '@react-navigation/native'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { styles } from './style'
 import sendNewCardController from '../../../../controllers/authorization/sendNewCard/sendNewCardController'
 
@@ -10,6 +10,7 @@ export const images = {
 }
 
 export const AddMyPetContainer = (props) => {
+	const userId = useSelector((state) => state.user.id)
 	const [petInfoContainer, setPetInfoContainer] = useState({
 		petNickName: '',
 		dog: true,
@@ -63,8 +64,9 @@ export const AddMyPetContainer = (props) => {
 	const petSterilize = () => {
 		return petInfoContainer.sterilizedPositive ? 'yes' : 'no'
 	}
-	const userId = useSelector((state) => state.user.id)
+
 	const SendNewCard = () => {
+		props.route.params.setCheckState((state) => !state)
 		sendNewCardController(
 			userId,
 			petInfoContainer.petNickName,

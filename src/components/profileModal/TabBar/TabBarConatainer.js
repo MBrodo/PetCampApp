@@ -56,6 +56,7 @@ const TabBarConatainer = () => {
 		removeUserSession()
 		dispatch(setUserId([]))
 		open.value = withTiming(open.value === 1 ? 0 : 1)
+		navigation.navigate('Book', { screen: 'Home' })
 	}
 
 	return (
