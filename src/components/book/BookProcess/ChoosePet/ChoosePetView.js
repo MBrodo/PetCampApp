@@ -9,10 +9,12 @@ export const ChoosePetView = (props) => {
 	return (
 		<ScrollView style={styles.UnLoggedScrollContainer}>
 			<View style={styles.stepsContainer}>
-				<View style={styles.localStepsContainer}>
-					<Text style={styles.inActiveStepNumber}>1</Text>
-					<Text style={styles.inActiveStepText}>book an option</Text>
-				</View>
+				<Pressable onPress={props.goBackToFirstStep}>
+					<View style={styles.localStepsContainer}>
+						<Text style={styles.inActiveStepNumber}>1</Text>
+						<Text style={styles.inActiveStepText}>book an option</Text>
+					</View>
+				</Pressable>
 				<View style={styles.localStepsContainer}>
 					<Text style={styles.activeStepNumber}>2</Text>
 					<Text style={styles.activeStepText}>choose a pet</Text>
