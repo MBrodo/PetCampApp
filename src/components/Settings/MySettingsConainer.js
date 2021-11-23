@@ -10,7 +10,6 @@ import getSettingsController from '../../controllers/settings/getSettingsControl
 
 export const MySettingsContainer = () => {
 	const profileInfo = useSelector((state) => state.user.settings)
-	console.log(profileInfo, 'dds')
 	const [userInformation, setUserInformation] = useState({
 		name: profileInfo[0].name,
 		middlename: profileInfo[0].middlename,
@@ -20,7 +19,6 @@ export const MySettingsContainer = () => {
 		street: profileInfo[0].street,
 		phone: profileInfo[0].phone,
 	})
-	console.log(userInformation.name, 'check')
 	const setName = (item, name) => {
 		setUserInformation((prevState) => ({
 			...prevState,
