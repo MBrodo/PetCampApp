@@ -3,7 +3,7 @@ import { Text, View, Image, ScrollView, ImageBackground } from 'react-native'
 import { styles } from './style'
 import { MyPetsContainer } from './Profile/petsBlock/MyPetsContainer'
 import { MyBookingContainer } from './Profile/myBooking/MyBookingContainer'
-import { MyReports } from './MyReports'
+import { MyReportsContainer } from './Profile/myReports/MyReportsContainer'
 import { useSelector } from 'react-redux'
 import { SignInContainer } from '../LogIn/SignIn/SignInContainer'
 import { LogIn } from '../LogIn/LogIn'
@@ -35,7 +35,7 @@ export const MyProfile = () => {
 				<View style={styles.main}>
 					<MyPetsContainer />
 					<MyBookingContainer />
-					<MyReports />
+					<MyReportsContainer />
 				</View>
 			</View>
 		</ScrollView>

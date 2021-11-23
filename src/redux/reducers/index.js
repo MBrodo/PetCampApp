@@ -4,6 +4,7 @@ import BookReducer from '../slices/bookSlice'
 import userReducer from '../slices/userSlice'
 import fullPetListReducer from '../slices/fullPetsSlice'
 import authReducer from '../slices/authentication/authSlice'
+import ReportsReducer from '../slices/reportsSlice'
 
 const test = () => {
 	let testReducer = 'test'
@@ -17,4 +18,5 @@ export const reducer = combineReducers({
 	user: userReducer,
 	pets: fullPetListReducer,
 	auth: authReducer,
+	reports: ReportsReducer,
 })

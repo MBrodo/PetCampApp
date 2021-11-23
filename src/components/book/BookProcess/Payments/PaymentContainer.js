@@ -16,6 +16,15 @@ export const PaymentContainer = (props) => {
 			bookingDateEnds: props.route.params.bookingDateEnds,
 		})
 	}
+	const goBackToFirstStep = () => {
+		navigation.navigate('BookOption')
+	}
+	const goBackToSecondStep = () => {
+		navigation.navigate('ChoosePet', {
+			totalPrice: props.route.params.totalPrice,
+			pet: selectedPet,
+		})
+	}
 	return (
 		<PaymentView
 			campId={campId}
@@ -24,6 +33,8 @@ export const PaymentContainer = (props) => {
 			bookingDateEnds={props.route.params.bookingDateEnds}
 			pet={selectedPet}
 			goToPayment={goToPayment}
+			goBackToFirstStep={goBackToFirstStep}
+			goBackToSecondStep={goBackToSecondStep}
 			freeRooms={freeRooms}
 		/>
 	)

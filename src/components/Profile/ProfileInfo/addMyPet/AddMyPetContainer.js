@@ -7,6 +7,7 @@ import sendNewCardController from '../../../../controllers/authorization/sendNew
 
 export const images = {
 	defaultImage: require('../../../../img/defaultImage.png'),
+	cameraImage: require('../../../../img/defaultBox.png'),
 }
 
 export const AddMyPetContainer = (props) => {
