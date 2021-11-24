@@ -11,6 +11,7 @@ import { setUserId, setUser } from '../../redux/slices/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import getSettingsController from '../../controllers/settings/getSettingsController'
 import { setSettings } from '../../redux/slices/userSlice'
+import { Context } from '../../context/index'
 
 const Stack = createStackNavigator()
 
@@ -20,9 +21,10 @@ export const StackNavigation = () => {
 	async function retrieveUserSession() {
 		try {
 			const session = await EncryptedStorage.getItem('user_session')
-			setToken(() => session)
+			setToken(() => session.substring(19, 244))
 		} catch (error) {}
 	}
+	console.log(token)
 	async function removeUserSession() {
 		try {
 			await EncryptedStorage.removeItem('user_session')
@@ -37,7 +39,6 @@ export const StackNavigation = () => {
 			}
 		})
 	}
-
 	useEffect(() => {
 		if (token) {
 			if (checkToken(token)) {
@@ -52,20 +53,22 @@ export const StackNavigation = () => {
 		}
 	})
 	return (
-		<Stack.Navigator
-			screenOptions={{
-				headerShown: true,
-				headerStyle: {
-					borderBottomWidth: 1,
-					borderBottomColor: '#A7CFC8',
-				},
-			}}
-		>
-			<Stack.Screen
-				name="Navigation"
-				component={TabNavigation}
-				options={{ headerTitle: () => <HeaderNavigation /> }}
-			/>
-		</Stack.Navigator>
+		<Context.Provider value={token}>
+			<Stack.Navigator
+				screenOptions={{
+					headerShown: true,
+					headerStyle: {
+						borderBottomWidth: 1,
+						borderBottomColor: '#A7CFC8',
+					},
+				}}
+			>
+				<Stack.Screen
+					name="Navigation"
+					component={TabNavigation}
+					options={{ headerTitle: () => <HeaderNavigation /> }}
+				/>
+			</Stack.Navigator>
+		</Context.Provider>
 	)
 }
