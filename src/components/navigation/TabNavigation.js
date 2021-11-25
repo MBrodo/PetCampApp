@@ -8,7 +8,7 @@ import { View, TouchableWithoutFeedback, Text } from 'react-native'
 
 import { PriceList } from '../PriceList'
 import { Settings } from '../Settings'
-import { Contacts } from '../Contacts'
+import { ContactsContainer } from '../Contacts/contactsContainer'
 import { BookAndAboutUs } from './BookAndAboutUs'
 import { MyProfileStackNavigation } from './MyProfileStackNavigation'
 import { styles } from '../../screens/styles'
@@ -34,10 +34,6 @@ export function TabNavigation({ navigation }) {
 			</View>
 		</TouchableWithoutFeedback>
 	)
-
-	const sizeBook = (focused) => {
-		return focused ? 33 : 30
-	}
 
 	const tabBarOptions = ({ route }) => ({
 		tabBarLabelStyle: {
@@ -83,7 +79,7 @@ export function TabNavigation({ navigation }) {
 					},
 				}}
 			/>
-			<Tab.Screen name="Contacts" component={Contacts} />
+			<Tab.Screen name="Contacts" component={ContactsContainer} />
 			<Tab.Screen
 				name="Profile"
 				component={MyProfileStackNavigation}

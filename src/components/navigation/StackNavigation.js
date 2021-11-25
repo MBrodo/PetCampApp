@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import getSettingsController from '../../controllers/settings/getSettingsController'
 import { setSettings } from '../../redux/slices/userSlice'
 import { Context } from '../../context/index'
+import mapListController from '../../controllers/authorization/mapListController'
+import { setCamps } from '../../redux/slices/petCampsSlise'
 
 const Stack = createStackNavigator()
 
@@ -21,10 +23,10 @@ export const StackNavigation = () => {
 	async function retrieveUserSession() {
 		try {
 			const session = await EncryptedStorage.getItem('user_session')
-			setToken(() => session.substring(19, 244))
+			setToken(() => (session ? session.substring(19, 244) : null))
 		} catch (error) {}
 	}
-	console.log(token)
+
 	async function removeUserSession() {
 		try {
 			await EncryptedStorage.removeItem('user_session')
@@ -52,6 +54,16 @@ export const StackNavigation = () => {
 			}
 		}
 	})
+
+	useEffect(() => {
+		mapListController().then((res) => {
+			if (res.status === 200) {
+				dispatch(setCamps(res.data.petCamps))
+			} else {
+				console.log('Some trouble with server!')
+			}
+		})
+	}, [])
 	return (
 		<Context.Provider value={token}>
 			<Stack.Navigator
