@@ -20,13 +20,16 @@ const Stack = createStackNavigator()
 export const StackNavigation = () => {
 	const dispatch = useDispatch()
 	const [token, setToken] = useState('')
+	const authenticate = useSelector((state) => state.auth.status)
+	const signInToken = useSelector((state) => state.user.info)
 	async function retrieveUserSession() {
 		try {
 			const session = await EncryptedStorage.getItem('user_session')
-			setToken(() => (session ? session.substring(19, 244) : null))
+			setToken(() => (session ? session.substring(19, 244) : authenticate ? signInToken : null))
 		} catch (error) {}
 	}
-
+	console.log(authenticate, signInToken, token, 'sign')
+	console.log(signInToken)
 	async function removeUserSession() {
 		try {
 			await EncryptedStorage.removeItem('user_session')
