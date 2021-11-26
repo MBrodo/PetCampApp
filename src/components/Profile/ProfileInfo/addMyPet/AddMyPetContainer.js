@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { AddMyPetView } from './AddMyPetView'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector, useDispatch } from 'react-redux'
 import { styles } from './style'
 import sendNewCardController from '../../../../controllers/authorization/sendNewCard/sendNewCardController'
+import { Context } from '../../../../context'
 
 export const images = {
 	defaultImage: require('../../../../img/defaultImage.png'),
@@ -65,6 +66,7 @@ export const AddMyPetContainer = (props) => {
 	const petSterilize = () => {
 		return petInfoContainer.sterilizedPositive ? 'yes' : 'no'
 	}
+	const token = useContext(Context)
 
 	const SendNewCard = () => {
 		props.route.params.setCheckState((state) => !state)
@@ -78,7 +80,8 @@ export const AddMyPetContainer = (props) => {
 			petInfoContainer.petAge,
 			petSterilize(),
 			petInfoContainer.petVetPassport,
-			petInfoContainer.petInfo
+			petInfoContainer.petInfo,
+			token
 		).then((res) => {
 			if (res.status === 200) {
 				console.log('success')

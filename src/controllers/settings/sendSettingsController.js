@@ -10,20 +10,29 @@ const sendSettingsController = async (
 	email,
 	city,
 	street,
-	phone
+	phone,
+	token
 ) =>
 	new Promise((resolve) => {
 		axios
-			.put(`${IP.HOST}${URLS.SEND_SETTINGS}`, {
-				userId,
-				name,
-				middlename,
-				surname,
-				email,
-				city,
-				street,
-				phone,
-			})
+			.put(
+				`${IP.HOST}${URLS.SEND_SETTINGS}`,
+				{
+					userId,
+					name,
+					middlename,
+					surname,
+					email,
+					city,
+					street,
+					phone,
+				},
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			)
 			.then((response) => resolve(response))
 			.catch((e) => resolve(e.response))
 	})

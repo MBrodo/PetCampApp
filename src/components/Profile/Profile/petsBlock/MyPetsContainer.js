@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Text, View, Image } from 'react-native'
 import { styles } from '../../style'
 import images from '../../MyProfile'
@@ -10,25 +10,27 @@ import { setPetsList, setPets } from '../../../../redux/slices/fullPetsSlice'
 import { MyPets } from './MyPetsView'
 import { useNavigation } from '@react-navigation/native'
 import getToken from '../../../../services/token/getToken'
+import { Context } from '../../../../context/index'
 
 export const MyPetsContainer = () => {
 	const dispatch = useDispatch()
 	const userID = useSelector((state) => state.user.id)
 	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
 	const [checkState, setCheckState] = useState(false)
+	const token = useContext(Context)
 
 	useEffect(() => {
-		fullpetListController(userID).then((res) => {
+		fullpetListController(userID, token).then((res) => {
 			if (res.status === 200) {
 				dispatch(setPetsList(res.data.petsList))
 			} else {
-				console.log('dsalse')
+				console.log('false')
 			}
 		})
 	}, [checkState])
 
 	useEffect(() => {
-		bookList(userID).then((res) => {
+		bookList(userID, token).then((res) => {
 			if (res.status === 200) {
 				dispatch(setPets(res.data.petsInfo))
 			}

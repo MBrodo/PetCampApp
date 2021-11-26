@@ -1,3 +1,3 @@
 export const IP = {
-	HOST: 'https://backend-pet-camp.herokuapp.com',
+	HOST: 'https://pet-camp-backend-prod.herokuapp.com',
 }
