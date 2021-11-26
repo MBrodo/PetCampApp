@@ -17,11 +17,10 @@ export const MyPetsContainer = () => {
 	const userID = useSelector((state) => state.user.id)
 	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
 	const [checkState, setCheckState] = useState(false)
-	const [token] = useState(useContext(Context))
-	console.log(token, 'd')
+	const token = useContext(Context)
 
 	useEffect(() => {
-		fullpetListController(userID).then((res) => {
+		fullpetListController(userID, token).then((res) => {
 			if (res.status === 200) {
 				dispatch(setPetsList(res.data.petsList))
 			} else {

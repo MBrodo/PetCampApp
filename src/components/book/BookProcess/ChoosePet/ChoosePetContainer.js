@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { ChoosePetView } from './ChoosePetView'
 import { useNavigation } from '@react-navigation/native'
 import petTypeController from '../../../../controllers/petTypeController'
 import { setTypeList, setSelected, setClear } from '../../../../redux/slices/fullPetsSlice'
 import { useSelector, useDispatch } from 'react-redux'
+import { Context } from '../../../../context'
 
 export const ChoosePetContainer = (props) => {
+	const token = useContext(Context)
 	const bookingStart = useSelector((state) => state.booking.startDate)
 	const bookingEnds = useSelector((state) => state.booking.endDate)
 	const petList = useSelector((state) => state.pets.typeList)
@@ -41,7 +43,7 @@ export const ChoosePetContainer = (props) => {
 		})
 	}
 	useEffect(() => {
-		petTypeController(userId, type).then((res) => {
+		petTypeController(userId, type, token).then((res) => {
 			if (res.status === 200) {
 				dispatch(setTypeList(res.data.petsList))
 			} else {

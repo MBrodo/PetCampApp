@@ -17,5 +17,5 @@ export const ContactsContainer = () => {
 		})
 	}
 	mapHotelsList()
-	return <ContactsView cats={cats} dogs={dogs} camps={camps} />
+	return <ContactsView camps={camps} cats={cats} dogs={dogs} camps={camps} />
 }
