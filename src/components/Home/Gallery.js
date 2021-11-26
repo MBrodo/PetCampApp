@@ -6,13 +6,14 @@ import { images } from './config'
 
 export const Gallery = () => {
 	const [text, onChangeText] = useState(1)
-
-	// const [scroll, setScroll] = useState(true);
-
-	// const change = () => {}
+	const [scrollIndex, setScrollIndex] = useState(0)
 
 	const { width } = Dimensions.get('window')
 	const height = width * 0.45
+
+	const switchImage = (e) => {
+		setScrollIndex(parseInt(e / 230))
+	}
 
 	return (
 		<View>
@@ -24,25 +25,28 @@ export const Gallery = () => {
 					<ScrollView
 						style={{ width, height }}
 						showsHorizontalScrollIndicator={false}
-						// persistentScrollbar={true}
-						pagingEnabled
-						// onScroll={change}
+						persistentScrollbar={true}
+						onScroll={(e) => {
+							switchImage(e.nativeEvent.contentOffset.x)
+							console.log(e.nativeEvent.contentOffset.x)
+						}}
 						horizontal
 					>
 						{images.map((image) => (
-							<Image
-								source={{ uri: image.image }}
-								key={image.key}
-								style={{ width, height, resizeMode: 'contain' }}
-							/>
+							<View style={styles.gallaryContainer} key={image.key}>
+								<Image
+									source={{ uri: image.image }}
+									style={{ width: width / 1.5, height, resizeMode: 'contain' }}
+								/>
+							</View>
 						))}
 					</ScrollView>
 
 					<View style={styles.scrollImages}>
-						{images.map((image) => (
+						{images.map((image, index) => (
 							<View
 								key={image.key}
-								style={image.key == text ? styles.circleActive : styles.circle}
+								style={index == scrollIndex ? styles.circleActive : styles.circle}
 							></View>
 						))}
 					</View>

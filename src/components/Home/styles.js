@@ -97,6 +97,12 @@ export const styles = StyleSheet.create({
 		fontSize: 30,
 		fontFamily: 'Bahianita-Regular',
 	},
+	gallaryContainer: {
+		borderWidth: 1,
+		borderColor: '#DBDBDB',
+		marginHorizontal: 5,
+		borderRadius: 5,
+	},
 	footerImageContainer: {
 		flexDirection: 'row',
 	},
