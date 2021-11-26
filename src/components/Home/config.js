@@ -6,10 +6,13 @@ export const images = [
 	},
 	{
 		key: 2,
+		image: 'https://memax.club/wp-content/uploads/2019/06/9-45.jpg',
+	},
+	{
+		key: 3,
 		image:
 			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSqe7BdP_jVPqd0VjSh4EbF7SX6gIObU6zGLkp_iE5o7LeANB4ZJTKv8o1dtLfK606wlc&usqp=CAU',
 	},
-	{ key: 3, image: 'https://memax.club/wp-content/uploads/2019/06/9-45.jpg' },
 	{
 		key: 4,
 		image:
