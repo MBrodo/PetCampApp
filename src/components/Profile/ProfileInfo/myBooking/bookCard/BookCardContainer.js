@@ -3,10 +3,12 @@ import React, { useState, useContext } from 'react'
 import { useSharedValue, useAnimatedStyle, withTiming, withSpring } from 'react-native-reanimated'
 import { BookCardView } from './BookCardView'
 import deleteBook from '../../../../../controllers/bookList/deleteBook'
+import disableBook from '../../../../../controllers/bookList/disableBook'
 import { Context } from '../../../../../context'
 
 export const BookCardContainer = (props) => {
 	const [showBookInfo, setShowBookInfo] = useState(false)
+	const [isDisable, setDisable] = useState(false)
 	const [successDelete, setSuccessDelete] = useState(false)
 	const progress = useSharedValue({ width: 300, height: 220 })
 	const token = useContext(Context)
@@ -22,18 +24,6 @@ export const BookCardContainer = (props) => {
 		}
 	})
 
-	const deleteBooking = useSharedValue(1)
-
-	const deleteAnimation = useAnimatedStyle(() => {
-		return {
-			transform: [{ translateX: deleteBooking.value }],
-		}
-	})
-
-	const deleteBookAnimation = () => {
-		deleteBooking.value = withSpring(-370)
-	}
-
 	const deleteBookCard = (id) => {
 		deleteBook(id, token).then((res) => {
 			if (res.status === 200) {
@@ -43,17 +33,31 @@ export const BookCardContainer = (props) => {
 			}
 		})
 	}
+	const disableBookCard = (id) => {
+		disableBook(id, token).then((res) => {
+			if (res.status === 200) {
+				setDisable((state) => !state)
+				console.log('disable is success')
+			} else if (res.status === 401 || res.status === 400) {
+				console.log('fail')
+			}
+		})
+	}
 	const [isOpenModal, setOpenModal] = useState(false)
-	const chechState = () => {
+	const deleteBooking = () => {
+		deleteBookCard(props.item.id)
+		props.allBookings()
+	}
+
+	const checkState = () => {
 		setOpenModal((state) => !state)
 	}
 	const showNotificationModal = () => {
 		setOpenModal((state) => !state)
 		setSuccessDelete((state) => !state)
 	}
-	const changeBookState = () => {
-		deleteBookCard(props.item.id)
-		deleteBookAnimation()
+	const changeBookState = (id) => {
+		disableBookCard(id)
 		setSuccessDelete((state) => !state)
 		props.updateBook()
 		props.allBookings()
@@ -61,18 +65,15 @@ export const BookCardContainer = (props) => {
 
 	return (
 		<BookCardView
+			deleteBooking={deleteBooking}
+			isDisable={isDisable}
 			showNotificationModal={showNotificationModal}
 			changeBookState={changeBookState}
 			successDelete={successDelete}
-			setSuccessDelete={setSuccessDelete}
 			isOpenModal={isOpenModal}
-			chechState={chechState}
-			deleteBookCard={deleteBookCard}
-			deleteBookAnimation={deleteBookAnimation}
-			deleteBooking={deleteBooking}
+			checkState={checkState}
 			checkImage={props.checkImage}
 			item={props.item}
-			deleteAnimation={deleteAnimation}
 			reanimatedStyle={reanimatedStyle}
 			progress={progress}
 			showBookInfo={showBookInfo}

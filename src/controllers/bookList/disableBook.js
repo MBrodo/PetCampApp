@@ -2,10 +2,10 @@ import URLS from '../authUrls'
 import { IP } from '../hostIP'
 import axios from 'axios'
 
-const deleteBook = async (id, token) =>
+const disableBook = async (id, token) =>
 	new Promise((resolve) => {
 		axios
-			.delete(`${IP.HOST}${URLS.DELETE_BOOKING}/${id}`, {
+			.delete(`${IP.HOST}${URLS.DISABLE_BOOKING}/${id}`, {
 				headers: {
 					Authorization: `Bearer ${token}`,
 				},
@@ -14,4 +14,4 @@ const deleteBook = async (id, token) =>
 			.catch((e) => resolve(e.response))
 	})
 
-export default deleteBook
+export default disableBook

@@ -169,4 +169,13 @@ export const styles = StyleSheet.create({
 	acceptText: {
 		color: '#a8abfd',
 	},
+	pointContainer: {
+		justifyContent: 'space-between',
+		flexDirection: 'row',
+		marginVertical: 5,
+	},
+	pointText: {
+		fontSize: 14,
+		color: 'black',
+	},
 })
