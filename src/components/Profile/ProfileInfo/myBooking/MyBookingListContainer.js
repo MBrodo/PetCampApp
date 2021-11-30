@@ -16,7 +16,7 @@ export const MyBookingListContainer = () => {
 			if (res.status === 200) {
 				dispatch(setAllBookings(res.data.booking))
 			} else {
-				console.log('fail booking1')
+				console.log('fail booking')
 			}
 		})
 	}
@@ -25,7 +25,7 @@ export const MyBookingListContainer = () => {
 			if (res.status === 200) {
 				dispatch(setBook(res.data.bookingsInfo))
 			} else {
-				console.log('fail booking2')
+				console.log('fail booking')
 			}
 		})
 	}
