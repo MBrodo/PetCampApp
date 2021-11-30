@@ -1,17 +1,15 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 
 import { useSharedValue, useAnimatedStyle, withTiming, withSpring } from 'react-native-reanimated'
 import { BookCardView } from './BookCardView'
 import deleteBook from '../../../../../controllers/bookList/deleteBook'
 import disableBook from '../../../../../controllers/bookList/disableBook'
-import { Context } from '../../../../../context'
 
 export const BookCardContainer = (props) => {
 	const [showBookInfo, setShowBookInfo] = useState(false)
 	const [isDisable, setDisable] = useState(false)
 	const [successDelete, setSuccessDelete] = useState(false)
 	const progress = useSharedValue({ width: 300, height: 220 })
-	const token = useContext(Context)
 
 	const reanimatedStyle = useAnimatedStyle(() => {
 		return {
@@ -25,7 +23,7 @@ export const BookCardContainer = (props) => {
 	})
 
 	const deleteBookCard = (id) => {
-		deleteBook(id, token).then((res) => {
+		deleteBook(id).then((res) => {
 			if (res.status === 200) {
 				console.log('delete is success')
 			} else if (res.status === 401 || res.status === 400) {
@@ -34,7 +32,7 @@ export const BookCardContainer = (props) => {
 		})
 	}
 	const disableBookCard = (id) => {
-		disableBook(id, token).then((res) => {
+		disableBook(id).then((res) => {
 			if (res.status === 200) {
 				setDisable((state) => !state)
 				console.log('disable is success')

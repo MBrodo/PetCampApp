@@ -34,7 +34,7 @@ export const StackNavigation = () => {
 	retrieveUserSession()
 
 	const setProfileSettings = (userID) => {
-		getSettingsController(userID, token).then((res) => {
+		getSettingsController(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setSettings(res.data.mySettingsInfo))
 			}
