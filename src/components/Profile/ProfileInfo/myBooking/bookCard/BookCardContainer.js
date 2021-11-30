@@ -5,6 +5,8 @@ import { BookCardView } from './BookCardView'
 import deleteBook from '../../../../../controllers/bookList/deleteBook'
 import disableBook from '../../../../../controllers/bookList/disableBook'
 
+import { useSelector, useDispatch } from 'react-redux'
+
 export const BookCardContainer = (props) => {
 	const [showBookInfo, setShowBookInfo] = useState(false)
 	const [isDisable, setDisable] = useState(false)
@@ -41,6 +43,7 @@ export const BookCardContainer = (props) => {
 			}
 		})
 	}
+
 	const [isOpenModal, setOpenModal] = useState(false)
 	const deleteBooking = () => {
 		deleteBookCard(props.item.id)

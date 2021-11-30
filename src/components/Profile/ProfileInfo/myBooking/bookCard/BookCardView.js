@@ -25,7 +25,10 @@ export const BookCardView = (props) => {
 			</View>
 
 			{props.isDisable ? (
-				<DefaultButton onPress={props.deleteBooking} textButton={'Delete'} />
+				<DefaultButton
+					onPress={() => props.deleteBooking(props.item.is_active)}
+					textButton={'Delete'}
+				/>
 			) : (
 				<DefaultButton onPress={props.checkState} textButton={'Cancel'} />
 			)}
