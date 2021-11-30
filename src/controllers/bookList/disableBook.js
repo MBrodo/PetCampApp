@@ -5,11 +5,7 @@ import axios from 'axios'
 const disableBook = async (id, token) =>
 	new Promise((resolve) => {
 		axios
-			.delete(`${IP.HOST}${URLS.DISABLE_BOOKING}/${id}`, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
+			.delete(`${IP.HOST}${URLS.DISABLE_BOOKING}/${id}`)
 			.then((response) => resolve(response))
 			.catch((e) => resolve(e.response))
 	})
