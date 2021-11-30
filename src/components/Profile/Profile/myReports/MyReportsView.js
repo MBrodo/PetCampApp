@@ -4,6 +4,7 @@ import { styles } from '../../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import images from '../../MyProfile'
 import { ProfileRowInfo } from '../../../../common/petInfo/ProfileRowInfo'
+import { ActivityIndicator } from 'react-native'
 
 export const MyReports = (props) => {
 	const reportsList = (item) => (
@@ -39,7 +40,17 @@ export const MyReports = (props) => {
 					<Icon style={styles.containerLinkIcon} name="arrow-right" size={15} />
 				</Pressable>
 			</View>
-			<View style={styles.containerMain}>{props.reports.map((item) => reportsList(item))}</View>
+			{props.isLoading ? (
+				props.reports.length === 0 ? (
+					<Text style={styles.alternativeText}>You dont have any reports yet</Text>
+				) : (
+					<View style={styles.containerMain}>{props.reports.map((item) => reportsList(item))}</View>
+				)
+			) : (
+				<View style={styles.preloader}>
+					<ActivityIndicator size="large" color="#5D5FEF" />
+				</View>
+			)}
 		</View>
 	)
 }

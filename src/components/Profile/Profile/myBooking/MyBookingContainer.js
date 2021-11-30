@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { MyBookingView } from './MyBookingView'
 import { useNavigation } from '@react-navigation/core'
@@ -9,6 +9,7 @@ import bookList from '../../../../controllers/authorization/BookListController'
 export const MyBookingContainer = () => {
 	const bookingList = useSelector((state) => state.booking.bookingList)
 	const userID = useSelector((state) => state.user.id)
+	const [isLoading, setLoading] = useState(false)
 	const dispatch = useDispatch()
 	const allBookings = () => {
 		getBookingController(userID).then((res) => {
@@ -20,6 +21,7 @@ export const MyBookingContainer = () => {
 	useEffect(() => {
 		bookList(userID).then((res) => {
 			if (res.status === 200) {
+				setLoading(true)
 				dispatch(setBook(res.data.bookingsInfo))
 			}
 		})
@@ -31,5 +33,7 @@ export const MyBookingContainer = () => {
 		allBookings()
 	}
 
-	return <MyBookingView goToBookList={goToBookList} bookingList={bookingList} />
+	return (
+		<MyBookingView isLoading={isLoading} goToBookList={goToBookList} bookingList={bookingList} />
+	)
 }
