@@ -3,6 +3,8 @@ import { Text, View, Pressable } from 'react-native'
 import { styles } from '../../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { ActivityIndicator } from 'react-native'
+import { ProfileRowInfo } from '../../../../common/petInfo/ProfileRowInfo'
+import { ProfileRowInfoLarge } from '../../../../common/petInfo/ProfileRowInfoLarge'
 
 export const MyBookingView = (props) => {
 	return (
@@ -24,14 +26,8 @@ export const MyBookingView = (props) => {
 								<View style={styles.containerElement}>
 									<View style={styles.elementMain}>
 										<View style={styles.elementFloorAlt}>
-											<View style={styles.elementInfoAlt}>
-												<Text>Pet</Text>
-												<Text style={styles.elementText}>{item.name}</Text>
-											</View>
-											<View style={styles.elementInfoAlt}>
-												<Text>Adderss</Text>
-												<Text style={styles.elementText}>{item.street}</Text>
-											</View>
+											<ProfileRowInfo item={item.name} title={'Pet'} />
+											<ProfileRowInfoLarge item={item.street} title={'Adderss'} />
 										</View>
 										<View style={styles.elementFloorAlt}>
 											<View style={styles.elementInfoDate}>

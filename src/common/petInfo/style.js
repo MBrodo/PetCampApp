@@ -21,6 +21,9 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		width: 80,
 	},
+	elementInfoAlt: {
+		alignItems: 'center',
+	},
 	elementText: {
 		color: 'black',
 	},
