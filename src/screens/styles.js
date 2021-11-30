@@ -34,4 +34,18 @@ export const styles = StyleSheet.create({
 		height: 170,
 		alignItems: 'center',
 	},
+	background: {
+		backgroundColor: 'rgba(60, 176, 157, 0.1)',
+	},
+	agreementMain: {
+		marginHorizontal: 20,
+		marginTop: 20,
+		marginBottom: 40,
+	},
+	agreementTitle: {
+		color: 'black',
+		fontSize: 30,
+		fontFamily: 'Bahianita-Regular',
+		marginBottom: 10,
+	},
 })
