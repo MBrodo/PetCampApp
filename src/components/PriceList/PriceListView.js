@@ -3,6 +3,8 @@ import { Text, View, Image } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { priceImages } from './PriceListContainer'
 import { styles } from './styles'
+import { PriceRowInfo } from '../../common/priceList/PriceRowInfo'
+import { OptionDescription } from '../../common/priceList/OptionDescription'
 
 export const PriceListView = () => {
 	return (
@@ -21,13 +23,7 @@ export const PriceListView = () => {
 						name of the pet on it
 					</Text>
 					<Text style={styles.titleText}>Types of Rooms:</Text>
-					<View style={styles.petBlockFooter}>
-						<Text style={styles.roomText}>Standard room</Text>
-						<View style={styles.priceBlock}>
-							<Text style={styles.priceTitle}>PRICE: </Text>
-							<Text style={styles.priceText}> $ 12 / day</Text>
-						</View>
-					</View>
+					<PriceRowInfo title={'Standard room'} price={' $ 12 / day'} />
 					<View style={styles.line} />
 				</View>
 				<>
@@ -41,24 +37,12 @@ export const PriceListView = () => {
 						separate containers with the name of the pet on it.
 					</Text>
 					<Text style={styles.titleText}>Types of Rooms:</Text>
-					<View style={styles.petBlockFooter}>
-						<Text style={styles.roomText}>Standard room</Text>
-						<View style={styles.priceBlock}>
-							<Text style={styles.priceTitle}>PRICE: </Text>
-							<Text style={styles.priceText}> $ 10 / day</Text>
-						</View>
-					</View>
+					<PriceRowInfo title={'Standard room'} price={'$ 10 / day'} />
 					<Text style={styles.petDescription}>
 						Standard room - an open atrium, equipped with a hypoallergenic couch. Daily cleaning and
 						sanitation.
 					</Text>
-					<View style={styles.petBlockFooter}>
-						<Text style={styles.roomText}>Apartment </Text>
-						<View style={styles.priceBlock}>
-							<Text style={styles.priceTitle}>PRICE: </Text>
-							<Text style={styles.priceText}> $ 15 / day</Text>
-						</View>
-					</View>
+					<PriceRowInfo title={'Apartment'} price={' $ 15 / day'} />
 					<Text style={styles.petDescription}>
 						Apartment - a large room, located separately from the standard rooms, suitable for
 						accommodating several dogs from one owner. Equipped with a dog bed and TV tuned to
@@ -69,63 +53,24 @@ export const PriceListView = () => {
 				<View style={styles.optionsBlock}>
 					<Text style={styles.titleText}>Options:</Text>
 					<>
-						<View style={styles.petBlockFooter}>
-							<Text style={styles.roomText}>Option 1 - Silver </Text>
-							<View style={styles.priceBlock}>
-								<Text style={styles.priceTitle}>PRICE: </Text>
-								<Text style={styles.priceText}> $ 10 / day</Text>
-							</View>
-						</View>
-						<Text style={styles.petDescription}>
-							Games and delicacies: 4 hours of games, socialization, and additional training or up
-							to 30 minutes of one-on-one games.
-						</Text>
-						<View style={styles.petBlockFooter}>
-							<Text style={styles.roomText}>Option 2 - Gold </Text>
-							<View style={styles.priceBlock}>
-								<Text style={styles.priceTitle}>PRICE: </Text>
-								<Text style={styles.priceText}> $ 15 / day</Text>
-							</View>
-						</View>
-						<Text style={styles.petDescription}>
-							Games and delicacies: 6 hours of games, socialization, and additional training or up
-							to 60 minutes of one-on-one games.
-						</Text>
-						<View style={styles.petBlockFooter}>
-							<Text style={styles.roomText}>Option 3 - Platinum </Text>
-							<View style={styles.priceBlock}>
-								<Text style={styles.priceTitle}>PRICE: </Text>
-								<Text style={styles.priceText}> $ 20 / day</Text>
-							</View>
-						</View>
-						<Text style={styles.petDescription}>
-							Games and delicacies: 8 hours of games, socialization, and additional training or up
-							to 60 minutes of one-on-one games.
-						</Text>
+						<PriceRowInfo title={'Option 1 - Silver'} price={'$ 10 / day'} />
+						<OptionDescription gamesTime={'4'} gamesAmount={'30'} />
+						<PriceRowInfo title={'Option 2 - Gold '} price={' $ 15 / day'} />
+						<OptionDescription gamesTime={'6'} gamesAmount={'60'} />
+						<PriceRowInfo title={'Option 3 - Platinum '} price={' $ 20 / day'} />
+						<OptionDescription gamesTime={'8'} gamesAmount={'60'} />
 					</>
 				</View>
 				<View style={styles.optionsBlock}>
 					<Text style={styles.titleText}>Additional options:</Text>
 					<>
-						<View style={styles.petBlockFooter}>
-							<Text style={styles.roomText}>Pet transfer </Text>
-							<View style={styles.priceBlock}>
-								<Text style={styles.priceTitle}>PRICE: </Text>
-								<Text style={styles.priceText}> $ 5</Text>
-							</View>
-						</View>
+						<PriceRowInfo title={'Pet transfer '} price={' $ 5'} />
 						<Text style={styles.petDescription}>
 							The client can book a hotel transfer by choosing this option during the booking
 							process. In this case, the hotel administrator contacts the client and selects the
 							most convenient time.
 						</Text>
-						<View style={styles.petBlockFooter}>
-							<Text style={styles.roomText}>Grooming </Text>
-							<View style={styles.priceBlock}>
-								<Text style={styles.priceTitle}>PRICE: </Text>
-								<Text style={styles.priceText}> $ 2</Text>
-							</View>
-						</View>
+						<PriceRowInfo title={'Grooming'} price={' $ 2'} />
 						<Text style={styles.petDescription}>
 							Comprehensive care, which includes a haircut at the request of the owner or in the
 							breed lines, shaving the hair between the pads of the paws, cutting the intimate area,

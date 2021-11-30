@@ -29,29 +29,6 @@ export const styles = StyleSheet.create({
 		width: 100,
 		marginVertical: 15,
 	},
-	petBlockFooter: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		marginTop: 10,
-	},
-	roomText: {
-		color: 'black',
-		fontSize: 15,
-		marginBottom: 5,
-	},
-	priceBlock: {
-		flexDirection: 'row',
-	},
-	priceTitle: {
-		fontSize: 15,
-		color: '#A0A0A0',
-		fontWeight: 'bold',
-	},
-	priceText: {
-		color: 'black',
-		fontSize: 15,
-		fontWeight: 'bold',
-	},
 	line: {
 		height: 1,
 		width: '100%',
