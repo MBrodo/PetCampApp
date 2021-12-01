@@ -4,11 +4,12 @@ import { styles } from '../../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import { Loader } from '../../../../common/Loader/Loader'
 import { ProfileRowInfo } from '../../../../common/petInfo/ProfileRowInfo'
+import { IfBlockEmpty } from '../../../../common/petInfo/ifBlockEmpty'
 
 export const MyBookingView = (props) => {
 	const bookingsCheck = () => {
 		return props.bookingList.length === 0 ? (
-			<Text style={styles.alternativeText}>You dont have any bookings yet</Text>
+			<IfBlockEmpty text={'bookings'} />
 		) : (
 			<View style={styles.containerMain}>
 				{props.bookingList.map((item) => bookingsList(item))}
