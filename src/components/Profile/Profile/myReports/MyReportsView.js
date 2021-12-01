@@ -7,6 +7,17 @@ import { ProfileRowInfo } from '../../../../common/petInfo/ProfileRowInfo'
 import { ActivityIndicator } from 'react-native'
 
 export const MyReports = (props) => {
+	const reportsCheck = () => {
+		return props.isLoading ? (
+			<View style={styles.preloader}>
+				<ActivityIndicator size="large" color="#5D5FEF" />
+			</View>
+		) : props.reports.length === 0 ? (
+			<Text style={styles.alternativeText}>You dont have any reports yet</Text>
+		) : (
+			<View style={styles.containerMain}>{props.reports.map((item) => reportsList(item))}</View>
+		)
+	}
 	const reportsList = (item) => (
 		<View key={item.id} style={styles.containerElement}>
 			<View style={styles.containerWrapper}>
@@ -40,17 +51,7 @@ export const MyReports = (props) => {
 					<Icon style={styles.containerLinkIcon} name="arrow-right" size={15} />
 				</Pressable>
 			</View>
-			{props.isLoading ? (
-				props.reports.length === 0 ? (
-					<Text style={styles.alternativeText}>You dont have any reports yet</Text>
-				) : (
-					<View style={styles.containerMain}>{props.reports.map((item) => reportsList(item))}</View>
-				)
-			) : (
-				<View style={styles.preloader}>
-					<ActivityIndicator size="large" color="#5D5FEF" />
-				</View>
-			)}
+			{reportsCheck()}
 		</View>
 	)
 }

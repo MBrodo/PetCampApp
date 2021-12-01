@@ -12,7 +12,7 @@ export const MyPetsContainer = () => {
 	const userID = useSelector((state) => state.user.id)
 	const profilePetsList = useSelector((state) => state.pets.profilePetsList)
 	const [checkState, setCheckState] = useState(false)
-	const [isLoading, setLoading] = useState(false)
+	const [isLoading, setLoading] = useState(true)
 
 	useEffect(() => {
 		fullpetListController(userID).then((res) => {
@@ -25,7 +25,7 @@ export const MyPetsContainer = () => {
 	useEffect(() => {
 		bookList(userID).then((res) => {
 			if (res.status === 200) {
-				setLoading(true)
+				setLoading(false)
 				dispatch(setPets(res.data.petsInfo))
 			}
 		})

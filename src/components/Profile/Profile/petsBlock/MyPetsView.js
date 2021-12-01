@@ -7,6 +7,17 @@ import { ProfileRowInfo } from '../../../../common/petInfo/ProfileRowInfo'
 import { ActivityIndicator } from 'react-native'
 
 export const MyPets = (props) => {
+	const petsCheck = () => {
+		return props.isLoading ? (
+			<View style={styles.preloader}>
+				<ActivityIndicator size="large" color="#5D5FEF" />
+			</View>
+		) : props.pets.length === 0 ? (
+			<Text style={styles.alternativeText}>You dont have any pets yet</Text>
+		) : (
+			<View style={styles.containerMain}>{props.pets.map((item) => petList(item))}</View>
+		)
+	}
 	const petList = (item) => (
 		<View key={item.id} style={styles.containerElement}>
 			<View style={styles.containerWrapper}>
@@ -36,17 +47,7 @@ export const MyPets = (props) => {
 					<Icon style={styles.containerLinkIcon} name="arrow-right" size={15} />
 				</Pressable>
 			</View>
-			{props.isLoading ? (
-				props.pets.length === 0 ? (
-					<Text style={styles.alternativeText}>You dont have any pets yet</Text>
-				) : (
-					<View style={styles.containerMain}>{props.pets.map((item) => petList(item))}</View>
-				)
-			) : (
-				<View style={styles.preloader}>
-					<ActivityIndicator size="large" color="#5D5FEF" />
-				</View>
-			)}
+			{petsCheck()}
 		</View>
 	)
 }
