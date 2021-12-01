@@ -7,7 +7,7 @@ export const ModalWindow = (props) => {
 		<Modal animationType="slide" transparent={true} visible={props.isOpenModal}>
 			<View style={styles.modalContainer}>
 				<View style={styles.wrapper}>
-					<Text style={styles.titleText}>Do you want to delete a card?</Text>
+					<Text style={styles.titleText}>Do you want to {props.action} a card?</Text>
 					<View style={styles.buttonContainer}>
 						<Pressable onPress={() => props.accept()} style={styles.acceptButton}>
 							<Text style={styles.acceptText}>Yes</Text>

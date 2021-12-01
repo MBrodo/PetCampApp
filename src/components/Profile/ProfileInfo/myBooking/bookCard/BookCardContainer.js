@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 export const BookCardContainer = (props) => {
 	const [showBookInfo, setShowBookInfo] = useState(false)
-	const [isDisable, setDisable] = useState(false)
+	const [isDisable, setDisable] = useState(props.item.is_active)
 	const [successDelete, setSuccessDelete] = useState(false)
 	const progress = useSharedValue({ width: 300, height: 220 })
 
@@ -45,12 +45,17 @@ export const BookCardContainer = (props) => {
 	}
 
 	const [isOpenModal, setOpenModal] = useState(false)
+	const [isOpenDeleteModal, setOpenDeleteModal] = useState(false)
 	const deleteBooking = () => {
+		setOpenDeleteModal((state) => !state)
 		deleteBookCard(props.item.id)
 		props.allBookings()
 	}
-
+	const checkDeleteState = () => {
+		setOpenDeleteModal((state) => !state)
+	}
 	const checkState = () => {
+		setDisable(props.item.is_active)
 		setOpenModal((state) => !state)
 	}
 	const showNotificationModal = () => {
@@ -66,6 +71,8 @@ export const BookCardContainer = (props) => {
 
 	return (
 		<BookCardView
+			checkDeleteState={checkDeleteState}
+			isOpenDeleteModal={isOpenDeleteModal}
 			deleteBooking={deleteBooking}
 			isDisable={isDisable}
 			showNotificationModal={showNotificationModal}

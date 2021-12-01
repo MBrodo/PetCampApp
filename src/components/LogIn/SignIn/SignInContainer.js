@@ -26,8 +26,6 @@ export const SignInContainer = (props) => {
 	const [hidePass, setHidePass] = useState(true)
 	const [modalWindow, setModalWindow] = useState(false)
 
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
 	const dispatch = useDispatch()
 	const [signIn, setSignIn] = useState({
 		email: '',
@@ -52,6 +50,7 @@ export const SignInContainer = (props) => {
 			) : null
 		) : null
 	}
+
 	const checkValidation = (firstName, secondName) => {
 		return signIn[firstName]
 			? styles.passwordInputValid
@@ -71,9 +70,8 @@ export const SignInContainer = (props) => {
 		})
 	}
 	const SignInSubmit = () => {
-		loginController(email, password, 1).then((res) => {
+		loginController(signIn.email, signIn.password, 1).then((res) => {
 			if (res.status === 200) {
-				setPassword('0')
 				dispatch(setAuth(true))
 				storeUserSession(res)
 				dispatch(setUserId(res.data.id))
@@ -96,11 +94,6 @@ export const SignInContainer = (props) => {
 			hidePass={hidePass}
 			setHidePass={setHidePass}
 			modalWindow={modalWindow}
-			setModalWindow={setModalWindow}
-			email={email}
-			setEmail={setEmail}
-			password={password}
-			setPassword={setPassword}
 			SignInSubmit={SignInSubmit}
 		/>
 	)

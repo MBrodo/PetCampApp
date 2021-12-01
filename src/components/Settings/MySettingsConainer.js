@@ -10,6 +10,7 @@ import getSettingsController from '../../controllers/settings/getSettingsControl
 
 export const MySettingsContainer = () => {
 	const profileInfo = useSelector((state) => state.user.settings)
+	console.log(profileInfo, 'd')
 	const [userInformation, setUserInformation] = useState({
 		name: profileInfo[0].name,
 		middlename: profileInfo[0].middlename,

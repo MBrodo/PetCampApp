@@ -24,11 +24,8 @@ export const BookCardView = (props) => {
 				</Pressable>
 			</View>
 
-			{props.isDisable ? (
-				<DefaultButton
-					onPress={() => props.deleteBooking(props.item.is_active)}
-					textButton={'Delete'}
-				/>
+			{!props.isDisable ? (
+				<DefaultButton onPress={props.checkDeleteState} textButton={'Delete'} />
 			) : (
 				<DefaultButton onPress={props.checkState} textButton={'Cancel'} />
 			)}
@@ -39,9 +36,15 @@ export const BookCardView = (props) => {
 			<ModalWindow
 				isOpenModal={props.isOpenModal}
 				accept={props.showNotificationModal}
-				cancel={props.chechState}
+				cancel={props.checkState}
+				action={'cancel'}
 			/>
-
+			<ModalWindow
+				isOpenModal={props.isOpenDeleteModal}
+				accept={props.deleteBooking}
+				cancel={props.checkDeleteState}
+				action={'delete'}
+			/>
 			<Modal animationType="slide" transparent={true} visible={props.successDelete}>
 				<View style={styles.modalContainer}>
 					<View style={styles.modalWrapper}>
@@ -61,7 +64,7 @@ export const BookCardView = (props) => {
 				<View style={styles.myPetPhoto}>
 					<Image style={styles.picture} source={images.defaultImage} />
 					<View style={styles.nickNameBlock}>
-						<Icon name={'paw'} size={20} color={props.isDisable ? 'gray' : '#75B158'} />
+						<Icon name={'paw'} size={20} color={!props.isDisable ? 'gray' : '#75B158'} />
 						<Text style={styles.myPetPhotoText}>{props.item.name}</Text>
 					</View>
 				</View>
