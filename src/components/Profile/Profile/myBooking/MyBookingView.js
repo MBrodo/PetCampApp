@@ -10,28 +10,30 @@ export const MyBookingView = (props) => {
 		return props.bookingList.length === 0 ? (
 			<Text style={styles.alternativeText}>You dont have any bookings yet</Text>
 		) : (
-			props.bookingList.map((item) => (
-				<View key={item.id} style={styles.containerMain}>
-					<View style={styles.containerElement}>
-						<View style={styles.elementMain}>
-							<View style={styles.elementFloorAlt}>
-								<ProfileRowInfo item={item.name} title={'Pet'} />
-								<ProfileRowInfo item={item.street} title={'Adderss'} />
-							</View>
-							<View style={styles.elementFloorAlt}>
-								<View style={styles.elementInfoDate}>
-									<Text>Date</Text>
-									<Text style={styles.elementText}>
-										{item.booking_start.substring(10, 0)} - {item.booking_end.substring(10, 0)}
-									</Text>
-								</View>
-							</View>
-						</View>
-					</View>
-				</View>
-			))
+			<View style={styles.containerMain}>
+				{props.bookingList.map((item) => bookingsList(item))}
+			</View>
 		)
 	}
+	const bookingsList = (item) => (
+		<View key={item.id} style={styles.containerElement}>
+			<View style={styles.elementMain}>
+				<View style={styles.elementFloorAlt}>
+					<ProfileRowInfo item={item.name} title={'Pet'} />
+					<ProfileRowInfo item={item.street} title={'Adderss'} />
+				</View>
+				<View style={styles.elementFloorAlt}>
+					<View style={styles.elementInfoDate}>
+						<Text>Date</Text>
+						<Text style={styles.elementText}>
+							{item.booking_start.substring(10, 0)} - {item.booking_end.substring(10, 0)}
+						</Text>
+					</View>
+				</View>
+			</View>
+		</View>
+	)
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerHeader}>
