@@ -2,16 +2,12 @@ import React from 'react'
 import { Text, View, Pressable } from 'react-native'
 import { styles } from '../../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
-import { ActivityIndicator } from 'react-native'
-import { ProfileRowInfoLarge } from '../../../../common/petInfo/ProfileRowInfoLarge'
+import { Loader } from '../../../../common/Loader/Loader'
+import { ProfileRowInfo } from '../../../../common/petInfo/ProfileRowInfo'
 
 export const MyBookingView = (props) => {
 	const bookingsCheck = () => {
-		return props.isLoading ? (
-			<View style={styles.preloader}>
-				<ActivityIndicator size="large" color="#5D5FEF" />
-			</View>
-		) : props.bookingList.length === 0 ? (
+		return props.bookingList.length === 0 ? (
 			<Text style={styles.alternativeText}>You dont have any bookings yet</Text>
 		) : (
 			props.bookingList.map((item) => (
@@ -19,8 +15,8 @@ export const MyBookingView = (props) => {
 					<View style={styles.containerElement}>
 						<View style={styles.elementMain}>
 							<View style={styles.elementFloorAlt}>
-								<ProfileRowInfoLarge item={item.name} title={'Pet'} />
-								<ProfileRowInfoLarge item={item.street} title={'Adderss'} />
+								<ProfileRowInfo item={item.name} title={'Pet'} />
+								<ProfileRowInfo item={item.street} title={'Adderss'} />
 							</View>
 							<View style={styles.elementFloorAlt}>
 								<View style={styles.elementInfoDate}>
@@ -45,7 +41,7 @@ export const MyBookingView = (props) => {
 					<Icon style={styles.containerLinkIcon} name="arrow-right" size={15} />
 				</Pressable>
 			</View>
-			<View>{bookingsCheck()}</View>
+			{props.isLoading ? Loader() : bookingsCheck()}
 		</View>
 	)
 }

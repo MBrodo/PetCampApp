@@ -29,14 +29,12 @@ export const SignUpContainer = () => {
 		}))
 	}
 
-	const showInvalidMessage = (firstName, secondName) => {
-		return !signUp[firstName] ? (
-			signUp[secondName].length > 0 ? (
-				<Text style={styles.passwordMessageText}>
-					Dolor duis pariatur sint dolor. Adipisicing nisi mollit officia tempor consectetur labore
-					laboris.
-				</Text>
-			) : null
+	const showInvalidMessage = (isValid, state) => {
+		return !signIn[isValid] && signIn[state].length > 0 ? (
+			<Text style={styles.passwordMessageText}>
+				Dolor duis pariatur sint dolor. Adipisicing nisi mollit officia tempor consectetur labore
+				laboris.
+			</Text>
 		) : null
 	}
 
