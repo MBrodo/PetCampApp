@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert } from 'react-native'
+import { Alert, Text } from 'react-native'
 
 import registrationController from '../../../controllers/authorization/registrationController'
 import { SignUpView } from './SignUpView'
@@ -29,8 +29,23 @@ export const SignUpContainer = () => {
 		}))
 	}
 
-	const checkValidation = (name) => {
-		return signUp[name] ? styles.passwordInputValid : styles.passwordInput
+	const showInvalidMessage = (firstName, secondName) => {
+		return !signUp[firstName] ? (
+			signUp[secondName].length > 0 ? (
+				<Text style={styles.passwordMessageText}>
+					Dolor duis pariatur sint dolor. Adipisicing nisi mollit officia tempor consectetur labore
+					laboris.
+				</Text>
+			) : null
+		) : null
+	}
+
+	const checkValidation = (firstName, secondName) => {
+		return signUp[firstName]
+			? styles.passwordInputValid
+			: signUp[secondName].length === 0
+			? styles.passwordInput
+			: styles.passwordInputInValid
 	}
 	const changeState = (firstName, secondName, item, regular) => {
 		setSignUp((prevState) => ({
@@ -61,6 +76,7 @@ export const SignUpContainer = () => {
 
 	return (
 		<SignUpView
+			showInvalidMessage={showInvalidMessage}
 			hidePassword={hidePassword}
 			signUp={signUp}
 			isEmailValid={signUp.isEmailValid}

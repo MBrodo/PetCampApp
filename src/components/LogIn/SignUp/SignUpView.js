@@ -25,18 +25,19 @@ export const SignUpView = (props) => {
 					<View>
 						<Text style={styles.logInText}>e-mail</Text>
 						<TextInput
-							style={props.checkValidation('isEmailValid')}
+							style={props.checkValidation('isEmailValid', 'email')}
 							onChangeText={(e) =>
 								props.changeState('email', 'isEmailValid', e, EMAIL_VALIDATION.test(e))
 							}
 							placeholder="Email or phone number"
 							autoCorrect={false}
 						/>
+						{props.showInvalidMessage('isEmailValid', 'email')}
 					</View>
 					<View>
 						<Text style={styles.logInText}>Name</Text>
 						<TextInput
-							style={props.checkValidation('isNameValid')}
+							style={props.checkValidation('isNameValid', 'userName')}
 							onChangeText={(e) =>
 								props.changeState('userName', 'isNameValid', e, NAME_VALIDATION.test(e))
 							}
@@ -47,7 +48,7 @@ export const SignUpView = (props) => {
 					<View>
 						<Text style={styles.logInText}>middle name</Text>
 						<TextInput
-							style={props.checkValidation('isMiddleNameValid')}
+							style={props.checkValidation('isMiddleNameValid', 'middleName')}
 							onChangeText={(e) =>
 								props.changeState('middleName', 'isMiddleNameValid', e, NAME_VALIDATION.test(e))
 							}
@@ -58,7 +59,7 @@ export const SignUpView = (props) => {
 					<View>
 						<Text style={styles.logInText}>surname</Text>
 						<TextInput
-							style={props.checkValidation('isSurnameValid')}
+							style={props.checkValidation('isSurnameValid', 'surname')}
 							onChangeText={(e) =>
 								props.changeState('surname', 'isSurnameValid', e, NAME_VALIDATION.test(e))
 							}
@@ -69,17 +70,18 @@ export const SignUpView = (props) => {
 					<View>
 						<Text style={styles.logInText}>mobile number</Text>
 						<TextInput
-							style={props.checkValidation('isPhoneValid')}
+							style={props.checkValidation('isPhoneValid', 'mobileNumber')}
 							onChangeText={(e) =>
 								props.changeState('mobileNumber', 'isPhoneValid', e, PHONE_VALIDATION.test(e))
 							}
 							placeholder="mobile number"
 							autoCorrect={false}
 						/>
+						{props.showInvalidMessage('isPhoneValid', 'mobileNumber')}
 					</View>
 					<View>
 						<Text style={styles.logInText}>password</Text>
-						<View style={props.checkValidation('isPasswordValid')}>
+						<View style={props.checkValidation('isPasswordValid', 'password')}>
 							<TextInput
 								style={styles.passwordText}
 								onChangeText={(e) =>
@@ -97,7 +99,7 @@ export const SignUpView = (props) => {
 								onPress={() => props.hidePassword()}
 							/>
 						</View>
-
+						{props.showInvalidMessage('isPasswordValid', 'password')}
 						<Text>forgot your password?</Text>
 					</View>
 					<TouchableHighlight
