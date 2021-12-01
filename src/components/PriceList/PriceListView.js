@@ -53,11 +53,11 @@ export const PriceListView = () => {
 				<View style={styles.optionsBlock}>
 					<Text style={styles.titleText}>Options:</Text>
 					<>
-						<PriceRowInfo title={'Option 1 - Silver'} price={'$ 10 / day'} />
+						<PriceRowInfo title={'Option 1 - Silver'} price={'$ 10'} />
 						<OptionDescription gamesTime={'4'} gamesAmount={'30'} />
-						<PriceRowInfo title={'Option 2 - Gold '} price={' $ 15 / day'} />
+						<PriceRowInfo title={'Option 2 - Gold '} price={' $ 15'} />
 						<OptionDescription gamesTime={'6'} gamesAmount={'60'} />
-						<PriceRowInfo title={'Option 3 - Platinum '} price={' $ 20 / day'} />
+						<PriceRowInfo title={'Option 3 - Platinum '} price={' $ 20'} />
 						<OptionDescription gamesTime={'8'} gamesAmount={'60'} />
 					</>
 				</View>
