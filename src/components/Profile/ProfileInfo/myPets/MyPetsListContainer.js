@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, Image, Pressable } from 'react-native'
 import { MyPetsListView } from './MyPetsListView'
 import { styles } from './style'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { PetCard } from '../../../../common/layouts/PetCard'
 import { useNavigation } from '@react-navigation/native'
 import { PetInfo } from '../../../../common/petInfo/petInfo'
@@ -11,9 +11,14 @@ import { images } from '../addMyPet/AddMyPetContainer'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import deletePet from '../../../../controllers/pets/deletePet'
 import { ModalWindow } from '../../../../common/modal/modal'
+import bookList from '../../../../controllers/authorization/BookListController'
+import fullpetListController from '../../../../controllers/authorization/fullPetListController'
+import { setPetsList, setPets } from '../../../../redux/slices/fullPetsSlice'
 
 export const MyPetsListContainer = (props) => {
+	const dispatch = useDispatch()
 	const [isOpenModal, setOpenModal] = useState(false)
+	const userID = useSelector((state) => state.user.id)
 
 	const deletePetCard = (id) => {
 		props.route.params.setCheckState((state) => !state)
@@ -25,9 +30,26 @@ export const MyPetsListContainer = (props) => {
 			}
 		})
 	}
+	const [render, setRender] = useState(false)
+	useEffect(() => {
+		fullpetListController(userID).then((res) => {
+			if (res.status === 200) {
+				dispatch(setPetsList(res.data.petsList))
+			}
+		})
+	}, [render])
+
+	useEffect(() => {
+		bookList(userID).then((res) => {
+			if (res.status === 200) {
+				dispatch(setPets(res.data.petsInfo))
+			}
+		})
+	}, [render])
 	const acceptDelete = (id) => {
 		setOpenModal(!isOpenModal)
 		deletePetCard(id)
+		setRender(!render)
 	}
 
 	const cancelDelete = () => {
