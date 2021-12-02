@@ -29,8 +29,8 @@ export const SignUpContainer = () => {
 		}))
 	}
 
-	const showInvalidMessage = (field, state) => {
-		return !signUp[field] && signUp[state].length > 0 ? (
+	const showInvalidMessage = (isValid, field) => {
+		return !signUp[isValid] && signUp[field].length > 0 ? (
 			<Text style={styles.passwordMessageText}>
 				Dolor duis pariatur sint dolor. Adipisicing nisi mollit officia tempor consectetur labore
 				laboris.

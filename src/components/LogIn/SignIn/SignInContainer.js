@@ -40,8 +40,8 @@ export const SignInContainer = (props) => {
 			[validation]: regular,
 		}))
 	}
-	const showInvalidMessage = (field, state) => {
-		return !signIn[field] && signIn[state].length > 0 ? (
+	const showInvalidMessage = (isValid, field) => {
+		return !signIn[isValid] && signIn[field].length > 0 ? (
 			<Text style={styles.passwordMessageText}>
 				Dolor duis pariatur sint dolor. Adipisicing nisi mollit officia tempor consectetur labore
 				laboris.
