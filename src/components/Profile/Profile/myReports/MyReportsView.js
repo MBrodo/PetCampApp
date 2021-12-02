@@ -4,8 +4,17 @@ import { styles } from '../../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import images from '../../MyProfile'
 import { ProfileRowInfo } from '../../../../common/petInfo/ProfileRowInfo'
+import { Loader } from '../../../../common/Loader/Loader'
+import { EmptyContent } from '../../../../common/petInfo/EmptyContent'
 
 export const MyReports = (props) => {
+	const reportsCheck = () => {
+		return props.reports.length === 0 ? (
+			<EmptyContent text={'reports'} />
+		) : (
+			<View style={styles.containerMain}>{props.reports.map((item) => reportsList(item))}</View>
+		)
+	}
 	const reportsList = (item) => (
 		<View key={item.id} style={styles.containerElement}>
 			<View style={styles.containerWrapper}>
@@ -39,7 +48,7 @@ export const MyReports = (props) => {
 					<Icon style={styles.containerLinkIcon} name="arrow-right" size={15} />
 				</Pressable>
 			</View>
-			<View style={styles.containerMain}>{props.reports.map((item) => reportsList(item))}</View>
+			{props.isLoading ? Loader() : reportsCheck()}
 		</View>
 	)
 }

@@ -9,6 +9,7 @@ export const MyBookingListView = (props) => {
 			<View style={styles.mainBlock}>
 				{props.pets.map((item) => (
 					<BookCardContainer
+						isDisable={props.isDisable}
 						allBookings={props.allBookings}
 						updateBook={props.updateBook}
 						key={item.id}

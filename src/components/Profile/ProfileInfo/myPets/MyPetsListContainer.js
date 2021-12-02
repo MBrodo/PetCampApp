@@ -10,13 +10,11 @@ import { PetInfo } from '../../../../common/petInfo/petInfo'
 import { images } from '../addMyPet/AddMyPetContainer'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import deletePet from '../../../../controllers/pets/deletePet'
-import { Context } from '../../../../context'
 
 export const MyPetsListContainer = (props) => {
-	const token = useContext(Context)
 	const deletePetCard = (id) => {
 		props.route.params.setCheckState((state) => !state)
-		deletePet(id, token).then((res) => {
+		deletePet(id).then((res) => {
 			if (res.status === 200) {
 				console.log('delete is success')
 			} else if (res.status === 401 || res.status === 400) {

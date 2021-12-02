@@ -27,14 +27,22 @@ export const styles = StyleSheet.create({
 		textAlign: 'center',
 		fontSize: 24,
 	},
-	passwordInput: {
+	passwordDefault: {
 		flexDirection: 'row',
 		borderRadius: 4,
 		height: 50,
 		marginTop: 5,
 		borderWidth: 1,
 	},
-	passwordInputValid: {
+	inValidPassword: {
+		flexDirection: 'row',
+		borderRadius: 4,
+		height: 50,
+		marginTop: 5,
+		borderWidth: 1,
+		borderColor: 'red',
+	},
+	validPassword: {
 		flexDirection: 'row',
 		borderRadius: 4,
 		height: 50,
@@ -117,5 +125,8 @@ export const styles = StyleSheet.create({
 		marginTop: 5,
 		borderWidth: 1,
 		padding: 10,
+	},
+	passwordMessageText: {
+		color: 'red',
 	},
 })

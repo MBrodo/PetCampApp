@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Alert } from 'react-native'
+import { Alert, Text } from 'react-native'
 
 import loginController from '../../../controllers/authorization/loginController'
 import getSettingsController from '../../../controllers/settings/getSettingsController'
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setAuth } from '../../../redux/slices/authentication/authSlice'
 import { Context } from '../../../context'
 import { SignInView } from './SignInView'
+import { styles } from '../style'
 
 export const SignInContainer = (props) => {
 	const token = useContext(Context)
@@ -25,9 +26,28 @@ export const SignInContainer = (props) => {
 	const [hidePass, setHidePass] = useState(true)
 	const [modalWindow, setModalWindow] = useState(false)
 
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
 	const dispatch = useDispatch()
+	const [signIn, setSignIn] = useState({
+		email: '',
+		password: '',
+		isPasswordValid: false,
+		isEmailValid: false,
+	})
+	const changeState = (state, validation, item, regular) => {
+		setSignIn((prevState) => ({
+			...prevState,
+			[state]: item,
+			[validation]: regular,
+		}))
+	}
+	const showInvalidMessage = (isValid, field) => {
+		return !signIn[isValid] && signIn[field].length > 0 ? (
+			<Text style={styles.passwordMessageText}>
+				Dolor duis pariatur sint dolor. Adipisicing nisi mollit officia tempor consectetur labore
+				laboris.
+			</Text>
+		) : null
+	}
 
 	const setProfileSettings = (userID) => {
 		getSettingsController(userID, token).then((res) => {
@@ -40,9 +60,8 @@ export const SignInContainer = (props) => {
 		})
 	}
 	const SignInSubmit = () => {
-		loginController(email, password, 1).then((res) => {
+		loginController(signIn.email, signIn.password, 1).then((res) => {
 			if (res.status === 200) {
-				setPassword('0')
 				dispatch(setAuth(true))
 				storeUserSession(res)
 				dispatch(setUserId(res.data.id))
@@ -58,14 +77,13 @@ export const SignInContainer = (props) => {
 
 	return (
 		<SignInView
+			setModalWindow={setModalWindow}
+			showInvalidMessage={showInvalidMessage}
+			changeState={changeState}
+			signIn={signIn}
 			hidePass={hidePass}
 			setHidePass={setHidePass}
 			modalWindow={modalWindow}
-			setModalWindow={setModalWindow}
-			email={email}
-			setEmail={setEmail}
-			password={password}
-			setPassword={setPassword}
 			SignInSubmit={SignInSubmit}
 		/>
 	)

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { MySettingsView } from './MySettingsView'
 import { TextInfoUser } from './TextInfo/TextInfo'
 import { TextInputUser } from './TextInfo/TextInput'
@@ -7,11 +7,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setSettings } from '../../redux/slices/userSlice'
 import sendSettingsController from '../../controllers/settings/sendSettingsController'
 import getSettingsController from '../../controllers/settings/getSettingsController'
-import { Context } from '../../context'
 
 export const MySettingsContainer = () => {
-	const token = useContext(Context)
 	const profileInfo = useSelector((state) => state.user.settings)
+	console.log(profileInfo, 'd')
 	const [userInformation, setUserInformation] = useState({
 		name: profileInfo[0].name,
 		middlename: profileInfo[0].middlename,
@@ -46,8 +45,7 @@ export const MySettingsContainer = () => {
 			userInformation.email,
 			userInformation.city,
 			userInformation.street,
-			userInformation.phone,
-			token
+			userInformation.phone
 		).then((res) => {
 			if (res.status === 200) {
 				console.log('success11')
@@ -57,7 +55,7 @@ export const MySettingsContainer = () => {
 		})
 	}
 	const getProfileInfo = () => {
-		getSettingsController(userID, token).then((res) => {
+		getSettingsController(userID).then((res) => {
 			if (res.status === 200) {
 				console.log('successs')
 				dispatch(setSettings(res.data.mySettingsInfo))

@@ -20,15 +20,12 @@ const Stack = createStackNavigator()
 export const StackNavigation = () => {
 	const dispatch = useDispatch()
 	const [token, setToken] = useState()
-	const signInToken = useSelector((state) => state.user.info)
-	const authenticate = useSelector((state) => state.auth.status)
 	async function retrieveUserSession() {
 		try {
 			const session = await EncryptedStorage.getItem('user_session')
 			setToken(() => (session ? session.substring(19, 244) : null))
 		} catch (error) {}
 	}
-	console.log(authenticate, signInToken, token, 'sign')
 	async function removeUserSession() {
 		try {
 			await EncryptedStorage.removeItem('user_session')
@@ -37,7 +34,7 @@ export const StackNavigation = () => {
 	retrieveUserSession()
 
 	const setProfileSettings = (userID) => {
-		getSettingsController(userID, token).then((res) => {
+		getSettingsController(userID).then((res) => {
 			if (res.status === 200) {
 				dispatch(setSettings(res.data.mySettingsInfo))
 			}
@@ -61,8 +58,6 @@ export const StackNavigation = () => {
 		mapListController().then((res) => {
 			if (res.status === 200) {
 				dispatch(setCamps(res.data.petCamps))
-			} else {
-				console.log('Some trouble with server!')
 			}
 		})
 	}, [])

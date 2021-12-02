@@ -1,9 +1,40 @@
 import React from 'react'
 import { Text, View, Pressable } from 'react-native'
-import { styles } from './style'
+import { styles } from '../../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
+import { Loader } from '../../../../common/Loader/Loader'
+import { ProfileRowInfo } from '../../../../common/petInfo/ProfileRowInfo'
+import { EmptyContent } from '../../../../common/petInfo/EmptyContent'
 
 export const MyBookingView = (props) => {
+	const bookingsCheck = () => {
+		return props.bookingList.length === 0 ? (
+			<EmptyContent text={'bookings'} />
+		) : (
+			<View style={styles.containerMain}>
+				{props.bookingList.map((item) => bookingsList(item))}
+			</View>
+		)
+	}
+	const bookingsList = (item) => (
+		<View key={item.id} style={styles.containerElement}>
+			<View style={styles.elementMain}>
+				<View style={styles.elementFloorAlt}>
+					<ProfileRowInfo item={item.name} title={'Pet'} />
+					<ProfileRowInfo item={item.street} title={'Adderss'} />
+				</View>
+				<View style={styles.elementFloorAlt}>
+					<View style={styles.elementInfoDate}>
+						<Text>Date</Text>
+						<Text style={styles.elementText}>
+							{item.booking_start.substring(10, 0)} - {item.booking_end.substring(10, 0)}
+						</Text>
+					</View>
+				</View>
+			</View>
+		</View>
+	)
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerHeader}>
@@ -13,34 +44,7 @@ export const MyBookingView = (props) => {
 					<Icon style={styles.containerLinkIcon} name="arrow-right" size={15} />
 				</Pressable>
 			</View>
-			<View>
-				{props.bookingList.map((item) => (
-					<View key={item.id} style={styles.containerMain}>
-						<View style={styles.containerElement}>
-							<View style={styles.elementMain}>
-								<View style={styles.elementFloorAlt}>
-									<View style={styles.elementInfoAlt}>
-										<Text>Pet</Text>
-										<Text style={styles.elementText}>{item.name}</Text>
-									</View>
-									<View style={styles.elementInfoAlt}>
-										<Text>Adderss</Text>
-										<Text style={styles.elementText}>{item.street}</Text>
-									</View>
-								</View>
-								<View style={styles.elementFloorAlt}>
-									<View style={styles.elementInfoDate}>
-										<Text>Date</Text>
-										<Text style={styles.elementText}>
-											{item.booking_start.substring(10, 0)} - {item.booking_end.substring(10, 0)}
-										</Text>
-									</View>
-								</View>
-							</View>
-						</View>
-					</View>
-				))}
-			</View>
+			{props.isLoading ? Loader() : bookingsCheck()}
 		</View>
 	)
 }

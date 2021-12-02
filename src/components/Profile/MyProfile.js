@@ -28,7 +28,7 @@ export const MyProfile = () => {
 					<View style={styles.userInfo}>
 						<Image source={images.userPicture} style={styles.userPic} />
 						<Text style={styles.userName}>
-							{profileInfo.length === 0 ? 'Random' : profileInfo[0].name}
+							{profileInfo.length === 0 ? 'Loading..' : profileInfo[0].name}
 						</Text>
 					</View>
 				</ImageBackground>

@@ -12,6 +12,8 @@ import {
 	Pressable,
 } from 'react-native'
 import { SignUpContainer } from '../SignUp/SignUpContainer'
+import { EMAIL_VALIDATION, PASSWORD_VALIDATION } from '../validation'
+import checkValidation from '../../../utils/checkValidation'
 
 export const SignInView = (props) => {
 	return (
@@ -32,19 +34,24 @@ export const SignInView = (props) => {
 						<View>
 							<Text style={styles.logInText}>phone or e-mail</Text>
 							<TextInput
-								style={styles.input}
-								onChangeText={props.setEmail}
+								style={checkValidation(props.signIn, 'isEmailValid', 'email')}
+								onChangeText={(e) =>
+									props.changeState('email', 'isEmailValid', e, EMAIL_VALIDATION.test(e))
+								}
 								placeholder="Email or phone number"
 								autoCorrect={false}
 							/>
+							{props.showInvalidMessage('isEmailValid', 'email')}
 						</View>
 
 						<View>
 							<Text style={styles.logInText}>password</Text>
-							<View style={styles.passwordInput}>
+							<View style={checkValidation(props.signIn, 'isPasswordValid', 'password')}>
 								<TextInput
 									style={styles.passwordText}
-									onChangeText={props.setPassword}
+									onChangeText={(e) =>
+										props.changeState('password', 'isPasswordValid', e, PASSWORD_VALIDATION.test(e))
+									}
 									placeholder="Password"
 									autoCorrect={false}
 									secureTextEntry={props.hidePass}
@@ -57,7 +64,7 @@ export const SignInView = (props) => {
 									onPress={() => props.setHidePass(props.hidePass ? false : true)}
 								/>
 							</View>
-
+							{props.showInvalidMessage('isPasswordValid', 'password')}
 							<Text>forgot your password?</Text>
 						</View>
 
