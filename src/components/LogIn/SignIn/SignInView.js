@@ -13,6 +13,7 @@ import {
 } from 'react-native'
 import { SignUpContainer } from '../SignUp/SignUpContainer'
 import { EMAIL_VALIDATION, PASSWORD_VALIDATION } from '../validation'
+import checkValidation from '../../../utils/checkValidation'
 
 export const SignInView = (props) => {
 	return (
@@ -33,7 +34,7 @@ export const SignInView = (props) => {
 						<View>
 							<Text style={styles.logInText}>phone or e-mail</Text>
 							<TextInput
-								style={props.checkValidation('isEmailValid', 'email')}
+								style={checkValidation(props.signIn, 'isEmailValid', 'email')}
 								onChangeText={(e) =>
 									props.changeState('email', 'isEmailValid', e, EMAIL_VALIDATION.test(e))
 								}
@@ -45,7 +46,7 @@ export const SignInView = (props) => {
 
 						<View>
 							<Text style={styles.logInText}>password</Text>
-							<View style={props.checkValidation('isPasswordValid', 'password')}>
+							<View style={checkValidation(props.signIn, 'isPasswordValid', 'password')}>
 								<TextInput
 									style={styles.passwordText}
 									onChangeText={(e) =>

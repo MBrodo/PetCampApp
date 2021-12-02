@@ -33,28 +33,20 @@ export const SignInContainer = (props) => {
 		isPasswordValid: false,
 		isEmailValid: false,
 	})
-	const changeState = (firstName, secondName, item, regular) => {
+	const changeState = (state, validation, item, regular) => {
 		setSignIn((prevState) => ({
 			...prevState,
-			[firstName]: item,
-			[secondName]: regular,
+			[state]: item,
+			[validation]: regular,
 		}))
 	}
-	const showInvalidMessage = (isValid, state) => {
-		return !signIn[isValid] && signIn[state].length > 0 ? (
+	const showInvalidMessage = (field, state) => {
+		return !signIn[field] && signIn[state].length > 0 ? (
 			<Text style={styles.passwordMessageText}>
 				Dolor duis pariatur sint dolor. Adipisicing nisi mollit officia tempor consectetur labore
 				laboris.
 			</Text>
 		) : null
-	}
-
-	const checkValidation = (firstName, secondName) => {
-		return signIn[firstName]
-			? styles.passwordInputValid
-			: signIn[secondName].length === 0
-			? styles.passwordInput
-			: styles.passwordInputInValid
 	}
 
 	const setProfileSettings = (userID) => {
@@ -85,8 +77,8 @@ export const SignInContainer = (props) => {
 
 	return (
 		<SignInView
+			setModalWindow={setModalWindow}
 			showInvalidMessage={showInvalidMessage}
-			checkValidation={checkValidation}
 			changeState={changeState}
 			signIn={signIn}
 			hidePass={hidePass}

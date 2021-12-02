@@ -29,8 +29,8 @@ export const SignUpContainer = () => {
 		}))
 	}
 
-	const showInvalidMessage = (isValid, state) => {
-		return !signIn[isValid] && signIn[state].length > 0 ? (
+	const showInvalidMessage = (field, state) => {
+		return !signUp[field] && signUp[state].length > 0 ? (
 			<Text style={styles.passwordMessageText}>
 				Dolor duis pariatur sint dolor. Adipisicing nisi mollit officia tempor consectetur labore
 				laboris.
@@ -38,18 +38,11 @@ export const SignUpContainer = () => {
 		) : null
 	}
 
-	const checkValidation = (firstName, secondName) => {
-		return signUp[firstName]
-			? styles.passwordInputValid
-			: signUp[secondName].length === 0
-			? styles.passwordInput
-			: styles.passwordInputInValid
-	}
-	const changeState = (firstName, secondName, item, regular) => {
+	const changeState = (state, validation, item, regular) => {
 		setSignUp((prevState) => ({
 			...prevState,
-			[firstName]: item,
-			[secondName]: regular,
+			[state]: item,
+			[validation]: regular,
 		}))
 	}
 
@@ -65,7 +58,6 @@ export const SignUpContainer = () => {
 		).then((res) => {
 			if (res.status === 200) {
 				Alert.alert('Confirm your e-mail to finish registration')
-				// setPassword('0')
 			} else if (res.status === 409) {
 				Alert.alert(res.data.message)
 			}
@@ -78,7 +70,6 @@ export const SignUpContainer = () => {
 			hidePassword={hidePassword}
 			signUp={signUp}
 			isEmailValid={signUp.isEmailValid}
-			checkValidation={checkValidation}
 			changeState={changeState}
 			SignUpSubmit={SignUpSubmit}
 		/>

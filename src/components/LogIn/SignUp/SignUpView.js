@@ -1,20 +1,14 @@
 import { styles } from '../style'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import React from 'react'
-import {
-	Text,
-	View,
-	TextInput,
-	TouchableHighlight,
-	ScrollView,
-	KeyboardAvoidingView,
-} from 'react-native'
+import { Text, View, TextInput, TouchableHighlight, KeyboardAvoidingView } from 'react-native'
 import {
 	PHONE_VALIDATION,
 	NAME_VALIDATION,
 	EMAIL_VALIDATION,
 	PASSWORD_VALIDATION,
 } from '../validation'
+import checkValidation from '../../../utils/checkValidation'
 
 export const SignUpView = (props) => {
 	return (
@@ -25,7 +19,7 @@ export const SignUpView = (props) => {
 					<View>
 						<Text style={styles.logInText}>e-mail</Text>
 						<TextInput
-							style={props.checkValidation('isEmailValid', 'email')}
+							style={checkValidation(props.signUp, 'isEmailValid', 'email')}
 							onChangeText={(e) =>
 								props.changeState('email', 'isEmailValid', e, EMAIL_VALIDATION.test(e))
 							}
@@ -37,7 +31,7 @@ export const SignUpView = (props) => {
 					<View>
 						<Text style={styles.logInText}>Name</Text>
 						<TextInput
-							style={props.checkValidation('isNameValid', 'userName')}
+							style={checkValidation(props.signUp, 'isNameValid', 'userName')}
 							onChangeText={(e) =>
 								props.changeState('userName', 'isNameValid', e, NAME_VALIDATION.test(e))
 							}
@@ -48,7 +42,7 @@ export const SignUpView = (props) => {
 					<View>
 						<Text style={styles.logInText}>middle name</Text>
 						<TextInput
-							style={props.checkValidation('isMiddleNameValid', 'middleName')}
+							style={checkValidation(props.signUp, 'isMiddleNameValid', 'middleName')}
 							onChangeText={(e) =>
 								props.changeState('middleName', 'isMiddleNameValid', e, NAME_VALIDATION.test(e))
 							}
@@ -59,7 +53,7 @@ export const SignUpView = (props) => {
 					<View>
 						<Text style={styles.logInText}>surname</Text>
 						<TextInput
-							style={props.checkValidation('isSurnameValid', 'surname')}
+							style={checkValidation(props.signUp, 'isSurnameValid', 'surname')}
 							onChangeText={(e) =>
 								props.changeState('surname', 'isSurnameValid', e, NAME_VALIDATION.test(e))
 							}
@@ -70,7 +64,7 @@ export const SignUpView = (props) => {
 					<View>
 						<Text style={styles.logInText}>mobile number</Text>
 						<TextInput
-							style={props.checkValidation('isPhoneValid', 'mobileNumber')}
+							style={checkValidation(props.signUp, 'isPhoneValid', 'mobileNumber')}
 							onChangeText={(e) =>
 								props.changeState('mobileNumber', 'isPhoneValid', e, PHONE_VALIDATION.test(e))
 							}
@@ -81,7 +75,7 @@ export const SignUpView = (props) => {
 					</View>
 					<View>
 						<Text style={styles.logInText}>password</Text>
-						<View style={props.checkValidation('isPasswordValid', 'password')}>
+						<View style={checkValidation(props.signUp, 'isPasswordValid', 'password')}>
 							<TextInput
 								style={styles.passwordText}
 								onChangeText={(e) =>

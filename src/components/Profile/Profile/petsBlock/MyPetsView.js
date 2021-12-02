@@ -5,12 +5,12 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import images from '../../MyProfile'
 import { ProfileRowInfo } from '../../../../common/petInfo/ProfileRowInfo'
 import { Loader } from '../../../../common/Loader/Loader'
-import { IfBlockEmpty } from '../../../../common/petInfo/ifBlockEmpty'
+import { EmptyContent } from '../../../../common/petInfo/EmptyContent'
 
 export const MyPets = (props) => {
 	const petsCheck = () => {
 		return props.pets.length === 0 ? (
-			<IfBlockEmpty text={'pets'} />
+			<EmptyContent text={'pets'} />
 		) : (
 			<View style={styles.containerMain}>{props.pets.map((item) => petList(item))}</View>
 		)
