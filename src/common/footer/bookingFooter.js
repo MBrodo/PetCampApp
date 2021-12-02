@@ -21,7 +21,13 @@ export const BookingFooter = () => {
 					<Text style={styles.footerFocusText}>Client Agreement</Text>
 				</TouchableOpacity>
 				<Text style={styles.footerText}>and</Text>
-				<Text style={styles.footerFocusText}>Pricing&Conditions</Text>
+				<TouchableOpacity
+					onPress={() => {
+						navigation.navigate('PriceList')
+					}}
+				>
+					<Text style={styles.footerFocusText}>Pricing&Conditions</Text>
+				</TouchableOpacity>
 			</View>
 		</View>
 	)
