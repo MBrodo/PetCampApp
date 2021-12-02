@@ -26,7 +26,7 @@ export const MyBookingView = (props) => {
 								<View style={styles.containerElement}>
 									<View style={styles.elementMain}>
 										<View style={styles.elementFloorAlt}>
-											<ProfileRowInfo item={item.name} title={'Pet'} />
+											<ProfileRowInfoLarge item={item.name} title={'Pet'} />
 											<ProfileRowInfoLarge item={item.street} title={'Adderss'} />
 										</View>
 										<View style={styles.elementFloorAlt}>

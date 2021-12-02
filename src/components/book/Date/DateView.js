@@ -15,7 +15,7 @@ export const DateView = (props) => {
 			<View style={styles.mainDateContainer}>
 				<View>
 					<TouchableOpacity onPress={() => props.showDatepicker()} style={styles.dateContainer}>
-						<Text style={styles.dateText}>{props.dateText}</Text>
+						<Text style={styles.dateText}>{props.dateInfo.startDate}</Text>
 						<Icon name="calendar-alt" size={24} style={styles.dateIcon} />
 					</TouchableOpacity>
 				</View>
@@ -26,29 +26,29 @@ export const DateView = (props) => {
 
 				<View>
 					<TouchableOpacity onPress={() => props.showDatepickerEnd()} style={styles.dateContainer}>
-						<Text style={styles.dateText}>{props.dateTextEnd}</Text>
+						<Text style={styles.dateText}>{props.dateInfo.endDate}</Text>
 						<Icon name="calendar-alt" size={24} style={styles.dateIcon} />
 					</TouchableOpacity>
 				</View>
 				<View>
-					{props.show && (
+					{props.dateInfo.show && (
 						<RNDateTimePicker
 							minimumDate={new Date()}
 							testID="dateTimePicker"
-							value={props.date}
-							mode={props.mode}
+							value={props.dateInfo.date}
+							mode={props.dateInfo.mode}
 							is24Hour={true}
 							display="default"
 							onChange={props.onChange}
 						/>
 					)}
 
-					{props.showEnd && (
+					{props.dateInfo.showEnd && (
 						<RNDateTimePicker
 							minimumDate={new Date()}
 							testID="dateTimePicker"
-							value={props.dateEnd}
-							mode={props.modeEnd}
+							value={props.dateInfo.dateEnd}
+							mode={props.dateInfo.modeEnd}
 							is24Hour={true}
 							display="default"
 							onChange={props.onChangeEnd}
@@ -57,7 +57,11 @@ export const DateView = (props) => {
 				</View>
 			</View>
 
-			<TouchableOpacity onPress={() => props.StartBookProcess()} style={styles.footerButton}>
+			<TouchableOpacity
+				disabled={props.dateInfo.startDate && props.dateInfo.endDate === 'yyyy/mm/dd'}
+				onPress={() => props.StartBookProcess()}
+				style={styles.footerButton}
+			>
 				<Text style={styles.footerButtonText}>Book</Text>
 			</TouchableOpacity>
 		</View>

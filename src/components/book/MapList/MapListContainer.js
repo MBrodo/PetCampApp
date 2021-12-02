@@ -22,10 +22,8 @@ export const MapListContainer = (props) => {
 			</View>
 		)
 	}
-
 	const [latitude, setLatitude] = useState(53.88852210035737)
 	const [longitude, setLongitude] = useState(27.544550058168248)
-
 	const checkDB = () => {
 		return props.cat ? cats : dogs
 	}
