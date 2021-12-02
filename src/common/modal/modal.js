@@ -9,7 +9,7 @@ export const ModalWindow = (props) => {
 				<View style={styles.wrapper}>
 					<Text style={styles.titleText}>Do you want to {props.action} a card?</Text>
 					<View style={styles.buttonContainer}>
-						<Pressable onPress={() => props.accept()} style={styles.acceptButton}>
+						<Pressable onPress={() => props.accept(props.item)} style={styles.acceptButton}>
 							<Text style={styles.acceptText}>Yes</Text>
 						</Pressable>
 						<Pressable onPress={() => props.cancel()} style={styles.cancelButton}>

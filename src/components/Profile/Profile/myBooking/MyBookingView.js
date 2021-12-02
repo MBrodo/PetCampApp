@@ -44,6 +44,7 @@ export const MyBookingView = (props) => {
 					<Icon style={styles.containerLinkIcon} name="arrow-right" size={15} />
 				</Pressable>
 			</View>
+
 			{props.isLoading ? Loader() : bookingsCheck()}
 		</View>
 	)

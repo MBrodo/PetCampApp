@@ -3,8 +3,10 @@ import { Text, View, TouchableOpacity, FlatList } from 'react-native'
 
 import { styles } from '../styles'
 import MapView, { Marker } from 'react-native-maps'
+import { useSelector } from 'react-redux'
 
 export const MapListView = (props) => {
+	const map = useSelector((state) => state.booking.checkPage)
 	const List = () => {
 		return (
 			<View>
@@ -61,7 +63,7 @@ export const MapListView = (props) => {
 	}
 	return (
 		<View>
-			<View style={styles.optionsContainer}>{props.map ? <List /> : <Map />}</View>
+			<View style={styles.optionsContainer}>{map ? <List /> : <Map />}</View>
 		</View>
 	)
 }

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useState } from 'react'
 import { View, Text, Image, Pressable } from 'react-native'
 import { MyPetsListView } from './MyPetsListView'
 import { styles } from './style'
@@ -10,8 +10,11 @@ import { PetInfo } from '../../../../common/petInfo/petInfo'
 import { images } from '../addMyPet/AddMyPetContainer'
 import Icon from 'react-native-vector-icons/dist/FontAwesome5'
 import deletePet from '../../../../controllers/pets/deletePet'
+import { ModalWindow } from '../../../../common/modal/modal'
 
 export const MyPetsListContainer = (props) => {
+	const [isOpenModal, setOpenModal] = useState(false)
+
 	const deletePetCard = (id) => {
 		props.route.params.setCheckState((state) => !state)
 		deletePet(id).then((res) => {
@@ -22,11 +25,26 @@ export const MyPetsListContainer = (props) => {
 			}
 		})
 	}
+	const acceptDelete = (id) => {
+		setOpenModal(!isOpenModal)
+		deletePetCard(id)
+	}
+
+	const cancelDelete = () => {
+		setOpenModal(!isOpenModal)
+	}
 	const petInfo = (item) => (
 		<View style={styles.wrapper}>
+			<ModalWindow
+				item={item.id}
+				isOpenModal={isOpenModal}
+				accept={acceptDelete}
+				cancel={cancelDelete}
+				action={'delete'}
+			/>
 			<View style={styles.myPetPhoto}>
 				<View style={styles.deleteButton}>
-					<Pressable onPress={() => deletePetCard(item.id)}>
+					<Pressable onPress={() => setOpenModal(!isOpenModal)}>
 						<Icon name="trash-alt" size={20} />
 					</Pressable>
 				</View>
@@ -67,5 +85,15 @@ export const MyPetsListContainer = (props) => {
 		})
 	}
 
-	return <MyPetsListView addButton={addButton} pets={pets} petsCards={petsCards} />
+	return (
+		<MyPetsListView
+			cancelDelete={cancelDelete}
+			acceptDelete={acceptDelete}
+			isOpenModal={isOpenModal}
+			setOpenModal={setOpenModal}
+			addButton={addButton}
+			pets={pets}
+			petsCards={petsCards}
+		/>
+	)
 }

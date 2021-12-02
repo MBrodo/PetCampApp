@@ -153,14 +153,7 @@ export const DateContainer = (props) => {
 	return (
 		<DateView
 			StartBookProcess={StartBookProcess}
-			date={dateInfo.date}
-			mode={dateInfo.mode}
-			show={dateInfo.show}
-			dateText={dateInfo.startDate}
-			dateEnd={dateInfo.dateEnd}
-			modeEnd={dateInfo.modeEnd}
-			showEnd={dateInfo.showEnd}
-			dateTextEnd={dateInfo.endDate}
+			dateInfo={dateInfo}
 			onChangeEnd={onChangeEnd}
 			onChange={onChange}
 			showDatepickerEnd={showDatepickerEnd}
