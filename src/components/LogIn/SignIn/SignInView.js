@@ -32,13 +32,13 @@ export const SignInView = (props) => {
 					<View style={styles.logInSection}>
 						<Text style={styles.logInTitle}>Log In</Text>
 						<View>
-							<Text style={styles.logInText}>phone or e-mail</Text>
+							<Text style={styles.logInText}>e-mail</Text>
 							<TextInput
 								style={checkValidation(props.signIn, 'isEmailValid', 'email')}
 								onChangeText={(e) =>
 									props.changeState('email', 'isEmailValid', e, EMAIL_VALIDATION.test(e))
 								}
-								placeholder="Email or phone number"
+								placeholder="Enter your email"
 								autoCorrect={false}
 							/>
 							{props.showInvalidMessage('isEmailValid', 'email')}

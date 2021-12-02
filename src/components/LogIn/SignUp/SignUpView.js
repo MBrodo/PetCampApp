@@ -23,13 +23,13 @@ export const SignUpView = (props) => {
 							onChangeText={(e) =>
 								props.changeState('email', 'isEmailValid', e, EMAIL_VALIDATION.test(e))
 							}
-							placeholder="Email or phone number"
+							placeholder="Enter your email"
 							autoCorrect={false}
 						/>
 						{props.showInvalidMessage('isEmailValid', 'email')}
 					</View>
 					<View>
-						<Text style={styles.logInText}>Name</Text>
+						<Text style={styles.logInText}>name</Text>
 						<TextInput
 							style={checkValidation(props.signUp, 'isNameValid', 'userName')}
 							onChangeText={(e) =>
@@ -46,7 +46,7 @@ export const SignUpView = (props) => {
 							onChangeText={(e) =>
 								props.changeState('middleName', 'isMiddleNameValid', e, NAME_VALIDATION.test(e))
 							}
-							placeholder="middle name"
+							placeholder="Middle name"
 							autoCorrect={false}
 						/>
 					</View>
@@ -57,7 +57,7 @@ export const SignUpView = (props) => {
 							onChangeText={(e) =>
 								props.changeState('surname', 'isSurnameValid', e, NAME_VALIDATION.test(e))
 							}
-							placeholder="surname"
+							placeholder="Surname"
 							autoCorrect={false}
 						/>
 					</View>
@@ -68,7 +68,7 @@ export const SignUpView = (props) => {
 							onChangeText={(e) =>
 								props.changeState('mobileNumber', 'isPhoneValid', e, PHONE_VALIDATION.test(e))
 							}
-							placeholder="mobile number"
+							placeholder="+375(29)605-30-45"
 							autoCorrect={false}
 						/>
 						{props.showInvalidMessage('isPhoneValid', 'mobileNumber')}
