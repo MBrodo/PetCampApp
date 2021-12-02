@@ -17,8 +17,10 @@ export const Header = () => {
 			<View style={styles.descriptionContainer}>
 				<Text style={styles.descriptionArticle}>Why Us</Text>
 				<Text style={styles.descriptionText}>
-					LLorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat aliquet non quis
-					elementum volutpat amet etiam.Lorem ipsum dolor sit amet.
+					Welcome to our full-service hotel for dogs and cats featuring 24/7 safety-certified
+					associates and an on-call veterinarian. PetsHotel is a great peace-of-mind alternative
+					where cats can rest easy in comfortable quarters and dogs can enjoy playtime, salon
+					services, training classes, and more!
 				</Text>
 			</View>
 		</View>

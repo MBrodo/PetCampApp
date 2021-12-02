@@ -42,10 +42,7 @@ export const SignInContainer = (props) => {
 	}
 	const showInvalidMessage = (isValid, field) => {
 		return !signIn[isValid] && signIn[field].length > 0 ? (
-			<Text style={styles.passwordMessageText}>
-				Dolor duis pariatur sint dolor. Adipisicing nisi mollit officia tempor consectetur labore
-				laboris.
-			</Text>
+			<Text style={styles.passwordMessageText}>Invalid value. Please correct and try again</Text>
 		) : null
 	}
 
