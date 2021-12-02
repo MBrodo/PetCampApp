@@ -31,7 +31,7 @@ export const FeedBacks = ({ navigation }) => {
 			<View style={styles.socialContainer}>
 				<TouchableOpacity
 					onPress={() => {
-						navigation.navigate('Agreement')
+						navigation.navigate('Bookpage')
 					}}
 				>
 					<Text style={styles.socialArticle}>Client Agreements</Text>
