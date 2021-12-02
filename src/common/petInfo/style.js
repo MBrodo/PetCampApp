@@ -19,15 +19,21 @@ export const styles = StyleSheet.create({
 	},
 	elementInfo: {
 		alignItems: 'center',
-		width: 80,
-	},
-	elementInfoAlt: {
-		alignItems: 'center',
 	},
 	elementText: {
 		color: 'black',
 	},
 	elementVetPass: {
 		fontSize: 13,
+	},
+	ifEmptyBlock: {
+		height: '100%',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	alternativeText: {
+		textTransform: 'uppercase',
+		fontSize: 25,
+		color: '#C4C4C4',
 	},
 })

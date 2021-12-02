@@ -11,7 +11,7 @@ export const MyReportsContainer = () => {
 	const userID = useSelector((state) => state.user.id)
 	const profileReportsList = useSelector((state) => state.reports.profileReportsList)
 	const [checkState, setCheckState] = useState(false)
-	const [isLoading, setLoading] = useState(false)
+	const [isLoading, setLoading] = useState(true)
 	const allReports = () => {
 		getReportsController(userID).then((res) => {
 			if (res.status === 200) {
@@ -22,7 +22,7 @@ export const MyReportsContainer = () => {
 	useEffect(() => {
 		bookList(userID).then((res) => {
 			if (res.status === 200) {
-				setLoading(true)
+				setLoading(false)
 				dispatch(setReports(res.data.reportsInfo))
 			}
 		})

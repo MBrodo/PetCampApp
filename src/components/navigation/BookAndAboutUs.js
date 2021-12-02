@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import { Home } from '../../screens/Home'
 import { Book } from '../../screens/Book'
+import { Agreement } from '../../screens/Agreement'
 
 import { BookProcessNavigation } from './BookProcessNavigation'
 
@@ -21,6 +22,7 @@ export const BookAndAboutUs = (props) => {
 				},
 			}}
 		>
+			<Stack.Screen name="Agreement" component={Agreement} />
 			<Stack.Screen name="Home" component={Home} />
 			<Stack.Screen name="Bookpage" component={Book} />
 			<Stack.Screen name="BookProcessNavigation" component={BookProcessNavigation} />

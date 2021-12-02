@@ -126,13 +126,4 @@ export const styles = StyleSheet.create({
 	vetText: {
 		fontSize: 13,
 	},
-	alternativeText: {
-		marginVertical: 10,
-		fontSize: 15,
-		color: 'gray',
-	},
-	preloader: {
-		height: 240,
-		justifyContent: 'center',
-	},
 })
