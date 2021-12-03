@@ -50,6 +50,7 @@ export const BookCardContainer = (props) => {
 		setOpenDeleteModal((state) => !state)
 		deleteBookCard(props.item.id)
 		props.allBookings()
+		props.updateBook()
 	}
 	const checkDeleteState = () => {
 		setOpenDeleteModal((state) => !state)
