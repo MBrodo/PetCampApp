@@ -9,15 +9,14 @@ import { MapView } from '../components/book/MapView'
 import { Header } from '../components/book/Header'
 
 export const Book = (props) => {
-	const [map, setMap] = useState(false)
 	const [dog, setDog] = useState(true)
 	const [cat, setCat] = useState(false)
 	const book = () => (
 		<View style={styles.bookOutsidecontainer}>
 			<View style={styles.bookInsideContainer}>
 				<Header dog={dog} setDog={setDog} cat={cat} setCat={setCat} />
-				<MapView map={map} setMap={setMap} />
-				<MapListContainer cat={cat} dog={dog} map={map} setMap={setMap} />
+				<MapView />
+				<MapListContainer cat={cat} dog={dog} />
 				<DateContainer
 					setEndDate={props.setEndDate}
 					setStartDate={props.setStartDate}

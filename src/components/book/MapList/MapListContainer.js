@@ -77,7 +77,6 @@ export const MapListContainer = (props) => {
 			dogs={dogs}
 			setCountry={setCountry}
 			showHotels={showHotels}
-			map={props.map}
 			setInformation={setInformation}
 		/>
 	)
