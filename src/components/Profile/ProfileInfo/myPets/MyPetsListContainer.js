@@ -21,7 +21,6 @@ export const MyPetsListContainer = (props) => {
 	const userID = useSelector((state) => state.user.id)
 
 	const deletePetCard = (id) => {
-		props.route.params.setCheckState((state) => !state)
 		deletePet(id).then((res) => {
 			if (res.status === 200) {
 				console.log('delete is success')

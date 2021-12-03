@@ -19,30 +19,3 @@ export const images = [
 			'https://st.depositphotos.com/1004199/1831/i/600/depositphotos_18317915-stock-photo-cat-and-dog-together-on.jpg',
 	},
 ]
-
-export const feedbacks = [
-	{
-		key: 1,
-		name: 'Alex',
-		date: '10.10.2021',
-		text: 'Fantastic company. Great staff. Superb service. Does not get any better than this!',
-	},
-	{
-		key: 2,
-		name: 'Shelly',
-		date: '10.10.2021',
-		text: 'My sitter, Karen was unbelievable. My dog was really sick and she cooked chicken and rice for her! Seriously can you believe that...so thankful.',
-	},
-	{
-		key: 3,
-		name: 'Hope Lung ',
-		date: '10.10.2021',
-		text: 'I am very thankful for Alex, her professionalism, and his genuine love of animals. ~ Hope L., Raleigh',
-	},
-	{
-		key: 4,
-		name: 'Jim',
-		date: '10.10.2021',
-		text: 'Mel did a fantastic job again with the cats, flowers and hummingbirds! She`s awesome! Thanks for all you do.',
-	},
-]

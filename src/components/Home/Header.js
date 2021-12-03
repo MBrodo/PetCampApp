@@ -18,7 +18,7 @@ export const Header = () => {
 				<Text style={styles.descriptionArticle}>Why Us</Text>
 				<Text style={styles.descriptionText}>
 					Welcome to our full-service hotel for dogs and cats featuring 24/7 safety-certified
-					associates and an on-call veterinarian. PetsHotel is a great peace-of-mind alternative
+					associates and an on-call veterinarian. Pet Camp is a great peace-of-mind alternative
 					where cats can rest easy in comfortable quarters and dogs can enjoy playtime, salon
 					services, training classes, and more!
 				</Text>
