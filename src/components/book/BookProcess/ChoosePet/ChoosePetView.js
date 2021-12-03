@@ -32,7 +32,7 @@ export const ChoosePetView = (props) => {
 					</View>
 					<View>
 						{props.petList.map((item) => (
-							<PetCardContainer checkButton={props.checkButton} item={item} />
+							<PetCardContainer key={item.id} checkButton={props.checkButton} item={item} />
 						))}
 					</View>
 					<Pressable onPress={() => props.addPet()} style={styles.addButtonContainer}>
